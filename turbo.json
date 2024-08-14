@@ -1,0 +1,20 @@
+{
+    "$schema": "https://turbo.build/schema.json",
+    "tasks": {
+        "dev": {
+            "cache": false,
+            "persistent": true
+        },
+        "storybook": {
+            "cache": false,
+            "persistent": true
+        },
+        "//#type-check": {
+            "outputs": ["types/**", "*/*/types/**"]
+        },
+        "//#test": {
+            "cache": false,
+            "persistent": true
+        }
+    }
+}

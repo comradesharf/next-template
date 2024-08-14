@@ -1,0 +1,26 @@
+{
+    "name": "@comradesharf/emails",
+    "version": "0.1.0",
+    "private": true,
+    "imports": {
+        "#*": "./src/*"
+    },
+    "type": "module",
+    "exports": {
+        "./*": "./src/*.ts"
+    },
+    "devDependencies": {
+        "@comradesharf/typescript-config": "workspace:^",
+        "react-email": "^3.0.1"
+    },
+    "dependencies": {
+        "@react-email/components": "^0.0.25",
+        "@react-email/render": "^1.0.1",
+        "@types/nodemailer": "^6.4.16",
+        "date-fns": "^4.1.0",
+        "nodemailer": "^6.9.15"
+    },
+    "scripts": {
+        "dev": "email dev --dir src -p 3001"
+    }
+}
