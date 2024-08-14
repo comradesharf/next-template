@@ -1,0 +1,33 @@
+services:
+    mongo:
+        image: public.ecr.aws/m5y2y6k2/mindset-swiss/mongo:42a7d0e4a9f82154e5d183caf53435c43a11b8a4
+        environment:
+            MONGO_INITDB_USERNAME: user
+            MONGO_INITDB_PASSWORD: Sgf82jEO25
+            MONGO_INITDB_DATABASE: db
+        volumes:
+            - 'mongo:/data/db'
+        ports:
+            - '27017:27017'
+    inbucket:
+        image: 'inbucket/inbucket:latest'
+        ports:
+            - '9000:9000'
+            - '2500:2500'
+            - '1100:1100'
+    localstack:
+        container_name: '${LOCALSTACK_DOCKER_NAME:-localstack-main}'
+        image: localstack/localstack:3.2.0
+        ports:
+            - '127.0.0.1:4566:4566' # LocalStack Gateway
+            - '127.0.0.1:4510-4559:4510-4559' # external services port range
+        environment:
+            # LocalStack configuration: https://docs.localstack.cloud/references/configuration/
+            - DEBUG=${DEBUG:-0}
+            - SERVICES=s3,sns,sts,sqs
+        volumes:
+            - '${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack'
+            - '/var/run/docker.sock:/var/run/docker.sock'
+            - './docker/localstack/ready.d:/etc/localstack/init/ready.d'
+volumes:
+    mongo:

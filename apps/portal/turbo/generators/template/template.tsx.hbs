@@ -1,0 +1,9 @@
+import type { PropsWithChildren } from 'react';
+
+export interface TemplateProps extends PropsWithChildren {
+    params: { lang: string };
+}
+
+export default function Template({ children }: TemplateProps) {
+    return <>{children}</>;
+};

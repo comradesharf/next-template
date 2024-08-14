@@ -1,0 +1,33 @@
+{
+    "name": "@comradesharf/models",
+    "version": "0.1.0",
+    "private": true,
+    "imports": {
+        "#*": "./src/*"
+    },
+    "type": "module",
+    "exports": {
+        "./utils/db": {
+            "node": "./src/utils/db.tsx",
+            "storybook": "./src/utils/db.mock.tsx",
+            "default": "./src/utils/db.tsx"
+        },
+        "./*": {
+            "node": "./src/*.tsx",
+            "storybook": null,
+            "default": "./src/*.tsx"
+        }
+    },
+    "devDependencies": {
+        "@comradesharf/typescript-config": "workspace:^",
+        "@types/lodash-es": "^4.17.12"
+    },
+    "dependencies": {
+        "@casl/ability": "^6.7.1",
+        "@casl/mongoose": "^8.0.2",
+        "@comradesharf/core": "workspace:^",
+        "@typegoose/typegoose": "^12.8.0",
+        "lodash-es": "^4.17.21",
+        "mongoose": "^8.7.1"
+    }
+}

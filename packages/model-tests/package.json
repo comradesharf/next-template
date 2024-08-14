@@ -1,0 +1,20 @@
+{
+    "name": "@comradesharf/model-tests",
+    "version": "0.1.0",
+    "private": true,
+    "imports": {
+        "#*": "./src/*"
+    },
+    "type": "module",
+    "exports": {
+        "./*": "./src/*.ts"
+    },
+    "devDependencies": {
+        "@comradesharf/typescript-config": "workspace:^"
+    },
+    "dependencies": {
+        "@comradesharf/models": "workspace:^",
+        "@faker-js/faker": "^9.0.3",
+        "mongodb-memory-server": "^10.1.2"
+    }
+}

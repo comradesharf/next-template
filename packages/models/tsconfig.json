@@ -1,0 +1,14 @@
+{
+    "extends": "@comradesharf/typescript-config/library.json",
+    "compilerOptions": {
+        "outDir": "./types",
+        "experimentalDecorators": true
+    },
+    "exclude": ["node_modules"],
+    "include": ["src/**/*.tsx", "src/**/*.ts", "src/**/*.mts"],
+    "references": [
+        {
+            "path": "../../packages/core"
+        }
+    ]
+}

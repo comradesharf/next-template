@@ -1,0 +1,16 @@
+{
+    "extends": "@comradesharf/typescript-config/library.json",
+    "compilerOptions": {
+        "outDir": "./types"
+    },
+    "exclude": ["node_modules"],
+    "include": [
+        "src/**/*.tsx",
+        "src/**/*.ts",
+        "src/**/*.mts",
+        "vitest.setupFiles.db.ts",
+        "vitest.globalSetup.db.ts",
+        "vitest.config.unit.ts",
+        "vitest.config.db.ts"
+    ]
+}
