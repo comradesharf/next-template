@@ -1,0 +1,19 @@
+{
+    "name": "@comradesharf/schemas",
+    "version": "0.1.0",
+    "private": true,
+    "imports": {
+        "#*": "./src/*"
+    },
+    "type": "module",
+    "exports": {
+        "./*": "./src/*.ts"
+    },
+    "devDependencies": {
+        "@comradesharf/typescript-config": "workspace:^"
+    },
+    "dependencies": {
+        "zod": "^3.23.8"
+    },
+    "sideEffects": false
+}

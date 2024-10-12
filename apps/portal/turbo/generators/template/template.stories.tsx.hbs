@@ -1,0 +1,15 @@
+import Template from "{{ dir.absolute }}/template.tsx";
+import type { Meta, StoryObj } from "@storybook/react";
+
+const meta = {
+    component: Template,
+    args: {},
+    parameters: {},
+    decorators: [],
+} satisfies Meta<typeof Template>;
+
+export default meta;
+
+type Story = StoryObj<typeof Template>;
+
+export const Primary: Story = {};

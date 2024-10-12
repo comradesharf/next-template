@@ -1,13 +1,19 @@
 import '#app/globals.css';
 import type { Preview } from '@storybook/react';
+import { withAppendClassNamesToBody, withI18n } from '#libs/decorators.tsx';
+import { inter } from '#libs/fonts.ts';
+import { SupportedLocales } from '#libs/locales/SupportedLocales.ts';
 
-const preview = {
+const preview: Preview = {
+    beforeEach: (context) => {
+        console.log('beforeEach', context);
+    },
     globalTypes: {
         locale: {
             description: 'Internationalization locale',
             toolbar: {
                 icon: 'globe',
-                items: [{ value: 'en', title: 'English' }],
+                items: SupportedLocales,
             },
         },
     },
@@ -32,6 +38,14 @@ const preview = {
             },
         },
     },
-} as Preview;
+    decorators: [
+        withAppendClassNamesToBody(
+            'antialiased',
+            '[font-synthesis-weight:none]',
+            inter.variable,
+        ),
+        withI18n,
+    ],
+};
 
 export default preview;

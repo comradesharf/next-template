@@ -1,6 +1,8 @@
+import { Trans } from '@lingui/macro';
 import Image from 'next/image';
+import { withLingui } from '#libs/locales/withLingui.tsx';
 
-export default function Page() {
+export default withLingui(function Page() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -91,7 +93,7 @@ export default function Page() {
                         </span>
                     </h2>
                     <p className="m-0 max-w-[30ch] text-sm opacity-50">
-                        Explore starter templates for Next.js.
+                        <Trans>Explore starter templates for Next.js.</Trans>
                     </p>
                 </a>
 
@@ -115,4 +117,4 @@ export default function Page() {
             </div>
         </main>
     );
-}
+});

@@ -28,6 +28,6 @@
         "@comradesharf/core": "workspace:^",
         "@typegoose/typegoose": "^12.8.0",
         "lodash-es": "^4.17.21",
-        "mongoose": "^8.7.0"
+        "mongoose": "^8.7.1"
     }
 }

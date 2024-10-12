@@ -1,0 +1,21 @@
+{{#if lingui}}
+import { withLingui } from '#libs/locales/withLingui.tsx';
+
+export interface PageProps {
+    searchParams: { [key: string]: string | string[] | undefined };
+    params: { lang: string };
+}
+
+export default withLingui<PageProps>(function Page() {
+    return null;
+});
+{{else}}
+export interface PageProps {
+    searchParams: { [key: string]: string | string[] | undefined };
+    params: { lang: string };
+}
+
+export default function Page(_props: PageProps) {
+    return null;
+};
+{{/if}}

@@ -1,0 +1,35 @@
+import ErrorComp from "{{ dir.absolute }}/error.tsx";
+{{#includes types "layout"}}
+import Layout from "{{ dir.absolute }}/layout.tsx";
+{{/includes}}
+{{#includes types "template"}}
+    import Template from "{{ dir.absolute }}/template.tsx";
+{{/includes}}
+import type { Meta, StoryObj } from "@storybook/react";
+
+const meta = {
+    component: ErrorComp,
+    parameters: {},
+    decorators: [
+{{#includes types "layout"~}}
+    (Story, ctx) => (
+    <Layout {...(ctx.args as any)}>
+        <Story/>
+    </Layout>
+    ),
+{{/includes}}
+{{#includes types "template"~}}
+    (Story, ctx) => (
+    <Template {...(ctx.args as any)}>
+        <Story/>
+    </Template>
+    ),
+{{/includes}}
+],
+} satisfies Meta<typeof ErrorComp>;
+
+export default meta;
+
+type Story = StoryObj<typeof ErrorComp>;
+
+export const Primary: Story = {};

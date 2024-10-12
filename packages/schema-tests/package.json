@@ -1,0 +1,13 @@
+{
+    "name": "@comradesharf/schema-tests",
+    "version": "0.1.0",
+    "private": true,
+    "imports": {
+        "#*": "./src/*"
+    },
+    "sideEffects": false,
+    "type": "module",
+    "devDependencies": {
+        "@comradesharf/typescript-config": "workspace:^"
+    }
+}

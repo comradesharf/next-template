@@ -15,6 +15,6 @@
     "dependencies": {
         "@comradesharf/models": "workspace:^",
         "@faker-js/faker": "^9.0.3",
-        "mongodb-memory-server": "^10.0.1"
+        "mongodb-memory-server": "^10.1.2"
     }
 }

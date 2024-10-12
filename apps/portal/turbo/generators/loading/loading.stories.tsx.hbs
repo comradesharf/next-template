@@ -1,0 +1,35 @@
+import Loading from "{{ dir.absolute }}/loading.tsx";
+{{#includes types "layout"}}
+import Layout from "{{ dir.absolute }}/layout.tsx";
+{{/includes}}
+{{#includes types "template"}}
+    import Template from "{{ dir.absolute }}/template.tsx";
+{{/includes}}
+import type { Meta, StoryObj } from "@storybook/react";
+
+const meta = {
+    component: Loading,
+    parameters: {},
+    decorators: [
+{{#includes types "layout"~}}
+        (Story, ctx) => (
+            <Layout {...(ctx.args as any)}>
+                <Story/>
+            </Layout>
+        ),
+{{/includes}}
+{{#includes types "template"~}}
+        (Story, ctx) => (
+            <Template {...(ctx.args as any)}>
+                <Story/>
+            </Template>
+        ),
+{{/includes}}
+    ],
+} satisfies Meta<typeof Loading>;
+
+export default meta;
+
+type Story = StoryObj<typeof Loading>;
+
+export const Primary: Story = {};

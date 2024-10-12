@@ -1,0 +1,23 @@
+import { {{ pascalCase name }} } from "{{ dir.absolute }}/_components/{{ name }}.tsx";
+import type { Meta, StoryObj } from "@storybook/react";
+
+const meta: Meta<typeof {{pascalCase name}}> = {
+    component: {{pascalCase name}},
+    tags: ["autodocs"],
+    args: {},
+    parameters: {
+        layout: "padded",
+        docs: {
+            story: {
+                inline: true,
+            },
+        },
+    }
+};
+
+export default meta;
+
+type Story = StoryObj<typeof {{pascalCase name}}>;
+
+export const Primary: Story = {
+};

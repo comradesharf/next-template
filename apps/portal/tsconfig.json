@@ -10,7 +10,10 @@
         "src/**/*.tsx",
         ".next/types/**/*.ts",
         ".storybook/**/*",
-        "turbo"
+        "turbo",
+        "sentry.client.config.ts",
+        "sentry.edge.config.ts",
+        "sentry.server.config.ts"
     ],
     "exclude": ["node_modules"],
     "references": [

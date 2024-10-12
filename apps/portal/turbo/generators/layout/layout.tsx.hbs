@@ -1,0 +1,21 @@
+{{#if lingui}}
+import { withLingui } from '#libs/locales/withLingui.tsx';
+
+export interface LayoutProps {
+    params: { lang: string };
+}
+
+export default withLingui<LayoutProps>(function Layout({ children }) {
+    return <>{children}</>;
+});
+{{else}}
+import type { PropsWithChildren } from 'react';
+
+export interface LayoutProps extends PropsWithChildren {
+    params: { lang: string };
+}
+
+export default function Layout({ children }: LayoutProps) {
+    return <>{children}</>;
+};
+{{/if}}

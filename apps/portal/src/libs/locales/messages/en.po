@@ -13,30 +13,42 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: ../../app/[lang]/(auth)/sign-up/page.tsx:26
-msgid "Choose your preferred sign-in method."
-msgstr "Choose your preferred sign-in method."
+#: ../../app/_components/not-found.tsx:38
+msgid "Back to Homepage"
+msgstr "Back to Homepage"
 
-#: ../../app/[lang]/(auth)/sign-up/page.tsx:48
-msgid "Enter your password"
-msgstr "Enter your password"
+#: ../../app/[lang]/page.tsx:96
+msgid "Explore starter templates for Next.js."
+msgstr "Explore starter templates for Next.js."
 
-#: ../../app/[lang]/(auth)/sign-up/page.tsx:38
-msgid "Enter your username"
-msgstr "Enter your username"
+#: ../../app/_components/not-found.tsx:45
+msgid "If you think this is a mistake, please <0>contact our support team</0>."
+msgstr "If you think this is a mistake, please <0>contact our support team</0>."
 
-#: ../../app/[lang]/(auth)/sign-up/page.tsx:43
-msgid "Password"
-msgstr "Password"
+#: ../../app/_components/loading.tsx:20
+msgid "Loading..."
+msgstr "Loading..."
 
-#: ../../app/[lang]/(auth)/sign-up/page.tsx:23
-msgid "Sign In"
-msgstr "Sign In"
+#: ../../app/_components/not-found.tsx:20
+msgid "Oops! Page not found"
+msgstr "Oops! Page not found"
 
-#: ../../app/[lang]/(auth)/sign-up/page.tsx:54
-msgid "Sign in with Email"
-msgstr "Sign in with Email"
+#: ../../app/_components/error.tsx:25
+msgid "Oops! Something went wrong"
+msgstr "Oops! Something went wrong"
 
-#: ../../app/[lang]/(auth)/sign-up/page.tsx:34
-msgid "Username"
-msgstr "Username"
+#: ../../app/_components/loading.tsx:23
+msgid "Please wait while we prepare your content."
+msgstr "Please wait while we prepare your content."
+
+#: ../../app/_components/error.tsx:37
+msgid "Return to Home"
+msgstr "Return to Home"
+
+#: ../../app/_components/not-found.tsx:23
+msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+msgstr "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+
+#: ../../app/_components/error.tsx:28
+msgid "We're sorry, but it seems like we've encountered an unexpected error. Our team has been notified and is working on fixing it."
+msgstr "We're sorry, but it seems like we've encountered an unexpected error. Our team has been notified and is working on fixing it."

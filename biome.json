@@ -32,6 +32,11 @@
                 "noForEach": {
                     "level": "off"
                 }
+            },
+            "suspicious": {
+                "noExplicitAny": {
+                    "level": "off"
+                }
             }
         }
     },
