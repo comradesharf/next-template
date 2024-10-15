@@ -3,7 +3,7 @@
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 import * as React from 'react';
 import { Drawer as DrawerPrimitive } from 'vaul';
-import { cn } from '#libs/cn.ts';
+import { cn } from '#app/_libs/cn.ts';
 
 const Drawer = ({
     shouldScaleBackground = true,

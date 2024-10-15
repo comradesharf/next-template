@@ -19,8 +19,8 @@ afterEach(async () => {
 });
 
 beforeEach(async () => {
-    const mongoUri = process.env.MONGODB_URI;
-    assert(!!mongoUri, "MONGODB_URI environment variable isn't set");
+    const mongoUri = process.env.__MONGOD_URI__;
+    assert(!!mongoUri, "__MONGOD_URI__ environment variable isn't set");
     const uri = new URL(mongoUri);
     uri.pathname = crypto.randomUUID();
     process.env.MONGODB_URI = uri.toString();

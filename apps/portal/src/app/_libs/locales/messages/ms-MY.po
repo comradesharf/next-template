@@ -1,0 +1,302 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2024-10-16 16:14+0800\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: ms-MY\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: ../../[lang]/(auth)/sign-up/page.tsx:126
+msgid "Already have an account? <0>Sign in</0>"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/layout.tsx:57
+msgid "Avatar"
+msgstr ""
+
+#: ../../_components/not-found.tsx:43
+msgid "Back to Homepage"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:538
+msgid "Billing Information"
+msgstr ""
+
+#: ../../[lang]/(auth)/sign-up/page.tsx:102
+msgid "Confirm Password"
+msgstr ""
+
+#: ../../[lang]/(auth)/sign-up/page.tsx:107
+msgid "Confirm your password"
+msgstr ""
+
+#: ../../[lang]/(auth)/sign-up/page.tsx:48
+msgid "Create a new account to get started."
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:87
+msgid "Create New Order"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:553
+msgid "Customer"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:548
+msgid "Customer Information"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:152
+msgid "Declined"
+msgstr ""
+
+#: ../../[lang]/(auth)/sign-up/page.tsx:57
+msgid "Display name"
+msgstr ""
+
+#: ../../[lang]/(auth)/sign-in/page.tsx:93
+msgid "Don't have an account? <0>Sign up</0>"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:464
+msgid "Edit"
+msgstr ""
+
+#: ../../[lang]/(auth)/sign-in/page.tsx:57
+#: ../../[lang]/(auth)/sign-up/page.tsx:73
+msgid "Email"
+msgstr ""
+
+#: ../../_actions/signUp.ts:45
+msgid "Email already exists"
+msgstr "E-mel sudah wujud"
+
+#: ../../[lang]/(auth)/sign-in/page.tsx:76
+#: ../../[lang]/(auth)/sign-up/page.tsx:89
+msgid "Enter your password"
+msgstr ""
+
+#: ../../[lang]/(auth)/sign-in/page.tsx:61
+msgid "Enter your username"
+msgstr ""
+
+#: ../../[lang]/(auth)/sign-in/page.tsx:46
+msgid "Enter your username and password to access your account."
+msgstr "Masukkan nama pengguna dan kata laluan anda untuk mengakses akaun anda."
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:166
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:467
+msgid "Export"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:145
+msgid "Filter by"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:149
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:395
+msgid "Fulfilled"
+msgstr ""
+
+#: ../../_components/not-found.tsx:50
+msgid "If you think this is a mistake, please <0>contact our support team</0>."
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:79
+msgid "Introducing Our Dynamic Orders Dashboard for Seamless Management and Insightful Analysis."
+msgstr ""
+
+#: ../../_components/loading.tsx:20
+msgid "Loading..."
+msgstr ""
+
+#: ../../[lang]/(authenticated)/layout.tsx:76
+msgid "Logout"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:458
+msgid "More"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/layout.tsx:64
+msgid "My Account"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:623
+msgid "Next Order"
+msgstr ""
+
+#: ../../_components/not-found.tsx:25
+msgid "Oops! Page not found"
+msgstr ""
+
+#: ../../_components/error.tsx:30
+msgid "Oops! Something went wrong"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:480
+msgid "Order Details"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.tsx:88
+#: ../../[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.tsx:93
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:175
+msgid "Orders"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.tsx:66
+#: ../../[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.tsx:71
+msgid "Overview"
+msgstr ""
+
+#: ../../[lang]/(auth)/sign-in/page.tsx:71
+#: ../../[lang]/(auth)/sign-up/page.tsx:84
+msgid "Password"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:578
+msgid "Payment Information"
+msgstr ""
+
+#: ../../_components/loading.tsx:23
+msgid "Please wait while we prepare your content."
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:611
+msgid "Previous Order"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.tsx:110
+#: ../../[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.tsx:115
+msgid "Products"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:178
+msgid "Recent orders from your store."
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:155
+msgid "Refunded"
+msgstr ""
+
+#: ../../_components/error.tsx:42
+msgid "Return to Home"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:388
+msgid "Sale"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:541
+msgid "Same as shipping address"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/layout.tsx:42
+msgid "Search..."
+msgstr ""
+
+#: ../../[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.tsx:126
+msgid "Select language"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.tsx:163
+msgid "Selected: {selectedLanguage}"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.tsx:181
+#: ../../[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.tsx:186
+#: ../../[lang]/(authenticated)/layout.tsx:68
+msgid "Settings"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:506
+msgid "Shipping"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:528
+msgid "Shipping Information"
+msgstr ""
+
+#: ../../[lang]/(auth)/sign-in/page.tsx:43
+#: ../../[lang]/(auth)/sign-in/page.tsx:88
+msgid "Sign In"
+msgstr ""
+
+#: ../../[lang]/(auth)/sign-up/page.tsx:45
+msgid "Sign Up"
+msgstr ""
+
+#: ../../[lang]/(auth)/sign-up/page.tsx:120
+msgid "Sign up with Email"
+msgstr ""
+
+#: ../errors.ts:52
+msgid "Something went wrong while executing the operation."
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:500
+msgid "Subtotal"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/layout.tsx:71
+msgid "Support"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:512
+msgid "Tax"
+msgstr ""
+
+#: ../errors.ts:50
+msgid "The email address you entered is already in use. Please use a different email address."
+msgstr ""
+
+#: ../../_components/not-found.tsx:28
+msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+msgstr ""
+
+#: ../errors.ts:48
+msgid "The username or password you entered is incorrect. Please try again."
+msgstr "Nama pengguna atau kata laluan yang anda masukkan adalah salah. Sila cuba lagi."
+
+#: ../../[lang]/(auth)/sign-up/page.tsx:63
+msgid "This is your public display name."
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:94
+msgid "This Week"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:518
+msgid "Total"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:446
+msgid "Track Order"
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:471
+msgid "Trash"
+msgstr ""
+
+#: ../errors.ts:46
+msgid "Unable to find matching {0}. Please check the URL or contact support if the problem persists."
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:593
+msgid "Updated <0/>"
+msgstr "Di kemas kini pada <0/>"
+
+#: ../../_components/error.tsx:33
+msgid "We're sorry, but it seems like we've encountered an unexpected error. Our team has been notified and is working on fixing it."
+msgstr ""
+
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:76
+msgid "Your Orders"
+msgstr ""

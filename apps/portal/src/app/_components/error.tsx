@@ -6,7 +6,7 @@ import { ArrowLeft, TriangleAlert } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { Button } from '#app/_components/button.tsx';
-import { cn } from '#libs/cn.ts';
+import { cn } from '#app/_libs/cn.ts';
 
 export interface ErrorProps {
     className?: string;
@@ -19,7 +19,12 @@ export function ErrorComp({ className, error }: ErrorProps) {
     }, [error]);
 
     return (
-        <div className={cn('max-w-md text-center', className)}>
+        <div
+            className={cn(
+                'max-w-md text-center -translate-x-1/2 left-1/2 absolute translate-y-1/2',
+                className,
+            )}
+        >
             <TriangleAlert className="mx-auto mb-8 w-32 h-32 text-muted-foreground" />
             <h1 className="text-4xl font-bold mb-4">
                 <Trans>Oops! Something went wrong</Trans>

@@ -61,7 +61,7 @@ import {
 import { Toaster } from '#app/_components/toaster.tsx';
 import { useMediaQuery } from '#app/_hooks/use-media-query.ts';
 import { toast } from '#app/_hooks/use-toast.ts';
-import { cn } from '#libs/cn.ts';
+import { cn } from '#app/_libs/cn.ts';
 
 const frameworks = [
     {

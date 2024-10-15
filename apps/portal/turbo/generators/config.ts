@@ -1,6 +1,6 @@
 import type { PlopTypes } from '@turbo/gen';
 import fuzzypath from 'inquirer-fuzzy-path';
-import { camelCase, kebabCase } from 'lodash';
+import { camelCase, kebabCase, lowerCase, upperFirst } from 'lodash';
 
 export default function generator(plop: PlopTypes.NodePlopAPI) {
     plop.setDefaultInclude({
@@ -135,12 +135,12 @@ export default function generator(plop: PlopTypes.NodePlopAPI) {
                     {
                         name: 'Error',
                         value: 'error',
-                        checked: false,
+                        checked: true,
                     },
                     {
                         name: 'Not Found',
                         value: 'not-found',
-                        checked: false,
+                        checked: true,
                     },
                     {
                         name: 'Template',
@@ -293,5 +293,52 @@ export default function generator(plop: PlopTypes.NodePlopAPI) {
 
             return _actions;
         },
+    });
+
+    plop.setGenerator('model', {
+        description: 'Create a new model in the app',
+        prompts: [
+            {
+                type: 'input',
+                name: 'name',
+                message: 'What is your model name?',
+                validate: (value?: string) => {
+                    if (!value?.trim().length) {
+                        return 'A model name is required';
+                    }
+
+                    if (upperFirst(camelCase(value)) !== value) {
+                        return 'The model name must be in PascalCase';
+                    }
+
+                    return true;
+                },
+            },
+            {
+                type: 'input',
+                name: 'prefix',
+                message: 'What is your model prefix?',
+                validate: (value?: string) => {
+                    if (!value?.trim().length) {
+                        return 'A model prefix is required';
+                    }
+
+                    if (lowerCase(camelCase(value)) !== value) {
+                        return 'The model prefix must be in lowercase and has no spaces';
+                    }
+
+                    return true;
+                },
+            },
+        ],
+        actions: [
+            {
+                type: 'addMany',
+                skipIfExists: true,
+                templateFiles: 'model/**/*.hbs',
+                base: 'model',
+                destination: '../..',
+            },
+        ],
     });
 }

@@ -1,7 +1,7 @@
 'use server';
 
 import "server-only";
-import { actionClient } from '#libs/safe-actions.ts';
+import { actionClient } from '#app/_libs/safe-actions.ts';
 {{#if schema}}
 import { {{ pascalCase name }}Schema } from '@comradesharf/schemas/{{ pascalCase name }}Schema';
 {{/if}}

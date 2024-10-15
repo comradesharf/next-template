@@ -1,8 +1,11 @@
-import Negotiator from 'negotiator';
 import NextAuth from 'next-auth';
 import { NextResponse } from 'next/server';
-import AuthConfigs from '#libs/AuthConfigs.ts';
-import linguiConfig from '#libs/locales/lingui.config.ts';
+import AuthConfigs from '#app/_libs/auths/auth.config.ts';
+import {
+    CookieName,
+    getRequestLocale,
+} from '#app/_libs/locales/getRequestLocale.ts';
+import linguiConfig from '#app/_libs/locales/lingui.config.ts';
 
 export const _auth = NextAuth(AuthConfigs);
 
@@ -14,30 +17,28 @@ export const _auth = NextAuth(AuthConfigs);
 export const middleware: unknown = _auth.auth((request) => {
     const { pathname } = request.nextUrl;
 
-    const pathnameHasLocale = locales.some(
+    let locale = linguiConfig.locales.find(
         (locale) =>
             pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
     );
 
-    if (pathnameHasLocale) return;
+    if (locale) {
+        const response = NextResponse.next();
+        response.cookies.set(CookieName, locale);
+        return response;
+    }
 
     // Redirect if there is no locale
-    const locale = getRequestLocale(request.headers);
+    locale = getRequestLocale(request.headers);
     request.nextUrl.pathname = `/${locale}${pathname}`;
     // e.g. incoming request is /products
     // The new URL is now /en/products
-    return NextResponse.redirect(request.nextUrl);
+    return NextResponse.redirect(request.nextUrl, {
+        headers: {
+            'Set-Cookie': `${CookieName}=${locale}`,
+        },
+    });
 });
-
-const { locales } = linguiConfig;
-
-function getRequestLocale(requestHeaders: Headers): string {
-    const langHeader = requestHeaders.get('accept-language') || undefined;
-    const languages = new Negotiator({
-        headers: { 'accept-language': langHeader },
-    }).languages(locales.slice());
-    return languages[0] || locales[0] || 'en';
-}
 
 export const config = {
     matcher: [
@@ -49,6 +50,6 @@ export const config = {
          * - images - .svg, .png, .jpg, .jpeg, .gif, .webp
          * Feel free to modify this pattern to include more paths.
          */
-        '/((?!_next/static|_next/image|favicon.ico|monitoring|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+        '/((?!_next/static|_next/image|favicon.ico|monitoring|api|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
     ],
 };

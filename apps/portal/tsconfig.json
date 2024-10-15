@@ -2,7 +2,8 @@
     "extends": "@comradesharf/typescript-config/next.json",
     "compilerOptions": {
         "outDir": "types",
-        "target": "esnext"
+        "target": "esnext",
+        "experimentalDecorators": true
     },
     "include": [
         "next-env.d.ts",

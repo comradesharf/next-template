@@ -1,6 +1,9 @@
-import * as React from 'react';
+'use client';
 
-import { cn } from '#libs/cn.ts';
+import { useFormField } from '#app/_components/form.tsx';
+
+import * as React from 'react';
+import { cn } from '#app/_libs/cn.ts';
 
 export interface TextareaProps
     extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
@@ -21,4 +24,15 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 );
 Textarea.displayName = 'Textarea';
 
-export { Textarea };
+function ControlledTextarea(props: TextareaProps) {
+    const { controller } = useFormField();
+    return (
+        <Textarea
+            {...props}
+            value={controller.field.value}
+            onChange={controller.field.onChange}
+        />
+    );
+}
+
+export { Textarea, ControlledTextarea };

@@ -1,9 +1,11 @@
 'use client';
 
 import { Label } from '#app/_components/label.tsx';
+import { cn } from '#app/_libs/cn.ts';
 
 import type * as LabelPrimitive from '@radix-ui/react-label';
 import { Slot } from '@radix-ui/react-slot';
+import type { PropsWithChildren } from 'react';
 import * as React from 'react';
 import {
     Controller,
@@ -11,9 +13,11 @@ import {
     type FieldPath,
     type FieldValues,
     FormProvider,
+    type UseControllerProps,
+    type UseControllerReturn,
+    useController,
     useFormContext,
 } from 'react-hook-form';
-import { cn } from '#libs/cn.ts';
 
 const Form = FormProvider;
 
@@ -22,6 +26,7 @@ type FormFieldContextValue<
     TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 > = {
     name: TName;
+    controller: UseControllerReturn<TFieldValues, TName>;
 };
 
 const FormFieldContext = React.createContext<FormFieldContextValue>(
@@ -33,10 +38,17 @@ const FormField = <
     TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({
     ...props
-}: ControllerProps<TFieldValues, TName>) => {
+}:
+    | PropsWithChildren<UseControllerProps<TFieldValues, TName>>
+    | ControllerProps<TFieldValues, TName>) => {
+    const controller = useController<TFieldValues, TName>(props);
+
     return (
-        <FormFieldContext.Provider value={{ name: props.name }}>
-            <Controller {...props} />
+        <FormFieldContext.Provider
+            value={{ name: props.name, controller: controller as any }}
+        >
+            {'render' in props ? <Controller {...props} /> : null}
+            {'children' in props ? props.children : null}
         </FormFieldContext.Provider>
     );
 };
@@ -57,6 +69,7 @@ const useFormField = () => {
     return {
         id,
         name: fieldContext.name,
+        controller: fieldContext.controller,
         formItemId: `${id}-form-item`,
         formDescriptionId: `${id}-form-item-description`,
         formMessageId: `${id}-form-item-message`,

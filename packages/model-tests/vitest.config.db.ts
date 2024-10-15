@@ -7,5 +7,6 @@ export default defineProject({
         globalSetup: ['vitest.globalSetup.db.ts'],
         setupFiles: ['dotenv/config', 'vitest.setupFiles.db.ts'],
         testTimeout: 20000,
+        name: 'model-tests-db',
     },
 });

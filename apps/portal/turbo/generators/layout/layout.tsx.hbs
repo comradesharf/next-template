@@ -1,11 +1,11 @@
 {{#if lingui}}
-import { withLingui } from '#libs/locales/withLingui.tsx';
+import { withLocale } from '#app/_libs/locales/withLocale.tsx';
 
 export interface LayoutProps {
     params: { lang: string };
 }
 
-export default withLingui<LayoutProps>(function Layout({ children }) {
+export default withLocale<LayoutProps>(function Layout({ children }) {
     return <>{children}</>;
 });
 {{else}}

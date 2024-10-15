@@ -1,6 +1,8 @@
-import * as React from 'react';
+'use client';
 
-import { cn } from '#libs/cn.ts';
+import * as React from 'react';
+import { useFormField } from '#app/_components/form.tsx';
+import { cn } from '#app/_libs/cn.ts';
 
 export interface InputProps
     extends React.InputHTMLAttributes<HTMLInputElement> {}
@@ -22,4 +24,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 );
 Input.displayName = 'Input';
 
-export { Input };
+function ControlledInput(props: InputProps) {
+    const { controller } = useFormField();
+    return <Input {...props} {...controller.field} />;
+}
+
+export { Input, ControlledInput };

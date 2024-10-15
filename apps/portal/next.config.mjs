@@ -2,6 +2,7 @@ import { withSentryConfig } from '@sentry/nextjs';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    output: 'standalone',
     typescript: {
         ignoreBuildErrors: true,
     },
@@ -16,6 +17,8 @@ const nextConfig = {
     ],
     experimental: {
         swcPlugins: [['@lingui/swc-plugin', {}]],
+        serverMinification: false,
+        instrumentationHook: true,
     },
     webpack(config) {
         config.module.rules.push({
@@ -26,9 +29,20 @@ const nextConfig = {
         });
         return config;
     },
+    async redirects() {
+        return [
+            {
+                source: '/:locale/orders',
+                destination: '/:locale/orders/recent-orders',
+                permanent: false,
+            },
+        ];
+    },
 };
 
 export default withSentryConfig(nextConfig, {
+    disable: false,
+
     // For all available options, see:
     // https://github.com/getsentry/sentry-webpack-plugin#options
 

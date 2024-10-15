@@ -6,7 +6,7 @@ import {
 import Link, { type LinkProps } from 'next/link';
 import * as React from 'react';
 import { type ButtonProps, buttonVariants } from '#app/_components/button.tsx';
-import { cn } from '#libs/cn.ts';
+import { cn } from '#app/_libs/cn.ts';
 
 const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
     <nav

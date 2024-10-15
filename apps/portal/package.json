@@ -7,12 +7,16 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "storybook": "storybook dev -p 6006",
-        "build-storybook": "storybook build",
-        "extract": "lingui extract --config ./src/libs/locales/lingui.config.ts"
+        "storybook": "NEXT_FONT_GOOGLE_MOCKED_RESPONSES=$(pwd)/.storybook/mocked-google-fonts.js storybook dev -p 6006",
+        "build-storybook": "NEXT_FONT_GOOGLE_MOCKED_RESPONSES=$(pwd)/.storybook/mocked-google-fonts.js storybook build",
+        "extract": "lingui extract --config ./src/app/_libs/locales/lingui.config.ts"
     },
     "dependencies": {
+        "@comradesharf/core": "workspace:^",
+        "@comradesharf/emails": "workspace:^",
         "@comradesharf/models": "workspace:^",
+        "@comradesharf/pdfs": "workspace:^",
+        "@comradesharf/schemas": "workspace:^",
         "@comradesharf/trpc": "workspace:^",
         "@comradesharf/typescript-config": "workspace:^",
         "@date-fns/tz": "^1.1.2",
@@ -96,18 +100,31 @@
             "storybook": "./src/app/_queries/*.mock.ts",
             "default": "./src/app/_queries/*.ts"
         },
-        "#libs/locales/withLingui.tsx": {
-            "node": "./src/libs/locales/withLingui.tsx",
-            "storybook": "./src/libs/locales/withLingui.mock.tsx",
-            "default": "./src/libs/locales/withLingui.tsx"
+        "#app/_libs/locales/withLocale.tsx": {
+            "node": "./src/app/_libs/locales/withLocale.tsx",
+            "storybook": "./src/app/_libs/locales/withLocale.mock.tsx",
+            "default": "./src/app/_libs/locales/withLocale.tsx"
+        },
+        "#app/_components/date-time.tsx": {
+            "react-server": "./src/app/_components/date-time.rsc.tsx",
+            "default": "./src/app/_components/date-time.tsx"
+        },
+        "#app/_components/number.tsx": {
+            "react-server": "./src/app/_components/number.rsc.tsx",
+            "default": "./src/app/_components/number.tsx"
         },
         "#*": "./src/*"
     },
     "devDependencies": {
+        "@comradesharf/model-mocks": "workspace:^",
         "@lingui/cli": "^4.12.0",
         "@lingui/loader": "^4.12.0",
         "@lingui/swc-plugin": "4.0.8",
         "@types/lodash-es": "^4.17.12",
-        "@types/negotiator": "^0.6.3"
+        "@types/negotiator": "^0.6.3",
+        "msw": "^2.4.11"
+    },
+    "msw": {
+        "workerDirectory": ["public"]
     }
 }
