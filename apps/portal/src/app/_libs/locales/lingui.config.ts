@@ -1,5 +1,5 @@
 import type { LinguiConfig } from '@lingui/conf';
-import { SupportedLocales } from '#libs/locales/SupportedLocales.ts';
+import { SupportedLocales } from '#app/_libs/locales/SupportedLocales.ts';
 
 export default {
     locales: SupportedLocales.map(({ value }) => value),

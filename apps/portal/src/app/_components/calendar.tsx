@@ -2,7 +2,7 @@
 
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import { buttonVariants } from '#app/_components/button.tsx';
-import { cn } from '#libs/cn.ts';
+import { cn } from '#app/_libs/cn.ts';
 
 import type * as React from 'react';
 import { DayPicker } from 'react-day-picker';

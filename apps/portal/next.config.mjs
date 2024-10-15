@@ -16,6 +16,8 @@ const nextConfig = {
     ],
     experimental: {
         swcPlugins: [['@lingui/swc-plugin', {}]],
+        serverMinification: false,
+        instrumentationHook: true,
     },
     webpack(config) {
         config.module.rules.push({
@@ -29,6 +31,7 @@ const nextConfig = {
 };
 
 export default withSentryConfig(nextConfig, {
+    disable: process.env.NODE_ENV === 'development',
     // For all available options, see:
     // https://github.com/getsentry/sentry-webpack-plugin#options
 

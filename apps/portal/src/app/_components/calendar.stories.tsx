@@ -23,7 +23,7 @@ import {
 } from '#app/_components/popover.tsx';
 import { Toaster } from '#app/_components/toaster.tsx';
 import { toast } from '#app/_hooks/use-toast.ts';
-import { cn } from '#libs/cn.ts';
+import { cn } from '#app/_libs/cn.ts';
 
 const meta: Meta<typeof Calendar> = {
     component: Calendar,

@@ -6,7 +6,7 @@ import { ArrowLeft, TriangleAlert } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { Button } from '#app/_components/button.tsx';
-import { cn } from '#libs/cn.ts';
+import { cn } from '#app/_libs/cn.ts';
 
 export interface ErrorProps {
     className?: string;

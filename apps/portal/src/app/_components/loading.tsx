@@ -1,6 +1,6 @@
 import { Trans } from '@lingui/macro';
 import { Loader2 } from 'lucide-react';
-import { cn } from '#libs/cn.ts';
+import { cn } from '#app/_libs/cn.ts';
 
 export interface LoadingProps {
     className?: string;

@@ -5,5 +5,6 @@ export default defineProject({
         include: ['src/**/*.test.{ts,tsx}'],
         environment: 'node',
         setupFiles: ['dotenv/config'],
+        name: 'model-tests-unit',
     },
 });

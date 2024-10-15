@@ -26,8 +26,10 @@
         "@casl/ability": "^6.7.1",
         "@casl/mongoose": "^8.0.2",
         "@comradesharf/core": "workspace:^",
+        "@comradesharf/schemas": "workspace:^",
         "@typegoose/typegoose": "^12.8.0",
         "lodash-es": "^4.17.21",
-        "mongoose": "^8.7.1"
+        "mongoose": "^8.7.1",
+        "typeid-js": "^1.1.0"
     }
 }

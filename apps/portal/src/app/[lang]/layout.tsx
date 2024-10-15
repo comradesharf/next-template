@@ -1,11 +1,11 @@
 import '#app/globals.css';
 import type { Metadata } from 'next';
 import { LinguiClientProvider } from '#app/_components/lingui-client-provider.tsx';
+import { cn } from '#app/_libs/cn.ts';
+import { inter } from '#app/_libs/fonts.ts';
+import linguiConfig from '#app/_libs/locales/lingui.config.ts';
+import { withLingui } from '#app/_libs/locales/withLingui.tsx';
 import { getI18nMessage } from '#app/_queries/i18n.ts';
-import { cn } from '#libs/cn.ts';
-import { inter } from '#libs/fonts.ts';
-import linguiConfig from '#libs/locales/lingui.config.ts';
-import { withLingui } from '#libs/locales/withLingui.tsx';
 
 export const metadata: Metadata = {
     title: 'Create Next App',

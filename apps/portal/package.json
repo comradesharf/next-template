@@ -9,10 +9,14 @@
         "lint": "next lint",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build",
-        "extract": "lingui extract --config ./src/libs/locales/lingui.config.ts"
+        "extract": "lingui extract --config ./src/app/_libs/locales/lingui.config.ts"
     },
     "dependencies": {
+        "@comradesharf/core": "workspace:^",
+        "@comradesharf/emails": "workspace:^",
         "@comradesharf/models": "workspace:^",
+        "@comradesharf/pdfs": "workspace:^",
+        "@comradesharf/schemas": "workspace:^",
         "@comradesharf/trpc": "workspace:^",
         "@comradesharf/typescript-config": "workspace:^",
         "@date-fns/tz": "^1.1.2",

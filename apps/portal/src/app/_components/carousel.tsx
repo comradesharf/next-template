@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '#app/_components/button.tsx';
-import { cn } from '#libs/cn.ts';
+import { cn } from '#app/_libs/cn.ts';
 
 import useEmblaCarousel, {
     type UseEmblaCarouselType,

@@ -1,8 +1,8 @@
 import Negotiator from 'negotiator';
 import NextAuth from 'next-auth';
 import { NextResponse } from 'next/server';
-import AuthConfigs from '#libs/AuthConfigs.ts';
-import linguiConfig from '#libs/locales/lingui.config.ts';
+import AuthConfigs from '#app/_libs/auths/auth.config.ts';
+import linguiConfig from '#app/_libs/locales/lingui.config.ts';
 
 export const _auth = NextAuth(AuthConfigs);
 

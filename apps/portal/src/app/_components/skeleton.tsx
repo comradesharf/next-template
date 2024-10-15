@@ -1,4 +1,4 @@
-import { cn } from '#libs/cn.ts';
+import { cn } from '#app/_libs/cn.ts';
 
 function Skeleton({
     className,

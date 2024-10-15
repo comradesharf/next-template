@@ -15,7 +15,7 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from '#app/_components/navigation-menu.tsx';
-import { cn } from '#libs/cn.ts';
+import { cn } from '#app/_libs/cn.ts';
 
 const components: { title: string; href: string; description: string }[] = [
     {

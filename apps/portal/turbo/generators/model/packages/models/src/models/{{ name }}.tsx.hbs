@@ -1,0 +1,26 @@
+import { modelOptions, prop } from '@typegoose/typegoose';
+import { Base, generateIdWithPrefix } from '#models/Base.tsx';
+
+declare module '@casl/ability' {
+    interface RecordTypes {
+        {{ name }}: {{ name }};
+    }
+}
+
+@modelOptions({
+    options: {
+        customName: '{{ name }}',
+    },
+})
+class {{ name }} extends Base {
+
+    @prop({
+        required: true,
+        type: String,
+        default: generateIdWithPrefix('{{ prefix }}'),
+    })
+    _id!: string;
+
+}
+
+export { {{ name }} };

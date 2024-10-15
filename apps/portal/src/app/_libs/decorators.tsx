@@ -5,7 +5,9 @@ import type { ReactRenderer } from '@storybook/react';
 import { useEffect, useInsertionEffect } from 'react';
 
 export async function dynamicActivate(locale: string) {
-    const { messages } = await import(`#libs/locales/messages/${locale}.po`);
+    const { messages } = await import(
+        `#app/_libs/locales/messages/${locale}.po`
+    );
     i18n.load(locale, messages);
     i18n.activate(locale);
 }
@@ -33,7 +35,6 @@ export const withAppendClassNamesToBody: (
     ...classNames: string[]
 ) => DecoratorFunction<ReactRenderer> = (...classNames) =>
     function Component(Story) {
-        console.log('test');
         useInsertionEffect(() => {
             document.documentElement.classList.add(...classNames);
         }, [classNames]);

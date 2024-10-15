@@ -1916,7 +1916,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@comradesharf/emails@workspace:packages/emails":
+"@comradesharf/emails@workspace:^, @comradesharf/emails@workspace:packages/emails":
   version: 0.0.0-use.local
   resolution: "@comradesharf/emails@workspace:packages/emails"
   dependencies:
@@ -1927,6 +1927,15 @@ __metadata:
     date-fns: "npm:^4.1.0"
     nodemailer: "npm:^6.9.15"
     react-email: "npm:^3.0.1"
+  languageName: unknown
+  linkType: soft
+
+"@comradesharf/model-mocks@workspace:packages/model-mocks":
+  version: 0.0.0-use.local
+  resolution: "@comradesharf/model-mocks@workspace:packages/model-mocks"
+  dependencies:
+    "@comradesharf/typescript-config": "workspace:^"
+    "@faker-js/faker": "npm:^9.0.3"
   languageName: unknown
   linkType: soft
 
@@ -1948,15 +1957,17 @@ __metadata:
     "@casl/ability": "npm:^6.7.1"
     "@casl/mongoose": "npm:^8.0.2"
     "@comradesharf/core": "workspace:^"
+    "@comradesharf/schemas": "workspace:^"
     "@comradesharf/typescript-config": "workspace:^"
     "@typegoose/typegoose": "npm:^12.8.0"
     "@types/lodash-es": "npm:^4.17.12"
     lodash-es: "npm:^4.17.21"
     mongoose: "npm:^8.7.1"
+    typeid-js: "npm:^1.1.0"
   languageName: unknown
   linkType: soft
 
-"@comradesharf/pdfs@workspace:packages/pdfs":
+"@comradesharf/pdfs@workspace:^, @comradesharf/pdfs@workspace:packages/pdfs":
   version: 0.0.0-use.local
   resolution: "@comradesharf/pdfs@workspace:packages/pdfs"
   dependencies:
@@ -1969,7 +1980,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@comradesharf/portal@workspace:apps/portal"
   dependencies:
+    "@comradesharf/core": "workspace:^"
+    "@comradesharf/emails": "workspace:^"
     "@comradesharf/models": "workspace:^"
+    "@comradesharf/pdfs": "workspace:^"
+    "@comradesharf/schemas": "workspace:^"
     "@comradesharf/trpc": "workspace:^"
     "@comradesharf/typescript-config": "workspace:^"
     "@date-fns/tz": "npm:^1.1.2"
@@ -2057,7 +2072,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@comradesharf/schemas@workspace:packages/schemas":
+"@comradesharf/schemas@workspace:^, @comradesharf/schemas@workspace:packages/schemas":
   version: 0.0.0-use.local
   resolution: "@comradesharf/schemas@workspace:packages/schemas"
   dependencies:
@@ -17641,6 +17656,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typeid-js@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "typeid-js@npm:1.1.0"
+  dependencies:
+    uuid: "npm:^10.0.0"
+  checksum: 10c0/c385e9db7fb15c336a10acca661f4f8ddc2c2c64e9b21ed2d73835b918c02ca3aaf4514fd6d4dcbb06f4dca9480184bee65d873389a65c58e71cc037641818f1
+  languageName: node
+  linkType: hard
+
 "typescript@npm:^5.6.3":
   version: 5.6.3
   resolution: "typescript@npm:5.6.3"
@@ -17949,6 +17973,15 @@ __metadata:
   version: 1.0.1
   resolution: "utils-merge@npm:1.0.1"
   checksum: 10c0/02ba649de1b7ca8854bfe20a82f1dfbdda3fb57a22ab4a8972a63a34553cf7aa51bc9081cf7e001b035b88186d23689d69e71b510e610a09a4c66f68aa95b672
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "uuid@npm:10.0.0"
+  bin:
+    uuid: dist/bin/uuid
+  checksum: 10c0/eab18c27fe4ab9fb9709a5d5f40119b45f2ec8314f8d4cf12ce27e4c6f4ffa4a6321dc7db6c515068fa373c075b49691ba969f0010bf37f44c37ca40cd6bf7fe
   languageName: node
   linkType: hard
 

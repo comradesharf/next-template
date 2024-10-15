@@ -2,12 +2,14 @@ import 'server-only';
 import { type Messages, setupI18n } from '@lingui/core';
 import { unstable_cache } from 'next/cache';
 import { cache } from 'react';
-import linguiConfig from '#libs/locales/lingui.config.ts';
+import linguiConfig from '#app/_libs/locales/lingui.config.ts';
 
 async function loadCatalog(
     locale: string,
 ): Promise<readonly [string, Messages]> {
-    const { messages } = await import(`#libs/locales/messages/${locale}.po`);
+    const { messages } = await import(
+        `#app/_libs/locales/messages/${locale}.po`
+    );
     return [locale, messages];
 }
 

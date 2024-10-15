@@ -1,4 +1,4 @@
-import { withLingui } from '#libs/locales/withLingui.tsx';
+import { withLingui } from '#app/_libs/locales/withLingui.tsx';
 
 export interface LayoutProps {
     params: { lang: string };

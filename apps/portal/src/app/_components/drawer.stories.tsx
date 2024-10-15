@@ -24,7 +24,7 @@ import {
 import { Input } from '#app/_components/input.tsx';
 import { Label } from '#app/_components/label.tsx';
 import { useMediaQuery } from '#app/_hooks/use-media-query.ts';
-import { cn } from '#libs/cn.ts';
+import { cn } from '#app/_libs/cn.ts';
 
 const data = [
     {

@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '#app/_components/button.tsx';
-import { cn } from '#libs/cn.ts';
+import { cn } from '#app/_libs/cn.ts';
 
 export interface NotFoundProps {
     className?: string;
