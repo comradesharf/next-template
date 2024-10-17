@@ -15,7 +15,15 @@ type InvalidCredentials = {
     code: 'INVALID_CREDENTIALS';
 };
 
-export type ErrorPayload = UnknownError | NotFound | InvalidCredentials;
+type DuplicateEmail = {
+    code: 'DUPLICATE_EMAIL';
+};
+
+export type ErrorPayload =
+    | UnknownError
+    | NotFound
+    | InvalidCredentials
+    | DuplicateEmail;
 
 export class ServerActionError extends Error {
     constructor(
@@ -38,6 +46,8 @@ export class ServerActionError extends Error {
                 return msg`Unable to find matching ${payload.data.type}. Please check the URL or contact support if the problem persists.`;
             case 'INVALID_CREDENTIALS':
                 return msg`The username or password you entered is incorrect. Please try again.`;
+            case 'DUPLICATE_EMAIL':
+                return msg`The email address you entered is already in use. Please use a different email address.`;
             default:
                 return msg`Something went wrong while executing the operation.`;
         }

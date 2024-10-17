@@ -1,8 +1,39 @@
 import { Log } from '@comradesharf/core/Log';
 import { MemberModel } from '@comradesharf/models/models/MemberModel';
-import NextAuth, { type NextAuthResult } from 'next-auth';
+import NextAuth, {
+    type DefaultSession,
+    type NextAuthConfig,
+    type NextAuthResult,
+} from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import AuthConfigs from '#app/_libs/auths/auth.config.ts';
+
+const logger: NextAuthConfig['logger'] = {
+    error(err) {
+        Log.error({
+            err,
+        });
+    },
+    debug(message, metadata) {
+        Log.debug({
+            message,
+            metadata,
+        });
+    },
+    warn(code) {
+        Log.debug({
+            code,
+        });
+    },
+};
+
+declare module 'next-auth' {
+    interface Session {
+        user: {
+            id: string;
+        } & DefaultSession['user'];
+    }
+}
 
 const _auth = NextAuth({
     ...AuthConfigs,
@@ -15,30 +46,35 @@ const _auth = NextAuth({
                 password: {},
             },
             async authorize({ email, password }) {
-                const user = await MemberModel.findOne({
-                    email,
-                }).orFail();
-                await user.verifyPassword(password as string);
-                return user.toJSON();
+                try {
+                    const user = await MemberModel.authorize({
+                        email: email as string,
+                        password: password as string,
+                    });
+                    if (!user) {
+                        return null;
+                    }
+                    return {
+                        id: user._id,
+                        name: user.display_name,
+                        email: user.email,
+                    };
+                } catch (e) {
+                    return null;
+                }
             },
         }),
     ],
-    logger: {
-        error(err) {
-            Log.error({
-                err,
-            });
-        },
-        debug(message, metadata) {
-            Log.debug({
-                message,
-                metadata,
-            });
-        },
-        warn(code) {
-            Log.debug({
-                code,
-            });
+    logger,
+    callbacks: {
+        session({ session, token }) {
+            return {
+                ...session,
+                user: {
+                    ...session.user,
+                    id: token.sub,
+                },
+            };
         },
     },
 });

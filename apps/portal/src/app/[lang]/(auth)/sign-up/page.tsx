@@ -26,6 +26,10 @@ import {
     FormMessage,
 } from '#app/_components/form.tsx';
 import { Input } from '#app/_components/input.tsx';
+import {
+    ServerErrorMessage,
+    ServerErrorMessageDescription,
+} from '#app/_components/server-error-message.tsx';
 
 export interface PageProps {
     searchParams: { [key: string]: string | string[] | undefined };
@@ -33,7 +37,7 @@ export interface PageProps {
 }
 
 export default function Page(_props: PageProps) {
-    const { form, handleSubmitWithAction } = useHookFormAction(
+    const { form, handleSubmitWithAction, action } = useHookFormAction(
         signUp,
         zodResolver(SignUpSchema),
     );
@@ -123,6 +127,9 @@ export default function Page(_props: PageProps) {
                                 name="confirm_password"
                             />
                         </div>
+                        <ServerErrorMessage action={action}>
+                            <ServerErrorMessageDescription />
+                        </ServerErrorMessage>
                         <Button className="w-full mt-4" type="submit">
                             <Mail className="mr-2 h-4 w-4" />
                             <Trans>Sign up with Email</Trans>

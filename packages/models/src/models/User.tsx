@@ -1,6 +1,6 @@
 import { randomBytes, scrypt } from 'node:crypto';
 import { type DocumentType, modelOptions, prop } from '@typegoose/typegoose';
-import { Base, generateIdWithPrefix } from '#models/Base.tsx';
+import { Base } from '#models/Base.tsx';
 
 declare module '@casl/ability' {
     interface RecordTypes {
@@ -17,11 +17,6 @@ declare module '@casl/ability' {
     },
 })
 class User extends Base {
-    @prop({
-        required: true,
-        type: String,
-        default: generateIdWithPrefix('usr'),
-    })
     _id!: string;
 
     @prop({

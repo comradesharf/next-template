@@ -1,6 +1,7 @@
 'use server';
 
 import 'server-only';
+import { SignInError } from '@auth/core/errors';
 import { SignInSchema } from '@comradesharf/schemas/SignInSchema';
 import { signIn as $signIn } from '#app/_libs/auths/auths.ts';
 import { ServerActionError } from '#app/_libs/errors.ts';
@@ -16,13 +17,17 @@ export const signIn = actionClient
             await $signIn('credentials', {
                 email,
                 password,
+                redirectTo: '/dashboard',
             });
         } catch (e) {
-            throw new ServerActionError(
-                {
-                    code: 'INVALID_CREDENTIALS',
-                },
-                e,
-            );
+            if (e instanceof SignInError) {
+                throw new ServerActionError(
+                    {
+                        code: 'INVALID_CREDENTIALS',
+                    },
+                    e,
+                );
+            }
+            throw e;
         }
     });

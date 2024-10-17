@@ -1,7 +1,9 @@
+import type { SignIn } from '@comradesharf/schemas/SignInSchema';
 import type { SignUp } from '@comradesharf/schemas/SignUpSchema';
 import { type ReturnModelType, modelOptions, prop } from '@typegoose/typegoose';
 import type { SessionOption } from 'mongoose';
 import { generateIdWithPrefix } from '#models/Base.tsx';
+import { MemberModel } from '#models/MemberModel.tsx';
 import { User } from '#models/User.tsx';
 
 declare module '@casl/ability' {
@@ -40,6 +42,17 @@ class Member extends User {
             ],
             options,
         );
+    }
+
+    static async authorize({ email, password }: SignIn) {
+        const user = await MemberModel.findOne({
+            email,
+        }).orFail();
+        const authorized = await user.verifyPassword(password);
+        if (!authorized) {
+            return null;
+        }
+        return user;
     }
 }
 
