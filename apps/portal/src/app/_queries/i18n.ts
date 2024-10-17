@@ -1,5 +1,5 @@
 import 'server-only';
-import { type Messages, setupI18n } from '@lingui/core';
+import { type I18n, type Messages, setupI18n } from '@lingui/core';
 import { unstable_cache } from 'next/cache';
 import { cache } from 'react';
 import linguiConfig from '#app/_libs/locales/lingui.config.ts';
@@ -42,7 +42,7 @@ const getAllI18nInstances = cache(async () => {
     return Object.fromEntries(entries);
 });
 
-export const getI18nInstance = cache(async (locale: string) => {
+export const getI18nInstance = cache(async (locale: string): Promise<I18n> => {
     const allI18nInstances = await getAllI18nInstances();
     if (!allI18nInstances[locale]) {
         console.warn(`No i18n instance found for locale "${locale}"`);

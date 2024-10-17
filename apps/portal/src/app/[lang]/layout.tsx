@@ -1,6 +1,8 @@
 import '#app/globals.css';
 import type { Metadata } from 'next';
+import { SessionProvider } from 'next-auth/react';
 import { LinguiClientProvider } from '#app/_components/lingui-client-provider.tsx';
+import { TooltipProvider } from '#app/_components/tooltip.tsx';
 import { cn } from '#app/_libs/cn.ts';
 import { inter } from '#app/_libs/fonts.ts';
 import linguiConfig from '#app/_libs/locales/lingui.config.ts';
@@ -24,12 +26,16 @@ export default withLingui(async function RootLayout({
                 inter.variable,
             )}
         >
-            <LinguiClientProvider
-                initialLocale={lang}
-                initialMessages={await getI18nMessage(lang)}
-            >
-                <body>{children}</body>
-            </LinguiClientProvider>
+            <body>
+                <LinguiClientProvider
+                    initialLocale={lang}
+                    initialMessages={await getI18nMessage(lang)}
+                >
+                    <SessionProvider>
+                        <TooltipProvider>{children}</TooltipProvider>
+                    </SessionProvider>
+                </LinguiClientProvider>
+            </body>
         </html>
     );
 });

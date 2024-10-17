@@ -28,6 +28,15 @@ const nextConfig = {
         });
         return config;
     },
+    async redirects() {
+        return [
+            {
+                source: '/:locale/orders',
+                destination: '/:locale/orders/recent-orders',
+                permanent: false,
+            },
+        ];
+    },
 };
 
 export default withSentryConfig(nextConfig, {

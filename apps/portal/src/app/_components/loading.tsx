@@ -10,7 +10,7 @@ export function Loading({ className }: LoadingProps) {
     return (
         <div
             className={cn(
-                'flex flex-col items-center justify-center min-h-screen',
+                'max-w-md text-center -translate-x-1/2 left-1/2 absolute translate-y-1/2 min-h-[50vh]',
                 className,
             )}
         >

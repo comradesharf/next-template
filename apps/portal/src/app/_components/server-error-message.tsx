@@ -1,3 +1,5 @@
+'use client';
+
 import { Trans } from '@lingui/react';
 import { type PropsWithChildren, createContext, useContext } from 'react';
 import { Alert, AlertDescription } from '#app/_components/alert.tsx';
@@ -5,39 +7,29 @@ import { cn } from '#app/_libs/cn.ts';
 import { type ErrorPayload, ServerActionError } from '#app/_libs/errors.ts';
 
 const Context = createContext<{
-    error: ErrorPayload;
-}>({} as any);
+    error?: ErrorPayload | null;
+}>({});
 
 export interface ServerErrorMessageProps {
     className?: string;
-    action: {
-        result?: {
-            serverError?: ErrorPayload;
-        };
-    };
 }
+
+export const ServerErrorMessageProvider = Context.Provider;
 
 export function ServerErrorMessage({
     className,
-    action,
     children,
 }: PropsWithChildren<ServerErrorMessageProps>) {
-    const error = action.result?.serverError;
+    const { error } = useContext(Context);
 
     if (!error) {
         return null;
     }
 
     return (
-        <Context.Provider
-            value={{
-                error,
-            }}
-        >
-            <Alert variant="destructive" className={cn('mt-4', className)}>
-                {children}
-            </Alert>
-        </Context.Provider>
+        <Alert variant="destructive" className={cn('mt-4', className)}>
+            {children}
+        </Alert>
     );
 }
 
@@ -49,6 +41,9 @@ export function ServerErrorMessageDescription({
     className,
 }: ServerErrorMessageDescriptionProps) {
     const { error } = useContext(Context);
+    if (!error) {
+        return null;
+    }
     return (
         <AlertDescription className={className}>
             <Trans id={ServerActionError.getDefinedI18nMessage(error).id} />

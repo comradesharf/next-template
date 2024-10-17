@@ -1,21 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Layout from '#app/[lang]/[...404]/layout.tsx';
-import Page from '#app/[lang]/[...404]/page.tsx';
+import Layout from '#app/[lang]/onboarding/layout.tsx';
+import Loading from '#app/[lang]/onboarding/loading.tsx';
 
 const meta = {
-    component: Page,
+    component: Loading,
     parameters: {},
     decorators: [
         (Story, ctx) => (
-            <Layout {...ctx.args}>
+            <Layout {...(ctx.args as any)}>
                 <Story />
             </Layout>
         ),
     ],
-} satisfies Meta<typeof Page>;
+} satisfies Meta<typeof Loading>;
 
 export default meta;
 
-type Story = StoryObj<typeof Page>;
+type Story = StoryObj<typeof Loading>;
 
 export const Primary: Story = {};

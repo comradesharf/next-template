@@ -135,12 +135,12 @@ export default function generator(plop: PlopTypes.NodePlopAPI) {
                     {
                         name: 'Error',
                         value: 'error',
-                        checked: false,
+                        checked: true,
                     },
                     {
                         name: 'Not Found',
                         value: 'not-found',
-                        checked: false,
+                        checked: true,
                     },
                     {
                         name: 'Template',

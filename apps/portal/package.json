@@ -100,10 +100,10 @@
             "storybook": "./src/app/_queries/*.mock.ts",
             "default": "./src/app/_queries/*.ts"
         },
-        "#libs/locales/withLingui.tsx": {
-            "node": "./src/libs/locales/withLingui.tsx",
-            "storybook": "./src/libs/locales/withLingui.mock.tsx",
-            "default": "./src/libs/locales/withLingui.tsx"
+        "#app/_libs/locales/withLingui.tsx": {
+            "node": "./src/app/_libs/locales/withLingui.tsx",
+            "storybook": "./src/app/_libs/locales/withLingui.mock.tsx",
+            "default": "./src/app/_libs/locales/withLingui.tsx"
         },
         "#*": "./src/*"
     },

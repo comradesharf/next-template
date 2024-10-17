@@ -1,10 +1,7 @@
-'use client';
-
-import { type SignIn, SignInSchema } from '@comradesharf/schemas/SignInSchema';
-import { zodResolver } from '@hookform/resolvers/zod';
+import type { SignIn } from '@comradesharf/schemas/SignInSchema';
 import { Trans, t } from '@lingui/macro';
-import { useHookFormAction } from '@next-safe-action/adapter-react-hook-form/hooks';
-import { signIn } from '#app/_actions/signIn.ts';
+import Link from 'next/link';
+import { Form } from '#app/[lang]/(auth)/sign-in/_components/form.tsx';
 import { Button } from '#app/_components/button.tsx';
 import {
     Card,
@@ -15,29 +12,29 @@ import {
     CardTitle,
 } from '#app/_components/card.tsx';
 import {
-    Form,
     FormControl,
     FormField,
     FormItem,
     FormLabel,
     FormMessage,
 } from '#app/_components/form.tsx';
-import { Input } from '#app/_components/input.tsx';
+import { ControlledInput } from '#app/_components/input.tsx';
 import {
     ServerErrorMessage,
     ServerErrorMessageDescription,
 } from '#app/_components/server-error-message.tsx';
+import { assertUnauthenticated } from '#app/_libs/asserts.ts';
+import { withLingui } from '#app/_libs/locales/withLingui.tsx';
+import { getCurrentSession } from '#app/_queries/auths.ts';
 
 export interface PageProps {
     searchParams: { [key: string]: string | string[] | undefined };
     params: { lang: string };
 }
 
-export default function Page(_props: PageProps) {
-    const { form, handleSubmitWithAction, action } = useHookFormAction(
-        signIn,
-        zodResolver(SignInSchema),
-    );
+export default withLingui(async function Page(_props: PageProps) {
+    const session = await getCurrentSession();
+    assertUnauthenticated(session);
 
     return (
         <Card className="w-[350px]">
@@ -51,57 +48,60 @@ export default function Page(_props: PageProps) {
                     </Trans>
                 </CardDescription>
             </CardHeader>
-            <Form {...form}>
-                <form onSubmit={handleSubmitWithAction}>
-                    <CardContent>
-                        <div className="grid w-full items-center gap-4">
-                            <FormField<SignIn>
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>
-                                            <Trans>Email</Trans>
-                                        </FormLabel>
-                                        <FormControl>
-                                            <Input
-                                                {...field}
-                                                placeholder={t`Enter your username`}
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                                name="email"
-                            />
-                            <FormField<SignIn>
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>
-                                            <Trans>Password</Trans>
-                                        </FormLabel>
-                                        <FormControl>
-                                            <Input
-                                                {...field}
-                                                type="password"
-                                                placeholder={t`Enter your password`}
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                                name="password"
-                            />
-                        </div>
-                        <ServerErrorMessage action={action}>
-                            <ServerErrorMessageDescription />
-                        </ServerErrorMessage>
-                    </CardContent>
-                    <CardFooter className="flex flex-col">
-                        <Button className="w-full" type="submit">
-                            <Trans>Sign In</Trans>
-                        </Button>
-                    </CardFooter>
-                </form>
+            <Form>
+                <CardContent>
+                    <div className="grid w-full items-center gap-4">
+                        <FormField<SignIn> name="email" defaultValue="">
+                            <FormItem>
+                                <FormLabel>
+                                    <Trans>Email</Trans>
+                                </FormLabel>
+                                <FormControl>
+                                    <ControlledInput
+                                        placeholder={t`Enter your username`}
+                                        autoComplete="email"
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        </FormField>
+                        <FormField<SignIn> name="password" defaultValue="">
+                            <FormItem>
+                                <FormLabel>
+                                    <Trans>Password</Trans>
+                                </FormLabel>
+                                <FormControl>
+                                    <ControlledInput
+                                        type="password"
+                                        placeholder={t`Enter your password`}
+                                        autoComplete="current-password"
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        </FormField>
+                    </div>
+                    <ServerErrorMessage>
+                        <ServerErrorMessageDescription />
+                    </ServerErrorMessage>
+                    <Button className="w-full mt-4" type="submit">
+                        <Trans>Sign In</Trans>
+                    </Button>
+                </CardContent>
+                <CardFooter className="flex flex-col">
+                    <p className="text-sm text-gray-600">
+                        <Trans>
+                            Don't have an account?{' '}
+                            <Link
+                                href="/sign-up"
+                                className="text-blue-600 hover:underline"
+                            >
+                                Sign up
+                            </Link>
+                        </Trans>
+                    </p>
+                </CardFooter>
             </Form>
         </Card>
     );
-}
+});

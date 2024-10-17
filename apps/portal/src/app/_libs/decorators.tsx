@@ -3,6 +3,7 @@ import { I18nProvider } from '@lingui/react';
 import type { DecoratorFunction } from '@storybook/csf';
 import type { ReactRenderer } from '@storybook/react';
 import { useEffect, useInsertionEffect } from 'react';
+import { TooltipProvider } from '#app/_components/tooltip.tsx';
 
 export async function dynamicActivate(locale: string) {
     const { messages } = await import(
@@ -40,3 +41,11 @@ export const withAppendClassNamesToBody: (
         }, [classNames]);
         return <Story />;
     };
+
+export const withTooltip: DecoratorFunction<ReactRenderer> = (Story, ctx) => {
+    return (
+        <TooltipProvider>
+            <Story />
+        </TooltipProvider>
+    );
+};
