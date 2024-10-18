@@ -262,13 +262,6 @@ export default function Page(_props: PageProps) {
                                     tickLine={false}
                                     axisLine={false}
                                     tickMargin={8}
-                                    tickFormatter={(value) => {
-                                        return new Date(
-                                            value,
-                                        ).toLocaleDateString('en-US', {
-                                            weekday: 'short',
-                                        });
-                                    }}
                                 />
                                 <Line
                                     dataKey="resting"
@@ -285,18 +278,7 @@ export default function Page(_props: PageProps) {
                                 />
                                 <ChartTooltip
                                     content={
-                                        <ChartTooltipContent
-                                            indicator="line"
-                                            labelFormatter={(value) => {
-                                                return new Date(
-                                                    value,
-                                                ).toLocaleDateString('en-US', {
-                                                    day: 'numeric',
-                                                    month: 'long',
-                                                    year: 'numeric',
-                                                });
-                                            }}
-                                        />
+                                        <ChartTooltipContent indicator="line" />
                                     }
                                     cursor={false}
                                 />

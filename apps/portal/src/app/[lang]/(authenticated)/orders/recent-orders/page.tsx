@@ -19,6 +19,7 @@ import {
     CardHeader,
     CardTitle,
 } from '#app/_components/card.tsx';
+import { DateTimeFormatter } from '#app/_components/date-time.tsx';
 import {
     DropdownMenu,
     DropdownMenuCheckboxItem,
@@ -49,14 +50,19 @@ import {
     TabsList,
     TabsTrigger,
 } from '#app/_components/tabs.tsx';
+import { assertAuthenticated } from '#app/_libs/asserts.ts';
 import { withLingui } from '#app/_libs/locales/withLingui.tsx';
+import { getCurrentSession } from '#app/_queries/auths.ts';
 
 export interface PageProps {
     searchParams: { [key: string]: string | string[] | undefined };
     params: { lang: string };
 }
 
-export default withLingui<PageProps>(function Page() {
+export default withLingui<PageProps>(async function Page() {
+    const session = await getCurrentSession();
+    assertAuthenticated(session);
+
     return (
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
             <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
@@ -413,7 +419,7 @@ export default withLingui<PageProps>(function Page() {
                                 </Button>
                             </CardTitle>
                             <CardDescription>
-                                Date: November 23, 2023
+                                {/*Date: <DateTimeFormatter date={new Date()} />*/}
                             </CardDescription>
                         </div>
                         <div className="ml-auto flex items-center gap-1">

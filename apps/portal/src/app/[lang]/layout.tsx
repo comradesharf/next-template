@@ -1,6 +1,7 @@
 import '#app/globals.css';
 import type { Metadata } from 'next';
 import { SessionProvider } from 'next-auth/react';
+import { DateTimeI18nContext } from '#app/_components/date-time.tsx';
 import { LinguiClientProvider } from '#app/_components/lingui-client-provider.tsx';
 import { TooltipProvider } from '#app/_components/tooltip.tsx';
 import { cn } from '#app/_libs/cn.ts';
@@ -33,6 +34,8 @@ export default withLingui(async function RootLayout({
                 >
                     <SessionProvider>
                         <TooltipProvider>{children}</TooltipProvider>
+                        {/*<DateTimeI18nContext value={{}}>*/}
+                        {/*</DateTimeI18nContext>*/}
                     </SessionProvider>
                 </LinguiClientProvider>
             </body>
