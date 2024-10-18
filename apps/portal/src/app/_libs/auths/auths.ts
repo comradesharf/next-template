@@ -31,7 +31,12 @@ declare module 'next-auth' {
     interface Session {
         user: {
             id: string;
+            timezone: string;
         } & DefaultSession['user'];
+    }
+
+    interface User {
+        timezone: string;
     }
 }
 
@@ -51,13 +56,16 @@ const _auth = NextAuth({
                         email: email as string,
                         password: password as string,
                     });
+
                     if (!user) {
                         return null;
                     }
+
                     return {
                         id: user._id,
                         name: user.display_name,
                         email: user.email,
+                        timezone: user.timezone,
                     };
                 } catch (e) {
                     return null;
@@ -72,9 +80,17 @@ const _auth = NextAuth({
                 ...session,
                 user: {
                     ...session.user,
-                    id: token.sub,
+                    id: token.user_id as string,
+                    timezone: token.timezone as string,
                 },
             };
+        },
+        jwt({ token, user }) {
+            if (user) {
+                token.timezone = user.timezone;
+                token.user_id = user.id;
+            }
+            return token;
         },
     },
 });

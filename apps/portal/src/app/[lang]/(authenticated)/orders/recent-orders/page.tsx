@@ -19,6 +19,7 @@ import {
     CardHeader,
     CardTitle,
 } from '#app/_components/card.tsx';
+import { DateTimeFormatter } from '#app/_components/date-time.tsx';
 import {
     DropdownMenu,
     DropdownMenuCheckboxItem,
@@ -49,14 +50,19 @@ import {
     TabsList,
     TabsTrigger,
 } from '#app/_components/tabs.tsx';
-import { withLingui } from '#app/_libs/locales/withLingui.tsx';
+import { assertAuthenticated } from '#app/_libs/asserts.ts';
+import { withLocale } from '#app/_libs/locales/withLocale.tsx';
+import { getCurrentSession } from '#app/_queries/auths.ts';
 
 export interface PageProps {
     searchParams: { [key: string]: string | string[] | undefined };
     params: { lang: string };
 }
 
-export default withLingui<PageProps>(function Page() {
+export default withLocale<PageProps>(async function Page() {
+    const session = await getCurrentSession();
+    assertAuthenticated(session);
+
     return (
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
             <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
@@ -67,7 +73,6 @@ export default withLingui<PageProps>(function Page() {
                     >
                         <CardHeader className="pb-3">
                             <CardTitle>
-                                <Trans>Your date</Trans>
                                 <Trans>Your Orders</Trans>
                             </CardTitle>
                             <CardDescription className="text-balance max-w-lg leading-relaxed">
@@ -216,7 +221,9 @@ export default withLingui<PageProps>(function Page() {
                                                 </Badge>
                                             </TableCell>
                                             <TableCell className="hidden md:table-cell">
-                                                2023-06-23
+                                                <DateTimeFormatter
+                                                    date={new Date()}
+                                                />
                                             </TableCell>
                                             <TableCell className="text-right">
                                                 $250.00
@@ -243,7 +250,9 @@ export default withLingui<PageProps>(function Page() {
                                                 </Badge>
                                             </TableCell>
                                             <TableCell className="hidden md:table-cell">
-                                                2023-06-24
+                                                <DateTimeFormatter
+                                                    date={new Date()}
+                                                />
                                             </TableCell>
                                             <TableCell className="text-right">
                                                 $150.00
@@ -271,7 +280,9 @@ export default withLingui<PageProps>(function Page() {
                                                 </Badge>
                                             </TableCell>
                                             <TableCell className="hidden md:table-cell">
-                                                2023-06-25
+                                                <DateTimeFormatter
+                                                    date={new Date()}
+                                                />
                                             </TableCell>
                                             <TableCell className="text-right">
                                                 $350.00
@@ -298,7 +309,9 @@ export default withLingui<PageProps>(function Page() {
                                                 </Badge>
                                             </TableCell>
                                             <TableCell className="hidden md:table-cell">
-                                                2023-06-26
+                                                <DateTimeFormatter
+                                                    date={new Date()}
+                                                />
                                             </TableCell>
                                             <TableCell className="text-right">
                                                 $450.00
@@ -325,7 +338,9 @@ export default withLingui<PageProps>(function Page() {
                                                 </Badge>
                                             </TableCell>
                                             <TableCell className="hidden md:table-cell">
-                                                2023-06-23
+                                                <DateTimeFormatter
+                                                    date={new Date()}
+                                                />
                                             </TableCell>
                                             <TableCell className="text-right">
                                                 $250.00
@@ -352,7 +367,9 @@ export default withLingui<PageProps>(function Page() {
                                                 </Badge>
                                             </TableCell>
                                             <TableCell className="hidden md:table-cell">
-                                                2023-06-24
+                                                <DateTimeFormatter
+                                                    date={new Date()}
+                                                />
                                             </TableCell>
                                             <TableCell className="text-right">
                                                 $150.00
@@ -379,7 +396,9 @@ export default withLingui<PageProps>(function Page() {
                                                 </Badge>
                                             </TableCell>
                                             <TableCell className="hidden md:table-cell">
-                                                2023-06-26
+                                                <DateTimeFormatter
+                                                    date={new Date()}
+                                                />
                                             </TableCell>
                                             <TableCell className="text-right">
                                                 $450.00
@@ -413,7 +432,7 @@ export default withLingui<PageProps>(function Page() {
                                 </Button>
                             </CardTitle>
                             <CardDescription>
-                                Date: November 23, 2023
+                                Date: <DateTimeFormatter date={new Date()} />
                             </CardDescription>
                         </div>
                         <div className="ml-auto flex items-center gap-1">
@@ -571,8 +590,13 @@ export default withLingui<PageProps>(function Page() {
                     </CardContent>
                     <CardFooter className="flex flex-row items-center border-t bg-muted/50 px-6 py-3">
                         <div className="text-xs text-muted-foreground">
-                            Updated{' '}
-                            <time dateTime="2023-11-23">November 23, 2023</time>
+                            <Trans>
+                                Updated{' '}
+                                <DateTimeFormatter
+                                    date={new Date('2023-8-23')}
+                                    variant="date"
+                                />
+                            </Trans>
                         </div>
                         <Pagination className="ml-auto mr-0 w-auto">
                             <PaginationContent>

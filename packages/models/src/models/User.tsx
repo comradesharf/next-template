@@ -42,6 +42,14 @@ class User extends Base {
     })
     email!: string;
 
+    @prop({
+        required: true,
+        trim: true,
+        type: String,
+        default: process.env.NEXT_PUBLIC_DEFAULT_USER_TZ,
+    })
+    timezone!: string;
+
     role!: string;
 
     static async saltAndHashPassword(password: string) {

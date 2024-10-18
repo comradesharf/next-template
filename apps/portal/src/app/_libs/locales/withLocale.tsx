@@ -9,10 +9,10 @@ export type LangParams = {
 
 type LayoutExposedToNextJS<Props> = (props: Props) => React.ReactNode;
 
-export const withLingui = <Props extends {}>(
+export const withLocale = <Props extends {}>(
     AppRouterPage: React.ComponentType<LangParams & Props>,
 ): LayoutExposedToNextJS<Props & LangParams> => {
-    return async function WithLingui(props) {
+    return async function withLocale(props) {
         const lang = props.params.lang;
         const i18n = await getI18nInstance(lang);
         setI18n(i18n);

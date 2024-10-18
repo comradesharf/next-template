@@ -12,14 +12,14 @@ import Link from 'next/link';
 import { Button } from '#app/_components/button.tsx';
 import { Sheet, SheetContent, SheetTrigger } from '#app/_components/sheet.tsx';
 import { cn } from '#app/_libs/cn.ts';
-import { withLingui } from '#app/_libs/locales/withLingui.tsx';
+import { withLocale } from '#app/_libs/locales/withLocale.tsx';
 
 export interface PageProps {
     searchParams: { [key: string]: string | string[] | undefined };
     params: { lang: string; breadcrumbs: string[] };
 }
 
-export default withLingui<PageProps>(function Page({
+export default withLocale<PageProps>(function Page({
     params: {
         breadcrumbs: [_lang, head],
     },

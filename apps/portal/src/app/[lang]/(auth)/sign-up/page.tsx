@@ -26,7 +26,7 @@ import {
     ServerErrorMessageDescription,
 } from '#app/_components/server-error-message.tsx';
 import { assertUnauthenticated } from '#app/_libs/asserts.ts';
-import { withLingui } from '#app/_libs/locales/withLingui.tsx';
+import { withLocale } from '#app/_libs/locales/withLocale.tsx';
 import { getCurrentSession } from '#app/_queries/auths.ts';
 
 export interface PageProps {
@@ -34,7 +34,7 @@ export interface PageProps {
     params: { lang: string };
 }
 
-export default withLingui(async function Page(_props: PageProps) {
+export default withLocale(async function Page(_props: PageProps) {
     const session = await getCurrentSession();
     assertUnauthenticated(session);
 

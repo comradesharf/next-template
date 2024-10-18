@@ -29,6 +29,7 @@ import {
     XAxis,
     YAxis,
 } from '#app/_components/chart.tsx';
+import { useLocaleDateTimeFormatter } from '#app/_components/date-time.tsx';
 import { Separator } from '#app/_components/separator.tsx';
 
 export interface PageProps {
@@ -37,6 +38,10 @@ export interface PageProps {
 }
 
 export default function Page(_props: PageProps) {
+    const weekdayFormatter = useLocaleDateTimeFormatter({ variant: 'weekday' });
+
+    const dateFormatter = useLocaleDateTimeFormatter({ variant: 'date' });
+
     return (
         <div className="chart-wrapper mx-auto flex max-w-6xl flex-col flex-wrap items-start justify-center gap-6 p-6 sm:flex-row sm:p-8">
             <div className="grid w-full gap-6 sm:grid-cols-2 lg:max-w-[22rem] lg:grid-cols-1 xl:max-w-[25rem]">
@@ -108,28 +113,20 @@ export default function Page(_props: PageProps) {
                                     tickLine={false}
                                     axisLine={false}
                                     tickMargin={4}
-                                    tickFormatter={(value) => {
-                                        return new Date(
-                                            value,
-                                        ).toLocaleDateString('en-US', {
-                                            weekday: 'short',
-                                        });
-                                    }}
+                                    tickFormatter={(value) =>
+                                        weekdayFormatter.format(new Date(value))
+                                    }
                                 />
                                 <ChartTooltip
                                     defaultIndex={2}
                                     content={
                                         <ChartTooltipContent
                                             hideIndicator
-                                            labelFormatter={(value) => {
-                                                return new Date(
-                                                    value,
-                                                ).toLocaleDateString('en-US', {
-                                                    day: 'numeric',
-                                                    month: 'long',
-                                                    year: 'numeric',
-                                                });
-                                            }}
+                                            labelFormatter={(value) =>
+                                                dateFormatter.format(
+                                                    new Date(value),
+                                                )
+                                            }
                                         />
                                     }
                                     cursor={false}
@@ -262,13 +259,6 @@ export default function Page(_props: PageProps) {
                                     tickLine={false}
                                     axisLine={false}
                                     tickMargin={8}
-                                    tickFormatter={(value) => {
-                                        return new Date(
-                                            value,
-                                        ).toLocaleDateString('en-US', {
-                                            weekday: 'short',
-                                        });
-                                    }}
                                 />
                                 <Line
                                     dataKey="resting"
@@ -285,18 +275,7 @@ export default function Page(_props: PageProps) {
                                 />
                                 <ChartTooltip
                                     content={
-                                        <ChartTooltipContent
-                                            indicator="line"
-                                            labelFormatter={(value) => {
-                                                return new Date(
-                                                    value,
-                                                ).toLocaleDateString('en-US', {
-                                                    day: 'numeric',
-                                                    month: 'long',
-                                                    year: 'numeric',
-                                                });
-                                            }}
-                                        />
+                                        <ChartTooltipContent indicator="line" />
                                     }
                                     cursor={false}
                                 />

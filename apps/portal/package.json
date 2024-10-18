@@ -100,10 +100,14 @@
             "storybook": "./src/app/_queries/*.mock.ts",
             "default": "./src/app/_queries/*.ts"
         },
-        "#app/_libs/locales/withLingui.tsx": {
-            "node": "./src/app/_libs/locales/withLingui.tsx",
-            "storybook": "./src/app/_libs/locales/withLingui.mock.tsx",
-            "default": "./src/app/_libs/locales/withLingui.tsx"
+        "#app/_libs/locales/withLocale.tsx": {
+            "node": "./src/app/_libs/locales/withLocale.tsx",
+            "storybook": "./src/app/_libs/locales/withLocale.mock.tsx",
+            "default": "./src/app/_libs/locales/withLocale.tsx"
+        },
+        "#app/_components/date-time.tsx": {
+            "react-server": "./src/app/_components/date-time.rsc.tsx",
+            "default": "./src/app/_components/date-time.tsx"
         },
         "#*": "./src/*"
     },
