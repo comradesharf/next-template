@@ -1,8 +1,8 @@
-import { SignOutButton } from "#app/_components/sign-out-button.tsx";
+import { SessionProvider } from "#app/_components/session-provider.tsx";
 import type { Meta, StoryObj } from "@storybook/react";
 
-const meta: Meta<typeof SignOutButton> = {
-    component: SignOutButton,
+const meta: Meta<typeof SessionProvider> = {
+    component: SessionProvider,
     tags: ["autodocs"],
     args: {},
     parameters: {
@@ -17,7 +17,7 @@ const meta: Meta<typeof SignOutButton> = {
 
 export default meta;
 
-type Story = StoryObj<typeof SignOutButton>;
+type Story = StoryObj<typeof SessionProvider>;
 
 export const Primary: Story = {
 };

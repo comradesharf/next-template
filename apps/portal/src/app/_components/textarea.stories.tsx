@@ -13,7 +13,7 @@ import {
     FormMessage,
 } from '#app/_components/form.tsx';
 import { Label } from '#app/_components/label.tsx';
-import { Textarea } from '#app/_components/textarea.tsx';
+import { ControlledTextarea, Textarea } from '#app/_components/textarea.tsx';
 import { Toaster } from '#app/_components/toaster.tsx';
 import { toast } from '#app/_hooks/use-toast.ts';
 
@@ -126,27 +126,22 @@ export const AsForm: Story = {
                     onSubmit={form.handleSubmit(onSubmit)}
                     className="w-2/3 space-y-6"
                 >
-                    <FormField
-                        control={form.control}
-                        name="bio"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Bio</FormLabel>
-                                <FormControl>
-                                    <Textarea
-                                        placeholder="Tell us a little bit about yourself"
-                                        className="resize-none"
-                                        {...field}
-                                    />
-                                </FormControl>
-                                <FormDescription>
-                                    You can <span>@mention</span> other users
-                                    and organizations.
-                                </FormDescription>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
+                    <FormField control={form.control} name="bio">
+                        <FormItem>
+                            <FormLabel>Bio</FormLabel>
+                            <FormControl>
+                                <ControlledTextarea
+                                    placeholder="Tell us a little bit about yourself"
+                                    className="resize-none"
+                                />
+                            </FormControl>
+                            <FormDescription>
+                                You can <span>@mention</span> other users and
+                                organizations.
+                            </FormDescription>
+                            <FormMessage />
+                        </FormItem>
+                    </FormField>
                     <Button type="submit">Submit</Button>
                 </form>
             </Form>

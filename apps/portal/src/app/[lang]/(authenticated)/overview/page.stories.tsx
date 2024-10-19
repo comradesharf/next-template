@@ -1,28 +1,22 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import BreadCrumbs from '#app/[lang]/(authenticated)/@breadcrumbs/[...breadcrumbs]/page.tsx';
-import Layout from '#app/[lang]/(authenticated)/layout.tsx';
+import { type Meta, type StoryObj, composeStories } from '@storybook/react';
+import * as layouts from '#app/[lang]/(authenticated)/layout.stories.tsx';
 import Page from '#app/[lang]/(authenticated)/overview/page.tsx';
+
+const { Primary: Layout } = composeStories(layouts);
 
 const meta = {
     component: Page,
-    parameters: {},
+    parameters: {
+        nextjs: {
+            appDirectory: true,
+            navigation: {
+                segments: [['breadcrumbs', 'overview', 'c']],
+            },
+        },
+    },
     decorators: [
-        (Story, ctx) => (
-            <Layout
-                {...ctx.args}
-                breadcrumbs={
-                    <BreadCrumbs
-                        params={{
-                            breadcrumbs: [ctx.globals.lang, 'Overview'],
-                            lang: ctx.globals.lang,
-                        }}
-                        searchParams={{}}
-                    />
-                }
-                params={{
-                    lang: ctx.globals.lang,
-                }}
-            >
+        (Story) => (
+            <Layout>
                 <Story />
             </Layout>
         ),

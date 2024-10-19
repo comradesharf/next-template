@@ -1,32 +1,22 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import BreadCrumbs from '#app/[lang]/(authenticated)/@breadcrumbs/[...breadcrumbs]/page.tsx';
+import { type Meta, type StoryObj, composeStories } from '@storybook/react';
 import ErrorComp from '#app/[lang]/(authenticated)/error.tsx';
-import Layout from '#app/[lang]/(authenticated)/layout.tsx';
+import * as layouts from '#app/[lang]/(authenticated)/layout.stories.tsx';
+
+const { Primary: Layout } = composeStories(layouts);
 
 const meta = {
     component: ErrorComp,
-    parameters: {},
+    parameters: {
+        nextjs: {
+            appDirectory: true,
+            navigation: {
+                segments: [['breadcrumbs', 'orders/recent-orders', 'c']],
+            },
+        },
+    },
     decorators: [
         (Story, ctx) => (
-            <Layout
-                {...ctx.args}
-                breadcrumbs={
-                    <BreadCrumbs
-                        params={{
-                            breadcrumbs: [
-                                ctx.globals.lang,
-                                'Orders',
-                                'Recent Orders',
-                            ],
-                            lang: ctx.globals.lang,
-                        }}
-                        searchParams={{}}
-                    />
-                }
-                params={{
-                    lang: ctx.globals.lang,
-                }}
-            >
+            <Layout>
                 <Story />
             </Layout>
         ),

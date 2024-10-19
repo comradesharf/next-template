@@ -1,5 +1,5 @@
-import { faker } from '@faker-js/faker';
 import type { Meta, StoryObj } from '@storybook/react';
+import { useParams, useSearchParams } from 'next/navigation';
 import Page from '#app/[lang]/(authenticated)/@breadcrumbs/[...breadcrumbs]/page.tsx';
 
 const meta = {
@@ -11,13 +11,29 @@ const meta = {
                 inline: true,
             },
         },
+        nextjs: {
+            appDirectory: true,
+            navigation: {
+                segments: [['breadcrumbs', 'orders/recent-orders', 'c']],
+            },
+        },
     },
     decorators: [],
-    args: {
-        params: {
-            breadcrumbs: faker.helpers.multiple(() => faker.commerce.product()),
-            lang: 'en',
-        },
+    args: {},
+    render: (_args, ctx) => {
+        const searchParams = useSearchParams();
+
+        const { breadcrumbs } = useParams();
+
+        return (
+            <Page
+                params={{
+                    lang: ctx.globals.lang,
+                    breadcrumbs: [ctx.globals.lang, ...breadcrumbs] as string[],
+                }}
+                searchParams={Object.fromEntries(searchParams.entries())}
+            />
+        );
     },
 } satisfies Meta<typeof Page>;
 

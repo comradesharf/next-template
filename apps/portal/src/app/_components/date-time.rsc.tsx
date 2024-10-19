@@ -1,6 +1,9 @@
 import 'server-only';
 import { getI18n } from '@lingui/react/server';
-import type { DateTimeFormatterProps } from '#app/_components/date-time.shared.tsx';
+import type {
+    DateTimeFormatterProps,
+    DateTimeRangeFormatterProps,
+} from '#app/_components/date-time.shared.tsx';
 import {
     DateTimeFormatVariant,
     type DateTimeI18nConfig,
@@ -11,8 +14,10 @@ import {
 
 import type { PropsWithChildren } from 'react';
 
-export function DateTimeI18nContext(_: PropsWithChildren<DateTimeI18nConfig>) {
-    throw new Error('This component should not be used in server component');
+export function DateTimeI18nContext({
+    children,
+}: PropsWithChildren<DateTimeI18nConfig>) {
+    return children;
 }
 
 export function DateTimeFormatter({
@@ -52,5 +57,48 @@ export function DateTimeFormatter({
         <time {...props} className={className} dateTime={result}>
             {result}
         </time>
+    );
+}
+
+export function DateTimeRangeFormatter({
+    variant,
+    options = {},
+    className,
+    formatFromParts,
+    startDate,
+    endDate,
+    ...props
+}: DateTimeRangeFormatterProps) {
+    const ctx = getI18n();
+    if (!ctx) {
+        throw new Error(
+            "You tried to use `DateTimeFormatter` in Server Component, but i18n instance for RSC hasn't been setup.\nMake sure to call `setI18n` in the root of your page.",
+        );
+    }
+
+    const $variant = (variant ??
+        DefaultDateTimeFormatVariant) as keyof FormatVariant;
+
+    const config = {
+        // @ts-ignore
+        ...($variant ? DateTimeFormatVariant?.[$variant] : {}),
+        ...options,
+    };
+
+    const formatter = initDateFormatter(ctx.i18n.locale, config);
+
+    let result: string;
+    if (formatFromParts) {
+        result = formatFromParts(
+            formatter.formatRangeToParts(startDate, endDate),
+        );
+    } else {
+        result = formatter.formatRange(startDate, endDate);
+    }
+
+    return (
+        <span {...props} className={className}>
+            {result}
+        </span>
     );
 }

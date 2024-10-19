@@ -1,3 +1,4 @@
+import type { Locale } from 'date-fns';
 import memoize from 'lodash-es/memoize';
 
 export const initDateFormatter = memoize(
@@ -18,6 +19,7 @@ export interface FormatVariant {
 export interface DateTimeI18nConfig {
     formatVariant?: FormatVariant;
     defaultFormatVariant?: keyof FormatVariant;
+    dfLocale?: Locale;
 }
 
 export const DateTimeFormatVariant = {

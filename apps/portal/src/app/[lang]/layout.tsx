@@ -1,14 +1,11 @@
 import '#app/globals.css';
 import type { Metadata } from 'next';
-import { SessionProvider } from 'next-auth/react';
+import { DateTimeI18nContext } from '#app/_components/date-time.tsx';
 import { LocaleProvider } from '#app/_components/locale-provider.tsx';
+import { SessionProvider } from '#app/_components/session-provider.tsx';
 import { TooltipProvider } from '#app/_components/tooltip.tsx';
 import { cn } from '#app/_libs/cn.ts';
 import { inter } from '#app/_libs/fonts.ts';
-import {
-    DateTimeFormatVariant,
-    DefaultDateTimeFormatVariant,
-} from '#app/_libs/locales/date-times.config.ts';
 import linguiConfig from '#app/_libs/locales/lingui.config.ts';
 import { withLocale } from '#app/_libs/locales/withLocale.tsx';
 import { getI18nMessage } from '#app/_queries/i18n.ts';
@@ -31,16 +28,18 @@ export default withLocale(async function RootLayout({
             )}
         >
             <body>
-                <SessionProvider>
+                <TooltipProvider>
                     <LocaleProvider
                         initialLocale={lang}
                         initialMessages={await getI18nMessage(lang)}
-                        formatVariant={DateTimeFormatVariant}
-                        defaultFormatVariant={DefaultDateTimeFormatVariant}
                     >
-                        <TooltipProvider>{children}</TooltipProvider>
+                        <SessionProvider>
+                            <DateTimeI18nContext>
+                                {children}
+                            </DateTimeI18nContext>
+                        </SessionProvider>
                     </LocaleProvider>
-                </SessionProvider>
+                </TooltipProvider>
             </body>
         </html>
     );

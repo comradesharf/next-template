@@ -1,26 +1,35 @@
 'use client';
 
 import { useLingui } from '@lingui/react';
+import type { Locale } from 'date-fns';
 import { useSession } from 'next-auth/react';
 import {
     type PropsWithChildren,
     createContext,
     useContext,
+    useEffect,
     useMemo,
+    useState,
 } from 'react';
-import type { DateTimeFormatterProps } from '#app/_components/date-time.shared.tsx';
+import type {
+    DateTimeFormatterProps,
+    DateTimeRangeFormatterProps,
+} from '#app/_components/date-time.shared.tsx';
 import {
+    DateTimeFormatVariant,
     type DateTimeI18nConfig,
+    DefaultDateTimeFormatVariant,
     type FormatVariant,
     initDateFormatter,
 } from '#app/_libs/locales/date-times.config.ts';
+import { normalizeLocale } from '#app/_libs/locales/normalizeLocale.ts';
 
 const Context = createContext<DateTimeI18nConfig>({});
 
 export function DateTimeI18nContext({
     children,
-    defaultFormatVariant,
-    formatVariant = {},
+    defaultFormatVariant = DefaultDateTimeFormatVariant,
+    formatVariant = DateTimeFormatVariant,
 }: PropsWithChildren<DateTimeI18nConfig>) {
     const $timezone = useSession().data?.user.timezone;
 
@@ -38,11 +47,26 @@ export function DateTimeI18nContext({
         );
     }, [formatVariant, $timezone]);
 
+    const [dfLocaleMapping, setDfLocaleMapping] = useState<
+        Record<string, Locale>
+    >({});
+
+    useEffect(() => {
+        import('date-fns/locale').then((module) => setDfLocaleMapping(module));
+    }, []);
+
+    const locale = useLingui().i18n.locale;
+
+    const $locale =
+        normalizeLocale(locale).find(($locale) => $locale in dfLocaleMapping) ??
+        'enUS';
+
     return (
         <Context.Provider
             value={{
                 defaultFormatVariant,
                 formatVariant: $formatVariant,
+                dfLocale: dfLocaleMapping[$locale],
             }}
         >
             {children}
@@ -77,6 +101,36 @@ export function DateTimeFormatter({
     );
 }
 
+export function DateTimeRangeFormatter({
+    variant,
+    options = {},
+    className,
+    formatFromParts,
+    startDate,
+    endDate,
+    ...props
+}: DateTimeRangeFormatterProps) {
+    const formatter = useLocaleDateTimeFormatter({
+        variant,
+        options,
+    });
+
+    let result: string;
+    if (formatFromParts) {
+        result = formatFromParts(
+            formatter.formatRangeToParts(startDate, endDate),
+        );
+    } else {
+        result = formatter.formatRange(startDate, endDate);
+    }
+
+    return (
+        <span {...props} className={className}>
+            {result}
+        </span>
+    );
+}
+
 export function useLocaleDateTimeFormatter({
     variant,
     options,
@@ -94,4 +148,9 @@ export function useLocaleDateTimeFormatter({
     };
 
     return initDateFormatter(i18n.locale, config);
+}
+
+export function useDateFnsLocale() {
+    const { dfLocale } = useContext(Context);
+    return dfLocale;
 }
