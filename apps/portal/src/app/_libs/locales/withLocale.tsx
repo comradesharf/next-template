@@ -3,7 +3,7 @@ import type * as React from 'react';
 import { getI18nInstance } from '#app/_queries/i18n.ts';
 
 export type LangParams = {
-    params: { lang: string };
+    params: Promise<{ lang: string }>;
     children?: React.ReactNode;
 };
 
@@ -13,7 +13,7 @@ export const withLocale = <Props extends {}>(
     AppRouterPage: React.ComponentType<LangParams & Props>,
 ): LayoutExposedToNextJS<Props & LangParams> => {
     return async function withLocale(props) {
-        const lang = props.params.lang;
+        const { lang } = await props.params;
         const i18n = await getI18nInstance(lang);
         setI18n(i18n);
         return <AppRouterPage {...props} />;

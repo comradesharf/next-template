@@ -62,7 +62,8 @@ export const actionClient = createSafeActionClient({
 })
     .use(async ({ next }) => {
         const lang =
-            cookies().get(CookieName)?.value || getRequestLocale(headers());
+            (await cookies()).get(CookieName)?.value ||
+            getRequestLocale(await headers());
 
         const i18n = await getI18nInstance(lang);
 

@@ -18,7 +18,7 @@ Sentry.init({
     ignoreTransactions: [/.+\/ping/],
     beforeSend(event, hint) {
         if (process.env.NODE_ENV !== 'production') {
-            console.error(hint.originalException || hint.syntheticException);
+            // console.error(hint.originalException || hint.syntheticException);
             return null;
         }
         return event;

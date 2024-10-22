@@ -1,14 +1,16 @@
-import Loading from "#app/[lang]/(auth)/sign-in/loading.tsx";
-import Layout from "#app/[lang]/(auth)/sign-in/layout.tsx";
-import type { Meta, StoryObj } from "@storybook/react";
+import { type Meta, type StoryObj, composeStories } from '@storybook/react';
+import * as layouts from '#app/[lang]/(auth)/layout.stories.tsx';
+import Loading from '#app/[lang]/(auth)/sign-in/loading.tsx';
+
+const { Primary: Layout } = composeStories(layouts);
 
 const meta = {
     component: Loading,
     parameters: {},
     decorators: [
-(Story, ctx) => (
-            <Layout {...(ctx.args as any)}>
-                <Story/>
+        (Story) => (
+            <Layout>
+                <Story />
             </Layout>
         ),
     ],

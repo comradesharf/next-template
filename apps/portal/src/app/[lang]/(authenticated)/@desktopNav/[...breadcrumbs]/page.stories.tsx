@@ -17,15 +17,17 @@ const meta = {
     render: (_args, ctx) => {
         const searchParams = useSearchParams();
 
-        const { breadcrumbs } = useParams();
+        const { breadcrumbs } = useParams<{ breadcrumbs: string[] }>();
 
         return (
             <Page
-                params={{
+                params={Promise.resolve({
                     lang: ctx.globals.lang,
                     breadcrumbs: [ctx.globals.lang, ...breadcrumbs] as string[],
-                }}
-                searchParams={Object.fromEntries(searchParams.entries())}
+                })}
+                searchParams={Promise.resolve(
+                    Object.fromEntries(searchParams.entries()),
+                )}
             />
         );
     },

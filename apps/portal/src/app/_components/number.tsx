@@ -3,7 +3,7 @@ import {
     type PropsWithChildren,
     type ReactNode,
     createContext,
-    useContext,
+    use,
 } from 'react';
 import type {
     NumberFormatterProps,
@@ -88,7 +88,7 @@ export function useLocaleNumberFormatter({
 }: Pick<NumberFormatterProps, 'variant' | 'options'> = {}) {
     const { i18n } = useLingui();
 
-    const { formatVariant: mapping = {} } = useContext(Context);
+    const { formatVariant: mapping = {} } = use(Context);
 
     const config = {
         // @ts-expect-error

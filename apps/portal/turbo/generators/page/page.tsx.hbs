@@ -11,8 +11,8 @@ export default withLocale<PageProps>(function Page() {
 });
 {{else}}
 export interface PageProps {
-    searchParams: { [key: string]: string | string[] | undefined };
-    params: { lang: string };
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+    params: Promise<{ lang: string }>;
 }
 
 export default function Page(_props: PageProps) {

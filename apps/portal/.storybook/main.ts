@@ -19,10 +19,8 @@ const config = {
     framework: {
         name: getAbsolutePath('@storybook/nextjs'),
         options: {
-            builder: {
-                useSWC: true,
-            },
-            nextConfigPath: require.resolve('../next.config.mjs'),
+            builder: {},
+            nextConfigPath: require.resolve('../next.config.ts'),
         },
     },
     staticDirs: ['../public'],

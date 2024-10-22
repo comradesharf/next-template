@@ -16,7 +16,6 @@ import { SignOutButton } from '#app/_components/sign-out-button.tsx';
 import { withLocale } from '#app/_libs/locales/withLocale.tsx';
 
 export interface LayoutProps extends PropsWithChildren {
-    params: { lang: string };
     breadcrumbs: ReactNode;
     mobileDrawer: ReactNode;
     desktopNav: ReactNode;

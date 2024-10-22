@@ -2,7 +2,7 @@
 import { withLocale } from '#app/_libs/locales/withLocale.tsx';
 
 export interface LayoutProps {
-    params: { lang: string };
+    params: Promise<{ lang: string }>;
 }
 
 export default withLocale<LayoutProps>(function Layout({ children }) {

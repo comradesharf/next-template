@@ -22,10 +22,28 @@
             "path": "apps/portal"
         },
         {
+            "path": "packages/core"
+        },
+        {
             "path": "packages/emails"
         },
         {
+            "path": "packages/model-mocks"
+        },
+        {
+            "path": "packages/model-tests"
+        },
+        {
+            "path": "packages/models"
+        },
+        {
             "path": "packages/pdfs"
+        },
+        {
+            "path": "packages/schemas"
+        },
+        {
+            "path": "packages/schema-tests"
         },
         {
             "path": "packages/trpc"

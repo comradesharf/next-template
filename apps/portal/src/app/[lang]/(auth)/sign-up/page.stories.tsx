@@ -1,13 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Layout from '#app/[lang]/(auth)/sign-up/layout.tsx';
+import { type Meta, type StoryObj, composeStories } from '@storybook/react';
+import * as layouts from '#app/[lang]/(auth)/layout.stories.tsx';
 import Page from '#app/[lang]/(auth)/sign-up/page.tsx';
+
+const { Primary: Layout } = composeStories(layouts);
 
 const meta = {
     component: Page,
     parameters: {},
     decorators: [
-        (Story, ctx) => (
-            <Layout {...ctx.args}>
+        (Story) => (
+            <Layout>
                 <Story />
             </Layout>
         ),

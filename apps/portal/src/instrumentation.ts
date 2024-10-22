@@ -6,6 +6,10 @@ export async function register() {
 
         const { db } = await import('@comradesharf/models/utils/db');
         await db();
+
+        const { connection } = await import('mongoose');
+        await connection.createCollections();
+        await connection.syncIndexes();
     }
 
     if (process.env.NEXT_RUNTIME === 'edge') {

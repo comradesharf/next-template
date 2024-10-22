@@ -5,11 +5,8 @@ import {
     getSession,
     initialize,
     mswLoader,
-    withAppendClassNamesToBody,
-    withI18n,
-    withTooltip,
+    withRoot,
 } from '#app/_libs/decorators.tsx';
-import { inter } from '#app/_libs/fonts.ts';
 import { SupportedLocales } from '#app/_libs/locales/SupportedLocales.ts';
 
 initialize();
@@ -76,15 +73,7 @@ const preview: Preview = {
             },
         },
     },
-    decorators: [
-        withAppendClassNamesToBody(
-            'antialiased',
-            '[font-synthesis-weight:none]',
-            inter.variable,
-        ),
-        withI18n,
-        withTooltip,
-    ],
+    decorators: [withRoot],
 };
 
 export default preview;

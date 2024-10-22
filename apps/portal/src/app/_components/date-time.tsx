@@ -6,7 +6,7 @@ import { useSession } from 'next-auth/react';
 import {
     type PropsWithChildren,
     createContext,
-    useContext,
+    use,
     useEffect,
     useMemo,
     useState,
@@ -135,8 +135,7 @@ export function useLocaleDateTimeFormatter({
 }: Pick<DateTimeFormatterProps, 'variant' | 'options'> = {}) {
     const { i18n } = useLingui();
 
-    const { formatVariant: mapping = {}, defaultFormatVariant } =
-        useContext(Context);
+    const { formatVariant: mapping = {}, defaultFormatVariant } = use(Context);
 
     const $variant = (variant ?? defaultFormatVariant) as keyof FormatVariant;
 
@@ -150,6 +149,5 @@ export function useLocaleDateTimeFormatter({
 }
 
 export function useDateFnsLocale() {
-    const { dfLocale } = useContext(Context);
-    return dfLocale;
+    return use(Context).dfLocale;
 }
