@@ -109,6 +109,10 @@
             "react-server": "./src/app/_components/date-time.rsc.tsx",
             "default": "./src/app/_components/date-time.tsx"
         },
+        "#app/_components/number.tsx": {
+            "react-server": "./src/app/_components/number.rsc.tsx",
+            "default": "./src/app/_components/number.tsx"
+        },
         "#*": "./src/*"
     },
     "devDependencies": {
@@ -121,8 +125,6 @@
         "msw": "^2.4.11"
     },
     "msw": {
-        "workerDirectory": [
-            "public"
-        ]
+        "workerDirectory": ["public"]
     }
 }

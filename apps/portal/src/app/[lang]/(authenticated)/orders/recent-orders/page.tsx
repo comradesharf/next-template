@@ -29,6 +29,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '#app/_components/dropdown-menu.tsx';
+import { NumberFormatter } from '#app/_components/number.tsx';
 import {
     Pagination,
     PaginationContent,
@@ -93,11 +94,29 @@ export default withLocale<PageProps>(async function Page() {
                             <CardDescription>
                                 <Trans>This Week</Trans>
                             </CardDescription>
-                            <CardTitle className="text-4xl">$1,329</CardTitle>
+                            <CardTitle className="text-4xl">
+                                <NumberFormatter
+                                    number="1329"
+                                    variant="currency"
+                                    options={{
+                                        currency: 'USD',
+                                        maximumFractionDigits: 0,
+                                    }}
+                                />
+                            </CardTitle>
                         </CardHeader>
                         <CardContent>
                             <div className="text-xs text-muted-foreground">
-                                +25% from last week
+                                +
+                                <NumberFormatter
+                                    number="25"
+                                    options={{
+                                        style: 'unit',
+                                        unit: 'percent',
+                                        unitDisplay: 'narrow',
+                                    }}
+                                />{' '}
+                                from last week
                             </div>
                         </CardContent>
                         <CardFooter>
@@ -107,11 +126,29 @@ export default withLocale<PageProps>(async function Page() {
                     <Card x-chunk="dashboard-05-chunk-2">
                         <CardHeader className="pb-2">
                             <CardDescription>This Month</CardDescription>
-                            <CardTitle className="text-4xl">$5,329</CardTitle>
+                            <CardTitle className="text-4xl">
+                                <NumberFormatter
+                                    number="5329"
+                                    variant="currency"
+                                    options={{
+                                        currency: 'USD',
+                                        maximumFractionDigits: 0,
+                                    }}
+                                />
+                            </CardTitle>
                         </CardHeader>
                         <CardContent>
                             <div className="text-xs text-muted-foreground">
-                                +10% from last month
+                                +
+                                <NumberFormatter
+                                    number="10"
+                                    options={{
+                                        style: 'unit',
+                                        unit: 'percent',
+                                        unitDisplay: 'narrow',
+                                    }}
+                                />{' '}
+                                from last month
                             </div>
                         </CardContent>
                         <CardFooter>
@@ -226,7 +263,13 @@ export default withLocale<PageProps>(async function Page() {
                                                 />
                                             </TableCell>
                                             <TableCell className="text-right">
-                                                $250.00
+                                                <NumberFormatter
+                                                    number="250.00"
+                                                    variant="currency"
+                                                    options={{
+                                                        currency: 'USD',
+                                                    }}
+                                                />
                                             </TableCell>
                                         </TableRow>
                                         <TableRow>
@@ -255,7 +298,13 @@ export default withLocale<PageProps>(async function Page() {
                                                 />
                                             </TableCell>
                                             <TableCell className="text-right">
-                                                $150.00
+                                                <NumberFormatter
+                                                    number="150.00"
+                                                    variant="currency"
+                                                    options={{
+                                                        currency: 'USD',
+                                                    }}
+                                                />
                                             </TableCell>
                                         </TableRow>
 
@@ -285,7 +334,13 @@ export default withLocale<PageProps>(async function Page() {
                                                 />
                                             </TableCell>
                                             <TableCell className="text-right">
-                                                $350.00
+                                                <NumberFormatter
+                                                    number="350.00"
+                                                    variant="currency"
+                                                    options={{
+                                                        currency: 'USD',
+                                                    }}
+                                                />
                                             </TableCell>
                                         </TableRow>
                                         <TableRow>
@@ -314,7 +369,13 @@ export default withLocale<PageProps>(async function Page() {
                                                 />
                                             </TableCell>
                                             <TableCell className="text-right">
-                                                $450.00
+                                                <NumberFormatter
+                                                    number="450.00"
+                                                    variant="currency"
+                                                    options={{
+                                                        currency: 'USD',
+                                                    }}
+                                                />
                                             </TableCell>
                                         </TableRow>
                                         <TableRow>
@@ -343,7 +404,13 @@ export default withLocale<PageProps>(async function Page() {
                                                 />
                                             </TableCell>
                                             <TableCell className="text-right">
-                                                $250.00
+                                                <NumberFormatter
+                                                    number="250.00"
+                                                    variant="currency"
+                                                    options={{
+                                                        currency: 'USD',
+                                                    }}
+                                                />
                                             </TableCell>
                                         </TableRow>
                                         <TableRow>
@@ -372,7 +439,13 @@ export default withLocale<PageProps>(async function Page() {
                                                 />
                                             </TableCell>
                                             <TableCell className="text-right">
-                                                $150.00
+                                                <NumberFormatter
+                                                    number="150.00"
+                                                    variant="currency"
+                                                    options={{
+                                                        currency: 'USD',
+                                                    }}
+                                                />
                                             </TableCell>
                                         </TableRow>
                                         <TableRow>
@@ -401,7 +474,13 @@ export default withLocale<PageProps>(async function Page() {
                                                 />
                                             </TableCell>
                                             <TableCell className="text-right">
-                                                $450.00
+                                                <NumberFormatter
+                                                    number="450.00"
+                                                    variant="currency"
+                                                    options={{
+                                                        currency: 'USD',
+                                                    }}
+                                                />
                                             </TableCell>
                                         </TableRow>
                                     </TableBody>
@@ -482,15 +561,29 @@ export default withLocale<PageProps>(async function Page() {
                             <ul className="grid gap-3">
                                 <li className="flex items-center justify-between">
                                     <span className="text-muted-foreground">
-                                        Glimmer Lamps x <span>2</span>
+                                        Glimmer Lamps x{' '}
+                                        <NumberFormatter number="2" />
                                     </span>
-                                    <span>$250.00</span>
+                                    <NumberFormatter
+                                        number="250.00"
+                                        variant="currency"
+                                        options={{
+                                            currency: 'USD',
+                                        }}
+                                    />
                                 </li>
                                 <li className="flex items-center justify-between">
                                     <span className="text-muted-foreground">
-                                        Aqua Filters x <span>1</span>
+                                        Aqua Filters x{' '}
+                                        <NumberFormatter number="1" />
                                     </span>
-                                    <span>$49.00</span>
+                                    <NumberFormatter
+                                        number="49.00"
+                                        variant="currency"
+                                        options={{
+                                            currency: 'USD',
+                                        }}
+                                    />
                                 </li>
                             </ul>
                             <Separator className="my-2" />
@@ -499,25 +592,49 @@ export default withLocale<PageProps>(async function Page() {
                                     <span className="text-muted-foreground">
                                         <Trans>Subtotal</Trans>
                                     </span>
-                                    <span>$299.00</span>
+                                    <NumberFormatter
+                                        number="299.00"
+                                        variant="currency"
+                                        options={{
+                                            currency: 'USD',
+                                        }}
+                                    />
                                 </li>
                                 <li className="flex items-center justify-between">
                                     <span className="text-muted-foreground">
                                         <Trans>Shipping</Trans>
                                     </span>
-                                    <span>$5.00</span>
+                                    <NumberFormatter
+                                        number="5.00"
+                                        variant="currency"
+                                        options={{
+                                            currency: 'USD',
+                                        }}
+                                    />
                                 </li>
                                 <li className="flex items-center justify-between">
                                     <span className="text-muted-foreground">
                                         <Trans>Tax</Trans>
                                     </span>
-                                    <span>$25.00</span>
+                                    <NumberFormatter
+                                        number="25.00"
+                                        variant="currency"
+                                        options={{
+                                            currency: 'USD',
+                                        }}
+                                    />
                                 </li>
                                 <li className="flex items-center justify-between font-semibold">
                                     <span className="text-muted-foreground">
                                         <Trans>Total</Trans>
                                     </span>
-                                    <span>$329.00</span>
+                                    <NumberFormatter
+                                        number="329.00"
+                                        variant="currency"
+                                        options={{
+                                            currency: 'USD',
+                                        }}
+                                    />
                                 </li>
                             </ul>
                         </div>

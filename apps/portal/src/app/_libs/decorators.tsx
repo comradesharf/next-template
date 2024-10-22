@@ -10,6 +10,7 @@ import { type SetupWorker, setupWorker } from 'msw/browser';
 import { SessionProvider } from 'next-auth/react';
 import { useEffect, useInsertionEffect } from 'react';
 import { DateTimeI18nContext } from '#app/_components/date-time.tsx';
+import { NumberI18Context } from '#app/_components/number.tsx';
 import { TooltipProvider } from '#app/_components/tooltip.tsx';
 
 declare module '@storybook/react' {
@@ -65,7 +66,9 @@ export const withI18n: DecoratorFunction<any, any> = (Story, ctx) => {
         <SessionProvider refetchOnWindowFocus session={session}>
             <I18nProvider i18n={i18n}>
                 <DateTimeI18nContext>
-                    <Story />
+                    <NumberI18Context>
+                        <Story />
+                    </NumberI18Context>
                 </DateTimeI18nContext>
             </I18nProvider>
         </SessionProvider>
@@ -82,7 +85,7 @@ export const withAppendClassNamesToBody: (
         return <Story />;
     };
 
-export const withTooltip: DecoratorFunction<ReactRenderer> = (Story, ctx) => {
+export const withTooltip: DecoratorFunction<ReactRenderer> = (Story) => {
     return (
         <TooltipProvider>
             <Story />
@@ -112,15 +115,7 @@ const shouldFilterUrl = (url: string) => {
         return true;
     }
 
-    const isStorybookRequest = filteredURLSubstrings.some((substring) =>
-        url.includes(substring),
-    );
-
-    if (isStorybookRequest) {
-        return true;
-    }
-
-    return false;
+    return filteredURLSubstrings.some((substring) => url.includes(substring));
 };
 
 export const augmentInitializeOptions = () => {

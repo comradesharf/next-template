@@ -13,8 +13,7 @@ export interface DateTimeFormatterProps
 export interface DateTimeRangeFormatterProps
     extends Omit<HTMLAttributes<HTMLTimeElement>, 'datetime'> {
     className?: string;
-    startDate: Date | number | bigint;
-    endDate: Date | number | bigint;
+    range: readonly [startDate: Date | number, endDate: Date | number];
     variant?: keyof FormatVariant;
     options?: Intl.DateTimeFormatOptions;
     formatFromParts?: (parts: Intl.DateTimeRangeFormatPart[]) => string;

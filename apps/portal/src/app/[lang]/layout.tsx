@@ -2,6 +2,7 @@ import '#app/globals.css';
 import type { Metadata } from 'next';
 import { DateTimeI18nContext } from '#app/_components/date-time.tsx';
 import { LocaleProvider } from '#app/_components/locale-provider.tsx';
+import { NumberI18Context } from '#app/_components/number.tsx';
 import { SessionProvider } from '#app/_components/session-provider.tsx';
 import { TooltipProvider } from '#app/_components/tooltip.tsx';
 import { cn } from '#app/_libs/cn.ts';
@@ -35,7 +36,7 @@ export default withLocale(async function RootLayout({
                     >
                         <SessionProvider>
                             <DateTimeI18nContext>
-                                {children}
+                                <NumberI18Context>{children}</NumberI18Context>
                             </DateTimeI18nContext>
                         </SessionProvider>
                     </LocaleProvider>

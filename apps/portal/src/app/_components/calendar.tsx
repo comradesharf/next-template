@@ -129,7 +129,7 @@ function SelectedDate(props: SelectedDateProps) {
 }
 
 export interface SelectedDateRangeProps
-    extends Omit<DateTimeRangeFormatterProps, 'startDate' | 'endDate'> {
+    extends Omit<DateTimeRangeFormatterProps, 'range'> {
     placeholder?: string;
 }
 
@@ -147,8 +147,7 @@ function SelectedDateRange(props: SelectedDateRangeProps) {
     return (
         <DateTimeRangeFormatter
             {...props}
-            startDate={controller.field.value.from}
-            endDate={controller.field.value.to}
+            range={[controller.field.value.from, controller.field.value.to]}
         />
     );
 }

@@ -30,6 +30,11 @@ import {
     YAxis,
 } from '#app/_components/chart.tsx';
 import { useLocaleDateTimeFormatter } from '#app/_components/date-time.tsx';
+import { makeBodyAndUnit } from '#app/_components/number.shared.tsx';
+import {
+    NumberFormatter,
+    useLocaleNumberFormatter,
+} from '#app/_components/number.tsx';
 import { Separator } from '#app/_components/separator.tsx';
 
 export interface PageProps {
@@ -42,6 +47,8 @@ export default function Page(_props: PageProps) {
 
     const dateFormatter = useLocaleDateTimeFormatter({ variant: 'date' });
 
+    const numberFormatter = useLocaleNumberFormatter();
+
     return (
         <div className="chart-wrapper mx-auto flex max-w-6xl flex-col flex-wrap items-start justify-center gap-6 p-6 sm:flex-row sm:p-8">
             <div className="grid w-full gap-6 sm:grid-cols-2 lg:max-w-[22rem] lg:grid-cols-1 xl:max-w-[25rem]">
@@ -49,7 +56,7 @@ export default function Page(_props: PageProps) {
                     <CardHeader className="space-y-0 pb-2">
                         <CardDescription>Today</CardDescription>
                         <CardTitle className="text-4xl tabular-nums">
-                            12,584{' '}
+                            <NumberFormatter number="12584" />
                             <span className="font-sans text-sm font-normal tracking-normal text-muted-foreground">
                                 steps
                             </span>
@@ -145,7 +152,7 @@ export default function Page(_props: PageProps) {
                                     />
                                     <Label
                                         position="insideTopLeft"
-                                        value="12,343"
+                                        value={numberFormatter.format('12343')}
                                         className="text-lg"
                                         fill="hsl(var(--foreground))"
                                         offset={10}
@@ -158,16 +165,18 @@ export default function Page(_props: PageProps) {
                     <CardFooter className="flex-col items-start gap-1">
                         <CardDescription>
                             Over the past 7 days, you have walked{' '}
-                            <span className="font-medium text-foreground">
-                                53,305
-                            </span>{' '}
+                            <NumberFormatter
+                                className="font-medium text-foreground"
+                                number="53305"
+                            />{' '}
                             steps.
                         </CardDescription>
                         <CardDescription>
                             You need{' '}
-                            <span className="font-medium text-foreground">
-                                12,584
-                            </span>{' '}
+                            <NumberFormatter
+                                className="font-medium text-foreground"
+                                number="12584"
+                            />{' '}
                             more steps to reach your goal.
                         </CardDescription>
                     </CardFooter>
@@ -180,7 +189,7 @@ export default function Page(_props: PageProps) {
                         <div>
                             <CardDescription>Resting HR</CardDescription>
                             <CardTitle className="flex items-baseline gap-1 text-4xl tabular-nums">
-                                62
+                                <NumberFormatter number="62" />
                                 <span className="text-sm font-normal tracking-normal text-muted-foreground">
                                     bpm
                                 </span>
@@ -189,10 +198,22 @@ export default function Page(_props: PageProps) {
                         <div>
                             <CardDescription>Variability</CardDescription>
                             <CardTitle className="flex items-baseline gap-1 text-4xl tabular-nums">
-                                35
-                                <span className="text-sm font-normal tracking-normal text-muted-foreground">
-                                    ms
-                                </span>
+                                <NumberFormatter
+                                    number="35"
+                                    variant="compact-millisecond"
+                                    formatFromParts={(parts) => {
+                                        const [body, unit] =
+                                            makeBodyAndUnit(parts);
+                                        return (
+                                            <>
+                                                {body}
+                                                <span className="text-sm font-normal tracking-normal text-muted-foreground">
+                                                    {unit}
+                                                </span>
+                                            </>
+                                        );
+                                    }}
+                                />
                             </CardTitle>
                         </div>
                     </CardHeader>
@@ -296,7 +317,7 @@ export default function Page(_props: PageProps) {
                     <CardContent className="grid gap-4">
                         <div className="grid auto-rows-min gap-2">
                             <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
-                                12,453
+                                <NumberFormatter number="12453" />{' '}
                                 <span className="text-sm font-normal text-muted-foreground">
                                     steps/day
                                 </span>
@@ -352,7 +373,7 @@ export default function Page(_props: PageProps) {
                         </div>
                         <div className="grid auto-rows-min gap-2">
                             <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
-                                10,103
+                                <NumberFormatter number="10103" />{' '}
                                 <span className="text-sm font-normal text-muted-foreground">
                                     steps/day
                                 </span>
@@ -418,10 +439,26 @@ export default function Page(_props: PageProps) {
                     </CardHeader>
                     <CardContent className="flex flex-row items-baseline gap-4 p-4 pt-0">
                         <div className="flex items-baseline gap-1 text-3xl font-bold tabular-nums leading-none">
-                            12.5
-                            <span className="text-sm font-normal text-muted-foreground">
-                                miles/day
-                            </span>
+                            <NumberFormatter
+                                number="12.5"
+                                options={{
+                                    style: 'unit',
+                                    unit: 'mile-per-day',
+                                    unitDisplay: 'long',
+                                }}
+                                formatFromParts={(parts) => {
+                                    const [body, unit] = makeBodyAndUnit(parts);
+
+                                    return (
+                                        <>
+                                            {body}
+                                            <span className="text-sm font-normal text-muted-foreground">
+                                                {unit}
+                                            </span>
+                                        </>
+                                    );
+                                }}
+                            />
                         </div>
                         <ChartContainer
                             config={{
@@ -568,7 +605,7 @@ export default function Page(_props: PageProps) {
                                     Move
                                 </div>
                                 <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
-                                    562
+                                    <NumberFormatter number="562" />{' '}
                                     <span className="text-sm font-normal text-muted-foreground">
                                         kcal
                                     </span>
@@ -583,10 +620,23 @@ export default function Page(_props: PageProps) {
                                     Exercise
                                 </div>
                                 <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
-                                    73
-                                    <span className="text-sm font-normal text-muted-foreground">
-                                        min
-                                    </span>
+                                    <NumberFormatter
+                                        number="73"
+                                        variant="compact-hour"
+                                        formatFromParts={(parts) => {
+                                            const [body, unit] =
+                                                makeBodyAndUnit(parts);
+
+                                            return (
+                                                <>
+                                                    {body}
+                                                    <span className="text-sm font-normal text-muted-foreground">
+                                                        {unit}
+                                                    </span>
+                                                </>
+                                            );
+                                        }}
+                                    />
                                 </div>
                             </div>
                             <Separator
@@ -598,10 +648,23 @@ export default function Page(_props: PageProps) {
                                     Stand
                                 </div>
                                 <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
-                                    14
-                                    <span className="text-sm font-normal text-muted-foreground">
-                                        hr
-                                    </span>
+                                    <NumberFormatter
+                                        number="14"
+                                        variant="compact-hour"
+                                        formatFromParts={(parts) => {
+                                            const [body, unit] =
+                                                makeBodyAndUnit(parts);
+
+                                            return (
+                                                <>
+                                                    {body}
+                                                    <span className="text-sm font-normal text-muted-foreground">
+                                                        {unit}
+                                                    </span>
+                                                </>
+                                            );
+                                        }}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -617,7 +680,8 @@ export default function Page(_props: PageProps) {
                                     Move
                                 </div>
                                 <div className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
-                                    562/600
+                                    <NumberFormatter number="562" />/
+                                    <NumberFormatter number="600" />
                                     <span className="text-sm font-normal text-muted-foreground">
                                         kcal
                                     </span>
@@ -628,10 +692,24 @@ export default function Page(_props: PageProps) {
                                     Exercise
                                 </div>
                                 <div className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
-                                    73/120
-                                    <span className="text-sm font-normal text-muted-foreground">
-                                        min
-                                    </span>
+                                    <NumberFormatter number="73" />/
+                                    <NumberFormatter
+                                        number="1000000"
+                                        formatFromParts={(parts) => {
+                                            const [body, unit] =
+                                                makeBodyAndUnit(parts);
+
+                                            return (
+                                                <>
+                                                    {body}
+                                                    <span className="text-sm font-normal text-muted-foreground">
+                                                        {unit}
+                                                    </span>
+                                                </>
+                                            );
+                                        }}
+                                        variant="compact-minute"
+                                    />
                                 </div>
                             </div>
                             <div className="grid flex-1 auto-rows-min gap-0.5">
@@ -639,10 +717,24 @@ export default function Page(_props: PageProps) {
                                     Stand
                                 </div>
                                 <div className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
-                                    8/12
-                                    <span className="text-sm font-normal text-muted-foreground">
-                                        hr
-                                    </span>
+                                    <NumberFormatter number="8" />/
+                                    <NumberFormatter
+                                        number="12"
+                                        variant="compact-hour"
+                                        formatFromParts={(parts) => {
+                                            const [body, unit] =
+                                                makeBodyAndUnit(parts);
+
+                                            return (
+                                                <>
+                                                    {body}
+                                                    <span className="text-sm font-normal text-muted-foreground">
+                                                        {unit}
+                                                    </span>
+                                                </>
+                                            );
+                                        }}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -711,13 +803,14 @@ export default function Page(_props: PageProps) {
                     <CardHeader className="p-4 pb-0">
                         <CardTitle>Active Energy</CardTitle>
                         <CardDescription>
-                            You're burning an average of 754 calories per day.
+                            You're burning an average of{' '}
+                            <NumberFormatter number="754" /> calories per day.
                             Good job!
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="flex flex-row items-baseline gap-4 p-4 pt-2">
                         <div className="flex items-baseline gap-2 text-3xl font-bold tabular-nums leading-none">
-                            1,254
+                            <NumberFormatter number="1254" />
                             <span className="text-sm font-normal text-muted-foreground">
                                 kcal/day
                             </span>
@@ -886,15 +979,27 @@ export default function Page(_props: PageProps) {
                                 <ChartTooltip
                                     cursor={false}
                                     content={<ChartTooltipContent hideLabel />}
-                                    formatter={(value) => (
+                                    formatter={(value: number) => (
                                         <div className="flex min-w-[120px] items-center text-xs text-muted-foreground">
                                             Time in bed
-                                            <div className="ml-auto flex items-baseline gap-0.5 font-mono font-medium tabular-nums text-foreground">
-                                                {value}
-                                                <span className="font-normal text-muted-foreground">
-                                                    hr
-                                                </span>
-                                            </div>
+                                            <NumberFormatter
+                                                className="ml-auto flex items-baseline gap-0.5 font-mono font-medium tabular-nums text-foreground"
+                                                number={value}
+                                                variant="compact-hour"
+                                                formatFromParts={(parts) => {
+                                                    const [body, unit] =
+                                                        makeBodyAndUnit(parts);
+
+                                                    return (
+                                                        <>
+                                                            {body}
+                                                            <span className="font-normal text-muted-foreground">
+                                                                {unit}
+                                                            </span>
+                                                        </>
+                                                    );
+                                                }}
+                                            />
                                         </div>
                                     )}
                                 />

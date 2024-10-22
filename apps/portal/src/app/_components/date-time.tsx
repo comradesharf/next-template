@@ -65,6 +65,7 @@ export function DateTimeI18nContext({
         <Context.Provider
             value={{
                 defaultFormatVariant,
+                // @ts-expect-error
                 formatVariant: $formatVariant,
                 dfLocale: dfLocaleMapping[$locale],
             }}
@@ -106,8 +107,7 @@ export function DateTimeRangeFormatter({
     options = {},
     className,
     formatFromParts,
-    startDate,
-    endDate,
+    range: [start, end],
     ...props
 }: DateTimeRangeFormatterProps) {
     const formatter = useLocaleDateTimeFormatter({
@@ -117,11 +117,9 @@ export function DateTimeRangeFormatter({
 
     let result: string;
     if (formatFromParts) {
-        result = formatFromParts(
-            formatter.formatRangeToParts(startDate, endDate),
-        );
+        result = formatFromParts(formatter.formatRangeToParts(start, end));
     } else {
-        result = formatter.formatRange(startDate, endDate);
+        result = formatter.formatRange(start, end);
     }
 
     return (
@@ -143,6 +141,7 @@ export function useLocaleDateTimeFormatter({
     const $variant = (variant ?? defaultFormatVariant) as keyof FormatVariant;
 
     const config = {
+        // @ts-expect-error
         ...($variant ? mapping?.[$variant] : {}),
         ...options,
     };

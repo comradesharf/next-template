@@ -13,11 +13,13 @@ export const initDateFormatter = memoize(
 );
 
 export interface FormatVariant {
-    [variant: string]: Intl.DateTimeFormatOptions;
+    'short-date': never;
+    weekday: never;
+    date: never;
 }
 
 export interface DateTimeI18nConfig {
-    formatVariant?: FormatVariant;
+    formatVariant?: Record<keyof FormatVariant, Intl.DateTimeFormatOptions>;
     defaultFormatVariant?: keyof FormatVariant;
     dfLocale?: Locale;
 }
@@ -34,6 +36,6 @@ export const DateTimeFormatVariant = {
         month: 'long',
         year: 'numeric',
     },
-} satisfies FormatVariant;
+} satisfies DateTimeI18nConfig['formatVariant'];
 
 export const DefaultDateTimeFormatVariant = 'short-date' as keyof FormatVariant;

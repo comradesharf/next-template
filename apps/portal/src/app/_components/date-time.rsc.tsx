@@ -65,8 +65,7 @@ export function DateTimeRangeFormatter({
     options = {},
     className,
     formatFromParts,
-    startDate,
-    endDate,
+    range: [start, end],
     ...props
 }: DateTimeRangeFormatterProps) {
     const ctx = getI18n();
@@ -89,11 +88,9 @@ export function DateTimeRangeFormatter({
 
     let result: string;
     if (formatFromParts) {
-        result = formatFromParts(
-            formatter.formatRangeToParts(startDate, endDate),
-        );
+        result = formatFromParts(formatter.formatRangeToParts(start, end));
     } else {
-        result = formatter.formatRange(startDate, endDate);
+        result = formatter.formatRange(start, end);
     }
 
     return (
