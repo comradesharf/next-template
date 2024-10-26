@@ -12,5 +12,10 @@
         "vitest.globalSetup.db.ts",
         "vitest.config.unit.ts",
         "vitest.config.db.ts"
+    ],
+    "references": [
+        {
+            "path": "../models"
+        }
     ]
 }

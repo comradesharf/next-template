@@ -10,6 +10,7 @@
         "./*": "./src/*.ts"
     },
     "devDependencies": {
+        "@comradesharf/models": "workspace:^",
         "@comradesharf/typescript-config": "workspace:^"
     },
     "dependencies": {

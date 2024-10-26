@@ -9,5 +9,10 @@
     "type": "module",
     "devDependencies": {
         "@comradesharf/typescript-config": "workspace:^"
+    },
+    "dependencies": {
+        "@comradesharf/model-mocks": "workspace:^",
+        "@comradesharf/schemas": "workspace:^",
+        "@faker-js/faker": "^9.0.3"
     }
 }

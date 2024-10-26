@@ -19,15 +19,6 @@ const nextConfig: NextConfig = {
         swcPlugins: [['@lingui/swc-plugin', {}]],
         serverMinification: false,
     },
-    webpack(config) {
-        config.module.rules.push({
-            test: /\.po$/,
-            use: {
-                loader: '@lingui/loader',
-            },
-        });
-        return config;
-    },
     async redirects() {
         return [
             {

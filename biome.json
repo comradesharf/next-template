@@ -13,7 +13,8 @@
             "packages/*/types",
             "packages/*/dist",
             "apps/*/types",
-            "apps/*/dist"
+            "apps/*/dist",
+            "*-tests.json"
         ]
     },
     "formatter": {

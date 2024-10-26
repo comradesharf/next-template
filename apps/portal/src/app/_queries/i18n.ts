@@ -7,9 +7,7 @@ import linguiConfig from '#app/_libs/locales/lingui.config.ts';
 async function loadCatalog(
     locale: string,
 ): Promise<readonly [string, Messages]> {
-    const { messages } = await import(
-        `#app/_libs/locales/messages/${locale}.po`
-    );
+    const { messages } = await import(`../_libs/locales/messages/${locale}.ts`);
     return [locale, messages];
 }
 

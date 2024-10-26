@@ -17,7 +17,7 @@ msgstr ""
 msgid "Already have an account? <0>Sign in</0>"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/layout.tsx:57
+#: ../../[lang]/(authenticated)/layout.tsx:56
 msgid "Avatar"
 msgstr ""
 
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Back to Homepage"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:538
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:655
 msgid "Billing Information"
 msgstr ""
 
@@ -41,19 +41,19 @@ msgstr ""
 msgid "Create a new account to get started."
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:87
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:88
 msgid "Create New Order"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:553
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:670
 msgid "Customer"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:548
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:665
 msgid "Customer Information"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:152
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:189
 msgid "Declined"
 msgstr ""
 
@@ -65,7 +65,7 @@ msgstr ""
 msgid "Don't have an account? <0>Sign up</0>"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:464
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:543
 msgid "Edit"
 msgstr ""
 
@@ -91,17 +91,17 @@ msgstr ""
 msgid "Enter your username and password to access your account."
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:166
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:467
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:203
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:546
 msgid "Export"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:145
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:182
 msgid "Filter by"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:149
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:395
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:186
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:468
 msgid "Fulfilled"
 msgstr ""
 
@@ -109,7 +109,7 @@ msgstr ""
 msgid "If you think this is a mistake, please <0>contact our support team</0>."
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:79
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:80
 msgid "Introducing Our Dynamic Orders Dashboard for Seamless Management and Insightful Analysis."
 msgstr ""
 
@@ -117,19 +117,19 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: ../../[lang]/(authenticated)/layout.tsx:76
+#: ../../[lang]/(authenticated)/layout.tsx:75
 msgid "Logout"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:458
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:537
 msgid "More"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/layout.tsx:64
+#: ../../[lang]/(authenticated)/layout.tsx:63
 msgid "My Account"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:623
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:740
 msgid "Next Order"
 msgstr ""
 
@@ -141,13 +141,13 @@ msgstr ""
 msgid "Oops! Something went wrong"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:480
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:559
 msgid "Order Details"
 msgstr ""
 
 #: ../../[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.tsx:88
 #: ../../[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.tsx:93
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:175
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:212
 msgid "Orders"
 msgstr ""
 
@@ -161,7 +161,7 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:578
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:695
 msgid "Payment Information"
 msgstr ""
 
@@ -169,7 +169,7 @@ msgstr ""
 msgid "Please wait while we prepare your content."
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:611
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:728
 msgid "Previous Order"
 msgstr ""
 
@@ -178,11 +178,11 @@ msgstr ""
 msgid "Products"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:178
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:215
 msgid "Recent orders from your store."
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:155
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:192
 msgid "Refunded"
 msgstr ""
 
@@ -190,15 +190,15 @@ msgstr ""
 msgid "Return to Home"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:388
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:461
 msgid "Sale"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:541
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:658
 msgid "Same as shipping address"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/layout.tsx:42
+#: ../../[lang]/(authenticated)/layout.tsx:41
 msgid "Search..."
 msgstr ""
 
@@ -212,15 +212,15 @@ msgstr ""
 
 #: ../../[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.tsx:181
 #: ../../[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.tsx:186
-#: ../../[lang]/(authenticated)/layout.tsx:68
+#: ../../[lang]/(authenticated)/layout.tsx:67
 msgid "Settings"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:506
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:605
 msgid "Shipping"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:528
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:645
 msgid "Shipping Information"
 msgstr ""
 
@@ -241,15 +241,15 @@ msgstr ""
 msgid "Something went wrong while executing the operation."
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:500
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:593
 msgid "Subtotal"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/layout.tsx:71
+#: ../../[lang]/(authenticated)/layout.tsx:70
 msgid "Support"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:512
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:617
 msgid "Tax"
 msgstr ""
 
@@ -269,19 +269,19 @@ msgstr ""
 msgid "This is your public display name."
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:94
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:95
 msgid "This Week"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:518
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:629
 msgid "Total"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:446
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:525
 msgid "Track Order"
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:471
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:550
 msgid "Trash"
 msgstr ""
 
@@ -289,7 +289,7 @@ msgstr ""
 msgid "Unable to find matching {0}. Please check the URL or contact support if the problem persists."
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:593
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:710
 msgid "Updated <0/>"
 msgstr ""
 
@@ -297,6 +297,6 @@ msgstr ""
 msgid "We're sorry, but it seems like we've encountered an unexpected error. Our team has been notified and is working on fixing it."
 msgstr ""
 
-#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:76
+#: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:77
 msgid "Your Orders"
 msgstr ""

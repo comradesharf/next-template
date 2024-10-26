@@ -30,15 +30,6 @@ const config = {
     core: {
         disableTelemetry: true,
     },
-    webpackFinal: async (config) => {
-        config.module?.rules?.push({
-            test: /\.po$/,
-            use: {
-                loader: '@lingui/loader',
-            },
-        });
-        return config;
-    },
 } as StorybookConfig;
 
 export default config;

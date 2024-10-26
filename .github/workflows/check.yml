@@ -1,0 +1,35 @@
+name: check
+run-name: Run continuous integration code
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+    branches:
+      - develop
+      - main
+
+env:
+  FAKER_SEED: ${{ github.run_number }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+
+      - run: corepack enable
+
+      - uses: actions/setup-node@v4.0.2
+        with:
+          cache: 'yarn'
+          node-version-file: '.nvmrc'
+
+      - run: yarn install --immutable
+        
+      - run: yarn turbo lint test build --affected

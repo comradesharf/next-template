@@ -3,13 +3,15 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev",
+        "dev": "next dev --turbo",
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
         "storybook": "NEXT_FONT_GOOGLE_MOCKED_RESPONSES=$(pwd)/.storybook/mocked-google-fonts.js storybook dev -p 6006",
         "build-storybook": "NEXT_FONT_GOOGLE_MOCKED_RESPONSES=$(pwd)/.storybook/mocked-google-fonts.js storybook build",
-        "extract": "lingui extract --config ./src/app/_libs/locales/lingui.config.ts"
+        "extract-locale": "lingui extract --config ./src/app/_libs/locales/lingui.config.ts",
+        "check-locale": "yarn extract-locale && git diff-index --quiet HEAD -- ./src/app/_libs/locales/messages || { echo \"Error: You have not fully extracted all messages. Please run extract and translate them.\"; exit 1; }",
+        "compile-locale": "lingui compile --config ./src/app/_libs/locales/lingui.config.ts --typescript --strict"
     },
     "dependencies": {
         "@comradesharf/core": "workspace:^",
@@ -68,16 +70,16 @@
         "lodash-es": "^4.17.21",
         "lucide-react": "^0.453.0",
         "negotiator": "^1.0.0",
-        "next": "15.0.0",
+        "next": "15.0.1",
         "next-auth": "^5.0.0-beta.25",
-        "next-safe-action": "^7.9.5",
+        "next-safe-action": "^7.9.7",
         "next-themes": "^0.3.0",
         "postcss": "^8.4.47",
         "react": "^18.3.1",
-        "react-day-picker": "9.1.4",
+        "react-day-picker": "9.2.0",
         "react-dom": "^18.3.1",
         "react-hook-form": "^7.53.1",
-        "react-resizable-panels": "^2.1.4",
+        "react-resizable-panels": "^2.1.5",
         "recharts": "^2.13.0",
         "server-only": "^0.0.1",
         "sonner": "^1.5.0",
@@ -118,11 +120,10 @@
     "devDependencies": {
         "@comradesharf/model-mocks": "workspace:^",
         "@lingui/cli": "^4.13.0",
-        "@lingui/loader": "^4.13.0",
         "@lingui/swc-plugin": "4.0.10",
         "@types/lodash-es": "^4.17.12",
         "@types/negotiator": "^0.6.3",
-        "msw": "^2.4.13"
+        "msw": "^2.5.1"
     },
     "msw": {
         "workerDirectory": ["public"]

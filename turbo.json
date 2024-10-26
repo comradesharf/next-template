@@ -1,18 +1,37 @@
 {
     "$schema": "https://turbo.build/schema.json",
     "tasks": {
-        "dev": {
+        "@comradesharf/portal#dev": {
             "cache": false,
             "persistent": true
         },
-        "storybook": {
+        "@comradesharf/emails#dev": {
             "cache": false,
             "persistent": true
+        },
+        "@comradesharf/portal#storybook": {
+            "cache": false,
+            "persistent": true
+        },
+        "@comradesharf/portal#compile-locale": {
+            "outputs": ["src/app/_libs/locales/messages/*.ts"],
+            "inputs": ["src/app/_libs/locales/messages/*.po"]
+        },
+        "@comradesharf/portal#extract-locale": {
+            "outputs": ["src/app/_libs/locales/messages/*.po"]
+        },
+        "@comradesharf/portal#build": {
+            "outputs": [".next/**", "!.next/cache/**"]
         },
         "//#type-check": {
-            "outputs": ["types/**", "*/*/types/**"]
+            "outputs": ["types/**", "*/*/types/**"],
+            "dependsOn": ["@comradesharf/portal#build"]
         },
         "//#test": {
+            "cache": false,
+            "persistent": true
+        },
+        "//#lint": {
             "cache": false,
             "persistent": true
         }

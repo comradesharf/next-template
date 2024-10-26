@@ -4,5 +4,13 @@
         "outDir": "./types"
     },
     "exclude": ["node_modules"],
-    "include": ["src/**/*.tsx", "src/**/*.ts", "src/**/*.mts"]
+    "include": ["src/**/*.tsx", "src/**/*.ts", "src/**/*.mts"],
+    "references": [
+        {
+            "path": "../model-mocks"
+        },
+        {
+            "path": "../schemas"
+        }
+    ]
 }

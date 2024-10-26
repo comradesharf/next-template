@@ -18,6 +18,12 @@
     "workspaces": ["apps/*", "packages/*", "configs/*"],
     "packageManager": "yarn@4.5.0",
     "scripts": {
+        "turbo:lint": "turbo lint",
+        "turbo:type-check": "turbo type-check",
+        "turbo:test": "turbo test",
+        "turbo:dev": "turbo dev",
+        "turbo:storybook": "npx turbo storybook",
+        "lint": "biome check",
         "type-check": "tsc --build --pretty",
         "prepare": "husky",
         "test": "vitest"
