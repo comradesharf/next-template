@@ -16,6 +16,9 @@
     "references": [
         {
             "path": "../models"
+        },
+        {
+            "path": "../model-mocks"
         }
     ]
 }

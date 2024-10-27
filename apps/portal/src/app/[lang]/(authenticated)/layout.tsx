@@ -19,6 +19,7 @@ export interface LayoutProps extends PropsWithChildren {
     breadcrumbs: ReactNode;
     mobileDrawer: ReactNode;
     desktopNav: ReactNode;
+    params: Promise<{ lang: string }>;
 }
 
 export default withLocale(function Layout({

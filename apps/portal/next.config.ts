@@ -77,4 +77,5 @@ export default withSentryConfig(nextConfig, {
     autoInstrumentServerFunctions: false,
     autoInstrumentAppDirectory: true,
     autoInstrumentMiddleware: false,
+    telemetry: false,
 });

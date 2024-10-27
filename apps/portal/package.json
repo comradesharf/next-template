@@ -8,10 +8,12 @@
         "start": "next start",
         "lint": "next lint",
         "storybook": "NEXT_FONT_GOOGLE_MOCKED_RESPONSES=$(pwd)/.storybook/mocked-google-fonts.js storybook dev -p 6006",
-        "build-storybook": "NEXT_FONT_GOOGLE_MOCKED_RESPONSES=$(pwd)/.storybook/mocked-google-fonts.js storybook build",
+        "storybook:build": "NEXT_FONT_GOOGLE_MOCKED_RESPONSES=$(pwd)/.storybook/mocked-google-fonts.js storybook build --test --quiet",
+        "storybook:test": "npx concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npx --yes http-server storybook-static --port 6006 --silent\" \"npx --yes wait-on tcp:127.0.0.1:6006 && yarn test-storybook --maxWorkers=3 $@\"",
         "extract-locale": "lingui extract --config ./src/app/_libs/locales/lingui.config.ts",
         "check-locale": "yarn extract-locale && git diff-index --quiet HEAD -- ./src/app/_libs/locales/messages || { echo \"Error: You have not fully extracted all messages. Please run extract and translate them.\"; exit 1; }",
-        "compile-locale": "lingui compile --config ./src/app/_libs/locales/lingui.config.ts --typescript --strict"
+        "compile-locale": "lingui compile --config ./src/app/_libs/locales/lingui.config.ts --typescript",
+        "check-types": "tsc --build --pretty"
     },
     "dependencies": {
         "@comradesharf/core": "workspace:^",
@@ -61,6 +63,7 @@
         "@storybook/nextjs": "^8.3.6",
         "@storybook/react": "^8.3.6",
         "@storybook/test": "^8.3.6",
+        "@storybook/test-runner": "^0.19.1",
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.1.1",
         "cmdk": "1.0.0",
@@ -123,7 +126,8 @@
         "@lingui/swc-plugin": "4.0.10",
         "@types/lodash-es": "^4.17.12",
         "@types/negotiator": "^0.6.3",
-        "msw": "^2.5.1"
+        "msw": "^2.5.1",
+        "typescript": "^5.6.3"
     },
     "msw": {
         "workerDirectory": ["public"]

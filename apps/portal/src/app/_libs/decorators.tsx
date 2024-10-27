@@ -45,7 +45,7 @@ declare module '@storybook/react' {
 
 export async function dynamicActivate(locale: string) {
     const { messages } = await import(
-        `#app/_libs/locales/messages/${locale}.po`
+        `#app/_libs/locales/messages/${locale}.ts`
     );
     i18n.loadAndActivate({ locale, messages });
 }

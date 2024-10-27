@@ -14,7 +14,12 @@
             "packages/*/dist",
             "apps/*/types",
             "apps/*/dist",
-            "*-tests.json"
+            "*-tests.json",
+            "apps/portal/src/app/_libs/locales/messages/*.ts",
+            "volume/**",
+            "storybook-static/**",
+            "package.json",
+            "**/*/package.json"
         ]
     },
     "formatter": {

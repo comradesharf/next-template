@@ -30,8 +30,7 @@ import { withLocale } from '#app/_libs/locales/withLocale.tsx';
 import { getCurrentSession } from '#app/_queries/auths.ts';
 
 export interface PageProps {
-    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-    params: Promise<{ lang: string }>;
+    params: Promise<{ lang: string | string[] | undefined }>;
 }
 
 export default withLocale(async function Page(_props: PageProps) {

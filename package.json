@@ -12,21 +12,14 @@
         "husky": "^9.1.6",
         "inquirer-fuzzy-path": "^2.3.0",
         "lint-staged": "^15.2.10",
-        "turbo": "^2.2.3",
-        "typescript": "^5.6.3"
+        "turbo": "^2.2.3"
     },
     "workspaces": ["apps/*", "packages/*", "configs/*"],
     "packageManager": "yarn@4.5.0",
     "scripts": {
-        "turbo:lint": "turbo lint",
-        "turbo:type-check": "turbo type-check",
-        "turbo:test": "turbo test",
-        "turbo:dev": "turbo dev",
-        "turbo:storybook": "npx turbo storybook",
-        "lint": "biome check",
-        "type-check": "tsc --build --pretty",
+        "lint": "biome check --unsafe --no-errors-on-unmatched",
         "prepare": "husky",
-        "test": "vitest"
+        "test": "vitest run"
     },
     "lint-staged": {
         "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [

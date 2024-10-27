@@ -30,6 +30,31 @@ jobs:
           cache: 'yarn'
           node-version-file: '.nvmrc'
 
-      - run: yarn install --immutable
-        
-      - run: yarn turbo lint test build --affected
+      - name: Cache turbo build setup
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v4
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install Dependencies
+        run: yarn install --immutable
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - run: yarn turbo check-locale lint test build check-types storybook:test --affected

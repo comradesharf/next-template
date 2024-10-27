@@ -2,17 +2,14 @@ import { setI18n } from '@lingui/react/server';
 import type * as React from 'react';
 import { getI18nInstance } from '#app/_queries/i18n.ts';
 
-export type LangParams = {
+export type Props = {
     params: Promise<{ lang: string }>;
-    children?: React.ReactNode;
 };
 
-type LayoutExposedToNextJS<Props> = (props: Props) => React.ReactNode;
-
-export const withLocale = <Props extends {}>(
-    AppRouterPage: React.ComponentType<LangParams & Props>,
-): LayoutExposedToNextJS<Props & LangParams> => {
-    return async function withLocale(props) {
+export const withLocale = <T extends Props>(
+    AppRouterPage: React.ComponentType<T>,
+) => {
+    return async function WithLocale(props: T) {
         const { lang } = await props.params;
         const i18n = await getI18nInstance(lang);
         setI18n(i18n);
