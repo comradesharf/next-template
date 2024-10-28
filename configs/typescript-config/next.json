@@ -4,6 +4,8 @@
     "extends": "./base.json",
     "compilerOptions": {
         "lib": ["dom", "dom.iterable", "esnext"],
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
         "plugins": [
             {
                 "name": "next"

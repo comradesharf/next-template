@@ -55,12 +55,7 @@ import { assertAuthenticated } from '#app/_libs/asserts.ts';
 import { withLocale } from '#app/_libs/locales/withLocale.tsx';
 import { getCurrentSession } from '#app/_queries/auths.ts';
 
-export interface PageProps {
-    searchParams: { [key: string]: string | string[] | undefined };
-    params: { lang: string };
-}
-
-export default withLocale<PageProps>(async function Page() {
+export default withLocale(async function Page() {
     const session = await getCurrentSession();
     assertAuthenticated(session);
 

@@ -4,7 +4,7 @@ import type { MongoMemoryReplSetOpts } from 'mongodb-memory-server-core/lib/Mong
 
 const config: Partial<MongoMemoryReplSetOpts> = {
     binary: {
-        version: '6.0.10',
+        version: '8.0.3',
         checkMD5: false,
     },
     replSet: {

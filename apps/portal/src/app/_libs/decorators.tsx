@@ -11,7 +11,9 @@ import { SessionProvider } from 'next-auth/react';
 import { useEffect, useInsertionEffect } from 'react';
 import { DateTimeI18nContext } from '#app/_components/date-time.tsx';
 import { NumberI18Context } from '#app/_components/number.tsx';
+import { SidebarProvider } from '#app/_components/sidebar.tsx';
 import { TooltipProvider } from '#app/_components/tooltip.tsx';
+import { inter } from '#app/_libs/fonts.ts';
 
 declare module '@storybook/react' {
     interface Parameters {
@@ -43,12 +45,12 @@ declare module '@storybook/react' {
 
 export async function dynamicActivate(locale: string) {
     const { messages } = await import(
-        `#app/_libs/locales/messages/${locale}.po`
+        `#app/_libs/locales/messages/${locale}.ts`
     );
     i18n.loadAndActivate({ locale, messages });
 }
 
-export const withI18n: DecoratorFunction<any, any> = (Story, ctx) => {
+export const withRoot: DecoratorFunction<any, any> = (Story, ctx) => {
     ctx.args.params ??= {
         lang: ctx.globals.locale,
     };
@@ -60,6 +62,14 @@ export const withI18n: DecoratorFunction<any, any> = (Story, ctx) => {
         void dynamicActivate(lang);
     }, [lang]);
 
+    useInsertionEffect(() => {
+        document.documentElement.classList.add(
+            'antialiased',
+            '[font-synthesis-weight:none]',
+            inter.variable,
+        );
+    }, []);
+
     const session = getSession(ctx.globals.user);
 
     return (
@@ -67,29 +77,15 @@ export const withI18n: DecoratorFunction<any, any> = (Story, ctx) => {
             <I18nProvider i18n={i18n}>
                 <DateTimeI18nContext>
                     <NumberI18Context>
-                        <Story />
+                        <TooltipProvider>
+                            <SidebarProvider>
+                                <Story />
+                            </SidebarProvider>
+                        </TooltipProvider>
                     </NumberI18Context>
                 </DateTimeI18nContext>
             </I18nProvider>
         </SessionProvider>
-    );
-};
-
-export const withAppendClassNamesToBody: (
-    ...classNames: string[]
-) => DecoratorFunction<ReactRenderer> = (...classNames) =>
-    function Component(Story) {
-        useInsertionEffect(() => {
-            document.documentElement.classList.add(...classNames);
-        }, [classNames]);
-        return <Story />;
-    };
-
-export const withTooltip: DecoratorFunction<ReactRenderer> = (Story) => {
-    return (
-        <TooltipProvider>
-            <Story />
-        </TooltipProvider>
     );
 };
 

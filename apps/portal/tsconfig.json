@@ -2,8 +2,7 @@
     "extends": "@comradesharf/typescript-config/next.json",
     "compilerOptions": {
         "outDir": "types",
-        "target": "esnext",
-        "experimentalDecorators": true
+        "target": "ES2017"
     },
     "include": [
         "next-env.d.ts",
@@ -14,7 +13,8 @@
         "turbo",
         "sentry.client.config.ts",
         "sentry.edge.config.ts",
-        "sentry.server.config.ts"
+        "sentry.server.config.ts",
+        "tailwind.config.ts"
     ],
     "exclude": ["node_modules"],
     "references": [
@@ -23,6 +23,9 @@
         },
         {
             "path": "../../packages/emails"
+        },
+        {
+            "path": "../../packages/model-mocks"
         },
         {
             "path": "../../packages/models"

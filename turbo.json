@@ -1,18 +1,52 @@
 {
     "$schema": "https://turbo.build/schema.json",
     "tasks": {
-        "dev": {
+        "@comradesharf/portal#dev": {
             "cache": false,
             "persistent": true
         },
-        "storybook": {
+        "@comradesharf/emails#dev": {
             "cache": false,
             "persistent": true
         },
-        "//#type-check": {
-            "outputs": ["types/**", "*/*/types/**"]
+        "@comradesharf/portal#storybook": {
+            "cache": false,
+            "persistent": true
+        },
+        "@comradesharf/portal#compile-locale": {
+            "outputs": ["src/app/_libs/locales/messages/*.ts"],
+            "inputs": ["src/app/_libs/locales/messages/*.po"]
+        },
+        "@comradesharf/portal#extract-locale": {
+            "outputs": ["src/app/_libs/locales/messages/*.po"]
+        },
+        "@comradesharf/portal#check-locale": {
+            "outputs": ["src/app/_libs/locales/messages/*.po"]
+        },
+        "@comradesharf/portal#build": {
+            "inputs": ["$TURBO_DEFAULT$", "!**/*.stories.{tsx,jsx,mdx}"],
+            "outputs": [".next/**", "!.next/cache/**"],
+            "dependsOn": ["@comradesharf/portal#compile-locale"]
+        },
+        "@comradesharf/portal#storybook:build": {
+            "outputs": ["storybook-static/**"],
+            "dependsOn": ["@comradesharf/portal#compile-locale"]
+        },
+        "@comradesharf/portal#storybook:test": {
+            "dependsOn": ["@comradesharf/portal#storybook:build"]
+        },
+        "check-types": {
+            "outputs": ["*/*/types/**"],
+            "dependsOn": ["^check-types"]
+        },
+        "@comradesharf/portal#check-types": {
+            "dependsOn": ["@comradesharf/portal#build"]
         },
         "//#test": {
+            "cache": false,
+            "persistent": true
+        },
+        "//#lint": {
             "cache": false,
             "persistent": true
         }

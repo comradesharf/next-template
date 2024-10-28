@@ -2,7 +2,6 @@
 import { withLocale } from '#app/_libs/locales/withLocale.tsx';
 
 export interface PageProps {
-    searchParams: { [key: string]: string | string[] | undefined };
     params: { lang: string };
 }
 
@@ -11,8 +10,7 @@ export default withLocale<PageProps>(function Page() {
 });
 {{else}}
 export interface PageProps {
-    searchParams: { [key: string]: string | string[] | undefined };
-    params: { lang: string };
+    params: Promise<{ lang: string }>;
 }
 
 export default function Page(_props: PageProps) {

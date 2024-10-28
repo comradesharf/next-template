@@ -1,7 +1,7 @@
 import { withSentryConfig } from '@sentry/nextjs';
+import type { NextConfig } from 'next';
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
     output: 'standalone',
     typescript: {
         ignoreBuildErrors: true,
@@ -18,16 +18,6 @@ const nextConfig = {
     experimental: {
         swcPlugins: [['@lingui/swc-plugin', {}]],
         serverMinification: false,
-        instrumentationHook: true,
-    },
-    webpack(config) {
-        config.module.rules.push({
-            test: /\.po$/,
-            use: {
-                loader: '@lingui/loader',
-            },
-        });
-        return config;
     },
     async redirects() {
         return [
@@ -41,20 +31,17 @@ const nextConfig = {
 };
 
 export default withSentryConfig(nextConfig, {
-    disable: false,
-
     // For all available options, see:
     // https://github.com/getsentry/sentry-webpack-plugin#options
 
     org: process.env.SENTRY_ORG,
     project: process.env.SENTRY_PROJECT,
-    dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-    release: {
-        name: process.env.NEXT_PUBLIC_SENTRY_RELEASE,
-        deploy: {
-            env: process.env.NEXT_PUBLIC_SENTRY_ENVIRONMENT,
-        },
-    },
+    // release: {
+    //     name: process.env.NEXT_PUBLIC_SENTRY_RELEASE,
+    //     deploy: {
+    //         env: process.env.NEXT_PUBLIC_SENTRY_ENVIRONMENT,
+    //     },
+    // },
 
     // Only print logs for uploading source maps in CI
     silent: !process.env.CI,
@@ -90,5 +77,5 @@ export default withSentryConfig(nextConfig, {
     autoInstrumentServerFunctions: false,
     autoInstrumentAppDirectory: true,
     autoInstrumentMiddleware: false,
-    transpileClientSDK: false,
+    telemetry: false,
 });

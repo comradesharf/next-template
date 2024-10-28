@@ -10,15 +10,14 @@ import {
 } from '#app/_components/breadcrumb.tsx';
 
 export interface PageProps {
-    searchParams: { [key: string]: string | string[] | undefined };
-    params: { lang: string; breadcrumbs: string[] };
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+    params: Promise<{ lang: string; breadcrumbs: string[] }>;
 }
 
-export default function Page({
-    params: {
+export default async function Page(props: PageProps) {
+    const {
         breadcrumbs: [_lang, ...breadcrumbs],
-    },
-}: PageProps) {
+    } = await props.params;
     const trunks = breadcrumbs.slice(0, -1);
     const last = breadcrumbs.at(-1);
 

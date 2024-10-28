@@ -38,8 +38,8 @@ import {
 import { Separator } from '#app/_components/separator.tsx';
 
 export interface PageProps {
-    searchParams: { [key: string]: string | string[] | undefined };
-    params: { lang: string };
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+    params: Promise<{ lang: string }>;
 }
 
 export default function Page(_props: PageProps) {

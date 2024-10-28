@@ -15,15 +15,15 @@ import { cn } from '#app/_libs/cn.ts';
 import { withLocale } from '#app/_libs/locales/withLocale.tsx';
 
 export interface PageProps {
-    searchParams: { [key: string]: string | string[] | undefined };
-    params: { lang: string; breadcrumbs: string[] };
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+    params: Promise<{ lang: string; breadcrumbs: string[] }>;
 }
 
-export default withLocale<PageProps>(function Page({
-    params: {
+export default withLocale<PageProps>(async function Page({ params }) {
+    const {
         breadcrumbs: [_lang, head],
-    },
-}) {
+    } = await params;
+
     return (
         <Sheet>
             <SheetTrigger asChild>

@@ -19,10 +19,8 @@ const config = {
     framework: {
         name: getAbsolutePath('@storybook/nextjs'),
         options: {
-            builder: {
-                useSWC: true,
-            },
-            nextConfigPath: require.resolve('../next.config.mjs'),
+            builder: {},
+            nextConfigPath: require.resolve('../next.config.ts'),
         },
     },
     staticDirs: ['../public'],
@@ -31,15 +29,6 @@ const config = {
     },
     core: {
         disableTelemetry: true,
-    },
-    webpackFinal: async (config) => {
-        config.module?.rules?.push({
-            test: /\.po$/,
-            use: {
-                loader: '@lingui/loader',
-            },
-        });
-        return config;
     },
 } as StorybookConfig;
 

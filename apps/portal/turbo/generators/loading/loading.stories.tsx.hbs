@@ -1,26 +1,30 @@
 import Loading from "{{ dir.absolute }}/loading.tsx";
+import { type Meta, type StoryObj, composeStories } from '@storybook/react';
 {{#includes types "layout"}}
-import Layout from "{{ dir.absolute }}/layout.tsx";
+import * as layouts from "{{ dir.absolute }}/layout.stories.tsx";
+
+const { Primary: Layout } = composeStories(layouts);
 {{/includes}}
 {{#includes types "template"}}
-    import Template from "{{ dir.absolute }}/template.tsx";
+import * as templates from "{{ dir.absolute }}/template.stories.tsx";
+
+const { Primary: Template } = composeStories(templates);
 {{/includes}}
-import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
     component: Loading,
     parameters: {},
     decorators: [
 {{#includes types "layout"~}}
-        (Story, ctx) => (
-            <Layout {...(ctx.args as any)}>
+        (Story) => (
+            <Layout>
                 <Story/>
             </Layout>
         ),
 {{/includes}}
 {{#includes types "template"~}}
-        (Story, ctx) => (
-            <Template {...(ctx.args as any)}>
+        (Story) => (
+            <Template>
                 <Story/>
             </Template>
         ),
