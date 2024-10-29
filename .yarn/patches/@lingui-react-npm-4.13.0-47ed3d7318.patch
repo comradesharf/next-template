@@ -1,0 +1,116 @@
+diff --git a/dist/index-rsc.cjs b/dist/index-rsc.cjs
+index b09a8e46b4cdaa7da323628008bc2ffa2ec1718f..a52b58921e9e51e9f5e56639e012018d286d1d75 100644
+--- a/dist/index-rsc.cjs
++++ b/dist/index-rsc.cjs
+@@ -8,8 +8,14 @@ function _interopDefaultCompat (e) { return e && typeof e === 'object' && 'defau
+ 
+ const React__default = /*#__PURE__*/_interopDefaultCompat(React);
+ 
+-function TransRsc(props) {
+-  const ctx = server.getI18n();
++function TransRsc({i18n, ...props}) {
++  let ctx = server.getI18n();
++  if (i18n) {
++    ctx = {
++      i18n,
++      _: i18n._.bind(i18n),
++    };
++  }
+   if (!ctx) {
+     throw new Error(
+       "You tried to use `Trans` in Server Component, but i18n instance for RSC hasn't been setup.\nMake sure to call `setI18n` in the root of your page."
+diff --git a/dist/index-rsc.mjs b/dist/index-rsc.mjs
+index ff9e42b17de400d1c8ff5ae4654a2b41c8a137cd..5c3fdccb52d4ea6ef15c8530cb613056386d3674 100644
+--- a/dist/index-rsc.mjs
++++ b/dist/index-rsc.mjs
+@@ -2,8 +2,14 @@ import { getI18n } from './server.mjs';
+ import { T as TransNoContext } from './shared/react.ac956f45.mjs';
+ import React from 'react';
+ 
+-function TransRsc(props) {
+-  const ctx = getI18n();
++function TransRsc({i18n, ...props}) {
++  let ctx = getI18n();
++  if (i18n) {
++    ctx = {
++      i18n,
++      _: i18n._.bind(i18n),
++    };
++  }
+   if (!ctx) {
+     throw new Error(
+       "You tried to use `Trans` in Server Component, but i18n instance for RSC hasn't been setup.\nMake sure to call `setI18n` in the root of your page."
+diff --git a/dist/index.cjs b/dist/index.cjs
+index b2e8011caf274a0b86a9c5cdb10b52aa09f94635..6a1cb411e293fd83fd7be11862049e13ed894656 100644
+--- a/dist/index.cjs
++++ b/dist/index.cjs
+@@ -9,8 +9,14 @@ function _interopDefaultCompat (e) { return e && typeof e === 'object' && 'defau
+ const React__default = /*#__PURE__*/_interopDefaultCompat(React);
+ 
+ const LinguiContext = React__default.createContext(null);
+-const useLinguiInternal = (devErrorMessage) => {
+-  const context = React__default.useContext(LinguiContext);
++const useLinguiInternal = (devErrorMessage, i18n) => {
++  let context = React__default.useContext(LinguiContext);
++  if (i18n) {
++    context = {
++      i18n,
++      _: i18n._.bind(i18n),
++    };
++  }
+   if (process.env.NODE_ENV !== "production") {
+     if (context == null) {
+       throw new Error(
+@@ -58,13 +64,13 @@ const I18nProvider = ({
+   return /* @__PURE__ */ React__default.createElement(LinguiContext.Provider, { value: context }, children);
+ };
+ 
+-function Trans(props) {
++function Trans({i18n, ...props}) {
+   let errMessage = void 0;
+   if (process.env.NODE_ENV !== "production") {
+     errMessage = `Trans component was rendered without I18nProvider.
+ Attempted to render message: ${props.message} id: ${props.id}. Make sure this component is rendered inside a I18nProvider.`;
+   }
+-  const lingui = useLinguiInternal(errMessage);
++  const lingui = useLinguiInternal(errMessage, i18n);
+   return React__default.createElement(TransNoContext.TransNoContext, { ...props, lingui });
+ }
+ 
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 1b7fcf6dc60ed2f0236c38a25823c88f1c87f53f..ffa5d60260711d412e96c6282d5b377049119fae 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -3,8 +3,14 @@ import React from 'react';
+ import { T as TransNoContext } from './shared/react.ac956f45.mjs';
+ 
+ const LinguiContext = React.createContext(null);
+-const useLinguiInternal = (devErrorMessage) => {
+-  const context = React.useContext(LinguiContext);
++const useLinguiInternal = (devErrorMessage, i18n) => {
++  let context = React.useContext(LinguiContext);
++  if (i18n) {
++    context = {
++      i18n,
++      _: i18n._.bind(i18n),
++    };
++  }
+   if (process.env.NODE_ENV !== "production") {
+     if (context == null) {
+       throw new Error(
+@@ -52,13 +58,13 @@ const I18nProvider = ({
+   return /* @__PURE__ */ React.createElement(LinguiContext.Provider, { value: context }, children);
+ };
+ 
+-function Trans(props) {
++function Trans({i18n, ...props}) {
+   let errMessage = void 0;
+   if (process.env.NODE_ENV !== "production") {
+     errMessage = `Trans component was rendered without I18nProvider.
+ Attempted to render message: ${props.message} id: ${props.id}. Make sure this component is rendered inside a I18nProvider.`;
+   }
+-  const lingui = useLinguiInternal(errMessage);
++  const lingui = useLinguiInternal(errMessage, i18n);
+   return React.createElement(TransNoContext, { ...props, lingui });
+ }
+ 

@@ -1,6 +1,6 @@
 import { modelOptions, prop } from '@typegoose/typegoose';
-import { generateIdWithPrefix } from '#models/Base.tsx';
-import { User } from '#models/User.tsx';
+import { generateIdWithPrefix } from '#models/Base.ts';
+import { User } from '#models/User.ts';
 
 declare module '@casl/ability' {
     interface RecordTypes {

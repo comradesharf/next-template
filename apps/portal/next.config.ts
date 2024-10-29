@@ -1,6 +1,17 @@
 import { withSentryConfig } from '@sentry/nextjs';
 import type { NextConfig } from 'next';
 
+const assetRemotePattern = (() => {
+    const url = new URL(process.env.NEXT_PUBLIC_ASSET_URL);
+
+    const protocol = url.protocol.slice(0, -1) as 'http' | 'https';
+
+    return {
+        protocol,
+        hostname: url.hostname,
+    };
+})();
+
 const nextConfig: NextConfig = {
     output: 'standalone',
     typescript: {
@@ -14,10 +25,15 @@ const nextConfig: NextConfig = {
         '@comradesharf/pdfs',
         '@comradesharf/trpc',
         '@comradesharf/models',
+        '@comradesharf/schemas',
     ],
     experimental: {
         swcPlugins: [['@lingui/swc-plugin', {}]],
         serverMinification: false,
+    },
+    images: {
+        remotePatterns: [assetRemotePattern],
+        minimumCacheTTL: 31536000,
     },
     async redirects() {
         return [

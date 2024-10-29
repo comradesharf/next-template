@@ -2,7 +2,6 @@ import type { SignIn } from '@comradesharf/schemas/SignInSchema';
 import { Trans, t } from '@lingui/macro';
 import Link from 'next/link';
 import { Form } from '#app/[lang]/(auth)/sign-in/_components/form.tsx';
-import { Button } from '#app/_components/button.tsx';
 import {
     Card,
     CardContent,
@@ -23,6 +22,7 @@ import {
     ServerErrorMessage,
     ServerErrorMessageDescription,
 } from '#app/_components/server-error-message.tsx';
+import { SubmitButton } from '#app/_components/submit-button.tsx';
 import { assertUnauthenticated } from '#app/_libs/asserts.ts';
 import { withLocale } from '#app/_libs/locales/withLocale.tsx';
 import { getCurrentSession } from '#app/_queries/auths.ts';
@@ -83,9 +83,9 @@ export default withLocale(async function Page(_props: PageProps) {
                     <ServerErrorMessage>
                         <ServerErrorMessageDescription />
                     </ServerErrorMessage>
-                    <Button className="w-full mt-4" type="submit">
+                    <SubmitButton className="w-full mt-4">
                         <Trans>Sign In</Trans>
-                    </Button>
+                    </SubmitButton>
                 </CardContent>
                 <CardFooter className="flex flex-col">
                     <p className="text-sm text-gray-600">

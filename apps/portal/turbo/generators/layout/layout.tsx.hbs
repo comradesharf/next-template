@@ -1,18 +1,19 @@
 {{#if lingui}}
 import { withLocale } from '#app/_libs/locales/withLocale.tsx';
+import type { PropsWithChildren } from 'react';
 
-export interface LayoutProps {
+export interface LayoutProps extends PropsWithChildren {
     params: Promise<{ lang: string }>;
 }
 
-export default withLocale<LayoutProps>(function Layout({ children }) {
+export default withLocale(function Layout({ children }: LayoutProps) {
     return <>{children}</>;
 });
 {{else}}
 import type { PropsWithChildren } from 'react';
 
 export interface LayoutProps extends PropsWithChildren {
-    params: { lang: string };
+    params: Promise<{ lang: string }>;
 }
 
 export default function Layout({ children }: LayoutProps) {

@@ -1,11 +1,11 @@
 import { type Meta, type StoryObj, composeStories } from '@storybook/react';
 import * as layouts from '#app/[lang]/(auth)/layout.stories.tsx';
-import Loading from '#app/[lang]/(auth)/sign-up/loading.tsx';
+import Page from '#app/[lang]/(auth)/verify-email/[token]/page.tsx';
 
 const { Primary: Layout } = composeStories(layouts);
 
 const meta = {
-    component: Loading,
+    component: Page,
     parameters: {},
     decorators: [
         (Story) => (
@@ -14,10 +14,10 @@ const meta = {
             </Layout>
         ),
     ],
-} satisfies Meta<typeof Loading>;
+} satisfies Meta<typeof Page>;
 
 export default meta;
 
-type Story = StoryObj<typeof Loading>;
+type Story = StoryObj<typeof Page>;
 
 export const Primary: Story = {};

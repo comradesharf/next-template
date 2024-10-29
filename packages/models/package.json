@@ -8,14 +8,14 @@
     "type": "module",
     "exports": {
         "./utils/db": {
-            "node": "./src/utils/db.tsx",
-            "storybook": "./src/utils/db.mock.tsx",
-            "default": "./src/utils/db.tsx"
+            "node": "./src/utils/db.ts",
+            "storybook": "./src/utils/db.mock.ts",
+            "default": "./src/utils/db.ts"
         },
         "./*": {
-            "node": "./src/*.tsx",
+            "node": "./src/*.ts",
             "storybook": null,
-            "default": "./src/*.tsx"
+            "default": "./src/*.ts"
         }
     },
     "devDependencies": {
@@ -29,7 +29,7 @@
         "@comradesharf/schemas": "workspace:^",
         "@typegoose/typegoose": "^12.8.0",
         "lodash-es": "^4.17.21",
-        "mongoose": "^8.7.2",
+        "mongoose": "^8.7.3",
         "typeid-js": "^1.1.0"
     }
 }

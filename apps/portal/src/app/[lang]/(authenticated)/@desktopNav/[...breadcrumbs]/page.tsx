@@ -1,3 +1,4 @@
+import { SupportedLocales } from '@comradesharf/core/SupportedLocales';
 import { Trans } from '@lingui/macro';
 import {
     Check,
@@ -21,7 +22,6 @@ import {
     TooltipTrigger,
 } from '#app/_components/tooltip.tsx';
 import { cn } from '#app/_libs/cn.ts';
-import { SupportedLocales } from '#app/_libs/locales/SupportedLocales.ts';
 import { withLocale } from '#app/_libs/locales/withLocale.tsx';
 
 export interface PageProps {

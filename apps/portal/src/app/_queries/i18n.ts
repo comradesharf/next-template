@@ -1,18 +1,18 @@
 import 'server-only';
+import { SupportedLocales } from '@comradesharf/core/SupportedLocales';
 import { type I18n, type Messages, setupI18n } from '@lingui/core';
 import { unstable_cache } from 'next/cache';
 import { cache } from 'react';
-import linguiConfig from '#app/_libs/locales/lingui.config.ts';
 
-async function loadCatalog(
-    locale: string,
-): Promise<readonly [string, Messages]> {
+async function loadCatalog({
+    value: locale,
+}: { value: string }): Promise<readonly [string, Messages]> {
     const { messages } = await import(`../_libs/locales/messages/${locale}.ts`);
     return [locale, messages];
 }
 
 const getAllI18nMessages = unstable_cache(async () => {
-    const catalogs = await Promise.all(linguiConfig.locales.map(loadCatalog));
+    const catalogs = await Promise.all(SupportedLocales.map(loadCatalog));
     return Object.fromEntries(catalogs);
 });
 

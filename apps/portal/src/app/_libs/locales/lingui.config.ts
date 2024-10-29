@@ -1,5 +1,5 @@
+import { SupportedLocales } from '@comradesharf/core/SupportedLocales';
 import type { LinguiConfig } from '@lingui/conf';
-import { SupportedLocales } from '#app/_libs/locales/SupportedLocales.ts';
 
 export default {
     locales: SupportedLocales.map(({ value }) => value),

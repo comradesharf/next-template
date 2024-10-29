@@ -3,6 +3,7 @@
 import { OTPInput, OTPInputContext } from 'input-otp';
 import { DotIcon } from 'lucide-react';
 import * as React from 'react';
+import { useFormField } from '#app/_components/form.tsx';
 import { cn } from '#app/_libs/cn.ts';
 
 const InputOTP = React.forwardRef<
@@ -73,4 +74,20 @@ const InputOTPSeparator = React.forwardRef<
 ));
 InputOTPSeparator.displayName = 'InputOTPSeparator';
 
-export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator };
+function ControlledInputOTP(
+    props: Extract<
+        React.ComponentProps<typeof OTPInput>,
+        { children: React.ReactNode }
+    >,
+) {
+    const { controller } = useFormField();
+    return <InputOTP {...props} {...controller.field} />;
+}
+
+export {
+    InputOTP,
+    InputOTPGroup,
+    InputOTPSlot,
+    InputOTPSeparator,
+    ControlledInputOTP,
+};

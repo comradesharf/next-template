@@ -2,10 +2,10 @@
 import { withLocale } from '#app/_libs/locales/withLocale.tsx';
 
 export interface PageProps {
-    params: { lang: string };
+    params: Promise<{ lang: string }>;
 }
 
-export default withLocale<PageProps>(function Page() {
+export default withLocale(function Page(_props: PageProps) {
     return null;
 });
 {{else}}

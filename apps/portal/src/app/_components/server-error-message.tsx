@@ -1,10 +1,11 @@
 'use client';
 
+import type { ErrorPayload } from '@comradesharf/models/utils/errors';
 import { Trans } from '@lingui/react';
-import { type PropsWithChildren, createContext, useContext } from 'react';
+import { type PropsWithChildren, createContext, use } from 'react';
 import { Alert, AlertDescription } from '#app/_components/alert.tsx';
 import { cn } from '#app/_libs/cn.ts';
-import { type ErrorPayload, ServerActionError } from '#app/_libs/errors.ts';
+import { I18nServerActionError } from '#app/_libs/errors.ts';
 
 const Context = createContext<{
     error?: ErrorPayload | null;
@@ -20,7 +21,7 @@ export function ServerErrorMessage({
     className,
     children,
 }: PropsWithChildren<ServerErrorMessageProps>) {
-    const { error } = useContext(Context);
+    const { error } = use(Context);
 
     if (!error) {
         return null;
@@ -40,13 +41,13 @@ export interface ServerErrorMessageDescriptionProps {
 export function ServerErrorMessageDescription({
     className,
 }: ServerErrorMessageDescriptionProps) {
-    const { error } = useContext(Context);
+    const { error } = use(Context);
     if (!error) {
         return null;
     }
     return (
         <AlertDescription className={className}>
-            <Trans id={ServerActionError.getDefinedI18nMessage(error).id} />
+            <Trans id={I18nServerActionError.getDefinedI18nMessage(error).id} />
         </AlertDescription>
     );
 }

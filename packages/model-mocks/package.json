@@ -14,7 +14,7 @@
         "@comradesharf/typescript-config": "workspace:^"
     },
     "dependencies": {
-        "@faker-js/faker": "^9.0.3"
+        "@faker-js/faker": "^9.1.0"
     },
     "sideEffects": false
 }

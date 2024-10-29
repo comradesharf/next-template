@@ -8,12 +8,7 @@ export interface LoadingProps {
 
 export function Loading({ className }: LoadingProps) {
     return (
-        <div
-            className={cn(
-                'max-w-md text-center -translate-x-1/2 left-1/2 absolute translate-y-1/2 min-h-[50vh]',
-                className,
-            )}
-        >
+        <div className={cn('max-w-md text-center', className)}>
             <div className="text-center">
                 <Loader2 className="w-16 h-16 animate-spin text-primary mx-auto mb-4" />
                 <h1 className="text-2xl font-semibold text-foreground mb-2">
