@@ -15,11 +15,10 @@
             "apps/*/types",
             "apps/*/dist",
             "*-tests.json",
-            "apps/portal/src/app/_libs/locales/messages/*.ts",
+            "**/locales/messages/*.ts",
             "volume/**",
             "storybook-static/**",
-            "package.json",
-            "**/*/package.json"
+            "package.json"
         ]
     },
     "formatter": {
@@ -44,6 +43,11 @@
             },
             "suspicious": {
                 "noExplicitAny": {
+                    "level": "off"
+                }
+            },
+            "style": {
+                "noNonNullAssertion": {
                     "level": "off"
                 }
             }

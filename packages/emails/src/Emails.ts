@@ -1,4 +1,5 @@
 import { render } from '@react-email/render';
+import * as Sentry from '@sentry/nextjs';
 import nodemailer from 'nodemailer';
 import type { ReactElement } from 'react';
 
@@ -12,32 +13,53 @@ const transporter = nodemailer.createTransport({
     pool: true,
     maxMessages: Number.POSITIVE_INFINITY,
     maxConnections: 20,
+    from: process.env.SMTP_FROM,
 });
 
 export interface SendMailOptions
-    extends Pick<nodemailer.SendMailOptions, 'to' | 'subject' | 'attachments'> {
+    extends Omit<nodemailer.SendMailOptions, 'html'> {
     node: ReactElement;
 }
 
-export async function sendMail({
-    to,
-    subject,
-    node,
-    attachments,
-}: SendMailOptions) {
-    return transporter.sendMail({
-        to,
-        subject,
-        from: process.env.SMTP_FROM,
-        html: await render(node),
-        attachments,
-    });
-}
-
 /**
- * Send multiple emails in parallel. This function will limit the number of parallel requests to 100.
- * @param options
+ * Send an email. This function will render the email and send it in the background. It will also capture any errors that occur.
+ *
+ * @param node
+ * @param rest
  */
-export function sendMails(options: SendMailOptions[]) {
-    return Promise.all(options.map((option) => sendMail(option)));
+export function sendMail({ node, ...rest }: SendMailOptions) {
+    setImmediate(async () => {
+        let html: string;
+        let text: string;
+
+        try {
+            [html, text] = await Promise.all([
+                render(node),
+                render(node, {
+                    plainText: true,
+                }),
+            ]);
+        } catch (e) {
+            Sentry.captureException(e, (ctx) => {
+                ctx.setTag('email', 'render');
+                ctx.setExtras(rest);
+                return ctx;
+            });
+            return;
+        }
+
+        try {
+            await transporter.sendMail({
+                ...rest,
+                html,
+                text,
+            });
+        } catch (e) {
+            Sentry.captureException(e, (ctx) => {
+                ctx.setTag('email', 'send');
+                ctx.setExtras(rest);
+                return ctx;
+            });
+        }
+    });
 }

@@ -1,6 +1,6 @@
-import { randomBytes, scrypt } from 'node:crypto';
+import { scrypt } from 'node:crypto';
 import { type DocumentType, modelOptions, prop } from '@typegoose/typegoose';
-import { Base } from '#models/Base.tsx';
+import { Base } from '#models/Base.ts';
 
 declare module '@casl/ability' {
     interface RecordTypes {
@@ -51,19 +51,6 @@ class User extends Base {
     timezone!: string;
 
     role!: string;
-
-    static async saltAndHashPassword(password: string) {
-        return new Promise((resolve, reject) => {
-            const salt = randomBytes(16).toString('hex');
-            scrypt(password, salt, 64, (err, derivedKey) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(`${salt}:${derivedKey.toString('hex')}`);
-                }
-            });
-        });
-    }
 
     async verifyPassword(this: DocumentType<User>, password: string) {
         const [salt, key] = this.password_hash.split(':');

@@ -5,7 +5,7 @@ import {
     createMongoAbility,
 } from '@casl/ability';
 import type { FlattenMaps } from 'mongoose';
-import type { User } from '#models/User.tsx';
+import type { User } from '#models/User.ts';
 
 export type Actions =
     | 'create'

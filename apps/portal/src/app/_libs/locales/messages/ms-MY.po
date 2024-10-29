@@ -21,7 +21,7 @@ msgstr ""
 msgid "Avatar"
 msgstr ""
 
-#: ../../_components/not-found.tsx:43
+#: ../../_components/not-found.tsx:38
 msgid "Back to Homepage"
 msgstr ""
 
@@ -74,7 +74,7 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: ../../_actions/signUp.ts:45
+#: ../../_actions/signUp.ts:48
 msgid "Email already exists"
 msgstr "E-mel sudah wujud"
 
@@ -105,7 +105,7 @@ msgstr ""
 msgid "Fulfilled"
 msgstr ""
 
-#: ../../_components/not-found.tsx:50
+#: ../../_components/not-found.tsx:45
 msgid "If you think this is a mistake, please <0>contact our support team</0>."
 msgstr ""
 
@@ -113,9 +113,10 @@ msgstr ""
 msgid "Introducing Our Dynamic Orders Dashboard for Seamless Management and Insightful Analysis."
 msgstr ""
 
-#: ../../_components/loading.tsx:20
+#: ../../_components/action-button.tsx:18
+#: ../../_components/loading.tsx:15
 msgid "Loading..."
-msgstr ""
+msgstr "Memuatkan..."
 
 #: ../../[lang]/(authenticated)/layout.tsx:76
 msgid "Logout"
@@ -133,11 +134,15 @@ msgstr ""
 msgid "Next Order"
 msgstr ""
 
-#: ../../_components/not-found.tsx:25
+#: ../../[lang]/(auth)/verify-email/[token]/page.tsx:59
+msgid "One-Time Password"
+msgstr ""
+
+#: ../../_components/not-found.tsx:20
 msgid "Oops! Page not found"
 msgstr ""
 
-#: ../../_components/error.tsx:30
+#: ../../_components/error.tsx:25
 msgid "Oops! Something went wrong"
 msgstr ""
 
@@ -165,7 +170,15 @@ msgstr ""
 msgid "Payment Information"
 msgstr ""
 
-#: ../../_components/loading.tsx:23
+#: ../../[lang]/(auth)/verify-email/[token]/page.tsx:48
+msgid "Please enter the one-time password sent to your email to verify your account."
+msgstr ""
+
+#: ../../[lang]/(auth)/verify-email/[token]/page.tsx:73
+msgid "Please enter the one-time password sent to your phone."
+msgstr ""
+
+#: ../../_components/loading.tsx:18
 msgid "Please wait while we prepare your content."
 msgstr ""
 
@@ -186,7 +199,7 @@ msgstr ""
 msgid "Refunded"
 msgstr ""
 
-#: ../../_components/error.tsx:42
+#: ../../_components/error.tsx:37
 msgid "Return to Home"
 msgstr ""
 
@@ -237,8 +250,12 @@ msgstr ""
 msgid "Sign up with Email"
 msgstr ""
 
-#: ../errors.ts:52
+#: ../errors.ts:28
 msgid "Something went wrong while executing the operation."
+msgstr ""
+
+#: ../../[lang]/(auth)/verify-email/[token]/page.tsx:85
+msgid "Submit"
 msgstr ""
 
 #: ../../[lang]/(authenticated)/orders/recent-orders/page.tsx:588
@@ -253,15 +270,19 @@ msgstr ""
 msgid "Tax"
 msgstr ""
 
-#: ../errors.ts:50
+#: ../errors.ts:24
 msgid "The email address you entered is already in use. Please use a different email address."
 msgstr ""
 
-#: ../../_components/not-found.tsx:28
+#: ../errors.ts:26
+msgid "The OTP you entered is incorrect. Please try again."
+msgstr ""
+
+#: ../../_components/not-found.tsx:23
 msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
 msgstr ""
 
-#: ../errors.ts:48
+#: ../errors.ts:22
 msgid "The username or password you entered is incorrect. Please try again."
 msgstr "Nama pengguna atau kata laluan yang anda masukkan adalah salah. Sila cuba lagi."
 
@@ -285,7 +306,7 @@ msgstr ""
 msgid "Trash"
 msgstr ""
 
-#: ../errors.ts:46
+#: ../errors.ts:20
 msgid "Unable to find matching {0}. Please check the URL or contact support if the problem persists."
 msgstr ""
 
@@ -293,7 +314,11 @@ msgstr ""
 msgid "Updated <0/>"
 msgstr "Di kemas kini pada <0/>"
 
-#: ../../_components/error.tsx:33
+#: ../../[lang]/(auth)/verify-email/[token]/page.tsx:45
+msgid "Verify Your Email"
+msgstr ""
+
+#: ../../_components/error.tsx:28
 msgid "We're sorry, but it seems like we've encountered an unexpected error. Our team has been notified and is working on fixing it."
 msgstr ""
 

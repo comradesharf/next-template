@@ -1,4 +1,5 @@
 import '#app/globals.css';
+import { SupportedLocales } from '@comradesharf/core/SupportedLocales';
 import type { Preview } from '@storybook/react';
 import { http, HttpResponse } from 'msw';
 import {
@@ -7,7 +8,6 @@ import {
     mswLoader,
     withRoot,
 } from '#app/_libs/decorators.tsx';
-import { SupportedLocales } from '#app/_libs/locales/SupportedLocales.ts';
 
 initialize();
 

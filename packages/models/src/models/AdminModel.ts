@@ -1,6 +1,6 @@
 import { getDiscriminatorModelForClass } from '@typegoose/typegoose';
-import { Admin } from '#models/Admin.tsx';
-import { UserModel } from '#models/UserModel.tsx';
+import { Admin } from '#models/Admin.ts';
+import { UserModel } from '#models/UserModel.ts';
 
 export const AdminModel = getDiscriminatorModelForClass(
     UserModel,

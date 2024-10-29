@@ -25,6 +25,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from '#app/_components/popover.tsx';
+import { SubmitButton } from '#app/_components/submit-button.tsx';
 import { Toaster } from '#app/_components/toaster.tsx';
 import { toast } from '#app/_hooks/use-toast.ts';
 import { cn } from '#app/_libs/cn.ts';
@@ -125,7 +126,7 @@ export const AsForm: Story = {
                             <FormMessage />
                         </FormItem>
                     </FormField>
-                    <Button type="submit">Submit</Button>
+                    <SubmitButton type="submit">Submit</SubmitButton>
                 </form>
             </Form>
         );
@@ -140,20 +141,25 @@ const FormSchema = z.object({
 
 export const AsFormRange: Story = {
     render: function Component() {
-        const form = useForm<z.infer<typeof FormSchema>>({
-            resolver: zodResolver(FormSchema),
+        const form = useForm<z.infer<typeof FormRangeSchema>>({
+            resolver: zodResolver(FormRangeSchema),
         });
 
-        function onSubmit(data: z.infer<typeof FormSchema>) {
-            toast({
-                title: 'You submitted the following values:',
-                description: (
-                    <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                        <code className="text-white">
-                            {JSON.stringify(data, null, 2)}
-                        </code>
-                    </pre>
-                ),
+        async function onSubmit(data: z.infer<typeof FormRangeSchema>) {
+            await new Promise((resolve) => {
+                setTimeout(() => {
+                    toast({
+                        title: 'You submitted the following values:',
+                        description: (
+                            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+                                <code className="text-white">
+                                    {JSON.stringify(data, null, 2)}
+                                </code>
+                            </pre>
+                        ),
+                    });
+                    resolve(null);
+                }, 1000);
             });
         }
 
@@ -197,9 +203,20 @@ export const AsFormRange: Story = {
                             <FormMessage />
                         </FormItem>
                     </FormField>
-                    <Button type="submit">Submit</Button>
+                    <SubmitButton type="submit">Submit</SubmitButton>
                 </form>
             </Form>
         );
     },
 };
+
+const FormRangeSchema = z.object({
+    dob: z.object({
+        from: z.date({
+            required_error: 'A date of birth is required.',
+        }),
+        to: z.date({
+            required_error: 'A date of birth is required.',
+        }),
+    }),
+});

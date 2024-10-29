@@ -49,12 +49,14 @@ const _auth = NextAuth({
             credentials: {
                 email: {},
                 password: {},
+                type: {},
             },
-            async authorize({ email, password }) {
+            async authorize({ email, password, type }) {
                 try {
                     const user = await MemberModel.authorize({
                         email: email as string,
                         password: password as string,
+                        type: type as 'system' | 'user',
                     });
 
                     if (!user) {

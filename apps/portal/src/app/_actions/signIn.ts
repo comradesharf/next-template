@@ -5,12 +5,13 @@ import { SignInError } from '@auth/core/errors';
 import { SignInSchema } from '@comradesharf/schemas/SignInSchema';
 import { redirect } from 'next/navigation';
 import { signIn as $signIn } from '#app/_libs/auths/auths.ts';
-import { ServerActionError } from '#app/_libs/errors.ts';
+import { I18nServerActionError } from '#app/_libs/errors.ts';
 import { actionClient } from '#app/_libs/safe-actions.ts';
 
 export const signIn = actionClient
     .metadata({
         actionName: 'signIn',
+        public: true,
     })
     .schema(SignInSchema)
     .action(async ({ parsedInput: { email, password }, ctx: { user } }) => {
@@ -21,11 +22,12 @@ export const signIn = actionClient
             await $signIn('credentials', {
                 email,
                 password,
+                type: 'user',
                 redirectTo: '/overview',
             });
         } catch (e) {
             if (e instanceof SignInError) {
-                throw new ServerActionError(
+                throw new I18nServerActionError(
                     {
                         code: 'INVALID_CREDENTIALS',
                     },

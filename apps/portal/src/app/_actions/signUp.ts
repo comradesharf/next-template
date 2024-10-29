@@ -1,42 +1,45 @@
 'use server';
 
 import 'server-only';
-import { MemberModel } from '@comradesharf/models/models/MemberModel';
+import type { SignUpSession } from '@comradesharf/models/models/SignUpSession';
+import { SignUpSessionModel } from '@comradesharf/models/models/SignUpSessionModel';
 import { SignUpSchema } from '@comradesharf/schemas/SignUpSchema';
 import { t } from '@lingui/macro';
 import { MongoServerError } from 'mongodb';
+import { type FlattenMaps, connection } from 'mongoose';
 import { returnValidationErrors } from 'next-safe-action';
 import { redirect } from 'next/navigation';
-import { signIn as $signIn } from '#app/_libs/auths/auths.ts';
 import { actionClient } from '#app/_libs/safe-actions.ts';
 
 export const signUp = actionClient
     .metadata({
         actionName: 'signUp',
+        public: true,
     })
     .schema(SignUpSchema)
     .action(
         async ({
             parsedInput: { confirm_password, display_name, email, password },
-            ctx: { i18n, user },
+            ctx: { lang, i18n },
         }) => {
-            if (user) {
-                redirect('/overview');
-            }
-
             try {
-                await MemberModel.signUp({
-                    confirm_password,
-                    display_name,
-                    email,
-                    password,
+                let session: FlattenMaps<SignUpSession>;
+                await connection.transaction(async ($session) => {
+                    session = await SignUpSessionModel.signUp(
+                        {
+                            confirm_password,
+                            display_name,
+                            email,
+                            password,
+                            lang,
+                            role: 'MEMBER',
+                        },
+                        {
+                            session: $session,
+                        },
+                    );
                 });
-
-                await $signIn('credentials', {
-                    email,
-                    password,
-                    redirectTo: '/overview',
-                });
+                redirect(`/verify-email/${session!._id}`);
             } catch (e) {
                 if (e instanceof MongoServerError) {
                     if (e.code === 11000) {

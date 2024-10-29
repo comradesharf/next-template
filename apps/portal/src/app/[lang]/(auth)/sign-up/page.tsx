@@ -3,7 +3,6 @@ import { Trans, t } from '@lingui/macro';
 import { Mail } from 'lucide-react';
 import Link from 'next/link';
 import { Form } from '#app/[lang]/(auth)/sign-up/_components/form.tsx';
-import { Button } from '#app/_components/button.tsx';
 import {
     Card,
     CardContent,
@@ -25,6 +24,7 @@ import {
     ServerErrorMessage,
     ServerErrorMessageDescription,
 } from '#app/_components/server-error-message.tsx';
+import { SubmitButton } from '#app/_components/submit-button.tsx';
 import { assertUnauthenticated } from '#app/_libs/asserts.ts';
 import { withLocale } from '#app/_libs/locales/withLocale.tsx';
 import { getCurrentSession } from '#app/_queries/auths.ts';
@@ -114,10 +114,10 @@ export default withLocale(async function Page(_props: PageProps) {
                     <ServerErrorMessage>
                         <ServerErrorMessageDescription />
                     </ServerErrorMessage>
-                    <Button className="w-full mt-4" type="submit">
+                    <SubmitButton className="w-full mt-4">
                         <Mail className="mr-2 h-4 w-4" />
                         <Trans>Sign up with Email</Trans>
-                    </Button>
+                    </SubmitButton>
                 </Form>
             </CardContent>
             <CardFooter className="flex flex-col items-center">

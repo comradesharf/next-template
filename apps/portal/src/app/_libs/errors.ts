@@ -1,39 +1,13 @@
+import type { ErrorPayload } from '@comradesharf/models/utils/errors';
 import { msg } from '@lingui/macro';
 
-type UnknownError = {
-    code: 'UNKNOWN';
-};
-
-type NotFound = {
-    code: 'NOT_FOUND';
-    data: {
-        type: string;
-    };
-};
-
-type InvalidCredentials = {
-    code: 'INVALID_CREDENTIALS';
-};
-
-type DuplicateEmail = {
-    code: 'DUPLICATE_EMAIL';
-};
-
-export type ErrorPayload =
-    | UnknownError
-    | NotFound
-    | InvalidCredentials
-    | DuplicateEmail;
-
-export class ServerActionError extends Error {
-    constructor(
-        public payload: ErrorPayload,
-        public cause?: unknown,
-    ) {
+export class I18nServerActionError extends Error {
+    public payload: ErrorPayload;
+    constructor(payload: ErrorPayload, cause?: unknown) {
         super();
-        this.cause = cause;
         this.payload = payload;
-        Object.setPrototypeOf(this, ServerActionError.prototype);
+        this.cause = cause;
+        Object.setPrototypeOf(this, I18nServerActionError.prototype);
     }
 
     toJSON() {
@@ -48,6 +22,8 @@ export class ServerActionError extends Error {
                 return msg`The username or password you entered is incorrect. Please try again.`;
             case 'DUPLICATE_EMAIL':
                 return msg`The email address you entered is already in use. Please use a different email address.`;
+            case 'INVALID_OTP':
+                return msg`The OTP you entered is incorrect. Please try again.`;
             default:
                 return msg`Something went wrong while executing the operation.`;
         }
