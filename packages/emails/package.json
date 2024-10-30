@@ -20,7 +20,7 @@
         "@comradesharf/typescript-config": "workspace:^",
         "@lingui/cli": "^4.13.0",
         "@lingui/macro": "patch:@lingui/macro@npm%3A4.13.0#~/.yarn/patches/@lingui-macro-npm-4.13.0-bb0a00c934.patch",
-        "@lingui/swc-plugin": "4.0.10",
+        "@lingui/swc-plugin": "4.1.0",
         "@swc/cli": "^0.4.1-nightly.20240914",
         "react-email": "^3.0.1"
     },
