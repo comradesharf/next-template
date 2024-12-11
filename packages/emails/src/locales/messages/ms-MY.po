@@ -13,42 +13,33 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/emails/EmailVerification.tsx:68
+#: src/EmailVerification.tsx:67
 msgid "(Valid for 30 minutes)"
 msgstr ""
 
-#: src/emails/EmailVerification.tsx:54
+#: src/EmailVerification.tsx:53
 msgid "Hello {username},"
 msgstr "Helo {username},"
 
-#: src/emails/EmailVerification.tsx:74
+#: src/EmailVerification.tsx:71
 msgid "If you didn't create an account with us, please ignore this email or contact our support team if you have any questions."
 msgstr "Jika anda tidak membuat akaun dengan kami, sila abaikan e-mel ini atau hubungi pasukan sokongan kami jika anda mempunyai sebarang soalan."
 
-#: src/emails/EmailVerification.tsx:79
-#~ msgid "If you're having trouble clicking the button, copy and paste the URL below into your web browser:"
-#~ msgstr "Jika anda menghadapi masalah mengklik butang, salin dan tampal URL di bawah ke dalam pelayar web anda:"
-
-#: src/emails/EmailVerification.tsx:82
+#. placeholder {0}: Platforms.SupportEmail
+#: src/EmailVerification.tsx:79
 msgid "Need help? Contact us at <0>{0}</0>"
 msgstr "Perlukan bantuan? Hubungi kami di <0>{0}</0>"
 
-#: src/emails/EmailVerification.tsx:56
-#~ msgid "Thank you for signing up with {0}. To complete your registration, please verify your email address by clicking the button below:"
-#~ msgstr "Terima kasih kerana mendaftar dengan {0}. Untuk melengkapkan pendaftaran anda, sila sahkan alamat e-mel anda dengan mengklik butang di bawah:"
-
-#: src/emails/EmailVerification.tsx:57
+#. placeholder {0}: Platforms.Name
+#: src/EmailVerification.tsx:56
 msgid "Thank you for signing up with {0}. To complete your registration, please verify your email address by entering the OTP below:"
 msgstr ""
 
-#: src/emails/EmailVerification.tsx:67
-#~ msgid "Verify Email Address"
-#~ msgstr "Sahkan Alamat E-mel"
-
-#: src/emails/EmailVerification.tsx:46
+#. placeholder {0}: Platforms.Name
+#: src/EmailVerification.tsx:45
 msgid "Verify email for {0}"
 msgstr ""
 
-#: src/emails/EmailVerification.tsx:51
+#: src/EmailVerification.tsx:50
 msgid "Verify Your Email Address"
 msgstr "Sahkan Alamat E-mel Anda"

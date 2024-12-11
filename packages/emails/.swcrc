@@ -14,7 +14,17 @@
         },
         "target": "esnext",
         "experimental": {
-            "plugins": [["@lingui/swc-plugin", {}]]
+            "plugins": [
+                [
+                    "@lingui/swc-plugin",
+                    {
+                        "runtimeModules": {
+                            "trans": ["#locales/i18n.tsx", "Trans"],
+                            "useLingui": ["#locales/i18n.tsx", "useLingui"]
+                        }
+                    }
+                ]
+            ]
         }
     },
     "isModule": true

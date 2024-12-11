@@ -1,7 +1,8 @@
-import { render } from '@react-email/render';
-import * as Sentry from '@sentry/nextjs';
-import nodemailer from 'nodemailer';
-import type { ReactElement } from 'react';
+import { render } from "@react-email/render";
+import * as Sentry from "@sentry/nextjs";
+import nodemailer from "nodemailer";
+import type { ReactElement } from "react";
+import { withI18n } from "#locales/i18n.tsx";
 
 const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -17,8 +18,9 @@ const transporter = nodemailer.createTransport({
 });
 
 export interface SendMailOptions
-    extends Omit<nodemailer.SendMailOptions, 'html'> {
-    node: ReactElement;
+    extends Omit<nodemailer.SendMailOptions, "html"> {
+    nodeFn: () => ReactElement;
+    locale: string;
 }
 
 /**
@@ -27,7 +29,9 @@ export interface SendMailOptions
  * @param node
  * @param rest
  */
-export function sendMail({ node, ...rest }: SendMailOptions) {
+export function sendMail({ nodeFn, locale, ...rest }: SendMailOptions) {
+    const node = withI18n(locale, () => nodeFn());
+
     setImmediate(async () => {
         let html: string;
         let text: string;
@@ -41,7 +45,7 @@ export function sendMail({ node, ...rest }: SendMailOptions) {
             ]);
         } catch (e) {
             Sentry.captureException(e, (ctx) => {
-                ctx.setTag('email', 'render');
+                ctx.setTag("email", "render");
                 ctx.setExtras(rest);
                 return ctx;
             });
@@ -56,7 +60,7 @@ export function sendMail({ node, ...rest }: SendMailOptions) {
             });
         } catch (e) {
             Sentry.captureException(e, (ctx) => {
-                ctx.setTag('email', 'send');
+                ctx.setTag("email", "send");
                 ctx.setExtras(rest);
                 return ctx;
             });

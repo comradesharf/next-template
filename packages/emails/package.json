@@ -1,5 +1,5 @@
 {
-    "name": "@comradesharf/emails",
+    "name": "app-emails",
     "version": "0.1.0",
     "private": true,
     "imports": {
@@ -7,39 +7,44 @@
     },
     "type": "module",
     "exports": {
-        "./emails/*": {
-            "types": "./src/emails/*.tsx",
-            "default": "./dist/emails/*.js"
-        },
         "./Emails": {
             "types": "./src/Emails.ts",
             "default": "./dist/Emails.js"
+        },
+        "./EmailVerification": {
+            "types": "./src/EmailVerification.ts",
+            "default": "./dist/EmailVerification.js"
         }
     },
     "devDependencies": {
-        "@comradesharf/typescript-config": "workspace:^",
-        "@lingui/cli": "^4.13.0",
-        "@lingui/macro": "patch:@lingui/macro@npm%3A4.13.0#~/.yarn/patches/@lingui-macro-npm-4.13.0-bb0a00c934.patch",
-        "@lingui/swc-plugin": "4.1.0",
-        "@swc/cli": "^0.4.1-nightly.20240914",
-        "react-email": "^3.0.1"
+        "@lingui/cli": "^5.1.0",
+        "@lingui/macro": "^5.1.0",
+        "@lingui/swc-plugin": "5.0.1",
+        "@swc/cli": "^0.5.2",
+        "@types/nodemailer": "^6.4.17",
+        "@types/react": "^19.0.1",
+        "@types/react-dom": "^19",
+        "app-typescript-config": "workspace:^",
+        "react-email": "^3.0.4"
     },
     "dependencies": {
-        "@comradesharf/core": "workspace:^",
-        "@lingui/react": "patch:@lingui/react@npm%3A4.13.0#~/.yarn/patches/@lingui-react-npm-4.13.0-47ed3d7318.patch",
-        "@react-email/components": "^0.0.25",
-        "@react-email/render": "^1.0.1",
-        "@sentry/nextjs": "^8.35.0",
-        "@types/nodemailer": "^6.4.16",
+        "@lingui/react": "^5.1.0",
+        "@react-email/components": "^0.0.31",
+        "@react-email/render": "^1.0.3",
+        "@sentry/nextjs": "^8.43.0",
+        "app-core": "workspace:^",
         "date-fns": "^4.1.0",
-        "nodemailer": "^6.9.16"
+        "nodemailer": "^6.9.16",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0"
     },
     "scripts": {
-        "dev": "email dev --dir dist/emails -p 3001",
-        "export": "email export --dir src/emails",
+        "dev": "email dev --dir dist -p 3001",
         "extract-locale": "lingui extract",
-        "check-locale": "yarn extract-locale && git diff-index --quiet HEAD -- src/locales/messages || { echo \"Error: You have not fully extracted all messages. Please run extract and translate them.\"; exit 1; }",
+        "extract-locale:clean": "yarn extract-locale --clean",
+        "check-locale": "yarn extract-locale && git diff-index --quiet HEAD -- src/locales/messages",
         "compile-locale": "lingui compile --typescript",
+        "check-types": "tsc --noEmit",
         "build": "yarn swc ./src/* -d dist --strip-leading-paths",
         "watch": "yarn build -w"
     },

@@ -1,14 +1,14 @@
-import { SupportedLocales } from '@comradesharf/core/SupportedLocales';
-import type { LinguiConfig } from '@lingui/conf';
+import { defineConfig } from "@lingui/cli";
+import { SupportedLocales } from "app-core/SupportedLocales";
 
-export default {
+export default defineConfig({
     locales: SupportedLocales.map(({ value }) => value),
-    sourceLocale: 'en',
+    sourceLocale: "en",
     catalogs: [
         {
-            path: '<rootDir>/src/locales/messages/{locale}',
-            include: ['src'],
+            path: "<rootDir>/src/locales/messages/{locale}",
+            include: ["src"],
         },
     ],
-    format: 'po',
-} as LinguiConfig;
+    format: "po",
+});

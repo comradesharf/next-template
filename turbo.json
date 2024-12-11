@@ -6,6 +6,11 @@
             "persistent": true,
             "dependsOn": ["^build", "compile-locale", "copy-widgets"]
         },
+        "app-emails#dev": {
+            "cache": false,
+            "persistent": true,
+            "dependsOn": ["^build", "compile-locale", "build"]
+        },
         "storybook": {
             "cache": false,
             "persistent": true,

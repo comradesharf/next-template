@@ -6,24 +6,26 @@
         "#*": "./src/*"
     },
     "type": "module",
-    "./SupportedLocales": {
-        "types": "./src/SupportedLocales.d.ts",
-        "default": "./src/SupportedLocales.js"
-    },
-    "./Log": {
-        "types": "./src/Log.ts",
-        "test": "./src/Log.ts",
-        "default": "./dist/Log.js"
-    },
-    "./Platforms": {
-        "types": "./src/Platforms.ts",
-        "test": "./src/Platforms.ts",
-        "default": "./dist/Platforms.js"
-    },
-    "./Urls": {
-        "types": "./src/Urls.ts",
-        "test": "./src/Urls.ts",
-        "default": "./dist/Urls.js"
+    "exports": {
+        "./SupportedLocales": {
+            "types": "./src/SupportedLocales.d.ts",
+            "default": "./src/SupportedLocales.js"
+        },
+        "./Log": {
+            "types": "./src/Log.ts",
+            "test": "./src/Log.ts",
+            "default": "./dist/Log.js"
+        },
+        "./Platforms": {
+            "types": "./src/Platforms.ts",
+            "test": "./src/Platforms.ts",
+            "default": "./dist/Platforms.js"
+        },
+        "./Urls": {
+            "types": "./src/Urls.ts",
+            "test": "./src/Urls.ts",
+            "default": "./dist/Urls.js"
+        }
     },
     "devDependencies": {
         "@swc/cli": "^0.5.2",
