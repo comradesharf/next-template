@@ -1,5 +1,5 @@
 {
-    "name": "@comradesharf/typescript-config",
+    "name": "app-typescript-config",
     "version": "0.1.0",
     "private": true,
     "type": "module"

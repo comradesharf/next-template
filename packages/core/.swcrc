@@ -1,0 +1,15 @@
+{
+    "$schema": "https://json.schemastore.org/swcrc",
+    "exclude": "\\.d\\.ts$",
+    "jsc": {
+        "externalHelpers": false,
+        "parser": {
+            "syntax": "typescript"
+        },
+        "target": "esnext"
+    },
+    "isModule": true,
+    "module": {
+        "type": "es6"
+    }
+}

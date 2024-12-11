@@ -1,18 +1,42 @@
 {
-    "name": "@comradesharf/core",
+    "name": "app-core",
     "version": "0.1.0",
     "private": true,
     "imports": {
         "#*": "./src/*"
     },
     "type": "module",
-    "exports": {
-        "./*": "./src/*.ts"
+    "./SupportedLocales": {
+        "types": "./src/SupportedLocales.d.ts",
+        "default": "./src/SupportedLocales.js"
+    },
+    "./Log": {
+        "types": "./src/Log.ts",
+        "test": "./src/Log.ts",
+        "default": "./dist/Log.js"
+    },
+    "./Platforms": {
+        "types": "./src/Platforms.ts",
+        "test": "./src/Platforms.ts",
+        "default": "./dist/Platforms.js"
+    },
+    "./Urls": {
+        "types": "./src/Urls.ts",
+        "test": "./src/Urls.ts",
+        "default": "./dist/Urls.js"
     },
     "devDependencies": {
-        "@comradesharf/typescript-config": "workspace:^"
+        "@swc/cli": "^0.5.2",
+        "app-typescript-config": "workspace:^",
+        "typescript": "^5.7.2"
     },
     "dependencies": {
         "pino": "^9.5.0"
-    }
+    },
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "build": "yarn swc ./src/* -d dist --strip-leading-paths",
+        "watch": "yarn build -w"
+    },
+    "sideEffects": false
 }
