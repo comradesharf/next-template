@@ -1,0 +1,27 @@
+{
+    "name": "app-model-tests",
+    "version": "0.1.0",
+    "private": true,
+    "imports": {
+        "#*": "./src/*"
+    },
+    "type": "module",
+    "devDependencies": {
+        "app-typescript-config": "workspace:^",
+        "typescript": "^5.7.2"
+    },
+    "dependencies": {
+        "@faker-js/faker": "^9.3.0",
+        "@testcontainers/localstack": "^10.16.0",
+        "app-model-mocks": "workspace:^",
+        "app-models": "workspace:^",
+        "mongodb-memory-server": "^10.1.2",
+        "vitest": "^2.1.8"
+    },
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "test": "DOTENV_CONFIG_PATH=.env.test vitest run --reporter=default --reporter=junit --outputFile=junit.xml",
+        "test:watch": "DOTENV_CONFIG_PATH=.env.test vitest watch"
+    },
+    "sideEffects": false
+}

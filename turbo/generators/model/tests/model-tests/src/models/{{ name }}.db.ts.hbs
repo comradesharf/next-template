@@ -1,0 +1,13 @@
+import { Default{{ name }} } from 'app-model-mocks/{{ name }}';
+import { {{ name }}Model } from 'app-models/models/{{ name }}Model';
+import { connection } from 'mongoose';
+import { expect, test } from 'vitest';
+
+test('should be able to create', async () => {
+    await connection.transaction(async (session) => {
+        const [{{ prefix }}] = await {{ name }}Model.create([Default{{ name }}], { session });
+        await expect(
+            {{ name }}Model.findById({{ prefix }}._id).session(session).lean().orFail(),
+        ).resolves.not.toThrow();
+    });
+});

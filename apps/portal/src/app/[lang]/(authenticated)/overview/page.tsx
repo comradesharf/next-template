@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
     Card,
@@ -7,7 +7,7 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from '#app/_components/card.tsx';
+} from "#app/_components/card.tsx";
 import {
     Area,
     AreaChart,
@@ -28,14 +28,14 @@ import {
     ReferenceLine,
     XAxis,
     YAxis,
-} from '#app/_components/chart.tsx';
-import { useLocaleDateTimeFormatter } from '#app/_components/date-time.tsx';
-import { makeBodyAndUnit } from '#app/_components/number.shared.tsx';
+} from "#app/_components/chart.tsx";
+import { useLocaleDateTimeFormatter } from "#app/_components/date-time.tsx";
+import { makeBodyAndUnit } from "#app/_components/number.shared.tsx";
 import {
     NumberFormatter,
     useLocaleNumberFormatter,
-} from '#app/_components/number.tsx';
-import { Separator } from '#app/_components/separator.tsx';
+} from "#app/_components/number.tsx";
+import { Separator } from "#app/_components/separator.tsx";
 
 export interface PageProps {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -43,9 +43,9 @@ export interface PageProps {
 }
 
 export default function Page(_props: PageProps) {
-    const weekdayFormatter = useLocaleDateTimeFormatter({ variant: 'weekday' });
+    const weekdayFormatter = useLocaleDateTimeFormatter({ variant: "weekday" });
 
-    const dateFormatter = useLocaleDateTimeFormatter({ variant: 'date' });
+    const dateFormatter = useLocaleDateTimeFormatter({ variant: "date" });
 
     const numberFormatter = useLocaleNumberFormatter();
 
@@ -57,7 +57,7 @@ export default function Page(_props: PageProps) {
                         <CardDescription>Today</CardDescription>
                         <CardTitle className="text-4xl tabular-nums">
                             <NumberFormatter number="12584" />
-                            <span className="font-sans text-sm font-normal tracking-normal text-muted-foreground">
+                            <span className="font-normal font-sans text-muted-foreground text-sm tracking-normal">
                                 steps
                             </span>
                         </CardTitle>
@@ -66,8 +66,8 @@ export default function Page(_props: PageProps) {
                         <ChartContainer
                             config={{
                                 steps: {
-                                    label: 'Steps',
-                                    color: 'hsl(var(--chart-1))',
+                                    label: "Steps",
+                                    color: "hsl(var(--chart-1))",
                                 },
                             }}
                         >
@@ -79,31 +79,31 @@ export default function Page(_props: PageProps) {
                                 }}
                                 data={[
                                     {
-                                        date: '2024-01-01',
+                                        date: "2024-01-01",
                                         steps: 2000,
                                     },
                                     {
-                                        date: '2024-01-02',
+                                        date: "2024-01-02",
                                         steps: 2100,
                                     },
                                     {
-                                        date: '2024-01-03',
+                                        date: "2024-01-03",
                                         steps: 2200,
                                     },
                                     {
-                                        date: '2024-01-04',
+                                        date: "2024-01-04",
                                         steps: 1300,
                                     },
                                     {
-                                        date: '2024-01-05',
+                                        date: "2024-01-05",
                                         steps: 1400,
                                     },
                                     {
-                                        date: '2024-01-06',
+                                        date: "2024-01-06",
                                         steps: 2500,
                                     },
                                     {
-                                        date: '2024-01-07',
+                                        date: "2024-01-07",
                                         steps: 1600,
                                     },
                                 ]}
@@ -152,7 +152,7 @@ export default function Page(_props: PageProps) {
                                     />
                                     <Label
                                         position="insideTopLeft"
-                                        value={numberFormatter.format('12343')}
+                                        value={numberFormatter.format("12343")}
                                         className="text-lg"
                                         fill="hsl(var(--foreground))"
                                         offset={10}
@@ -164,19 +164,19 @@ export default function Page(_props: PageProps) {
                     </CardContent>
                     <CardFooter className="flex-col items-start gap-1">
                         <CardDescription>
-                            Over the past 7 days, you have walked{' '}
+                            Over the past 7 days, you have walked{" "}
                             <NumberFormatter
                                 className="font-medium text-foreground"
                                 number="53305"
-                            />{' '}
+                            />{" "}
                             steps.
                         </CardDescription>
                         <CardDescription>
-                            You need{' '}
+                            You need{" "}
                             <NumberFormatter
                                 className="font-medium text-foreground"
                                 number="12584"
-                            />{' '}
+                            />{" "}
                             more steps to reach your goal.
                         </CardDescription>
                     </CardFooter>
@@ -190,7 +190,7 @@ export default function Page(_props: PageProps) {
                             <CardDescription>Resting HR</CardDescription>
                             <CardTitle className="flex items-baseline gap-1 text-4xl tabular-nums">
                                 <NumberFormatter number="62" />
-                                <span className="text-sm font-normal tracking-normal text-muted-foreground">
+                                <span className="font-normal text-muted-foreground text-sm tracking-normal">
                                     bpm
                                 </span>
                             </CardTitle>
@@ -207,7 +207,7 @@ export default function Page(_props: PageProps) {
                                         return (
                                             <>
                                                 {body}
-                                                <span className="text-sm font-normal tracking-normal text-muted-foreground">
+                                                <span className="font-normal text-muted-foreground text-sm tracking-normal">
                                                     {unit}
                                                 </span>
                                             </>
@@ -221,8 +221,8 @@ export default function Page(_props: PageProps) {
                         <ChartContainer
                             config={{
                                 resting: {
-                                    label: 'Resting',
-                                    color: 'hsl(var(--chart-1))',
+                                    label: "Resting",
+                                    color: "hsl(var(--chart-1))",
                                 },
                             }}
                             className="w-full"
@@ -236,31 +236,31 @@ export default function Page(_props: PageProps) {
                                 }}
                                 data={[
                                     {
-                                        date: '2024-01-01',
+                                        date: "2024-01-01",
                                         resting: 62,
                                     },
                                     {
-                                        date: '2024-01-02',
+                                        date: "2024-01-02",
                                         resting: 72,
                                     },
                                     {
-                                        date: '2024-01-03',
+                                        date: "2024-01-03",
                                         resting: 35,
                                     },
                                     {
-                                        date: '2024-01-04',
+                                        date: "2024-01-04",
                                         resting: 62,
                                     },
                                     {
-                                        date: '2024-01-05',
+                                        date: "2024-01-05",
                                         resting: 52,
                                     },
                                     {
-                                        date: '2024-01-06',
+                                        date: "2024-01-06",
                                         resting: 62,
                                     },
                                     {
-                                        date: '2024-01-07',
+                                        date: "2024-01-07",
                                         resting: 70,
                                     },
                                 ]}
@@ -273,7 +273,7 @@ export default function Page(_props: PageProps) {
                                 />
                                 <YAxis
                                     hide
-                                    domain={['dataMin - 10', 'dataMax + 10']}
+                                    domain={["dataMin - 10", "dataMax + 10"]}
                                 />
                                 <XAxis
                                     dataKey="date"
@@ -289,8 +289,8 @@ export default function Page(_props: PageProps) {
                                     strokeWidth={2}
                                     dot={false}
                                     activeDot={{
-                                        fill: 'var(--color-resting)',
-                                        stroke: 'var(--color-resting)',
+                                        fill: "var(--color-resting)",
+                                        stroke: "var(--color-resting)",
                                         r: 4,
                                     }}
                                 />
@@ -316,17 +316,17 @@ export default function Page(_props: PageProps) {
                     </CardHeader>
                     <CardContent className="grid gap-4">
                         <div className="grid auto-rows-min gap-2">
-                            <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
-                                <NumberFormatter number="12453" />{' '}
-                                <span className="text-sm font-normal text-muted-foreground">
+                            <div className="flex items-baseline gap-1 font-bold text-2xl tabular-nums leading-none">
+                                <NumberFormatter number="12453" />{" "}
+                                <span className="font-normal text-muted-foreground text-sm">
                                     steps/day
                                 </span>
                             </div>
                             <ChartContainer
                                 config={{
                                     steps: {
-                                        label: 'Steps',
-                                        color: 'hsl(var(--chart-1))',
+                                        label: "Steps",
+                                        color: "hsl(var(--chart-1))",
                                     },
                                 }}
                                 className="aspect-auto h-[32px] w-full"
@@ -342,7 +342,7 @@ export default function Page(_props: PageProps) {
                                     }}
                                     data={[
                                         {
-                                            date: '2024',
+                                            date: "2024",
                                             steps: 12435,
                                         },
                                     ]}
@@ -372,17 +372,17 @@ export default function Page(_props: PageProps) {
                             </ChartContainer>
                         </div>
                         <div className="grid auto-rows-min gap-2">
-                            <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
-                                <NumberFormatter number="10103" />{' '}
-                                <span className="text-sm font-normal text-muted-foreground">
+                            <div className="flex items-baseline gap-1 font-bold text-2xl tabular-nums leading-none">
+                                <NumberFormatter number="10103" />{" "}
+                                <span className="font-normal text-muted-foreground text-sm">
                                     steps/day
                                 </span>
                             </div>
                             <ChartContainer
                                 config={{
                                     steps: {
-                                        label: 'Steps',
-                                        color: 'hsl(var(--muted))',
+                                        label: "Steps",
+                                        color: "hsl(var(--muted))",
                                     },
                                 }}
                                 className="aspect-auto h-[32px] w-full"
@@ -398,7 +398,7 @@ export default function Page(_props: PageProps) {
                                     }}
                                     data={[
                                         {
-                                            date: '2023',
+                                            date: "2023",
                                             steps: 10103,
                                         },
                                     ]}
@@ -438,13 +438,13 @@ export default function Page(_props: PageProps) {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="flex flex-row items-baseline gap-4 p-4 pt-0">
-                        <div className="flex items-baseline gap-1 text-3xl font-bold tabular-nums leading-none">
+                        <div className="flex items-baseline gap-1 font-bold text-3xl tabular-nums leading-none">
                             <NumberFormatter
                                 number="12.5"
                                 options={{
-                                    style: 'unit',
-                                    unit: 'mile-per-day',
-                                    unitDisplay: 'long',
+                                    style: "unit",
+                                    unit: "mile-per-day",
+                                    unitDisplay: "long",
                                 }}
                                 formatFromParts={(parts) => {
                                     const [body, unit] = makeBodyAndUnit(parts);
@@ -452,7 +452,7 @@ export default function Page(_props: PageProps) {
                                     return (
                                         <>
                                             {body}
-                                            <span className="text-sm font-normal text-muted-foreground">
+                                            <span className="font-normal text-muted-foreground text-sm">
                                                 {unit}
                                             </span>
                                         </>
@@ -463,8 +463,8 @@ export default function Page(_props: PageProps) {
                         <ChartContainer
                             config={{
                                 steps: {
-                                    label: 'Steps',
-                                    color: 'hsl(var(--chart-1))',
+                                    label: "Steps",
+                                    color: "hsl(var(--chart-1))",
                                 },
                             }}
                             className="ml-auto w-[72px]"
@@ -479,31 +479,31 @@ export default function Page(_props: PageProps) {
                                 }}
                                 data={[
                                     {
-                                        date: '2024-01-01',
+                                        date: "2024-01-01",
                                         steps: 2000,
                                     },
                                     {
-                                        date: '2024-01-02',
+                                        date: "2024-01-02",
                                         steps: 2100,
                                     },
                                     {
-                                        date: '2024-01-03',
+                                        date: "2024-01-03",
                                         steps: 2200,
                                     },
                                     {
-                                        date: '2024-01-04',
+                                        date: "2024-01-04",
                                         steps: 1300,
                                     },
                                     {
-                                        date: '2024-01-05',
+                                        date: "2024-01-05",
                                         steps: 1400,
                                     },
                                     {
-                                        date: '2024-01-06',
+                                        date: "2024-01-06",
                                         steps: 2500,
                                     },
                                     {
-                                        date: '2024-01-07',
+                                        date: "2024-01-07",
                                         steps: 1600,
                                     },
                                 ]}
@@ -532,16 +532,16 @@ export default function Page(_props: PageProps) {
                         <ChartContainer
                             config={{
                                 move: {
-                                    label: 'Move',
-                                    color: 'hsl(var(--chart-1))',
+                                    label: "Move",
+                                    color: "hsl(var(--chart-1))",
                                 },
                                 stand: {
-                                    label: 'Stand',
-                                    color: 'hsl(var(--chart-2))',
+                                    label: "Stand",
+                                    color: "hsl(var(--chart-2))",
                                 },
                                 exercise: {
-                                    label: 'Exercise',
-                                    color: 'hsl(var(--chart-3))',
+                                    label: "Exercise",
+                                    color: "hsl(var(--chart-3))",
                                 },
                             }}
                             className="h-[140px] w-full"
@@ -555,22 +555,22 @@ export default function Page(_props: PageProps) {
                                 }}
                                 data={[
                                     {
-                                        activity: 'stand',
+                                        activity: "stand",
                                         value: (8 / 12) * 100,
-                                        label: '8/12 hr',
-                                        fill: 'var(--color-stand)',
+                                        label: "8/12 hr",
+                                        fill: "var(--color-stand)",
                                     },
                                     {
-                                        activity: 'exercise',
+                                        activity: "exercise",
                                         value: (46 / 60) * 100,
-                                        label: '46/60 min',
-                                        fill: 'var(--color-exercise)',
+                                        label: "46/60 min",
+                                        fill: "var(--color-exercise)",
                                     },
                                     {
-                                        activity: 'move',
+                                        activity: "move",
                                         value: (245 / 360) * 100,
-                                        label: '245/360 kcal',
-                                        fill: 'var(--color-move)',
+                                        label: "245/360 kcal",
+                                        fill: "var(--color-move)",
                                     },
                                 ]}
                                 layout="vertical"
@@ -601,12 +601,12 @@ export default function Page(_props: PageProps) {
                     <CardFooter className="flex flex-row border-t p-4">
                         <div className="flex w-full items-center gap-2">
                             <div className="grid flex-1 auto-rows-min gap-0.5">
-                                <div className="text-xs text-muted-foreground">
+                                <div className="text-muted-foreground text-xs">
                                     Move
                                 </div>
-                                <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
-                                    <NumberFormatter number="562" />{' '}
-                                    <span className="text-sm font-normal text-muted-foreground">
+                                <div className="flex items-baseline gap-1 font-bold text-2xl tabular-nums leading-none">
+                                    <NumberFormatter number="562" />{" "}
+                                    <span className="font-normal text-muted-foreground text-sm">
                                         kcal
                                     </span>
                                 </div>
@@ -616,10 +616,10 @@ export default function Page(_props: PageProps) {
                                 className="mx-2 h-10 w-px"
                             />
                             <div className="grid flex-1 auto-rows-min gap-0.5">
-                                <div className="text-xs text-muted-foreground">
+                                <div className="text-muted-foreground text-xs">
                                     Exercise
                                 </div>
-                                <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
+                                <div className="flex items-baseline gap-1 font-bold text-2xl tabular-nums leading-none">
                                     <NumberFormatter
                                         number="73"
                                         variant="compact-hour"
@@ -630,7 +630,7 @@ export default function Page(_props: PageProps) {
                                             return (
                                                 <>
                                                     {body}
-                                                    <span className="text-sm font-normal text-muted-foreground">
+                                                    <span className="font-normal text-muted-foreground text-sm">
                                                         {unit}
                                                     </span>
                                                 </>
@@ -644,10 +644,10 @@ export default function Page(_props: PageProps) {
                                 className="mx-2 h-10 w-px"
                             />
                             <div className="grid flex-1 auto-rows-min gap-0.5">
-                                <div className="text-xs text-muted-foreground">
+                                <div className="text-muted-foreground text-xs">
                                     Stand
                                 </div>
-                                <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
+                                <div className="flex items-baseline gap-1 font-bold text-2xl tabular-nums leading-none">
                                     <NumberFormatter
                                         number="14"
                                         variant="compact-hour"
@@ -658,7 +658,7 @@ export default function Page(_props: PageProps) {
                                             return (
                                                 <>
                                                     {body}
-                                                    <span className="text-sm font-normal text-muted-foreground">
+                                                    <span className="font-normal text-muted-foreground text-sm">
                                                         {unit}
                                                     </span>
                                                 </>
@@ -676,22 +676,22 @@ export default function Page(_props: PageProps) {
                     <CardContent className="flex gap-4 p-4">
                         <div className="grid items-center gap-2">
                             <div className="grid flex-1 auto-rows-min gap-0.5">
-                                <div className="text-sm text-muted-foreground">
+                                <div className="text-muted-foreground text-sm">
                                     Move
                                 </div>
-                                <div className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
+                                <div className="flex items-baseline gap-1 font-bold text-xl tabular-nums leading-none">
                                     <NumberFormatter number="562" />/
                                     <NumberFormatter number="600" />
-                                    <span className="text-sm font-normal text-muted-foreground">
+                                    <span className="font-normal text-muted-foreground text-sm">
                                         kcal
                                     </span>
                                 </div>
                             </div>
                             <div className="grid flex-1 auto-rows-min gap-0.5">
-                                <div className="text-sm text-muted-foreground">
+                                <div className="text-muted-foreground text-sm">
                                     Exercise
                                 </div>
-                                <div className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
+                                <div className="flex items-baseline gap-1 font-bold text-xl tabular-nums leading-none">
                                     <NumberFormatter number="73" />/
                                     <NumberFormatter
                                         number="1000000"
@@ -702,7 +702,7 @@ export default function Page(_props: PageProps) {
                                             return (
                                                 <>
                                                     {body}
-                                                    <span className="text-sm font-normal text-muted-foreground">
+                                                    <span className="font-normal text-muted-foreground text-sm">
                                                         {unit}
                                                     </span>
                                                 </>
@@ -713,10 +713,10 @@ export default function Page(_props: PageProps) {
                                 </div>
                             </div>
                             <div className="grid flex-1 auto-rows-min gap-0.5">
-                                <div className="text-sm text-muted-foreground">
+                                <div className="text-muted-foreground text-sm">
                                     Stand
                                 </div>
-                                <div className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
+                                <div className="flex items-baseline gap-1 font-bold text-xl tabular-nums leading-none">
                                     <NumberFormatter number="8" />/
                                     <NumberFormatter
                                         number="12"
@@ -728,7 +728,7 @@ export default function Page(_props: PageProps) {
                                             return (
                                                 <>
                                                     {body}
-                                                    <span className="text-sm font-normal text-muted-foreground">
+                                                    <span className="font-normal text-muted-foreground text-sm">
                                                         {unit}
                                                     </span>
                                                 </>
@@ -741,16 +741,16 @@ export default function Page(_props: PageProps) {
                         <ChartContainer
                             config={{
                                 move: {
-                                    label: 'Move',
-                                    color: 'hsl(var(--chart-1))',
+                                    label: "Move",
+                                    color: "hsl(var(--chart-1))",
                                 },
                                 exercise: {
-                                    label: 'Exercise',
-                                    color: 'hsl(var(--chart-2))',
+                                    label: "Exercise",
+                                    color: "hsl(var(--chart-2))",
                                 },
                                 stand: {
-                                    label: 'Stand',
-                                    color: 'hsl(var(--chart-3))',
+                                    label: "Stand",
+                                    color: "hsl(var(--chart-3))",
                                 },
                             }}
                             className="mx-auto aspect-square w-full max-w-[80%]"
@@ -764,19 +764,19 @@ export default function Page(_props: PageProps) {
                                 }}
                                 data={[
                                     {
-                                        activity: 'stand',
+                                        activity: "stand",
                                         value: (8 / 12) * 100,
-                                        fill: 'var(--color-stand)',
+                                        fill: "var(--color-stand)",
                                     },
                                     {
-                                        activity: 'exercise',
+                                        activity: "exercise",
                                         value: (46 / 60) * 100,
-                                        fill: 'var(--color-exercise)',
+                                        fill: "var(--color-exercise)",
                                     },
                                     {
-                                        activity: 'move',
+                                        activity: "move",
                                         value: (245 / 360) * 100,
-                                        fill: 'var(--color-move)',
+                                        fill: "var(--color-move)",
                                     },
                                 ]}
                                 innerRadius="20%"
@@ -803,23 +803,23 @@ export default function Page(_props: PageProps) {
                     <CardHeader className="p-4 pb-0">
                         <CardTitle>Active Energy</CardTitle>
                         <CardDescription>
-                            You're burning an average of{' '}
+                            You're burning an average of{" "}
                             <NumberFormatter number="754" /> calories per day.
                             Good job!
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="flex flex-row items-baseline gap-4 p-4 pt-2">
-                        <div className="flex items-baseline gap-2 text-3xl font-bold tabular-nums leading-none">
+                        <div className="flex items-baseline gap-2 font-bold text-3xl tabular-nums leading-none">
                             <NumberFormatter number="1254" />
-                            <span className="text-sm font-normal text-muted-foreground">
+                            <span className="font-normal text-muted-foreground text-sm">
                                 kcal/day
                             </span>
                         </div>
                         <ChartContainer
                             config={{
                                 calories: {
-                                    label: 'Calories',
-                                    color: 'hsl(var(--chart-1))',
+                                    label: "Calories",
+                                    color: "hsl(var(--chart-1))",
                                 },
                             }}
                             className="ml-auto w-[64px]"
@@ -834,31 +834,31 @@ export default function Page(_props: PageProps) {
                                 }}
                                 data={[
                                     {
-                                        date: '2024-01-01',
+                                        date: "2024-01-01",
                                         calories: 354,
                                     },
                                     {
-                                        date: '2024-01-02',
+                                        date: "2024-01-02",
                                         calories: 514,
                                     },
                                     {
-                                        date: '2024-01-03',
+                                        date: "2024-01-03",
                                         calories: 345,
                                     },
                                     {
-                                        date: '2024-01-04',
+                                        date: "2024-01-04",
                                         calories: 734,
                                     },
                                     {
-                                        date: '2024-01-05',
+                                        date: "2024-01-05",
                                         calories: 645,
                                     },
                                     {
-                                        date: '2024-01-06',
+                                        date: "2024-01-06",
                                         calories: 456,
                                     },
                                     {
-                                        date: '2024-01-07',
+                                        date: "2024-01-07",
                                         calories: 345,
                                     },
                                 ]}
@@ -887,11 +887,11 @@ export default function Page(_props: PageProps) {
                         <CardDescription>Time in Bed</CardDescription>
                         <CardTitle className="flex items-baseline gap-1 text-4xl tabular-nums">
                             8
-                            <span className="font-sans text-sm font-normal tracking-normal text-muted-foreground">
+                            <span className="font-normal font-sans text-muted-foreground text-sm tracking-normal">
                                 hr
                             </span>
                             35
-                            <span className="font-sans text-sm font-normal tracking-normal text-muted-foreground">
+                            <span className="font-normal font-sans text-muted-foreground text-sm tracking-normal">
                                 min
                             </span>
                         </CardTitle>
@@ -900,8 +900,8 @@ export default function Page(_props: PageProps) {
                         <ChartContainer
                             config={{
                                 time: {
-                                    label: 'Time',
-                                    color: 'hsl(var(--chart-2))',
+                                    label: "Time",
+                                    color: "hsl(var(--chart-2))",
                                 },
                             }}
                         >
@@ -909,31 +909,31 @@ export default function Page(_props: PageProps) {
                                 accessibilityLayer
                                 data={[
                                     {
-                                        date: '2024-01-01',
+                                        date: "2024-01-01",
                                         time: 8.5,
                                     },
                                     {
-                                        date: '2024-01-02',
+                                        date: "2024-01-02",
                                         time: 7.2,
                                     },
                                     {
-                                        date: '2024-01-03',
+                                        date: "2024-01-03",
                                         time: 8.1,
                                     },
                                     {
-                                        date: '2024-01-04',
+                                        date: "2024-01-04",
                                         time: 6.2,
                                     },
                                     {
-                                        date: '2024-01-05',
+                                        date: "2024-01-05",
                                         time: 5.2,
                                     },
                                     {
-                                        date: '2024-01-06',
+                                        date: "2024-01-06",
                                         time: 8.1,
                                     },
                                     {
-                                        date: '2024-01-07',
+                                        date: "2024-01-07",
                                         time: 7.0,
                                     },
                                 ]}
@@ -946,7 +946,7 @@ export default function Page(_props: PageProps) {
                             >
                                 <XAxis dataKey="date" hide />
                                 <YAxis
-                                    domain={['dataMin - 5', 'dataMax + 2']}
+                                    domain={["dataMin - 5", "dataMax + 2"]}
                                     hide
                                 />
                                 <defs>
@@ -980,10 +980,10 @@ export default function Page(_props: PageProps) {
                                     cursor={false}
                                     content={<ChartTooltipContent hideLabel />}
                                     formatter={(value: number) => (
-                                        <div className="flex min-w-[120px] items-center text-xs text-muted-foreground">
+                                        <div className="flex min-w-[120px] items-center text-muted-foreground text-xs">
                                             Time in bed
                                             <NumberFormatter
-                                                className="ml-auto flex items-baseline gap-0.5 font-mono font-medium tabular-nums text-foreground"
+                                                className="ml-auto flex items-baseline gap-0.5 font-medium font-mono text-foreground tabular-nums"
                                                 number={value}
                                                 variant="compact-hour"
                                                 formatFromParts={(parts) => {

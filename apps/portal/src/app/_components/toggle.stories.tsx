@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { BoldIcon, ItalicIcon, UnderlineIcon } from 'lucide-react';
-import { Toggle } from '#app/_components/toggle.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react";
+import { Toggle } from "#app/_components/toggle.tsx";
 
 const meta: Meta<typeof Toggle> = {
     component: Toggle,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

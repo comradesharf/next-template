@@ -1,5 +1,5 @@
 {
-    "name": "@comradesharf/trpc",
+    "name": "app-trpc",
     "version": "0.1.0",
     "private": true,
     "imports": {
@@ -10,6 +10,6 @@
         "./*": "./src/*.ts"
     },
     "devDependencies": {
-        "@comradesharf/typescript-config": "workspace:^"
+        "app-typescript-config": "workspace:^"
     }
 }

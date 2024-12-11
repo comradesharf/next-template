@@ -1,4 +1,4 @@
-import { Trans } from '@lingui/macro';
+import { Trans } from "@lingui/macro";
 import {
     ChevronLeft,
     ChevronRight,
@@ -8,9 +8,9 @@ import {
     ListFilter,
     MoreVertical,
     Truck,
-} from 'lucide-react';
-import { Badge } from '#app/_components/badge.tsx';
-import { Button } from '#app/_components/button.tsx';
+} from "lucide-react";
+import { Badge } from "#app/_components/badge.tsx";
+import { Button } from "#app/_components/button.tsx";
 import {
     Card,
     CardContent,
@@ -18,8 +18,8 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from '#app/_components/card.tsx';
-import { DateTimeFormatter } from '#app/_components/date-time.tsx';
+} from "#app/_components/card.tsx";
+import { DateTimeFormatter } from "#app/_components/date-time.tsx";
 import {
     DropdownMenu,
     DropdownMenuCheckboxItem,
@@ -28,15 +28,15 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from '#app/_components/dropdown-menu.tsx';
-import { NumberFormatter } from '#app/_components/number.tsx';
+} from "#app/_components/dropdown-menu.tsx";
+import { NumberFormatter } from "#app/_components/number.tsx";
 import {
     Pagination,
     PaginationContent,
     PaginationItem,
-} from '#app/_components/pagination.tsx';
-import { Progress } from '#app/_components/progress.tsx';
-import { Separator } from '#app/_components/separator.tsx';
+} from "#app/_components/pagination.tsx";
+import { Progress } from "#app/_components/progress.tsx";
+import { Separator } from "#app/_components/separator.tsx";
 import {
     Table,
     TableBody,
@@ -44,16 +44,16 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from '#app/_components/table.tsx';
+} from "#app/_components/table.tsx";
 import {
     Tabs,
     TabsContent,
     TabsList,
     TabsTrigger,
-} from '#app/_components/tabs.tsx';
-import { assertAuthenticated } from '#app/_libs/asserts.ts';
-import { withLocale } from '#app/_libs/locales/withLocale.tsx';
-import { getCurrentSession } from '#app/_queries/auths.ts';
+} from "#app/_components/tabs.tsx";
+import { assertAuthenticated } from "#app/_libs/asserts.ts";
+import { withLocale } from "#app/_libs/locales/withLocale.tsx";
+import { getCurrentSession } from "#app/_queries/auths.ts";
 
 export default withLocale(async function Page() {
     const session = await getCurrentSession();
@@ -71,7 +71,7 @@ export default withLocale(async function Page() {
                             <CardTitle>
                                 <Trans>Your Orders</Trans>
                             </CardTitle>
-                            <CardDescription className="text-balance max-w-lg leading-relaxed">
+                            <CardDescription className="max-w-lg text-balance leading-relaxed">
                                 <Trans>
                                     Introducing Our Dynamic Orders Dashboard for
                                     Seamless Management and Insightful Analysis.
@@ -94,23 +94,23 @@ export default withLocale(async function Page() {
                                     number="1329"
                                     variant="currency"
                                     options={{
-                                        currency: 'USD',
+                                        currency: "USD",
                                         maximumFractionDigits: 0,
                                     }}
                                 />
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <div className="text-xs text-muted-foreground">
+                            <div className="text-muted-foreground text-xs">
                                 +
                                 <NumberFormatter
                                     number="25"
                                     options={{
-                                        style: 'unit',
-                                        unit: 'percent',
-                                        unitDisplay: 'narrow',
+                                        style: "unit",
+                                        unit: "percent",
+                                        unitDisplay: "narrow",
                                     }}
-                                />{' '}
+                                />{" "}
                                 from last week
                             </div>
                         </CardContent>
@@ -126,23 +126,23 @@ export default withLocale(async function Page() {
                                     number="5329"
                                     variant="currency"
                                     options={{
-                                        currency: 'USD',
+                                        currency: "USD",
                                         maximumFractionDigits: 0,
                                     }}
                                 />
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <div className="text-xs text-muted-foreground">
+                            <div className="text-muted-foreground text-xs">
                                 +
                                 <NumberFormatter
                                     number="10"
                                     options={{
-                                        style: 'unit',
-                                        unit: 'percent',
-                                        unitDisplay: 'narrow',
+                                        style: "unit",
+                                        unit: "percent",
+                                        unitDisplay: "narrow",
                                     }}
-                                />{' '}
+                                />{" "}
                                 from last month
                             </div>
                         </CardContent>
@@ -237,7 +237,7 @@ export default withLocale(async function Page() {
                                                 <div className="font-medium">
                                                     Liam Johnson
                                                 </div>
-                                                <div className="hidden text-sm text-muted-foreground md:inline">
+                                                <div className="hidden text-muted-foreground text-sm md:inline">
                                                     liam@example.com
                                                 </div>
                                             </TableCell>
@@ -262,7 +262,7 @@ export default withLocale(async function Page() {
                                                     number="250.00"
                                                     variant="currency"
                                                     options={{
-                                                        currency: 'USD',
+                                                        currency: "USD",
                                                     }}
                                                 />
                                             </TableCell>
@@ -272,7 +272,7 @@ export default withLocale(async function Page() {
                                                 <div className="font-medium">
                                                     Olivia Smith
                                                 </div>
-                                                <div className="hidden text-sm text-muted-foreground md:inline">
+                                                <div className="hidden text-muted-foreground text-sm md:inline">
                                                     olivia@example.com
                                                 </div>
                                             </TableCell>
@@ -297,7 +297,7 @@ export default withLocale(async function Page() {
                                                     number="150.00"
                                                     variant="currency"
                                                     options={{
-                                                        currency: 'USD',
+                                                        currency: "USD",
                                                     }}
                                                 />
                                             </TableCell>
@@ -308,7 +308,7 @@ export default withLocale(async function Page() {
                                                 <div className="font-medium">
                                                     Noah Williams
                                                 </div>
-                                                <div className="hidden text-sm text-muted-foreground md:inline">
+                                                <div className="hidden text-muted-foreground text-sm md:inline">
                                                     noah@example.com
                                                 </div>
                                             </TableCell>
@@ -333,7 +333,7 @@ export default withLocale(async function Page() {
                                                     number="350.00"
                                                     variant="currency"
                                                     options={{
-                                                        currency: 'USD',
+                                                        currency: "USD",
                                                     }}
                                                 />
                                             </TableCell>
@@ -343,7 +343,7 @@ export default withLocale(async function Page() {
                                                 <div className="font-medium">
                                                     Emma Brown
                                                 </div>
-                                                <div className="hidden text-sm text-muted-foreground md:inline">
+                                                <div className="hidden text-muted-foreground text-sm md:inline">
                                                     emma@example.com
                                                 </div>
                                             </TableCell>
@@ -368,7 +368,7 @@ export default withLocale(async function Page() {
                                                     number="450.00"
                                                     variant="currency"
                                                     options={{
-                                                        currency: 'USD',
+                                                        currency: "USD",
                                                     }}
                                                 />
                                             </TableCell>
@@ -378,7 +378,7 @@ export default withLocale(async function Page() {
                                                 <div className="font-medium">
                                                     Liam Johnson
                                                 </div>
-                                                <div className="hidden text-sm text-muted-foreground md:inline">
+                                                <div className="hidden text-muted-foreground text-sm md:inline">
                                                     liam@example.com
                                                 </div>
                                             </TableCell>
@@ -403,7 +403,7 @@ export default withLocale(async function Page() {
                                                     number="250.00"
                                                     variant="currency"
                                                     options={{
-                                                        currency: 'USD',
+                                                        currency: "USD",
                                                     }}
                                                 />
                                             </TableCell>
@@ -413,7 +413,7 @@ export default withLocale(async function Page() {
                                                 <div className="font-medium">
                                                     Olivia Smith
                                                 </div>
-                                                <div className="hidden text-sm text-muted-foreground md:inline">
+                                                <div className="hidden text-muted-foreground text-sm md:inline">
                                                     olivia@example.com
                                                 </div>
                                             </TableCell>
@@ -438,7 +438,7 @@ export default withLocale(async function Page() {
                                                     number="150.00"
                                                     variant="currency"
                                                     options={{
-                                                        currency: 'USD',
+                                                        currency: "USD",
                                                     }}
                                                 />
                                             </TableCell>
@@ -448,7 +448,7 @@ export default withLocale(async function Page() {
                                                 <div className="font-medium">
                                                     Emma Brown
                                                 </div>
-                                                <div className="hidden text-sm text-muted-foreground md:inline">
+                                                <div className="hidden text-muted-foreground text-sm md:inline">
                                                     emma@example.com
                                                 </div>
                                             </TableCell>
@@ -473,7 +473,7 @@ export default withLocale(async function Page() {
                                                     number="450.00"
                                                     variant="currency"
                                                     options={{
-                                                        currency: 'USD',
+                                                        currency: "USD",
                                                     }}
                                                 />
                                             </TableCell>
@@ -556,27 +556,27 @@ export default withLocale(async function Page() {
                             <ul className="grid gap-3">
                                 <li className="flex items-center justify-between">
                                     <span className="text-muted-foreground">
-                                        Glimmer Lamps x{' '}
+                                        Glimmer Lamps x{" "}
                                         <NumberFormatter number="2" />
                                     </span>
                                     <NumberFormatter
                                         number="250.00"
                                         variant="currency"
                                         options={{
-                                            currency: 'USD',
+                                            currency: "USD",
                                         }}
                                     />
                                 </li>
                                 <li className="flex items-center justify-between">
                                     <span className="text-muted-foreground">
-                                        Aqua Filters x{' '}
+                                        Aqua Filters x{" "}
                                         <NumberFormatter number="1" />
                                     </span>
                                     <NumberFormatter
                                         number="49.00"
                                         variant="currency"
                                         options={{
-                                            currency: 'USD',
+                                            currency: "USD",
                                         }}
                                     />
                                 </li>
@@ -591,7 +591,7 @@ export default withLocale(async function Page() {
                                         number="299.00"
                                         variant="currency"
                                         options={{
-                                            currency: 'USD',
+                                            currency: "USD",
                                         }}
                                     />
                                 </li>
@@ -603,7 +603,7 @@ export default withLocale(async function Page() {
                                         number="5.00"
                                         variant="currency"
                                         options={{
-                                            currency: 'USD',
+                                            currency: "USD",
                                         }}
                                     />
                                 </li>
@@ -615,7 +615,7 @@ export default withLocale(async function Page() {
                                         number="25.00"
                                         variant="currency"
                                         options={{
-                                            currency: 'USD',
+                                            currency: "USD",
                                         }}
                                     />
                                 </li>
@@ -627,7 +627,7 @@ export default withLocale(async function Page() {
                                         number="329.00"
                                         variant="currency"
                                         options={{
-                                            currency: 'USD',
+                                            currency: "USD",
                                         }}
                                     />
                                 </li>
@@ -639,7 +639,7 @@ export default withLocale(async function Page() {
                                 <div className="font-semibold">
                                     <Trans>Shipping Information</Trans>
                                 </div>
-                                <address className="grid gap-0.5 not-italic text-muted-foreground">
+                                <address className="grid gap-0.5 text-muted-foreground not-italic">
                                     <span>Liam Johnson</span>
                                     <span>1234 Main St.</span>
                                     <span>Anytown, CA 12345</span>
@@ -701,16 +701,16 @@ export default withLocale(async function Page() {
                         </div>
                     </CardContent>
                     <CardFooter className="flex flex-row items-center border-t bg-muted/50 px-6 py-3">
-                        <div className="text-xs text-muted-foreground">
+                        <div className="text-muted-foreground text-xs">
                             <Trans>
-                                Updated{' '}
+                                Updated{" "}
                                 <DateTimeFormatter
-                                    date={new Date('2023-8-23')}
+                                    date={new Date("2023-8-23")}
                                     variant="date"
                                 />
                             </Trans>
                         </div>
-                        <Pagination className="ml-auto mr-0 w-auto">
+                        <Pagination className="mr-0 ml-auto w-auto">
                             <PaginationContent>
                                 <PaginationItem>
                                     <Button

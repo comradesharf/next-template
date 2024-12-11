@@ -1,6 +1,6 @@
-import { type Meta, type StoryObj, composeStories } from '@storybook/react';
-import * as layouts from '#app/[lang]/(auth)/layout.stories.tsx';
-import NotFound from '#app/[lang]/(auth)/not-found.tsx';
+import { type Meta, type StoryObj, composeStories } from "@storybook/react";
+import * as layouts from "#app/[lang]/(auth)/layout.stories.tsx";
+import NotFound from "#app/[lang]/(auth)/not-found.tsx";
 
 const { Primary: Layout } = composeStories(layouts);
 

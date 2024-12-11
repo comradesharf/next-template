@@ -1,8 +1,8 @@
-import type { SignUp } from '@comradesharf/schemas/SignUpSchema';
-import { Trans, t } from '@lingui/macro';
-import { Mail } from 'lucide-react';
-import Link from 'next/link';
-import { Form } from '#app/[lang]/(auth)/sign-up/_components/form.tsx';
+import { Trans, t } from "@lingui/macro";
+import type { SignUp } from "app-schemas/SignUpSchema";
+import { Mail } from "lucide-react";
+import Link from "next/link";
+import { Form } from "#app/[lang]/(auth)/sign-up/_components/form.tsx";
 import {
     Card,
     CardContent,
@@ -10,7 +10,7 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from '#app/_components/card.tsx';
+} from "#app/_components/card.tsx";
 import {
     FormControl,
     FormDescription,
@@ -18,16 +18,16 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from '#app/_components/form.tsx';
-import { ControlledInput } from '#app/_components/input.tsx';
+} from "#app/_components/form.tsx";
+import { ControlledInput } from "#app/_components/input.tsx";
 import {
     ServerErrorMessage,
     ServerErrorMessageDescription,
-} from '#app/_components/server-error-message.tsx';
-import { SubmitButton } from '#app/_components/submit-button.tsx';
-import { assertUnauthenticated } from '#app/_libs/asserts.ts';
-import { withLocale } from '#app/_libs/locales/withLocale.tsx';
-import { getCurrentSession } from '#app/_queries/auths.ts';
+} from "#app/_components/server-error-message.tsx";
+import { SubmitButton } from "#app/_components/submit-button.tsx";
+import { assertUnauthenticated } from "#app/_libs/asserts.ts";
+import { withLocale } from "#app/_libs/locales/withLocale.tsx";
+import { getCurrentSession } from "#app/_queries/auths.ts";
 
 export interface PageProps {
     params: Promise<{ lang: string | string[] | undefined }>;
@@ -114,16 +114,16 @@ export default withLocale(async function Page(_props: PageProps) {
                     <ServerErrorMessage>
                         <ServerErrorMessageDescription />
                     </ServerErrorMessage>
-                    <SubmitButton className="w-full mt-4">
+                    <SubmitButton className="mt-4 w-full">
                         <Mail className="mr-2 h-4 w-4" />
                         <Trans>Sign up with Email</Trans>
                     </SubmitButton>
                 </Form>
             </CardContent>
             <CardFooter className="flex flex-col items-center">
-                <p className="text-sm text-gray-600">
+                <p className="text-gray-600 text-sm">
                     <Trans>
-                        Already have an account?{' '}
+                        Already have an account?{" "}
                         <Link
                             href="/sign-in"
                             className="text-blue-600 hover:underline"

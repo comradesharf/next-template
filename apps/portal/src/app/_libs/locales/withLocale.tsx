@@ -1,6 +1,6 @@
-import { setI18n } from '@lingui/react/server';
-import type * as React from 'react';
-import { getI18nInstance } from '#app/_queries/i18n.ts';
+import { setI18n } from "@lingui/react/server";
+import type * as React from "react";
+import { getI18nInstance } from "#app/_queries/i18n.ts";
 
 export type Props = {
     params: Promise<{ lang: string }>;

@@ -1,19 +1,19 @@
-'use server';
+"use server";
 
-import 'server-only';
-import type { SignUpSession } from '@comradesharf/models/models/SignUpSession';
-import { SignUpSessionModel } from '@comradesharf/models/models/SignUpSessionModel';
-import { SignUpSchema } from '@comradesharf/schemas/SignUpSchema';
-import { t } from '@lingui/macro';
-import { MongoServerError } from 'mongodb';
-import { type FlattenMaps, connection } from 'mongoose';
-import { returnValidationErrors } from 'next-safe-action';
-import { redirect } from 'next/navigation';
-import { actionClient } from '#app/_libs/safe-actions.ts';
+import "server-only";
+import { t } from "@lingui/macro";
+import type { SignUpSession } from "app-models/models/SignUpSession";
+import { SignUpSessionModel } from "app-models/models/SignUpSessionModel";
+import { SignUpSchema } from "app-schemas/SignUpSchema";
+import { MongoServerError } from "mongodb";
+import { type FlattenMaps, connection } from "mongoose";
+import { returnValidationErrors } from "next-safe-action";
+import { redirect } from "next/navigation";
+import { actionClient } from "#app/_libs/safe-actions.ts";
 
 export const signUp = actionClient
     .metadata({
-        actionName: 'signUp',
+        actionName: "signUp",
         public: true,
     })
     .schema(SignUpSchema)
@@ -32,7 +32,7 @@ export const signUp = actionClient
                             email,
                             password,
                             lang,
-                            role: 'MEMBER',
+                            role: "MEMBER",
                         },
                         {
                             session: $session,

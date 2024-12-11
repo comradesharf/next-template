@@ -1,5 +1,5 @@
 module.exports = {
-    'https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap': `/* cyrillic-ext */
+    "https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap": `/* cyrillic-ext */
 @font-face {
   font-family: 'Inter';
   font-style: normal;

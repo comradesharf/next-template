@@ -1,6 +1,6 @@
-import { type Meta, type StoryObj, composeStories } from '@storybook/react';
-import * as layouts from '#app/[lang]/(authenticated)/layout.stories.tsx';
-import Page from '#app/[lang]/(authenticated)/overview/page.tsx';
+import { type Meta, type StoryObj, composeStories } from "@storybook/react";
+import * as layouts from "#app/[lang]/(authenticated)/layout.stories.tsx";
+import Page from "#app/[lang]/(authenticated)/overview/page.tsx";
 
 const { Primary: Layout } = composeStories(layouts);
 
@@ -10,7 +10,7 @@ const meta = {
         nextjs: {
             appDirectory: true,
             navigation: {
-                segments: [['breadcrumbs', 'overview', 'c']],
+                segments: [["breadcrumbs", "overview", "c"]],
             },
         },
     },

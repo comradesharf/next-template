@@ -1,8 +1,8 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import type { Meta, StoryObj } from '@storybook/react';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { Button } from '#app/_components/button.tsx';
+import { zodResolver } from "@hookform/resolvers/zod";
+import type { Meta, StoryObj } from "@storybook/react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Button } from "#app/_components/button.tsx";
 import {
     Form,
     FormControl,
@@ -11,18 +11,18 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from '#app/_components/form.tsx';
-import { Input } from '#app/_components/input.tsx';
-import { Label } from '#app/_components/label.tsx';
-import { Toaster } from '#app/_components/toaster.tsx';
-import { toast } from '#app/_hooks/use-toast.ts';
+} from "#app/_components/form.tsx";
+import { Input } from "#app/_components/input.tsx";
+import { Label } from "#app/_components/label.tsx";
+import { Toaster } from "#app/_components/toaster.tsx";
+import { toast } from "#app/_hooks/use-toast.ts";
 
 const meta: Meta<typeof Input> = {
     component: Input,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -43,8 +43,8 @@ type Story = StoryObj<typeof Input>;
 
 export const Primary: Story = {
     args: {
-        type: 'email',
-        placeholder: 'Email',
+        type: "email",
+        placeholder: "Email",
     },
 };
 
@@ -62,8 +62,8 @@ export const Email: Story = {
 
 export const Disabled: Story = {
     args: {
-        type: 'email',
-        placeholder: 'Email',
+        type: "email",
+        placeholder: "Email",
         disabled: true,
     },
 };
@@ -92,7 +92,7 @@ export const WithButton: Story = {
 
 const FormSchema = z.object({
     username: z.string().min(2, {
-        message: 'Username must be at least 2 characters.',
+        message: "Username must be at least 2 characters.",
     }),
 });
 
@@ -101,13 +101,13 @@ export const InForm: Story = {
         const form = useForm<z.infer<typeof FormSchema>>({
             resolver: zodResolver(FormSchema),
             defaultValues: {
-                username: '',
+                username: "",
             },
         });
 
         function onSubmit(data: z.infer<typeof FormSchema>) {
             toast({
-                title: 'You submitted the following values:',
+                title: "You submitted the following values:",
                 description: (
                     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
                         <code className="text-white">

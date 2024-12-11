@@ -1,5 +1,5 @@
-import { SupportedLocales } from '@comradesharf/core/SupportedLocales';
-import { Trans } from '@lingui/macro';
+import { Trans } from "@lingui/macro";
+import { SupportedLocales } from "app-core/SupportedLocales";
 import {
     Check,
     Globe,
@@ -8,21 +8,21 @@ import {
     Package2,
     Settings,
     ShoppingCart,
-} from 'lucide-react';
-import Link from 'next/link';
+} from "lucide-react";
+import Link from "next/link";
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from '#app/_components/dropdown-menu.tsx';
+} from "#app/_components/dropdown-menu.tsx";
 import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '#app/_components/tooltip.tsx';
-import { cn } from '#app/_libs/cn.ts';
-import { withLocale } from '#app/_libs/locales/withLocale.tsx';
+} from "#app/_components/tooltip.tsx";
+import { cn } from "#app/_libs/cn.ts";
+import { withLocale } from "#app/_libs/locales/withLocale.tsx";
 
 export interface PageProps {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -44,7 +44,7 @@ export default withLocale<PageProps>(async function Page({ params }) {
             <nav className="flex flex-col items-center gap-4 px-2 sm:py-4">
                 <Link
                     href="#"
-                    className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
+                    className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary font-semibold text-lg text-primary-foreground md:h-8 md:w-8 md:text-base"
                 >
                     <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
                     <span className="sr-only">Acme Inc</span>
@@ -54,10 +54,10 @@ export default withLocale<PageProps>(async function Page({ params }) {
                         <Link
                             href="/overview"
                             className={cn(
-                                'flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8',
+                                "flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8",
                                 {
-                                    'bg-accent text-accent-foreground':
-                                        head === 'overview',
+                                    "bg-accent text-accent-foreground":
+                                        head === "overview",
                                 },
                             )}
                         >
@@ -76,10 +76,10 @@ export default withLocale<PageProps>(async function Page({ params }) {
                         <Link
                             href="/orders"
                             className={cn(
-                                'flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8',
+                                "flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8",
                                 {
-                                    'bg-accent text-accent-foreground':
-                                        head === 'orders',
+                                    "bg-accent text-accent-foreground":
+                                        head === "orders",
                                 },
                             )}
                         >
@@ -98,10 +98,10 @@ export default withLocale<PageProps>(async function Page({ params }) {
                         <Link
                             href="/products"
                             className={cn(
-                                'flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8',
+                                "flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8",
                                 {
-                                    'bg-accent text-accent-foreground':
-                                        head === 'products',
+                                    "bg-accent text-accent-foreground":
+                                        head === "products",
                                 },
                             )}
                         >
@@ -133,7 +133,7 @@ export default withLocale<PageProps>(async function Page({ params }) {
                                     language.value,
                                     head,
                                     ...rest,
-                                ].join('/');
+                                ].join("/");
 
                                 return (
                                     <DropdownMenuItem
@@ -143,9 +143,9 @@ export default withLocale<PageProps>(async function Page({ params }) {
                                         <Link href={`/${href}`}>
                                             <Check
                                                 className={cn(
-                                                    'mr-2 h-4 w-4 opacity-0',
+                                                    "mr-2 h-4 w-4 opacity-0",
                                                     {
-                                                        'opacity-100':
+                                                        "opacity-100":
                                                             language.value ===
                                                             lang,
                                                     },
@@ -169,10 +169,10 @@ export default withLocale<PageProps>(async function Page({ params }) {
                         <Link
                             href="/settings"
                             className={cn(
-                                'flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8',
+                                "flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8",
                                 {
-                                    'bg-accent text-accent-foreground':
-                                        head === 'settings',
+                                    "bg-accent text-accent-foreground":
+                                        head === "settings",
                                 },
                             )}
                         >

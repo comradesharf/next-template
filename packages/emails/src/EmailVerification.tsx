@@ -18,18 +18,16 @@ import * as Platforms from "app-core/Platforms";
 export interface Props {
     username: string;
     otp: string;
-    lang: string;
 }
 
 export function EmailVerification({
     username = "Tan Boon",
     otp = "12345",
-    lang = "en",
 }: Props) {
-    const { t } = useLingui();
+    const { t, i18n } = useLingui();
 
     return (
-        <Html lang={lang}>
+        <Html lang={i18n.locale}>
             <Head>
                 <Font
                     fontFamily="Roboto"

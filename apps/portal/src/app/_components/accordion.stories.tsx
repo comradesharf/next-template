@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 import {
     Accordion,
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
-} from '#app/_components/accordion.tsx';
+} from "#app/_components/accordion.tsx";
 
 const meta: Meta<typeof Accordion> = {
     component: Accordion,
@@ -12,20 +12,20 @@ const meta: Meta<typeof Accordion> = {
         AccordionContent,
         AccordionItem,
         AccordionTrigger,
-    } as Meta['subcomponents'],
-    tags: ['autodocs'],
+    } as Meta["subcomponents"],
+    tags: ["autodocs"],
     args: {
         collapsible: true,
-        type: 'single',
+        type: "single",
     },
     argTypes: {
         type: {
-            options: ['single', 'multiple'],
-            control: { type: 'radio' },
+            options: ["single", "multiple"],
+            control: { type: "radio" },
         },
     },
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

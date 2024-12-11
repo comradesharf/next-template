@@ -1,19 +1,24 @@
-import { scrypt } from 'node:crypto';
-import { type DocumentType, modelOptions, prop } from '@typegoose/typegoose';
-import { Base } from '#models/Base.ts';
+import { scrypt } from "node:crypto";
+import { type DocumentType, modelOptions, prop } from "@typegoose/typegoose";
+import { Log } from "app-core/Log";
+import { Base } from "#models/Base.ts";
 
-declare module '@casl/ability' {
+declare module "@casl/ability" {
     interface RecordTypes {
         User: User;
     }
 }
 
+const log = Log.child({
+    Model: "User",
+});
+
 @modelOptions({
     schemaOptions: {
-        discriminatorKey: 'role',
+        discriminatorKey: "role",
     },
     options: {
-        customName: 'User',
+        customName: "User",
     },
 })
 class User extends Base {
@@ -24,14 +29,14 @@ class User extends Base {
         trim: true,
         type: String,
     })
-    display_name!: string;
+    displayName!: string;
 
     @prop({
         required: true,
         trim: true,
         type: String,
     })
-    password_hash!: string;
+    passwordHash!: string;
 
     @prop({
         required: true,
@@ -53,14 +58,14 @@ class User extends Base {
     role!: string;
 
     async verifyPassword(this: DocumentType<User>, password: string) {
-        const [salt, key] = this.password_hash.split(':');
+        const [salt, key] = this.passwordHash.split(":");
 
         return new Promise<boolean>((resolve, reject) => {
             scrypt(password, salt, 64, (err, derivedKey) => {
                 if (err) {
                     reject(err);
                 } else {
-                    resolve(key === derivedKey.toString('hex'));
+                    resolve(key === derivedKey.toString("hex"));
                 }
             });
         });

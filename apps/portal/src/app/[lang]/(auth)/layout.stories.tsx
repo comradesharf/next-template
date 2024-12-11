@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Layout from '#app/[lang]/(auth)/layout.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import Layout from "#app/[lang]/(auth)/layout.tsx";
 
 const meta = {
     component: Layout,

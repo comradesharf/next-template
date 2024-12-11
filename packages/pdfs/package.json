@@ -1,5 +1,5 @@
 {
-    "name": "@comradesharf/pdfs",
+    "name": "app-pdfs",
     "version": "0.1.0",
     "private": true,
     "imports": {
@@ -7,12 +7,27 @@
     },
     "type": "module",
     "exports": {
-        "./*": "./src/*.ts"
+        "./PDFs": {
+            "types": "./src/PDFs.ts",
+            "default": "./dist/PDFs.js"
+        }
     },
     "devDependencies": {
-        "@comradesharf/typescript-config": "workspace:^"
+        "@swc/cli": "^0.5.2",
+        "@types/react": "^19.0.1",
+        "@types/react-dom": "^19",
+        "app-typescript-config": "workspace:^",
+        "typescript": "^5.7.2"
     },
     "dependencies": {
-        "@react-pdf/renderer": "^4.0.0"
+        "@react-pdf/renderer": "^4.1.5",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0"
+    },
+    "sideEffects": false,
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "build": "yarn swc ./src/* -d dist --strip-leading-paths",
+        "watch": "yarn build -w"
     }
 }

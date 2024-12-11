@@ -1,13 +1,13 @@
-import type { VerifyEmail } from '@comradesharf/schemas/VerifyEmailSchema';
-import { Trans } from '@lingui/macro';
-import { Form } from '#app/[lang]/(auth)/verify-email/[token]/_components/form.tsx';
+import { Trans } from "@lingui/macro";
+import type { VerifyEmail } from "app-schemas/VerifyEmailSchema";
+import { Form } from "#app/[lang]/(auth)/verify-email/[token]/_components/form.tsx";
 import {
     Card,
     CardContent,
     CardDescription,
     CardHeader,
     CardTitle,
-} from '#app/_components/card.tsx';
+} from "#app/_components/card.tsx";
 import {
     FormControl,
     FormDescription,
@@ -15,19 +15,19 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from '#app/_components/form.tsx';
+} from "#app/_components/form.tsx";
 import {
     ControlledInputOTP,
     InputOTPGroup,
     InputOTPSlot,
-} from '#app/_components/input-otp.tsx';
+} from "#app/_components/input-otp.tsx";
 import {
     ServerErrorMessage,
     ServerErrorMessageDescription,
-} from '#app/_components/server-error-message.tsx';
-import { SubmitButton } from '#app/_components/submit-button.tsx';
-import { withLocale } from '#app/_libs/locales/withLocale.tsx';
-import { getSignUpSessionById } from '#app/_queries/sign-up-sessions.ts';
+} from "#app/_components/server-error-message.tsx";
+import { SubmitButton } from "#app/_components/submit-button.tsx";
+import { withLocale } from "#app/_libs/locales/withLocale.tsx";
+import { getSignUpSessionById } from "#app/_queries/sign-up-sessions.ts";
 
 export interface PageProps {
     params: Promise<{ lang: string; token: string }>;

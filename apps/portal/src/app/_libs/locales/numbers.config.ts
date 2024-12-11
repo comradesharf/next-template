@@ -1,4 +1,4 @@
-import memoize from 'lodash-es/memoize';
+import memoize from "lodash-es/memoize";
 
 export const initNumberFormatter = memoize(
     (locale: string, options?: Intl.NumberFormatOptions) =>
@@ -7,14 +7,14 @@ export const initNumberFormatter = memoize(
         return [locale, ...Object.keys(options)]
             .toSorted()
             .flatMap((key) => [key, (options as any)[key]])
-            .join('/');
+            .join("/");
     },
 );
 
 export type FormatVariant = {
-    'compact-minute': unknown;
-    'compact-hour': unknown;
-    'compact-millisecond': unknown;
+    "compact-minute": unknown;
+    "compact-hour": unknown;
+    "compact-millisecond": unknown;
     currency: unknown;
 };
 
@@ -23,26 +23,26 @@ export interface NumberI18nConfig {
 }
 
 export const NumberFormatVariant = {
-    'compact-minute': {
-        style: 'unit',
-        unit: 'minute',
-        unitDisplay: 'narrow',
-        notation: 'compact',
+    "compact-minute": {
+        style: "unit",
+        unit: "minute",
+        unitDisplay: "narrow",
+        notation: "compact",
     },
-    'compact-hour': {
-        style: 'unit',
-        unit: 'hour',
-        unitDisplay: 'narrow',
-        notation: 'compact',
+    "compact-hour": {
+        style: "unit",
+        unit: "hour",
+        unitDisplay: "narrow",
+        notation: "compact",
     },
-    'compact-millisecond': {
-        style: 'unit',
-        unit: 'millisecond',
-        unitDisplay: 'narrow',
-        notation: 'compact',
+    "compact-millisecond": {
+        style: "unit",
+        unit: "millisecond",
+        unitDisplay: "narrow",
+        notation: "compact",
     },
     currency: {
-        style: 'currency',
-        currencyDisplay: 'narrowSymbol',
+        style: "currency",
+        currencyDisplay: "narrowSymbol",
     },
-} satisfies NumberI18nConfig['formatVariant'];
+} satisfies NumberI18nConfig["formatVariant"];

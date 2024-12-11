@@ -1,8 +1,8 @@
-import { type Meta, type StoryObj, composeStories } from '@storybook/react';
-import * as breadcrumbs from '#app/[lang]/(authenticated)/@breadcrumbs/[...breadcrumbs]/page.stories.tsx';
-import * as desktopNav from '#app/[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.stories.tsx';
-import * as mobileDrawer from '#app/[lang]/(authenticated)/@mobileDrawer/[...breadcrumbs]/page.stories.tsx';
-import Layout from '#app/[lang]/(authenticated)/layout.tsx';
+import { type Meta, type StoryObj, composeStories } from "@storybook/react";
+import * as breadcrumbs from "#app/[lang]/(authenticated)/@breadcrumbs/[...breadcrumbs]/page.stories.tsx";
+import * as desktopNav from "#app/[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.stories.tsx";
+import * as mobileDrawer from "#app/[lang]/(authenticated)/@mobileDrawer/[...breadcrumbs]/page.stories.tsx";
+import Layout from "#app/[lang]/(authenticated)/layout.tsx";
 
 const { Primary: Breadcrumbs } = composeStories(breadcrumbs);
 
@@ -21,7 +21,7 @@ const meta = {
         nextjs: {
             appDirectory: true,
             navigation: {
-                segments: [['breadcrumbs', 'orders/recent-orders', 'c']],
+                segments: [["breadcrumbs", "orders/recent-orders", "c"]],
             },
         },
     },

@@ -1,11 +1,11 @@
-import NextAuth from 'next-auth';
-import { NextResponse } from 'next/server';
-import AuthConfigs from '#app/_libs/auths/auth.config.ts';
+import NextAuth from "next-auth";
+import { NextResponse } from "next/server";
+import AuthConfigs from "#app/_libs/auths/auth.config.ts";
 import {
     CookieName,
     getRequestLocale,
-} from '#app/_libs/locales/getRequestLocale.ts';
-import linguiConfig from '#app/_libs/locales/lingui.config.ts';
+} from "#app/_libs/locales/getRequestLocale.ts";
+import linguiConfig from "#app/_libs/locales/lingui.config.ts";
 
 export const _auth = NextAuth(AuthConfigs);
 
@@ -35,7 +35,7 @@ export const middleware: unknown = _auth.auth((request) => {
     // The new URL is now /en/products
     return NextResponse.redirect(request.nextUrl, {
         headers: {
-            'Set-Cookie': `${CookieName}=${locale}`,
+            "Set-Cookie": `${CookieName}=${locale}`,
         },
     });
 });
@@ -50,6 +50,6 @@ export const config = {
          * - images - .svg, .png, .jpg, .jpeg, .gif, .webp
          * Feel free to modify this pattern to include more paths.
          */
-        '/((?!_next/static|_next/image|favicon.ico|monitoring|api|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+        "/((?!_next/static|_next/image|favicon.ico|monitoring|api|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
     ],
 };

@@ -21,6 +21,51 @@
             "test": "./src/VerifyEmailSchema.ts",
             "types": "./src/VerifyEmailSchema.ts",
             "default": "./dist/VerifyEmailSchema.js"
+        },
+        "./AdminIdSchema": {
+            "test": "./src/AdminIdSchema.ts",
+            "types": "./src/AdminIdSchema.ts",
+            "default": "./dist/AdminIdSchema.js"
+        },
+        "./MemberIdSchema": {
+            "test": "./src/MemberIdSchema.ts",
+            "types": "./src/MemberIdSchema.ts",
+            "default": "./dist/MemberIdSchema.js"
+        },
+        "./FileUploadIdSchema": {
+            "test": "./src/FileUploadIdSchema.ts",
+            "types": "./src/FileUploadIdSchema.ts",
+            "default": "./dist/FileUploadIdSchema.js"
+        },
+        "./GeneratePresignedPostUrlSchema": {
+            "test": "./src/GeneratePresignedPostUrlSchema.ts",
+            "types": "./src/GeneratePresignedPostUrlSchema.ts",
+            "default": "./dist/GeneratePresignedPostUrlSchema.js"
+        },
+        "./PhoneNumberSchema": {
+            "test": "./src/PhoneNumberSchema.ts",
+            "types": "./src/PhoneNumberSchema.ts",
+            "default": "./dist/PhoneNumberSchema.js"
+        },
+        "./PhoneNumberVerificationIdSchema": {
+            "test": "./src/PhoneNumberVerificationIdSchema.ts",
+            "types": "./src/PhoneNumberVerificationIdSchema.ts",
+            "default": "./dist/PhoneNumberVerificationIdSchema.js"
+        },
+        "./PlaceSchema": {
+            "test": "./src/PlaceSchema.ts",
+            "types": "./src/PlaceSchema.ts",
+            "default": "./dist/PlaceSchema.js"
+        },
+        "./PresignedPostUrlIdSchema": {
+            "test": "./src/PresignedPostUrlIdSchema.ts",
+            "types": "./src/PresignedPostUrlIdSchema.ts",
+            "default": "./dist/PresignedPostUrlIdSchema.js"
+        },
+        "./CompleteFileUploadSchema": {
+            "test": "./src/CompleteFileUploadSchema.ts",
+            "types": "./src/CompleteFileUploadSchema.ts",
+            "default": "./dist/CompleteFileUploadSchema.js"
         }
     },
     "devDependencies": {

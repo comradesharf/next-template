@@ -1,16 +1,16 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { BoldIcon, ItalicIcon, UnderlineIcon } from 'lucide-react';
+import type { Meta, StoryObj } from "@storybook/react";
+import { BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react";
 import {
     ToggleGroup,
     ToggleGroupItem,
-} from '#app/_components/toggle-group.tsx';
+} from "#app/_components/toggle-group.tsx";
 
 const meta: Meta<typeof ToggleGroup> = {
     component: ToggleGroup,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -88,7 +88,7 @@ export const Large: Story = {
 export const Small: Story = {
     render: function Component() {
         return (
-            <ToggleGroup size={'sm'} type="multiple">
+            <ToggleGroup size={"sm"} type="multiple">
                 <ToggleGroupItem value="bold" aria-label="Toggle bold">
                     <BoldIcon className="h-4 w-4" />
                 </ToggleGroupItem>

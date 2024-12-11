@@ -1,8 +1,8 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import type { Meta, StoryObj } from '@storybook/react';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { Button } from '#app/_components/button.tsx';
+import { zodResolver } from "@hookform/resolvers/zod";
+import type { Meta, StoryObj } from "@storybook/react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Button } from "#app/_components/button.tsx";
 import {
     Form,
     FormControl,
@@ -10,18 +10,18 @@ import {
     FormField,
     FormItem,
     FormLabel,
-} from '#app/_components/form.tsx';
-import { Label } from '#app/_components/label.tsx';
-import { Switch } from '#app/_components/switch.tsx';
-import { Toaster } from '#app/_components/toaster.tsx';
-import { toast } from '#app/_hooks/use-toast.ts';
+} from "#app/_components/form.tsx";
+import { Label } from "#app/_components/label.tsx";
+import { Switch } from "#app/_components/switch.tsx";
+import { Toaster } from "#app/_components/toaster.tsx";
+import { toast } from "#app/_hooks/use-toast.ts";
 
 const meta: Meta<typeof Switch> = {
     component: Switch,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -66,7 +66,7 @@ export const InForm: Story = {
 
         function onSubmit(data: z.infer<typeof FormSchema>) {
             toast({
-                title: 'You submitted the following values:',
+                title: "You submitted the following values:",
                 description: (
                     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
                         <code className="text-white">
@@ -84,7 +84,7 @@ export const InForm: Story = {
                     className="w-full space-y-6"
                 >
                     <div>
-                        <h3 className="mb-4 text-lg font-medium">
+                        <h3 className="mb-4 font-medium text-lg">
                             Email Notifications
                         </h3>
                         <div className="space-y-4">

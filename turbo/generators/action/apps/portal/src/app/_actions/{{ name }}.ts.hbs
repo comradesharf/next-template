@@ -1,0 +1,16 @@
+'use server';
+
+import "server-only";
+import { actionClient } from '#app/_libs/safe-actions.ts';
+{{#if schema}}
+import { {{ pascalCase name }}Schema } from 'app-schemas/{{ pascalCase name }}Schema';
+{{/if}}
+
+export const {{name}} = actionClient
+    .metadata({
+        actionName: '{{name}}',
+    })
+{{#if schema}}
+    .schema({{ pascalCase name }}Schema)
+{{/if}}
+    .action(async () => {});

@@ -1,13 +1,13 @@
-import { type Mock, fn } from '@storybook/test';
+import { type Mock, fn } from "@storybook/test";
 
 export const getCurrentSession: Mock = fn()
-    .mockName('getCurrentSession')
+    .mockName("getCurrentSession")
     .mockResolvedValue(undefined);
 
 export const getLeanCurrentUser: Mock = fn()
-    .mockName('getLeanCurrentUser')
+    .mockName("getLeanCurrentUser")
     .mockResolvedValue(undefined);
 
 export const getHydratedCurrentUser: Mock = fn()
-    .mockName('getHydratedCurrentUser')
+    .mockName("getHydratedCurrentUser")
     .mockResolvedValue(undefined);

@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { SignInSchema } from '@comradesharf/schemas/SignInSchema';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useHookFormAction } from '@next-safe-action/adapter-react-hook-form/hooks';
-import type { PropsWithChildren } from 'react';
-import { signIn } from '#app/_actions/signIn.ts';
-import { Form as SForm } from '#app/_components/form.tsx';
-import { ServerErrorMessageProvider } from '#app/_components/server-error-message.tsx';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks";
+import { SignInSchema } from "app-schemas/SignInSchema";
+import type { PropsWithChildren } from "react";
+import { signIn } from "#app/_actions/signIn.ts";
+import { Form as SForm } from "#app/_components/form.tsx";
+import { ServerErrorMessageProvider } from "#app/_components/server-error-message.tsx";
 
 export interface FormProps extends PropsWithChildren {
     className?: string;

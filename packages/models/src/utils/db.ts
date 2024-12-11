@@ -1,11 +1,22 @@
-import { Log } from '@comradesharf/core/Log';
+import { setGlobalOptions } from "@typegoose/typegoose";
+import { Log } from "app-core/Log";
 import {
     type Collection,
     ConnectionStates,
     connect,
     connection,
     set,
-} from 'mongoose';
+} from "mongoose";
+import {
+    MongooseSchemaOptions,
+    TypegooseSchemaOptions,
+} from "#utils/SchemaOptions.ts";
+
+setGlobalOptions({
+    schemaOptions: TypegooseSchemaOptions,
+});
+
+set(MongooseSchemaOptions);
 
 /**
  * Connects to the MongoDB database using Mongoose and provides the connection object.
@@ -14,30 +25,9 @@ import {
  */
 export async function db() {
     if (connection.readyState === ConnectionStates.disconnected) {
-        connection.removeAllListeners();
-
-        set('strictQuery', true);
-        set('autoCreate', process.env.NODE_ENV === 'development');
-        set('bufferCommands', process.env.NODE_ENV === 'development');
-        set('autoIndex', process.env.NODE_ENV === 'development');
-        set('toJSON', {
-            virtuals: true,
-            flattenObjectIds: true,
-        });
-
         if (process.env.MONGODB_DEBUG) {
-            connection.setMaxListeners(0);
-            connection.on('connected', () => Log.info('connected'));
-            connection.on('open', () => Log.info('open'));
-            connection.on('disconnected', () => Log.info('disconnected'));
-            connection.on('reconnected', () => Log.info('reconnected'));
-            connection.on('disconnecting', () => Log.info('disconnecting'));
-            connection.on('close', () => Log.info('close'));
-            connection.on('error', (error) =>
-                Log.error('mongoose_error', error),
-            );
             set(
-                'debug',
+                "debug",
                 function (
                     this: Collection,
                     collectionName: string,
@@ -55,7 +45,7 @@ export async function db() {
 
         const MongoUri =
             process.env.MONGODB_URI ??
-            'mongodb://user:Sgf82jEO25@127.0.0.1:27017/db?authSource=admin';
+            "mongodb://user:Sgf82jEO25@127.0.0.1:27017/db?authSource=admin";
 
         await connect(MongoUri);
     }

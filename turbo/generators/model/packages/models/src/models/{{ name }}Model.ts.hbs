@@ -1,0 +1,6 @@
+import { getModelForClass } from '@typegoose/typegoose';
+import { {{ name }} } from '#models/{{ name }}.ts';
+
+export const {{ name }}Model = getModelForClass({{ name }});
+
+export type { {{ name }} };

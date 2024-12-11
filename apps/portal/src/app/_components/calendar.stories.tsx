@@ -1,16 +1,16 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import type { Meta, StoryObj } from '@storybook/react';
-import { CalendarIcon } from 'lucide-react';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { Button } from '#app/_components/button.tsx';
+import { zodResolver } from "@hookform/resolvers/zod";
+import type { Meta, StoryObj } from "@storybook/react";
+import { CalendarIcon } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Button } from "#app/_components/button.tsx";
 import {
     Calendar,
     ControlledCalendar,
     SelectedDate,
     SelectedDateRange,
-} from '#app/_components/calendar.tsx';
+} from "#app/_components/calendar.tsx";
 import {
     Form,
     FormControl,
@@ -19,23 +19,23 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from '#app/_components/form.tsx';
+} from "#app/_components/form.tsx";
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-} from '#app/_components/popover.tsx';
-import { SubmitButton } from '#app/_components/submit-button.tsx';
-import { Toaster } from '#app/_components/toaster.tsx';
-import { toast } from '#app/_hooks/use-toast.ts';
-import { cn } from '#app/_libs/cn.ts';
+} from "#app/_components/popover.tsx";
+import { SubmitButton } from "#app/_components/submit-button.tsx";
+import { Toaster } from "#app/_components/toaster.tsx";
+import { toast } from "#app/_hooks/use-toast.ts";
+import { cn } from "#app/_libs/cn.ts";
 
 const meta: Meta<typeof Calendar> = {
     component: Calendar,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'centered',
+        layout: "centered",
         docs: {
             story: {
                 inline: true,
@@ -70,7 +70,7 @@ export const AsForm: Story = {
 
         function onSubmit(data: z.infer<typeof FormSchema>) {
             toast({
-                title: 'You submitted the following values:',
+                title: "You submitted the following values:",
                 description: (
                     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
                         <code className="text-white">
@@ -97,7 +97,7 @@ export const AsForm: Story = {
                                         <Button
                                             variant="outline"
                                             className={cn(
-                                                'w-[240px] pl-3 text-left font-normal',
+                                                "w-[240px] pl-3 text-left font-normal",
                                             )}
                                         >
                                             <SelectedDate placeholder="Pick a date" />
@@ -113,7 +113,7 @@ export const AsForm: Story = {
                                         mode="single"
                                         disabled={(date) =>
                                             date > new Date() ||
-                                            date < new Date('1900-01-01')
+                                            date < new Date("1900-01-01")
                                         }
                                         // initialFocus
                                     />
@@ -135,7 +135,7 @@ export const AsForm: Story = {
 
 const FormSchema = z.object({
     dob: z.date({
-        required_error: 'A date of birth is required.',
+        required_error: "A date of birth is required.",
     }),
 });
 
@@ -149,7 +149,7 @@ export const AsFormRange: Story = {
             await new Promise((resolve) => {
                 setTimeout(() => {
                     toast({
-                        title: 'You submitted the following values:',
+                        title: "You submitted the following values:",
                         description: (
                             <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
                                 <code className="text-white">
@@ -177,9 +177,9 @@ export const AsFormRange: Story = {
                                 <PopoverTrigger asChild>
                                     <Button
                                         id="date"
-                                        variant={'outline'}
+                                        variant={"outline"}
                                         className={cn(
-                                            'w-[300px] justify-start text-left font-normal',
+                                            "w-[300px] justify-start text-left font-normal",
                                         )}
                                     >
                                         <CalendarIcon className="mr-2 h-4 w-4" />
@@ -213,10 +213,10 @@ export const AsFormRange: Story = {
 const FormRangeSchema = z.object({
     dob: z.object({
         from: z.date({
-            required_error: 'A date of birth is required.',
+            required_error: "A date of birth is required.",
         }),
         to: z.date({
-            required_error: 'A date of birth is required.',
+            required_error: "A date of birth is required.",
         }),
     }),
 });

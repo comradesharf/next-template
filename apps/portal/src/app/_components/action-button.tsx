@@ -1,7 +1,7 @@
-import { Trans } from '@lingui/macro';
-import { Loader2 } from 'lucide-react';
-import { forwardRef } from 'react';
-import { Button, type ButtonProps } from '#app/_components/button.tsx';
+import { Trans } from "@lingui/macro";
+import { Loader2 } from "lucide-react";
+import { forwardRef } from "react";
+import { Button, type ButtonProps } from "#app/_components/button.tsx";
 
 export interface ActionButtonProps extends ButtonProps {
     placeholder?: string;
@@ -14,7 +14,7 @@ export const ActionButton = forwardRef<HTMLButtonElement, ActionButtonProps>(
             <Button {...props} ref={ref}>
                 {loading ? (
                     <>
-                        <Loader2 className="animate-spin mr-2" />
+                        <Loader2 className="mr-2 animate-spin" />
                         <Trans>Loading...</Trans>
                     </>
                 ) : (

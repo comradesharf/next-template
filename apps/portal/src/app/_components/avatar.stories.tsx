@@ -1,17 +1,17 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 import {
     Avatar,
     AvatarFallback,
     AvatarImage,
-} from '#app/_components/avatar.tsx';
+} from "#app/_components/avatar.tsx";
 
 const meta: Meta<typeof Avatar> = {
     component: Avatar,
-    subcomponents: { AvatarImage, AvatarFallback } as Meta['subcomponents'],
-    tags: ['autodocs'],
+    subcomponents: { AvatarImage, AvatarFallback } as Meta["subcomponents"],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { MinusIcon, PlusIcon } from 'lucide-react';
-import { useState } from 'react';
-import { Bar, BarChart, ResponsiveContainer } from 'recharts';
-import { Button } from '#app/_components/button.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { MinusIcon, PlusIcon } from "lucide-react";
+import { useState } from "react";
+import { Bar, BarChart, ResponsiveContainer } from "recharts";
+import { Button } from "#app/_components/button.tsx";
 import {
     Dialog,
     DialogContent,
@@ -10,7 +10,7 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from '#app/_components/dialog.tsx';
+} from "#app/_components/dialog.tsx";
 import {
     Drawer,
     DrawerClose,
@@ -20,11 +20,11 @@ import {
     DrawerHeader,
     DrawerTitle,
     DrawerTrigger,
-} from '#app/_components/drawer.tsx';
-import { Input } from '#app/_components/input.tsx';
-import { Label } from '#app/_components/label.tsx';
-import { useMediaQuery } from '#app/_hooks/use-media-query.ts';
-import { cn } from '#app/_libs/cn.ts';
+} from "#app/_components/drawer.tsx";
+import { Input } from "#app/_components/input.tsx";
+import { Label } from "#app/_components/label.tsx";
+import { useMediaQuery } from "#app/_hooks/use-media-query.ts";
+import { cn } from "#app/_libs/cn.ts";
 
 const data = [
     {
@@ -70,10 +70,10 @@ const data = [
 
 const meta: Meta<typeof Drawer> = {
     component: Drawer,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -113,10 +113,10 @@ const meta: Meta<typeof Drawer> = {
                                     <span className="sr-only">Decrease</span>
                                 </Button>
                                 <div className="flex-1 text-center">
-                                    <div className="text-7xl font-bold tracking-tighter">
+                                    <div className="font-bold text-7xl tracking-tighter">
                                         {goal}
                                     </div>
-                                    <div className="text-[0.70rem] uppercase text-muted-foreground">
+                                    <div className="text-[0.70rem] text-muted-foreground uppercase">
                                         Calories/day
                                     </div>
                                 </div>
@@ -137,7 +137,7 @@ const meta: Meta<typeof Drawer> = {
                                         <Bar
                                             dataKey="goal"
                                             style={{
-                                                fill: 'hsl(var(--foreground))',
+                                                fill: "hsl(var(--foreground))",
                                                 opacity: 0.9,
                                             }}
                                         />
@@ -167,7 +167,7 @@ export const Primary: Story = {};
 export const Responsive: Story = {
     render: function Component() {
         const [open, setOpen] = useState(false);
-        const isDesktop = useMediaQuery('(min-width: 768px)');
+        const isDesktop = useMediaQuery("(min-width: 768px)");
 
         if (isDesktop) {
             return (
@@ -214,9 +214,9 @@ export const Responsive: Story = {
     },
 };
 
-function ProfileForm({ className }: React.ComponentProps<'form'>) {
+function ProfileForm({ className }: React.ComponentProps<"form">) {
     return (
-        <form className={cn('grid items-start gap-4', className)}>
+        <form className={cn("grid items-start gap-4", className)}>
             <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input

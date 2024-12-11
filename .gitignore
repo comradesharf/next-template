@@ -32,7 +32,6 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
 .eslintcache
 
 /*/*/types
@@ -45,3 +44,5 @@ next-env.d.ts
 /types
 /volume
 globalConfig_*.json
+
+junit.xml

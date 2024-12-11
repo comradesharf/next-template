@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Image from 'next/image';
-import { Fragment } from 'react';
-import { ScrollArea, ScrollBar } from '#app/_components/scroll-area.tsx';
-import { Separator } from '#app/_components/separator.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import Image from "next/image";
+import { Fragment } from "react";
+import { ScrollArea, ScrollBar } from "#app/_components/scroll-area.tsx";
+import { Separator } from "#app/_components/separator.tsx";
 
 const tags = Array.from({ length: 50 }).map(
     (_, i, a) => `v1.2.0-beta.${a.length - i}`,
@@ -10,10 +10,10 @@ const tags = Array.from({ length: 50 }).map(
 
 const meta: Meta<typeof ScrollArea> = {
     component: ScrollArea,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -24,7 +24,7 @@ const meta: Meta<typeof ScrollArea> = {
         return (
             <ScrollArea className="h-72 w-48 rounded-md border">
                 <div className="p-4">
-                    <h4 className="mb-4 text-sm font-medium leading-none">
+                    <h4 className="mb-4 font-medium text-sm leading-none">
                         Tags
                     </h4>
                     {tags.map((tag) => (
@@ -52,16 +52,16 @@ export interface Artwork {
 
 export const works: Artwork[] = [
     {
-        artist: 'Ornella Binni',
-        art: 'https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?auto=format&fit=crop&w=300&q=80',
+        artist: "Ornella Binni",
+        art: "https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?auto=format&fit=crop&w=300&q=80",
     },
     {
-        artist: 'Tom Byrom',
-        art: 'https://images.unsplash.com/photo-1548516173-3cabfa4607e9?auto=format&fit=crop&w=300&q=80',
+        artist: "Tom Byrom",
+        art: "https://images.unsplash.com/photo-1548516173-3cabfa4607e9?auto=format&fit=crop&w=300&q=80",
     },
     {
-        artist: 'Vladimir Malyavko',
-        art: 'https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80',
+        artist: "Vladimir Malyavko",
+        art: "https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80",
     },
 ];
 
@@ -81,8 +81,8 @@ export const HorizontalScrolling: Story = {
                                     height={400}
                                 />
                             </div>
-                            <figcaption className="pt-2 text-xs text-muted-foreground">
-                                Photo by{' '}
+                            <figcaption className="pt-2 text-muted-foreground text-xs">
+                                Photo by{" "}
                                 <span className="font-semibold text-foreground">
                                     {artwork.artist}
                                 </span>

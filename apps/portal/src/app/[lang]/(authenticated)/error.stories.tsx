@@ -1,6 +1,6 @@
-import { type Meta, type StoryObj, composeStories } from '@storybook/react';
-import ErrorComp from '#app/[lang]/(authenticated)/error.tsx';
-import * as layouts from '#app/[lang]/(authenticated)/layout.stories.tsx';
+import { type Meta, type StoryObj, composeStories } from "@storybook/react";
+import ErrorComp from "#app/[lang]/(authenticated)/error.tsx";
+import * as layouts from "#app/[lang]/(authenticated)/layout.stories.tsx";
 
 const { Primary: Layout } = composeStories(layouts);
 
@@ -10,7 +10,7 @@ const meta = {
         nextjs: {
             appDirectory: true,
             navigation: {
-                segments: [['breadcrumbs', 'orders/recent-orders', 'c']],
+                segments: [["breadcrumbs", "orders/recent-orders", "c"]],
             },
         },
     },

@@ -1,9 +1,9 @@
-import { Platforms } from '@comradesharf/core/Platforms';
-import { Trans } from '@lingui/macro';
-import { ArrowLeft } from 'lucide-react';
-import Link from 'next/link';
-import { Button } from '#app/_components/button.tsx';
-import { cn } from '#app/_libs/cn.ts';
+import { Trans } from "@lingui/macro";
+import { Platforms } from "app-core/Platforms";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
+import { Button } from "#app/_components/button.tsx";
+import { cn } from "#app/_libs/cn.ts";
 
 export interface NotFoundProps {
     className?: string;
@@ -11,15 +11,15 @@ export interface NotFoundProps {
 
 export function NotFound({ className }: NotFoundProps) {
     return (
-        <div className={cn('max-w-md w-full px-4', className)}>
-            <div className="text-center mb-8">
-                <h1 className="text-9xl font-extrabold text-gray-700 dark:text-gray-300 mb-4">
+        <div className={cn("w-full max-w-md px-4", className)}>
+            <div className="mb-8 text-center">
+                <h1 className="mb-4 font-extrabold text-9xl text-gray-700 dark:text-gray-300">
                     404
                 </h1>
-                <p className="text-2xl font-semibold mb-2">
+                <p className="mb-2 font-semibold text-2xl">
                     <Trans>Oops! Page not found</Trans>
                 </p>
-                <p className="text-gray-600 dark:text-gray-400 mb-8">
+                <p className="mb-8 text-gray-600 dark:text-gray-400">
                     <Trans>
                         The page you are looking for might have been removed,
                         had its name changed, or is temporarily unavailable.
@@ -40,13 +40,13 @@ export function NotFound({ className }: NotFoundProps) {
                     </Button>
                 </div>
             </div>
-            <div className="mt-12 text-center text-sm text-gray-500 dark:text-gray-400">
+            <div className="mt-12 text-center text-gray-500 text-sm dark:text-gray-400">
                 <p>
                     <Trans>
-                        If you think this is a mistake, please{' '}
+                        If you think this is a mistake, please{" "}
                         <a
                             href={Platforms.MailtoSupportEmail}
-                            className="text-blue-600 dark:text-blue-400 hover:underline"
+                            className="text-blue-600 hover:underline dark:text-blue-400"
                         >
                             contact our support team
                         </a>

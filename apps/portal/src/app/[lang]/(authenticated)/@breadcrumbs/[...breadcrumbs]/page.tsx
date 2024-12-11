@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { Fragment } from 'react';
+import Link from "next/link";
+import { Fragment } from "react";
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -7,7 +7,7 @@ import {
     BreadcrumbList,
     BreadcrumbPage,
     BreadcrumbSeparator,
-} from '#app/_components/breadcrumb.tsx';
+} from "#app/_components/breadcrumb.tsx";
 
 export interface PageProps {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -29,7 +29,7 @@ export default async function Page(props: PageProps) {
                         <BreadcrumbItem>
                             <BreadcrumbLink className="capitalize" asChild>
                                 <Link href=".">
-                                    {trunk.replaceAll('-', ' ')}
+                                    {trunk.replaceAll("-", " ")}
                                 </Link>
                             </BreadcrumbLink>
                         </BreadcrumbItem>
@@ -38,7 +38,7 @@ export default async function Page(props: PageProps) {
                 ))}
                 <BreadcrumbItem>
                     <BreadcrumbPage className="capitalize">
-                        {last?.replaceAll('-', ' ')}
+                        {last?.replaceAll("-", " ")}
                     </BreadcrumbPage>
                 </BreadcrumbItem>
             </BreadcrumbList>

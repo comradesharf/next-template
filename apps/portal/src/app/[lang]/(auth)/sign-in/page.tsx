@@ -1,7 +1,7 @@
-import type { SignIn } from '@comradesharf/schemas/SignInSchema';
-import { Trans, t } from '@lingui/macro';
-import Link from 'next/link';
-import { Form } from '#app/[lang]/(auth)/sign-in/_components/form.tsx';
+import { Trans, t } from "@lingui/macro";
+import type { SignIn } from "app-schemas/SignInSchema";
+import Link from "next/link";
+import { Form } from "#app/[lang]/(auth)/sign-in/_components/form.tsx";
 import {
     Card,
     CardContent,
@@ -9,23 +9,23 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from '#app/_components/card.tsx';
+} from "#app/_components/card.tsx";
 import {
     FormControl,
     FormField,
     FormItem,
     FormLabel,
     FormMessage,
-} from '#app/_components/form.tsx';
-import { ControlledInput } from '#app/_components/input.tsx';
+} from "#app/_components/form.tsx";
+import { ControlledInput } from "#app/_components/input.tsx";
 import {
     ServerErrorMessage,
     ServerErrorMessageDescription,
-} from '#app/_components/server-error-message.tsx';
-import { SubmitButton } from '#app/_components/submit-button.tsx';
-import { assertUnauthenticated } from '#app/_libs/asserts.ts';
-import { withLocale } from '#app/_libs/locales/withLocale.tsx';
-import { getCurrentSession } from '#app/_queries/auths.ts';
+} from "#app/_components/server-error-message.tsx";
+import { SubmitButton } from "#app/_components/submit-button.tsx";
+import { assertUnauthenticated } from "#app/_libs/asserts.ts";
+import { withLocale } from "#app/_libs/locales/withLocale.tsx";
+import { getCurrentSession } from "#app/_queries/auths.ts";
 
 export interface PageProps {
     params: Promise<{ lang: string }>;
@@ -83,14 +83,14 @@ export default withLocale(async function Page(_props: PageProps) {
                     <ServerErrorMessage>
                         <ServerErrorMessageDescription />
                     </ServerErrorMessage>
-                    <SubmitButton className="w-full mt-4">
+                    <SubmitButton className="mt-4 w-full">
                         <Trans>Sign In</Trans>
                     </SubmitButton>
                 </CardContent>
                 <CardFooter className="flex flex-col">
-                    <p className="text-sm text-gray-600">
+                    <p className="text-gray-600 text-sm">
                         <Trans>
-                            Don't have an account?{' '}
+                            Don't have an account?{" "}
                             <Link
                                 href="/sign-up"
                                 className="text-blue-600 hover:underline"

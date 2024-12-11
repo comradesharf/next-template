@@ -1,6 +1,6 @@
-import { UserModel } from '@comradesharf/models/models/UserModel';
-import { cache } from 'react';
-import { auth } from '#app/_libs/auths/auths.ts';
+import { UserModel } from "app-models/models/UserModel";
+import { cache } from "react";
+import { auth } from "#app/_libs/auths/auths.ts";
 
 export const getCurrentSession = cache(() => auth());
 
@@ -10,7 +10,7 @@ export const getLeanCurrentUser = cache(async () => {
         return null;
     }
     return UserModel.findById(session.user.id)
-        .select('-password_hash')
+        .select("-password_hash")
         .lean()
         .orFail();
 });

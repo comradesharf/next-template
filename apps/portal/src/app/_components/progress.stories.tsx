@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useEffect, useState } from 'react';
-import { Progress } from '#app/_components/progress.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { useEffect, useState } from "react";
+import { Progress } from "#app/_components/progress.tsx";
 
 const meta: Meta<typeof Progress> = {
     component: Progress,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

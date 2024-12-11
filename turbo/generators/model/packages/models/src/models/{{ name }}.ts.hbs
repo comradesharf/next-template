@@ -1,0 +1,72 @@
+import { type ReturnModelType, modelOptions, prop } from '@typegoose/typegoose';
+import { Base } from '#models/Base.ts';
+import { generateIdWithPrefix } from "#utils/generateId.ts";
+import type { {{ name }}Id } from "app-schemas/{{ name }}IdSchema";
+import { accessibleBy } from "@casl/mongoose";
+import type { Actions } from "#utils/defineAbilityForUser.ts";
+import { getUserAbilities } from "#utils/abilitiesContext.ts";
+import { Log } from "app-core/Log";
+import type { MongoAbility } from "@casl/ability";
+import type { Actions, Subjects } from "#utils/defineAbilityForUser.ts";
+
+declare module '@casl/ability' {
+    interface RecordTypes {
+        {{ name }}: {{ name }};
+    }
+}
+
+const log = Log.child({
+    Model: "{{ name }}",
+});
+
+@modelOptions({
+    options: {
+        customName: '{{ name }}',
+    },
+})
+class {{ name }} extends Base {
+
+    @prop({
+        required: true,
+        type: String,
+        default: generateIdWithPrefix('{{ prefix }}'),
+    })
+    _id!: {{ name }}Id;
+
+    static accessibleBy(
+        this: ReturnModelType<typeof {{ name }}>,
+        action: Actions,
+        abilities:
+        | MongoAbility<[Actions, Subjects]>
+        | null
+        | undefined = getUserAbilities(),
+    ) {
+        if (!abilities) {
+            return this.find();
+        }
+
+        return this.find(
+            accessibleBy(abilities, action).ofType("{{ name }}"),
+        );
+    }
+
+    static oneAccessibleBy(
+        this: ReturnModelType<typeof {{ name }}>,
+        action: Actions,
+        abilities:
+        | MongoAbility<[Actions, Subjects]>
+        | null
+        | undefined = getUserAbilities(),
+    ) {
+        if (!abilities) {
+            return this.findOne();
+        }
+
+        return this.findOne(
+            accessibleBy(abilities, action).ofType("{{ name }}"),
+        );
+    }
+
+}
+
+export { {{ name }} };

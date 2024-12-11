@@ -1,5 +1,5 @@
-'use client';
+"use client";
 
-import { Loading } from '#app/_components/loading.tsx';
+import { Loading } from "#app/_components/loading.tsx";
 
 export default Loading;

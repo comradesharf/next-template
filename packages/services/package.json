@@ -1,0 +1,40 @@
+{
+    "name": "app-services",
+    "version": "0.0.0",
+    "private": true,
+    "devDependencies": {
+        "@swc/cli": "^0.5.2",
+        "@types/lodash-es": "^4.17.12",
+        "app-typescript-config": "workspace:^",
+        "typescript": "^5.7.2"
+    },
+    "dependencies": {
+        "@aws-sdk/client-s3": "^3.705.0",
+        "@aws-sdk/credential-providers": "^3.699.0",
+        "@aws-sdk/s3-presigned-post": "^3.705.0",
+        "app-core": "workspace:^",
+        "twilio": "^5.3.7"
+    },
+    "imports": {
+        "#*": "./src/*"
+    },
+    "type": "module",
+    "exports": {
+        "./Twilio": {
+            "types": "./src/Twilio.ts",
+            "test": "./src/Twilio.mock.ts",
+            "default": "./dist/Twilio.js"
+        },
+        "./S3": {
+            "types": "./src/S3.ts",
+            "test": "./src/S3.ts",
+            "default": "./dist/S3.js"
+        }
+    },
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "build": "yarn swc ./src/* -d dist --strip-leading-paths",
+        "watch": "yarn build -w"
+    },
+    "sideEffects": false
+}

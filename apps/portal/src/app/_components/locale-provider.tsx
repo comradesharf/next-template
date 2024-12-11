@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { type Messages, setupI18n } from '@lingui/core';
-import { I18nProvider } from '@lingui/react';
-import { type PropsWithChildren, useState } from 'react';
+import { type Messages, setupI18n } from "@lingui/core";
+import { I18nProvider } from "@lingui/react";
+import { type PropsWithChildren, useState } from "react";
 
 export interface LinguiClientProviderProps extends PropsWithChildren {
     initialLocale: string;

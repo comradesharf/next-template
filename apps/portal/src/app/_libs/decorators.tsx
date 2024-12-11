@@ -1,23 +1,23 @@
-import { DefaultAdmin } from '@comradesharf/model-mocks/Admin';
-import { DefaultMember } from '@comradesharf/model-mocks/Member';
-import { faker } from '@faker-js/faker';
-import { i18n } from '@lingui/core';
-import { I18nProvider } from '@lingui/react';
-import type { DecoratorFunction, LoaderFunction } from '@storybook/csf';
-import type { ReactRenderer, StoryContext } from '@storybook/react';
-import type { HttpHandler } from 'msw';
-import { type SetupWorker, setupWorker } from 'msw/browser';
-import { SessionProvider } from 'next-auth/react';
-import { useEffect, useInsertionEffect } from 'react';
-import { DateTimeI18nContext } from '#app/_components/date-time.tsx';
-import { NumberI18Context } from '#app/_components/number.tsx';
-import { SidebarProvider } from '#app/_components/sidebar.tsx';
-import { TooltipProvider } from '#app/_components/tooltip.tsx';
-import { inter } from '#app/_libs/fonts.ts';
+import { faker } from "@faker-js/faker";
+import { i18n } from "@lingui/core";
+import { I18nProvider } from "@lingui/react";
+import type { DecoratorFunction, LoaderFunction } from "@storybook/csf";
+import type { ReactRenderer, StoryContext } from "@storybook/react";
+import { DefaultAdmin } from "app-model-mocks/Admin";
+import { DefaultMember } from "app-model-mocks/Member";
+import type { HttpHandler } from "msw";
+import { type SetupWorker, setupWorker } from "msw/browser";
+import { SessionProvider } from "next-auth/react";
+import { useEffect, useInsertionEffect } from "react";
+import { DateTimeI18nContext } from "#app/_components/date-time.tsx";
+import { NumberI18Context } from "#app/_components/number.tsx";
+import { SidebarProvider } from "#app/_components/sidebar.tsx";
+import { TooltipProvider } from "#app/_components/tooltip.tsx";
+import { inter } from "#app/_libs/fonts.ts";
 
-declare module '@storybook/react' {
+declare module "@storybook/react" {
     interface Parameters {
-        layout?: 'centered' | 'fullscreen' | 'padded';
+        layout?: "centered" | "fullscreen" | "padded";
         docs?: {
             story?: {
                 inline?: boolean;
@@ -30,7 +30,7 @@ declare module '@storybook/react' {
                 pathname?: string;
                 query?: any;
                 segments?: ReadonlyArray<
-                    [string, string] | [string, string, 'c' | 'oc']
+                    [string, string] | [string, string, "c" | "oc"]
                 >;
             };
         };
@@ -64,8 +64,8 @@ export const withRoot: DecoratorFunction<any, any> = (Story, ctx) => {
 
     useInsertionEffect(() => {
         document.documentElement.classList.add(
-            'antialiased',
-            '[font-synthesis-weight:none]',
+            "antialiased",
+            "[font-synthesis-weight:none]",
             inter.variable,
         );
     }, []);
@@ -91,18 +91,18 @@ export const withRoot: DecoratorFunction<any, any> = (Story, ctx) => {
 
 const fileExtensionPattern = /\.(js|jsx|ts|tsx|mjs|woff|woff2|ttf|otf|eot)$/;
 const filteredURLSubstrings = [
-    'sb-common-assets',
-    'node_modules',
-    'node-modules',
-    'hot-update.json',
-    '__webpack_hmr',
-    'iframe.html',
-    'sb-vite',
-    '@vite',
-    '@react-refresh',
-    '/virtual:',
-    '.stories.',
-    '.mdx',
+    "sb-common-assets",
+    "node_modules",
+    "node-modules",
+    "hot-update.json",
+    "__webpack_hmr",
+    "iframe.html",
+    "sb-vite",
+    "@vite",
+    "@react-refresh",
+    "/virtual:",
+    ".stories.",
+    ".mdx",
 ];
 
 const shouldFilterUrl = (url: string) => {
@@ -124,7 +124,7 @@ export const augmentInitializeOptions = () => {
             }
 
             const pathname = new URL(url).pathname;
-            if (pathname.startsWith('/api')) {
+            if (pathname.startsWith("/api")) {
                 console.error(`Unhandled ${method} request to ${url}.
 
         This exception has been only logged in the console, however, it's strongly recommended to resolve this error as you don't want unmocked data in Storybook stories.
@@ -196,7 +196,7 @@ export const mswLoader: LoaderFunction<ReactRenderer, any> = async (
 
 export function getSession(user: string) {
     switch (user) {
-        case 'MEMBER':
+        case "MEMBER":
             return {
                 user: {
                     email: DefaultMember.email,
@@ -206,7 +206,7 @@ export function getSession(user: string) {
                 },
                 expires: faker.date.future().toISOString(),
             };
-        case 'ADMIN':
+        case "ADMIN":
             return {
                 user: {
                     email: DefaultAdmin.email,

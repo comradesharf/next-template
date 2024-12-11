@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useParams, useSearchParams } from 'next/navigation';
-import Page from '#app/[lang]/(authenticated)/@breadcrumbs/[...breadcrumbs]/page.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { useParams, useSearchParams } from "next/navigation";
+import Page from "#app/[lang]/(authenticated)/@breadcrumbs/[...breadcrumbs]/page.tsx";
 
 const meta = {
     component: Page,
     parameters: {
-        layout: 'centered',
+        layout: "centered",
         docs: {
             story: {
                 inline: true,
@@ -14,7 +14,7 @@ const meta = {
         nextjs: {
             appDirectory: true,
             navigation: {
-                segments: [['breadcrumbs', 'orders/recent-orders', 'c']],
+                segments: [["breadcrumbs", "orders/recent-orders", "c"]],
             },
         },
     },

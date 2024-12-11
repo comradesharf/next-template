@@ -1,42 +1,47 @@
-import * as Emails from '@comradesharf/emails/Emails';
-import { EmailVerification } from '@comradesharf/emails/emails/EmailVerification';
-import type { SignIn } from '@comradesharf/schemas/SignInSchema';
-import type { SignUp } from '@comradesharf/schemas/SignUpSchema';
-import { type ReturnModelType, modelOptions, prop } from '@typegoose/typegoose';
-import type { SessionOption } from 'mongoose';
-import { generateIdWithPrefix } from '#models/Base.ts';
-import { MemberModel } from '#models/MemberModel.ts';
-import { User } from '#models/User.ts';
+import { accessibleBy } from "@casl/mongoose";
+import { type ReturnModelType, modelOptions, prop } from "@typegoose/typegoose";
+import { Log } from "app-core/Log";
+import type { MemberId } from "app-schemas/MemberIdSchema";
+import type { SignIn } from "app-schemas/SignInSchema";
+import { MemberModel } from "#models/MemberModel.ts";
+import { User } from "#models/User.ts";
+import type { Abilities, Actions } from "#utils/abilities.ts";
+import { getAbilities } from "#utils/abilitiesContext.ts";
+import { generateIdWithPrefix } from "#utils/generateId.ts";
 
-declare module '@casl/ability' {
+declare module "@casl/ability" {
     interface RecordTypes {
         Member: Member;
     }
 }
 
+const log = Log.child({
+    Model: "Member",
+});
+
 @modelOptions({
     options: {
-        customName: 'Member',
+        customName: "Member",
     },
 })
 class Member extends User {
     @prop({
         required: true,
         type: String,
-        default: generateIdWithPrefix('mbr'),
+        default: generateIdWithPrefix("mbr"),
     })
-    _id!: string;
+    declare _id: MemberId;
 
-    declare role: 'MEMBER';
+    declare role: "MEMBER";
 
     static async authorize(
-        params: (SignIn & { type: 'user' }) | { type: 'system'; email: string },
+        params: (SignIn & { type: "user" }) | { type: "system"; email: string },
     ) {
         const user = await MemberModel.findOne({
             email: params.email,
         }).orFail();
 
-        if (params.type === 'user') {
+        if (params.type === "user") {
             const authorized = await user.verifyPassword(params.password);
             if (!authorized) {
                 return null;
@@ -44,6 +49,30 @@ class Member extends User {
             return user;
         }
         return user;
+    }
+
+    static accessibleBy(
+        this: ReturnModelType<typeof Member>,
+        action: Actions,
+        abilities: Abilities | null | undefined = getAbilities(),
+    ) {
+        if (!abilities) {
+            return this.find();
+        }
+
+        return this.find(accessibleBy(abilities, action).ofType("Member"));
+    }
+
+    static oneAccessibleBy(
+        this: ReturnModelType<typeof Member>,
+        action: Actions,
+        abilities: Abilities | null | undefined = getAbilities(),
+    ) {
+        if (!abilities) {
+            return this.findOne();
+        }
+
+        return this.findOne(accessibleBy(abilities, action).ofType("Member"));
     }
 }
 

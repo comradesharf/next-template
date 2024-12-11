@@ -1,16 +1,16 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 import {
     ResizableHandle,
     ResizablePanel,
     ResizablePanelGroup,
-} from '#app/_components/resizable.tsx';
+} from "#app/_components/resizable.tsx";
 
 const meta: Meta<typeof ResizablePanelGroup> = {
     component: ResizablePanelGroup,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

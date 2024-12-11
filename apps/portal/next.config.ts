@@ -1,10 +1,10 @@
-import { withSentryConfig } from '@sentry/nextjs';
-import type { NextConfig } from 'next';
+import { withSentryConfig } from "@sentry/nextjs";
+import type { NextConfig } from "next";
 
 const assetRemotePattern = (() => {
     const url = new URL(process.env.NEXT_PUBLIC_ASSET_URL);
 
-    const protocol = url.protocol.slice(0, -1) as 'http' | 'https';
+    const protocol = url.protocol.slice(0, -1) as "http" | "https";
 
     return {
         protocol,
@@ -13,7 +13,7 @@ const assetRemotePattern = (() => {
 })();
 
 const nextConfig: NextConfig = {
-    output: 'standalone',
+    output: "standalone",
     typescript: {
         ignoreBuildErrors: true,
     },
@@ -21,14 +21,14 @@ const nextConfig: NextConfig = {
         ignoreDuringBuilds: true,
     },
     transpilePackages: [
-        '@comradesharf/emails',
-        '@comradesharf/pdfs',
-        '@comradesharf/trpc',
-        '@comradesharf/models',
-        '@comradesharf/schemas',
+        "app-emails",
+        "app-pdfs",
+        "app-trpc",
+        "app-models",
+        "app-schemas",
     ],
     experimental: {
-        swcPlugins: [['@lingui/swc-plugin', {}]],
+        swcPlugins: [["@lingui/swc-plugin", {}]],
         serverMinification: false,
     },
     images: {
@@ -38,8 +38,8 @@ const nextConfig: NextConfig = {
     async redirects() {
         return [
             {
-                source: '/:locale/orders',
-                destination: '/:locale/orders/recent-orders',
+                source: "/:locale/orders",
+                destination: "/:locale/orders/recent-orders",
                 permanent: false,
             },
         ];
@@ -77,7 +77,7 @@ export default withSentryConfig(nextConfig, {
     // This can increase your server load as well as your hosting bill.
     // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
     // side errors will fail.
-    tunnelRoute: '/monitoring',
+    tunnelRoute: "/monitoring",
 
     // Hides source maps from generated client bundles
     hideSourceMaps: true,

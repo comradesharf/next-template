@@ -1,19 +1,19 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '#app/_components/button.tsx';
-import { Input } from '#app/_components/input.tsx';
-import { Label } from '#app/_components/label.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Button } from "#app/_components/button.tsx";
+import { Input } from "#app/_components/input.tsx";
+import { Label } from "#app/_components/label.tsx";
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-} from '#app/_components/popover.tsx';
+} from "#app/_components/popover.tsx";
 
 const meta: Meta<typeof Popover> = {
     component: Popover,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -32,7 +32,7 @@ const meta: Meta<typeof Popover> = {
                             <h4 className="font-medium leading-none">
                                 Dimensions
                             </h4>
-                            <p className="text-sm text-muted-foreground">
+                            <p className="text-muted-foreground text-sm">
                                 Set the dimensions for the layer.
                             </p>
                         </div>

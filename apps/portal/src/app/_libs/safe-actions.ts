@@ -1,20 +1,17 @@
-import 'server-only';
-import {
-    type ErrorPayload,
-    ServerActionError,
-} from '@comradesharf/models/utils/errors';
-import * as Sentry from '@sentry/nextjs';
-import { createSafeActionClient } from 'next-safe-action';
-import { cookies, headers } from 'next/headers';
-import { redirect } from 'next/navigation';
-import { z } from 'zod';
-import { I18nServerActionError } from '#app/_libs/errors.ts';
+import "server-only";
+import * as Sentry from "@sentry/nextjs";
+import { type ErrorPayload, ServerError } from "app-models/utils/errors";
+import { createSafeActionClient } from "next-safe-action";
+import { cookies, headers } from "next/headers";
+import { redirect } from "next/navigation";
+import { z } from "zod";
+import { I18nServerActionError } from "#app/_libs/errors.ts";
 import {
     CookieName,
     getRequestLocale,
-} from '#app/_libs/locales/getRequestLocale.ts';
-import { getHydratedCurrentUser } from '#app/_queries/auths.ts';
-import { getI18nInstance } from '#app/_queries/i18n.ts';
+} from "#app/_libs/locales/getRequestLocale.ts";
+import { getHydratedCurrentUser } from "#app/_queries/auths.ts";
+import { getI18nInstance } from "#app/_queries/i18n.ts";
 
 const ActionMetadataSchema = z.object({
     actionName: z.string(),
@@ -43,15 +40,15 @@ export const actionClient = createSafeActionClient({
                 scope.setUser(null);
             }
 
-            scope.setContext('server-action', {
+            scope.setContext("server-action", {
                 bindArgsClientInputs,
                 clientInput,
                 actionName: metadata.actionName,
                 lang: $ctx.lang,
             });
 
-            scope.setTag('server-action', metadata.actionName);
-            scope.setTag('lang', $ctx.lang);
+            scope.setTag("server-action", metadata.actionName);
+            scope.setTag("lang", $ctx.lang);
             return scope;
         });
 
@@ -59,12 +56,12 @@ export const actionClient = createSafeActionClient({
 
         if (error instanceof I18nServerActionError) {
             instance = error;
-        } else if (error instanceof ServerActionError) {
+        } else if (error instanceof ServerError) {
             instance = new I18nServerActionError(error.payload, error.cause);
         } else {
             instance = new I18nServerActionError(
                 {
-                    code: 'UNKNOWN',
+                    code: "UNKNOWN",
                 },
                 error,
             );
@@ -91,7 +88,7 @@ export const actionClient = createSafeActionClient({
         const user = await getHydratedCurrentUser();
 
         if (!$public && !user) {
-            redirect('/sign-in');
+            redirect("/sign-in");
         }
 
         return next({

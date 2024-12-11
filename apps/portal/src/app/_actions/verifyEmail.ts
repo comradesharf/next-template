@@ -1,17 +1,17 @@
-'use server';
+"use server";
 
-import 'server-only';
-import { SignUpSessionModel } from '@comradesharf/models/models/SignUpSessionModel';
-import type { User } from '@comradesharf/models/models/User';
-import { VerifyEmailSchema } from '@comradesharf/schemas/VerifyEmailSchema';
-import { type FlattenMaps, connection } from 'mongoose';
-import { z } from 'zod';
-import { signIn as $signIn } from '#app/_libs/auths/auths.ts';
-import { actionClient } from '#app/_libs/safe-actions.ts';
+import "server-only";
+import { SignUpSessionModel } from "app-models/models/SignUpSessionModel";
+import type { User } from "app-models/models/User";
+import { VerifyEmailSchema } from "app-schemas/VerifyEmailSchema";
+import { type FlattenMaps, connection } from "mongoose";
+import { z } from "zod";
+import { signIn as $signIn } from "#app/_libs/auths/auths.ts";
+import { actionClient } from "#app/_libs/safe-actions.ts";
 
 export const verifyEmail = actionClient
     .metadata({
-        actionName: 'verifyEmail',
+        actionName: "verifyEmail",
         public: true,
     })
     .schema(VerifyEmailSchema)
@@ -30,10 +30,10 @@ export const verifyEmail = actionClient
                     },
                 );
             });
-            await $signIn('credentials', {
+            await $signIn("credentials", {
                 email: user!.email,
-                type: 'system',
-                redirectTo: '/overview',
+                type: "system",
+                redirectTo: "/overview",
             });
         },
     );

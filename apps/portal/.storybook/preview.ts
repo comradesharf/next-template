@@ -1,13 +1,13 @@
-import '#app/globals.css';
-import { SupportedLocales } from '@comradesharf/core/SupportedLocales';
-import type { Preview } from '@storybook/react';
-import { http, HttpResponse } from 'msw';
+import "#app/globals.css";
+import type { Preview } from "@storybook/react";
+import { SupportedLocales } from "app-core/SupportedLocales";
+import { http, HttpResponse } from "msw";
 import {
     getSession,
     initialize,
     mswLoader,
     withRoot,
-} from '#app/_libs/decorators.tsx';
+} from "#app/_libs/decorators.tsx";
 
 initialize();
 
@@ -15,36 +15,36 @@ const preview: Preview = {
     loaders: [mswLoader],
     globalTypes: {
         locale: {
-            description: 'Internationalization locale',
+            description: "Internationalization locale",
             toolbar: {
-                icon: 'globe',
+                icon: "globe",
                 items: SupportedLocales,
             },
         },
         user: {
-            description: 'User',
+            description: "User",
             toolbar: {
-                icon: 'user',
+                icon: "user",
                 items: [
                     {
-                        value: 'MEMBER',
-                        title: 'Member',
+                        value: "MEMBER",
+                        title: "Member",
                     },
                     {
-                        value: 'ADMIN',
-                        title: 'Admin',
+                        value: "ADMIN",
+                        title: "Admin",
                     },
                     {
-                        value: 'ANON',
-                        title: 'Anonymous',
+                        value: "ANON",
+                        title: "Anonymous",
                     },
                 ],
             },
         },
     },
     initialGlobals: {
-        locale: 'en',
-        user: 'MEMBER',
+        locale: "en",
+        user: "MEMBER",
     },
     parameters: {
         controls: {
@@ -56,7 +56,7 @@ const preview: Preview = {
         nextjs: {
             appDirectory: true,
         },
-        layout: 'fullscreen',
+        layout: "fullscreen",
         docs: {
             story: {
                 inline: false,
@@ -66,7 +66,7 @@ const preview: Preview = {
         msw: {
             handlers: {
                 auth: (ctx) => [
-                    http.get('/api/auth/session', () => {
+                    http.get("/api/auth/session", () => {
                         return HttpResponse.json(getSession(ctx.globals.user));
                     }),
                 ],

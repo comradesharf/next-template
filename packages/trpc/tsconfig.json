@@ -1,5 +1,5 @@
 {
-    "extends": "@comradesharf/typescript-config/library.json",
+    "extends": "app-typescript-config/library.json",
     "compilerOptions": {
         "outDir": "./types"
     },

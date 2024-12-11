@@ -1,22 +1,22 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Badge } from '#app/_components/badge.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Badge } from "#app/_components/badge.tsx";
 
 const meta: Meta<typeof Badge> = {
     component: Badge,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {
-        variant: 'default',
+        variant: "default",
     },
     argTypes: {
         variant: {
             control: {
-                type: 'select',
+                type: "select",
             },
-            options: ['default', 'secondary', 'destructive', 'outline'],
+            options: ["default", "secondary", "destructive", "outline"],
         },
     },
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -36,18 +36,18 @@ export const Primary: Story = {};
 
 export const Secondary: Story = {
     args: {
-        variant: 'secondary',
+        variant: "secondary",
     },
 };
 
 export const Outline: Story = {
     args: {
-        variant: 'outline',
+        variant: "outline",
     },
 };
 
 export const Destructive: Story = {
     args: {
-        variant: 'destructive',
+        variant: "destructive",
     },
 };

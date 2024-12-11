@@ -1,9 +1,9 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import type { Meta, StoryObj } from '@storybook/react';
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { Button } from '#app/_components/button.tsx';
+import { zodResolver } from "@hookform/resolvers/zod";
+import type { Meta, StoryObj } from "@storybook/react";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Button } from "#app/_components/button.tsx";
 import {
     Form,
     FormControl,
@@ -12,7 +12,7 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from '#app/_components/form.tsx';
+} from "#app/_components/form.tsx";
 import {
     Select,
     SelectContent,
@@ -21,16 +21,16 @@ import {
     SelectLabel,
     SelectTrigger,
     SelectValue,
-} from '#app/_components/select.tsx';
-import { Toaster } from '#app/_components/toaster.tsx';
-import { toast } from '#app/_hooks/use-toast.ts';
+} from "#app/_components/select.tsx";
+import { Toaster } from "#app/_components/toaster.tsx";
+import { toast } from "#app/_hooks/use-toast.ts";
 
 const meta: Meta<typeof Select> = {
     component: Select,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -73,7 +73,7 @@ export const Primary: Story = {};
 const FormSchema = z.object({
     email: z
         .string({
-            required_error: 'Please select an email to display.',
+            required_error: "Please select an email to display.",
         })
         .email(),
 });
@@ -86,7 +86,7 @@ export const InForm: Story = {
 
         function onSubmit(data: z.infer<typeof FormSchema>) {
             toast({
-                title: 'You submitted the following values:',
+                title: "You submitted the following values:",
                 description: (
                     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
                         <code className="text-white">
@@ -131,7 +131,7 @@ export const InForm: Story = {
                                     </SelectContent>
                                 </Select>
                                 <FormDescription>
-                                    You can manage email addresses in your{' '}
+                                    You can manage email addresses in your{" "}
                                     <Link href="/examples/forms">
                                         email settings
                                     </Link>

@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
 import {
     type FieldValues,
     type UseFormStateProps,
     useFormState,
-} from 'react-hook-form';
+} from "react-hook-form";
 import {
     ActionButton,
     type ActionButtonProps,
-} from '#app/_components/action-button.tsx';
+} from "#app/_components/action-button.tsx";
 
 export interface SubmitButtonProps<TFieldValues extends FieldValues>
-    extends Omit<ActionButtonProps, 'name' | 'loading'>,
+    extends Omit<ActionButtonProps, "name" | "loading">,
         UseFormStateProps<TFieldValues> {}
 
 export function SubmitButton<TFieldValues extends FieldValues>({
@@ -19,7 +19,7 @@ export function SubmitButton<TFieldValues extends FieldValues>({
     name,
     exact,
     children,
-    type = 'submit',
+    type = "submit",
     ...props
 }: SubmitButtonProps<TFieldValues>) {
     const { isSubmitting } = useFormState({

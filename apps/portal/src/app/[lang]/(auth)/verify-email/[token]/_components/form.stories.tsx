@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Form } from '#app/[lang]/(auth)/verify-email/[token]/_components/form.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Form } from "#app/[lang]/(auth)/verify-email/[token]/_components/form.tsx";
 
 const meta: Meta<typeof Form> = {
     component: Form,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

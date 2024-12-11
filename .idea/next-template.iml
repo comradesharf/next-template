@@ -6,13 +6,31 @@
       <sourceFolder url="file://$MODULE_DIR$/apps/portal/public" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/apps/portal/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/core/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/emails/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/models/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/pdfs/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/schemas/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests/model-mocks/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests/model-tests/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests/schema-tests/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/trpc/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/services/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/core/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/emails/.swc" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/emails/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/pdfs/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/schemas/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/portal/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/volume" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/models/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/services/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/model-mocks/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/model-tests/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/schema-tests/.turbo" />
+      <excludePattern pattern=".eslintcache" />
+      <excludePattern pattern="junit.xml" />
+      <excludePattern pattern="globalConfig_model-tests.json" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

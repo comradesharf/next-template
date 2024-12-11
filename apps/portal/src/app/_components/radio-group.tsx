@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import { CheckIcon } from 'lucide-react';
-import * as React from 'react';
+import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+import { CheckIcon } from "lucide-react";
+import * as React from "react";
 
-import { cn } from '#app/_libs/cn.ts';
+import { cn } from "#app/_libs/cn.ts";
 
 const RadioGroup = React.forwardRef<
     React.ElementRef<typeof RadioGroupPrimitive.Root>,
@@ -12,7 +12,7 @@ const RadioGroup = React.forwardRef<
 >(({ className, ...props }, ref) => {
     return (
         <RadioGroupPrimitive.Root
-            className={cn('grid gap-2', className)}
+            className={cn("grid gap-2", className)}
             {...props}
             ref={ref}
         />
@@ -28,13 +28,13 @@ const RadioGroupItem = React.forwardRef<
         <RadioGroupPrimitive.Item
             ref={ref}
             className={cn(
-                'border-primary text-primary focus-visible:ring-ring aspect-square h-4 w-4 rounded-full border shadow focus:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50',
+                "aspect-square h-4 w-4 rounded-full border border-primary text-primary shadow focus:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
                 className,
             )}
             {...props}
         >
             <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
-                <CheckIcon className="fill-primary h-3.5 w-3.5" />
+                <CheckIcon className="h-3.5 w-3.5 fill-primary" />
             </RadioGroupPrimitive.Indicator>
         </RadioGroupPrimitive.Item>
     );

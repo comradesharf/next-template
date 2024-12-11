@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Separator } from '#app/_components/separator.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Separator } from "#app/_components/separator.tsx";
 
 const meta: Meta<typeof Separator> = {
     component: Separator,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -17,10 +17,10 @@ const meta: Meta<typeof Separator> = {
         return (
             <div>
                 <div className="space-y-1">
-                    <h4 className="text-sm font-medium leading-none">
+                    <h4 className="font-medium text-sm leading-none">
                         Radix Primitives
                     </h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-muted-foreground text-sm">
                         An open-source UI component library.
                     </p>
                 </div>

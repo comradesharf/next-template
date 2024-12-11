@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useParams, useSearchParams } from 'next/navigation';
-import Page from '#app/[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { useParams, useSearchParams } from "next/navigation";
+import Page from "#app/[lang]/(authenticated)/@desktopNav/[...breadcrumbs]/page.tsx";
 
 const meta = {
     component: Page,
@@ -8,7 +8,7 @@ const meta = {
         nextjs: {
             appDirectory: true,
             navigation: {
-                segments: [['breadcrumbs', 'orders/recent-orders', 'c']],
+                segments: [["breadcrumbs", "orders/recent-orders", "c"]],
             },
         },
     },

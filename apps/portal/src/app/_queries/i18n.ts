@@ -1,8 +1,8 @@
-import 'server-only';
-import { SupportedLocales } from '@comradesharf/core/SupportedLocales';
-import { type I18n, type Messages, setupI18n } from '@lingui/core';
-import { unstable_cache } from 'next/cache';
-import { cache } from 'react';
+import "server-only";
+import { type I18n, type Messages, setupI18n } from "@lingui/core";
+import { SupportedLocales } from "app-core/SupportedLocales";
+import { unstable_cache } from "next/cache";
+import { cache } from "react";
 
 async function loadCatalog({
     value: locale,

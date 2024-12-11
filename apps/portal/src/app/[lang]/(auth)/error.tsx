@@ -1,5 +1,5 @@
-'use client';
+"use client";
 
-import { ErrorComp } from '#app/_components/error.tsx';
+import { ErrorComp } from "#app/_components/error.tsx";
 
 export default ErrorComp;

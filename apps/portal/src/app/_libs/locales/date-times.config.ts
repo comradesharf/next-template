@@ -1,5 +1,5 @@
-import type { Locale } from 'date-fns';
-import memoize from 'lodash-es/memoize';
+import type { Locale } from "date-fns";
+import memoize from "lodash-es/memoize";
 
 export const initDateFormatter = memoize(
     (locale: string, options?: Intl.DateTimeFormatOptions) =>
@@ -8,12 +8,12 @@ export const initDateFormatter = memoize(
         return [locale, ...Object.keys(options)]
             .toSorted()
             .flatMap((key) => [key, (options as any)[key]])
-            .join('/');
+            .join("/");
     },
 );
 
 export interface FormatVariant {
-    'short-date': never;
+    "short-date": never;
     weekday: never;
     date: never;
 }
@@ -25,17 +25,17 @@ export interface DateTimeI18nConfig {
 }
 
 export const DateTimeFormatVariant = {
-    'short-date': {
-        dateStyle: 'short',
+    "short-date": {
+        dateStyle: "short",
     },
     weekday: {
-        weekday: 'short',
+        weekday: "short",
     },
     date: {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
+        day: "numeric",
+        month: "long",
+        year: "numeric",
     },
-} satisfies DateTimeI18nConfig['formatVariant'];
+} satisfies DateTimeI18nConfig["formatVariant"];
 
-export const DefaultDateTimeFormatVariant = 'short-date' as keyof FormatVariant;
+export const DefaultDateTimeFormatVariant = "short-date" as keyof FormatVariant;

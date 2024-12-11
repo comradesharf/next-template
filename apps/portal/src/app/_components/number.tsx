@@ -1,19 +1,19 @@
-import { useLingui } from '@lingui/react';
+import { useLingui } from "@lingui/react";
 import {
     type PropsWithChildren,
     type ReactNode,
     createContext,
     use,
-} from 'react';
+} from "react";
 import type {
     NumberFormatterProps,
     NumberRangeFormatterProps,
-} from '#app/_components/number.shared.tsx';
+} from "#app/_components/number.shared.tsx";
 import {
     NumberFormatVariant,
     type NumberI18nConfig,
     initNumberFormatter,
-} from '#app/_libs/locales/numbers.config.ts';
+} from "#app/_libs/locales/numbers.config.ts";
 
 const Context = createContext<NumberI18nConfig>({});
 
@@ -85,7 +85,7 @@ export function NumberRangeFormatter({
 export function useLocaleNumberFormatter({
     variant,
     options,
-}: Pick<NumberFormatterProps, 'variant' | 'options'> = {}) {
+}: Pick<NumberFormatterProps, "variant" | "options"> = {}) {
     const { i18n } = useLingui();
 
     const { formatVariant: mapping = {} } = use(Context);

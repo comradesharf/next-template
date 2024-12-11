@@ -1,5 +1,5 @@
-import { type Mock, fn } from '@storybook/test';
+import { type Mock, fn } from "@storybook/test";
 
 export const verifyEmail: Mock = fn()
-    .mockName('verifyEmail')
+    .mockName("verifyEmail")
     .mockResolvedValue(undefined);

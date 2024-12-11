@@ -1,5 +1,5 @@
 {
-    "extends": "@comradesharf/typescript-config/next.json",
+    "extends": "app-typescript-config/next.json",
     "compilerOptions": {
         "outDir": "types",
         "target": "ES2017",

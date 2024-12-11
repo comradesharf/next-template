@@ -12,7 +12,7 @@
             "default": "./dist/Emails.js"
         },
         "./EmailVerification": {
-            "types": "./src/EmailVerification.ts",
+            "types": "./src/EmailVerification.tsx",
             "default": "./dist/EmailVerification.js"
         }
     },

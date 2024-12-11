@@ -1,9 +1,9 @@
-import { type Meta, type StoryObj, composeStories } from '@storybook/react';
-import { mocked } from '@storybook/test';
-import * as layouts from '#app/[lang]/(authenticated)/layout.stories.tsx';
-import Page from '#app/[lang]/(authenticated)/orders/recent-orders/page.tsx';
-import { getSession } from '#app/_libs/decorators.tsx';
-import { getCurrentSession } from '#app/_queries/auths.ts';
+import { type Meta, type StoryObj, composeStories } from "@storybook/react";
+import { mocked } from "@storybook/test";
+import * as layouts from "#app/[lang]/(authenticated)/layout.stories.tsx";
+import Page from "#app/[lang]/(authenticated)/orders/recent-orders/page.tsx";
+import { getSession } from "#app/_libs/decorators.tsx";
+import { getCurrentSession } from "#app/_queries/auths.ts";
 
 const { Primary: Layout } = composeStories(layouts);
 
@@ -13,7 +13,7 @@ const meta = {
         nextjs: {
             appDirectory: true,
             navigation: {
-                segments: [['breadcrumbs', 'orders/recent-orders', 'c']],
+                segments: [["breadcrumbs", "orders/recent-orders", "c"]],
             },
         },
     },

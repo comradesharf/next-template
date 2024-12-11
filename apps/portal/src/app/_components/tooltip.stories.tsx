@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '#app/_components/button.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Button } from "#app/_components/button.tsx";
 import {
     Tooltip,
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
-} from '#app/_components/tooltip.tsx';
+} from "#app/_components/tooltip.tsx";
 
 const meta: Meta<typeof Tooltip> = {
     component: Tooltip,
@@ -14,11 +14,11 @@ const meta: Meta<typeof Tooltip> = {
         TooltipContent,
         TooltipProvider,
         TooltipTrigger,
-    } as Meta['subcomponents'],
-    tags: ['autodocs'],
+    } as Meta["subcomponents"],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '#app/_components/button.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Button } from "#app/_components/button.tsx";
 import {
     Card,
     CardContent,
@@ -7,22 +7,22 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from '#app/_components/card.tsx';
-import { Input } from '#app/_components/input.tsx';
-import { Label } from '#app/_components/label.tsx';
+} from "#app/_components/card.tsx";
+import { Input } from "#app/_components/input.tsx";
+import { Label } from "#app/_components/label.tsx";
 import {
     Tabs,
     TabsContent,
     TabsList,
     TabsTrigger,
-} from '#app/_components/tabs.tsx';
+} from "#app/_components/tabs.tsx";
 
 const meta: Meta<typeof Tabs> = {
     component: Tabs,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

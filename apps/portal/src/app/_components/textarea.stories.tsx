@@ -1,8 +1,8 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import type { Meta, StoryObj } from '@storybook/react';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { Button } from '#app/_components/button.tsx';
+import { zodResolver } from "@hookform/resolvers/zod";
+import type { Meta, StoryObj } from "@storybook/react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Button } from "#app/_components/button.tsx";
 import {
     Form,
     FormControl,
@@ -11,20 +11,20 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from '#app/_components/form.tsx';
-import { Label } from '#app/_components/label.tsx';
-import { ControlledTextarea, Textarea } from '#app/_components/textarea.tsx';
-import { Toaster } from '#app/_components/toaster.tsx';
-import { toast } from '#app/_hooks/use-toast.ts';
+} from "#app/_components/form.tsx";
+import { Label } from "#app/_components/label.tsx";
+import { ControlledTextarea, Textarea } from "#app/_components/textarea.tsx";
+import { Toaster } from "#app/_components/toaster.tsx";
+import { toast } from "#app/_hooks/use-toast.ts";
 
 const meta: Meta<typeof Textarea> = {
     component: Textarea,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {
-        placeholder: 'Type something...',
+        placeholder: "Type something...",
     },
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -71,7 +71,7 @@ export const WithText: Story = {
                     placeholder="Type your message here."
                     id="message-2"
                 />
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                     Your message will be copied to the support team.
                 </p>
             </div>
@@ -94,10 +94,10 @@ const FormSchema = z.object({
     bio: z
         .string()
         .min(10, {
-            message: 'Bio must be at least 10 characters.',
+            message: "Bio must be at least 10 characters.",
         })
         .max(160, {
-            message: 'Bio must not be longer than 30 characters.',
+            message: "Bio must not be longer than 30 characters.",
         }),
 });
 
@@ -109,7 +109,7 @@ export const AsForm: Story = {
 
         function onSubmit(data: z.infer<typeof FormSchema>) {
             toast({
-                title: 'You submitted the following values:',
+                title: "You submitted the following values:",
                 description: (
                     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
                         <code className="text-white">

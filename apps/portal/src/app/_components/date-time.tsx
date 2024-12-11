@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useLingui } from '@lingui/react';
-import type { Locale } from 'date-fns';
-import { useSession } from 'next-auth/react';
+import { useLingui } from "@lingui/react";
+import type { Locale } from "date-fns";
+import { useSession } from "next-auth/react";
 import {
     type PropsWithChildren,
     createContext,
@@ -10,19 +10,19 @@ import {
     useEffect,
     useMemo,
     useState,
-} from 'react';
+} from "react";
 import type {
     DateTimeFormatterProps,
     DateTimeRangeFormatterProps,
-} from '#app/_components/date-time.shared.tsx';
+} from "#app/_components/date-time.shared.tsx";
 import {
     DateTimeFormatVariant,
     type DateTimeI18nConfig,
     DefaultDateTimeFormatVariant,
     type FormatVariant,
     initDateFormatter,
-} from '#app/_libs/locales/date-times.config.ts';
-import { normalizeLocale } from '#app/_libs/locales/normalizeLocale.ts';
+} from "#app/_libs/locales/date-times.config.ts";
+import { normalizeLocale } from "#app/_libs/locales/normalizeLocale.ts";
 
 const Context = createContext<DateTimeI18nConfig>({});
 
@@ -52,14 +52,14 @@ export function DateTimeI18nContext({
     >({});
 
     useEffect(() => {
-        import('date-fns/locale').then((module) => setDfLocaleMapping(module));
+        import("date-fns/locale").then((module) => setDfLocaleMapping(module));
     }, []);
 
     const locale = useLingui().i18n.locale;
 
     const $locale =
         normalizeLocale(locale).find(($locale) => $locale in dfLocaleMapping) ??
-        'enUS';
+        "enUS";
 
     return (
         <Context.Provider
@@ -132,7 +132,7 @@ export function DateTimeRangeFormatter({
 export function useLocaleDateTimeFormatter({
     variant,
     options,
-}: Pick<DateTimeFormatterProps, 'variant' | 'options'> = {}) {
+}: Pick<DateTimeFormatterProps, "variant" | "options"> = {}) {
     const { i18n } = useLingui();
 
     const { formatVariant: mapping = {}, defaultFormatVariant } = use(Context);

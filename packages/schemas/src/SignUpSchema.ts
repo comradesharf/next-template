@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export const SignUpSchema = z
     .object({
@@ -11,11 +11,11 @@ export const SignUpSchema = z
         if (data.password !== data.confirm_password) {
             ctx.addIssue({
                 code: z.ZodIssueCode.custom,
-                path: ['password'],
+                path: ["password"],
             });
             ctx.addIssue({
                 code: z.ZodIssueCode.custom,
-                path: ['confirm_password'],
+                path: ["confirm_password"],
             });
         }
     });

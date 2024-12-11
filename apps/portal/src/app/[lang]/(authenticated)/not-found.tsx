@@ -1,5 +1,5 @@
-'use client';
+"use client";
 
-import { NotFound } from '#app/_components/not-found.tsx';
+import { NotFound } from "#app/_components/not-found.tsx";
 
 export default NotFound;

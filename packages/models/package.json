@@ -1,5 +1,5 @@
 {
-    "name": "@comradesharf/models",
+    "name": "app-models",
     "version": "0.1.0",
     "private": true,
     "imports": {
@@ -8,28 +8,97 @@
     "type": "module",
     "exports": {
         "./utils/db": {
-            "node": "./src/utils/db.ts",
+            "test": "./src/utils/db.ts",
+            "types": "./src/utils/db.ts",
             "storybook": "./src/utils/db.mock.ts",
-            "default": "./src/utils/db.ts"
+            "default": "./dist/utils/db.js"
         },
-        "./*": {
-            "node": "./src/*.ts",
+        "./utils/defineAbilityForUser": {
+            "test": "./src/utils/defineAbilityForUser.ts",
+            "types": "./src/utils/defineAbilityForUser.ts",
+            "default": "./dist/utils/defineAbilityForUser.js"
+        },
+        "./utils/errors": {
+            "test": "./src/utils/errors.ts",
+            "types": "./src/utils/errors.ts",
+            "default": "./dist/utils/errors.js"
+        },
+        "./utils/abilitiesContext": {
+            "test": "./src/utils/abilitiesContext.ts",
+            "types": "./src/utils/abilitiesContext.ts",
+            "default": "./dist/utils/abilitiesContext.js"
+        },
+        "./utils/generateId": {
+            "test": "./src/utils/generateId.ts",
+            "types": "./src/utils/generateId.ts",
+            "default": "./dist/utils/generateId.js"
+        },
+        "./models/PlaceModel": {
+            "test": "./src/models/PlaceModel.ts",
+            "types": "./src/models/PlaceModel.ts",
             "storybook": null,
-            "default": "./src/*.ts"
+            "default": "./dist/models/PlaceModel.js"
+        },
+        "./models/UserModel": {
+            "test": "./src/models/UserModel.ts",
+            "types": "./src/models/UserModel.ts",
+            "storybook": null,
+            "default": "./dist/models/UserModel.js"
+        },
+        "./models/PhoneNumberModel": {
+            "test": "./src/models/PhoneNumberModel.ts",
+            "types": "./src/models/PhoneNumberModel.ts",
+            "storybook": null,
+            "default": "./dist/models/PhoneNumberModel.js"
+        },
+        "./models/PhoneNumberVerificationModel": {
+            "test": "./src/models/PhoneNumberVerificationModel.ts",
+            "types": "./src/models/PhoneNumberVerificationModel.ts",
+            "storybook": null,
+            "default": "./dist/models/PhoneNumberVerificationModel.js"
+        },
+        "./models/PresignedPostUrlModel": {
+            "test": "./src/models/PresignedPostUrlModel.ts",
+            "types": "./src/models/PresignedPostUrlModel.ts",
+            "storybook": null,
+            "default": "./dist/models/PresignedPostUrlModel.js"
+        },
+        "./models/FileUploadModel": {
+            "test": "./src/models/FileUploadModel.ts",
+            "types": "./src/models/FileUploadModel.ts",
+            "storybook": null,
+            "default": "./dist/models/FileUploadModel.js"
+        },
+        "./models/AdminModel": {
+            "test": "./src/models/AdminModel.ts",
+            "types": "./src/models/AdminModel.ts",
+            "storybook": null,
+            "default": "./dist/models/AdminModel.js"
         }
     },
     "devDependencies": {
-        "@comradesharf/typescript-config": "workspace:^",
-        "@types/lodash-es": "^4.17.12"
+        "@swc/cli": "^0.5.2",
+        "@types/google.maps": "^3.58.1",
+        "@types/lodash-es": "^4.17.12",
+        "app-typescript-config": "workspace:^",
+        "typescript": "^5.7.2",
+        "vitest": "^2.1.8"
     },
     "dependencies": {
-        "@casl/ability": "^6.7.1",
+        "@casl/ability": "^6.7.2",
         "@casl/mongoose": "^8.0.2",
-        "@comradesharf/core": "workspace:^",
-        "@comradesharf/schemas": "workspace:^",
-        "@typegoose/typegoose": "^12.8.0",
+        "@typegoose/typegoose": "^12.9.1",
+        "app-core": "workspace:^",
+        "app-schemas": "workspace:^",
+        "app-services": "workspace:^",
         "lodash-es": "^4.17.21",
-        "mongoose": "^8.7.3",
+        "mongoose": "^8.8.4",
         "typeid-js": "^1.1.0"
-    }
+    },
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "build": "yarn swc ./src/* -d dist --strip-leading-paths",
+        "watch": "yarn build -w"
+    },
+    "sideEffects": false
 }

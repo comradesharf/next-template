@@ -1,0 +1,56 @@
+{
+    "name": "app-model-mocks",
+    "version": "0.1.0",
+    "private": true,
+    "imports": {
+        "#*": "./src/*"
+    },
+    "type": "module",
+    "exports": {
+        "./Admin": {
+            "test": "./src/Admin.mock.ts",
+            "types": "./src/Admin.mock.ts",
+            "default": "./dist/Admin.mock.js"
+        },
+        "./FileUpload": {
+            "test": "./src/FileUpload.mock.ts",
+            "types": "./src/FileUpload.mock.ts",
+            "default": "./dist/FileUpload.mock.js"
+        },
+        "./PhoneNumber": {
+            "test": "./src/PhoneNumber.mock.ts",
+            "types": "./src/PhoneNumber.mock.ts",
+            "default": "./dist/PhoneNumber.mock.js"
+        },
+        "./PhoneNumberVerification": {
+            "test": "./src/PhoneNumberVerification.mock.ts",
+            "types": "./src/PhoneNumberVerification.mock.ts",
+            "default": "./dist/PhoneNumberVerification.mock.js"
+        },
+        "./Place": {
+            "test": "./src/Place.mock.ts",
+            "types": "./src/Place.mock.ts",
+            "default": "./dist/Place.mock.js"
+        },
+        "./PresignedPostUrl": {
+            "test": "./src/PresignedPostUrl.mock.ts",
+            "types": "./src/PresignedPostUrl.mock.ts",
+            "default": "./dist/PresignedPostUrl.mock.js"
+        }
+    },
+    "devDependencies": {
+        "@swc/cli": "^0.5.2",
+        "app-models": "workspace:^",
+        "app-typescript-config": "workspace:^",
+        "typescript": "^5.7.2"
+    },
+    "dependencies": {
+        "@faker-js/faker": "^9.3.0"
+    },
+    "sideEffects": false,
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "build": "yarn swc ./src/* -d dist --strip-leading-paths",
+        "watch": "yarn build -w"
+    }
+}

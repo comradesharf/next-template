@@ -1,11 +1,11 @@
-import type { HTMLAttributes, ReactNode } from 'react';
-import type { FormatVariant } from '#app/_libs/locales/numbers.config.ts';
+import type { HTMLAttributes, ReactNode } from "react";
+import type { FormatVariant } from "#app/_libs/locales/numbers.config.ts";
 
 type StringNumericLiteral =
     | `${number}`
-    | 'Infinity'
-    | '-Infinity'
-    | '+Infinity';
+    | "Infinity"
+    | "-Infinity"
+    | "+Infinity";
 
 export interface NumberFormatterProps extends HTMLAttributes<HTMLSpanElement> {
     className?: string;
@@ -33,18 +33,18 @@ export interface NumberRangeFormatterProps
  */
 export function makeBodyAndUnit(parts: Intl.NumberFormatPart[]) {
     const index = parts.findIndex((part) =>
-        ['compact', 'unit'].includes(part.type),
+        ["compact", "unit"].includes(part.type),
     );
 
     const body = parts
         .slice(0, index)
         .map((part) => part.value)
-        .join('');
+        .join("");
 
     const unit = parts
         .slice(index, parts.length)
         .map((part) => part.value)
-        .join('');
+        .join("");
 
     return [body, unit];
 }

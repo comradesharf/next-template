@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export const VerifyEmailSchema = z.object({
     otp: z.string().regex(/^[a-f0-9]{5}$/),

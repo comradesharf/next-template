@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Card, CardContent } from '#app/_components/card.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Card, CardContent } from "#app/_components/card.tsx";
 import {
     Carousel,
     CarouselContent,
     CarouselItem,
     CarouselNext,
     CarouselPrevious,
-} from '#app/_components/carousel.tsx';
+} from "#app/_components/carousel.tsx";
 
 const meta: Meta<typeof Carousel> = {
     component: Carousel,
@@ -15,11 +15,11 @@ const meta: Meta<typeof Carousel> = {
         CarouselItem,
         CarouselNext,
         CarouselPrevious,
-    } as Meta['subcomponents'],
-    tags: ['autodocs'],
+    } as Meta["subcomponents"],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -36,7 +36,7 @@ const meta: Meta<typeof Carousel> = {
                             <div className="p-1">
                                 <Card>
                                     <CardContent className="flex aspect-square items-center justify-center p-6">
-                                        <span className="text-4xl font-semibold">
+                                        <span className="font-semibold text-4xl">
                                             {index + 1}
                                         </span>
                                     </CardContent>
@@ -63,7 +63,7 @@ export const Sizes: Story = {
         return (
             <Carousel
                 opts={{
-                    align: 'start',
+                    align: "start",
                 }}
                 className="w-full max-w-sm"
             >
@@ -77,7 +77,7 @@ export const Sizes: Story = {
                             <div className="p-1">
                                 <Card>
                                     <CardContent className="flex aspect-square items-center justify-center p-6">
-                                        <span className="text-3xl font-semibold">
+                                        <span className="font-semibold text-3xl">
                                             {index + 1}
                                         </span>
                                     </CardContent>
@@ -107,7 +107,7 @@ export const Spacing: Story = {
                             <div className="p-1">
                                 <Card>
                                     <CardContent className="flex aspect-square items-center justify-center p-6">
-                                        <span className="text-2xl font-semibold">
+                                        <span className="font-semibold text-2xl">
                                             {index + 1}
                                         </span>
                                     </CardContent>
@@ -128,7 +128,7 @@ export const Orientation: Story = {
         return (
             <Carousel
                 opts={{
-                    align: 'start',
+                    align: "start",
                 }}
                 orientation="vertical"
                 className="w-full max-w-xs"
@@ -140,7 +140,7 @@ export const Orientation: Story = {
                             <div className="p-1">
                                 <Card>
                                     <CardContent className="flex items-center justify-center p-6">
-                                        <span className="text-3xl font-semibold">
+                                        <span className="font-semibold text-3xl">
                                             {index + 1}
                                         </span>
                                     </CardContent>

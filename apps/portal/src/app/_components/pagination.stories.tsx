@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 import {
     Pagination,
     PaginationContent,
@@ -7,14 +7,14 @@ import {
     PaginationLink,
     PaginationNext,
     PaginationPrevious,
-} from '#app/_components/pagination.tsx';
+} from "#app/_components/pagination.tsx";
 
 const meta: Meta<typeof Pagination> = {
     component: Pagination,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
