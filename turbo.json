@@ -1,24 +1,25 @@
 {
     "$schema": "https://turbo.build/schema.json",
     "tasks": {
-        "@comradesharf/portal#dev": {
+        "dev": {
             "cache": false,
             "persistent": true,
-            "dependsOn": ["@comradesharf/emails#build"]
+            "dependsOn": ["^build", "compile-locale", "copy-widgets"]
         },
-        "@comradesharf/emails#dev": {
+        "storybook": {
             "cache": false,
             "persistent": true,
-            "dependsOn": ["build"]
+            "dependsOn": ["^build", "compile-locale", "^compile-locale"]
         },
-        "@comradesharf/emails#build": {
-            "outputs": ["dist"],
-            "inputs": ["src/**/*"],
-            "dependsOn": ["compile-locale"]
-        },
-        "@comradesharf/portal#storybook": {
-            "cache": false,
-            "persistent": true
+        "build": {
+            "dependsOn": [
+                "^build",
+                "compile-locale",
+                "^compile-locale",
+                "copy-widgets"
+            ],
+            "inputs": ["$TURBO_DEFAULT$", "!**/*.stories.{tsx,jsx,mdx}"],
+            "outputs": [".next/**", "!.next/cache/**", "dist/**"]
         },
         "compile-locale": {
             "outputs": ["src/**/locales/messages/*.ts"],
@@ -27,38 +28,42 @@
         "extract-locale": {
             "outputs": ["src/**/locales/messages/*.po"]
         },
+        "extract-locale:clean": {
+            "outputs": ["src/**/locales/messages/*.po"]
+        },
         "check-locale": {
             "outputs": ["src/**/locales/messages/*.po"]
         },
-        "@comradesharf/emails#check-locale": {
-            "outputs": ["src/**/locales/messages/*.po"]
-        },
-        "@comradesharf/portal#build": {
-            "inputs": ["$TURBO_DEFAULT$", "!**/*.stories.{tsx,jsx,mdx}"],
-            "outputs": [".next/**", "!.next/cache/**"],
-            "dependsOn": ["@comradesharf/portal#compile-locale"]
-        },
-        "@comradesharf/portal#storybook:build": {
-            "outputs": ["storybook-static/**"],
-            "dependsOn": ["@comradesharf/portal#compile-locale"]
-        },
-        "@comradesharf/portal#storybook:test": {
-            "dependsOn": ["@comradesharf/portal#storybook:build"]
-        },
         "check-types": {
-            "outputs": ["*/*/types/**"],
             "dependsOn": ["^check-types"]
         },
-        "@comradesharf/portal#check-types": {
-            "dependsOn": ["@comradesharf/portal#build"]
+        "copy-widgets": {
+            "dependsOn": ["^build"],
+            "outputs": ["public/_widgets/**"]
         },
-        "//#test": {
+        "test:storybook": {
+            "outputs": ["junit.xml"],
+            "dependsOn": ["build:storybook"]
+        },
+        "start:storybook": {
+            "dependsOn": ["build:storybook"],
             "cache": false,
             "persistent": true
         },
-        "//#lint": {
+        "build:storybook": {
+            "dependsOn": ["^compile-locale", "compile-locale"],
+            "outputs": ["storybook-static/**"]
+        },
+        "test": {
+            "outputs": ["junit.xml"]
+        },
+        "test:watch": {
             "cache": false,
             "persistent": true
+        },
+        "//#format-and-lint": {},
+        "//#format-and-lint:fix": {
+            "cache": false
         }
     }
 }

@@ -34,7 +34,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .eslintcache
-.idea
 
 /*/*/types
 /*/*/node_modules
