@@ -1,5 +1,5 @@
 {
-    "name": "@comradesharf/schemas",
+    "name": "app-schemas",
     "version": "0.1.0",
     "private": true,
     "imports": {
@@ -7,13 +7,34 @@
     },
     "type": "module",
     "exports": {
-        "./*": "./src/*.ts"
+        "./SignInSchema": {
+            "test": "./src/SignInSchema.ts",
+            "types": "./src/SignInSchema.ts",
+            "default": "./dist/SignInSchema.js"
+        },
+        "./SignUpSchema": {
+            "test": "./src/SignUpSchema.ts",
+            "types": "./src/SignUpSchema.ts",
+            "default": "./dist/SignUpSchema.js"
+        },
+        "./VerifyEmailSchema": {
+            "test": "./src/VerifyEmailSchema.ts",
+            "types": "./src/VerifyEmailSchema.ts",
+            "default": "./dist/VerifyEmailSchema.js"
+        }
     },
     "devDependencies": {
-        "@comradesharf/typescript-config": "workspace:^"
+        "@swc/cli": "^0.5.2",
+        "app-typescript-config": "workspace:^",
+        "typescript": "^5.7.2"
     },
     "dependencies": {
-        "zod": "^3.23.8"
+        "zod": "^3.24.0"
+    },
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "build": "yarn swc ./src/* -d dist --strip-leading-paths",
+        "watch": "yarn build -w"
     },
     "sideEffects": false
 }

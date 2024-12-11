@@ -1,8 +1,5 @@
 {
-    "extends": "@comradesharf/typescript-config/library.json",
-    "compilerOptions": {
-        "outDir": "./types"
-    },
+    "extends": "app-typescript-config/library.json",
     "exclude": ["node_modules"],
     "include": ["src/**/*.tsx", "src/**/*.ts", "src/**/*.mts"]
 }
