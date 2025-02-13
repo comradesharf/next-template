@@ -9,18 +9,17 @@
         "ignoreUnknown": false,
         "ignore": [
             ".turbo",
+            "**/.turbo",
+            ".next",
             "**/.next",
-            "packages/*/types",
             "packages/*/dist",
-            "apps/portal/public/_widgets",
-            "tests/*/types",
-            "tests/*/dist",
-            "apps/*/types",
+            "apps/*/public/_*",
+            "packages/*/public/_*",
             "apps/*/dist",
             "*-tests.json",
-            "**/locales/messages/*.ts",
+            "**/src/locales/*.ts",
             "volume/**",
-            "storybook-static/**",
+            "**/storybook-static",
             "**/lordicon/**/*.json"
         ]
     },
@@ -67,6 +66,9 @@
             "correctness": {
                 "noUnusedImports": {
                     "fix": "safe",
+                    "level": "warn"
+                },
+                "noUnusedVariables": {
                     "level": "warn"
                 }
             }

@@ -1,53 +1,47 @@
 {
     "$schema": "https://turbo.build/schema.json",
+    "globalEnv": ["CI"],
+    "globalPassThroughEnv": ["FAKER_SEED"],
     "tasks": {
         "dev": {
             "cache": false,
             "persistent": true,
-            "dependsOn": ["^build", "compile-locale", "copy-widgets"]
-        },
-        "app-emails#dev": {
-            "cache": false,
-            "persistent": true,
-            "dependsOn": ["^build", "compile-locale", "build"]
+            "dependsOn": ["^compile-i18n", "copy-public"]
         },
         "storybook": {
             "cache": false,
             "persistent": true,
-            "dependsOn": ["^build", "compile-locale", "^compile-locale"]
+            "dependsOn": ["^compile-i18n"]
         },
         "build": {
-            "dependsOn": [
-                "^build",
-                "compile-locale",
-                "^compile-locale",
-                "copy-widgets"
-            ],
+            "dependsOn": ["^compile-i18n", "copy-public"],
             "inputs": ["$TURBO_DEFAULT$", "!**/*.stories.{tsx,jsx,mdx}"],
             "outputs": [".next/**", "!.next/cache/**", "dist/**"]
         },
-        "compile-locale": {
-            "outputs": ["src/**/locales/messages/*.ts"],
-            "inputs": ["src/**/locales/messages/*.po"]
+        "compile-i18n": {
+            "outputs": ["src/locales/*.ts"],
+            "inputs": ["../../*/*/locales/*.po"]
         },
-        "extract-locale": {
-            "outputs": ["src/**/locales/messages/*.po"]
+        "extract-i18n": {
+            "inputs": ["../../*/*/src/*.ts"],
+            "outputs": ["../../*/*/locales/*.po"],
+            "dependsOn": ["//#format-and-lint:fix"]
         },
-        "extract-locale:clean": {
-            "outputs": ["src/**/locales/messages/*.po"]
+        "extract-i18n:clean": {
+            "inputs": ["../../*/*/src/*.ts"],
+            "outputs": ["../../*/*/locales/*.po"],
+            "dependsOn": ["//#format-and-lint:fix"]
         },
-        "check-locale": {
-            "outputs": ["src/**/locales/messages/*.po"]
-        },
+        "check-circular": {},
         "check-types": {
             "dependsOn": ["^check-types"]
         },
-        "copy-widgets": {
+        "copy-public": {
             "dependsOn": ["^build"],
-            "outputs": ["public/_widgets/**"]
+            "outputs": ["public/_*/**"],
+            "inputs": ["../../packages/*/{public,dist}/_*/**"]
         },
         "test:storybook": {
-            "outputs": ["junit.xml"],
             "dependsOn": ["build:storybook"]
         },
         "start:storybook": {
@@ -56,13 +50,14 @@
             "persistent": true
         },
         "build:storybook": {
-            "dependsOn": ["^compile-locale", "compile-locale"],
+            "dependsOn": ["^compile-i18n", "compile-i18n"],
             "outputs": ["storybook-static/**"]
         },
         "test": {
-            "outputs": ["junit.xml"]
+            "dependsOn": ["^compile-i18n"]
         },
         "test:watch": {
+            "dependsOn": ["^compile-i18n"],
             "cache": false,
             "persistent": true
         },

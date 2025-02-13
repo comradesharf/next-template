@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "#app/_components/button.tsx";
-import { Checkbox } from "#app/_components/checkbox.tsx";
+import { Checkbox, ControlledCheckbox } from "#app/_components/checkbox.tsx";
 import {
     Form,
     FormControl,
@@ -131,46 +131,16 @@ export const AsForm2: Story = {
                                         key={item.id}
                                         control={form.control}
                                         name="items"
-                                        render={({ field }) => {
-                                            return (
-                                                <FormItem
-                                                    key={item.id}
-                                                    className="flex flex-row items-start space-x-3 space-y-0"
-                                                >
-                                                    <FormControl>
-                                                        <Checkbox
-                                                            checked={field.value?.includes(
-                                                                item.id,
-                                                            )}
-                                                            onCheckedChange={(
-                                                                checked,
-                                                            ) => {
-                                                                return checked
-                                                                    ? field.onChange(
-                                                                          [
-                                                                              ...field.value,
-                                                                              item.id,
-                                                                          ],
-                                                                      )
-                                                                    : field.onChange(
-                                                                          field.value?.filter(
-                                                                              (
-                                                                                  value,
-                                                                              ) =>
-                                                                                  value !==
-                                                                                  item.id,
-                                                                          ),
-                                                                      );
-                                                            }}
-                                                        />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal">
-                                                        {item.label}
-                                                    </FormLabel>
-                                                </FormItem>
-                                            );
-                                        }}
-                                    />
+                                    >
+                                        <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                                            <ControlledCheckbox
+                                                value={item.id}
+                                            />
+                                            <FormLabel className="font-normal">
+                                                {item.label}
+                                            </FormLabel>
+                                        </FormItem>
+                                    </FormField>
                                 ))}
                                 <FormMessage />
                             </FormItem>

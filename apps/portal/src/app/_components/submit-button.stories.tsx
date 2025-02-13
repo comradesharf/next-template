@@ -32,7 +32,7 @@ const meta: Meta<typeof SubmitButton> = {
                         ),
                     });
                     resolve(null);
-                }, 1000);
+                }, 2000);
             });
         }
 

@@ -1,0 +1,29 @@
+{
+    "name": "app-models-mocks",
+    "version": "0.1.0",
+    "private": true,
+    "imports": {
+        "#*": "./src/*"
+    },
+    "type": "module",
+    "devDependencies": {
+        "app-models": "workspace:^",
+        "app-typescript-config": "workspace:^"
+    },
+    "peerDependencies": {
+        "@faker-js/faker": "*",
+        "date-fns": "*",
+        "dpdm": "*",
+        "lodash-es": "*",
+        "typescript": "*"
+    },
+    "dependencies": {
+        "app-core": "workspace:^",
+        "app-schemas": "workspace:^"
+    },
+    "sideEffects": false,
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "check-circular": "dpdm -T --skip-dynamic-imports circular --no-warning --no-tree --exit-code circular:1 src/**/*"
+    }
+}

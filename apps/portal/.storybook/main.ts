@@ -10,7 +10,7 @@ function getAbsolutePath(value: string) {
 }
 
 const config = {
-    stories: ["../src/app/**/*.@(mdx|stories.@(js|jsx|mjs|ts|tsx))"],
+    stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
     addons: [
         getAbsolutePath("@storybook/addon-links"),
         getAbsolutePath("@storybook/addon-essentials"),
@@ -23,12 +23,22 @@ const config = {
             nextConfigPath: require.resolve("../next.config.ts"),
         },
     },
-    staticDirs: ["../public"],
+    staticDirs: [
+        "../public",
+        {
+            from: "../src/app/_libs/fonts",
+            to: "src/app/_libs/fonts",
+        },
+    ],
     features: {
         experimentalRSC: true,
     },
     core: {
         disableTelemetry: true,
+    },
+    webpack(config) {
+        config.experiments!.topLevelAwait = true;
+        return config;
     },
 } as StorybookConfig;
 

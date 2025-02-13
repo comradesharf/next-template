@@ -1,0 +1,43 @@
+{
+    "name": "app-pdfs-stories",
+    "version": "0.1.0",
+    "private": true,
+    "imports": {
+        "#*": "./src/*"
+    },
+    "type": "module",
+    "dependencies": {
+        "@storybook/addon-essentials": "^8.6.3",
+        "@storybook/addon-interactions": "^8.6.3",
+        "@storybook/addon-links": "^8.6.3",
+        "@storybook/blocks": "^8.6.3",
+        "@storybook/nextjs": "^8.6.3",
+        "@storybook/react": "^8.6.3",
+        "@storybook/test": "^8.6.3",
+        "@storybook/test-runner": "^0.22.0",
+        "@types/lodash-es": "^4.17.12",
+        "@types/react": "^19.0.10",
+        "@types/react-dom": "^19.0.4",
+        "app-core": "workspace:^",
+        "app-i18n": "workspace:^",
+        "app-models-mocks": "workspace:^",
+        "app-typescript-config": "workspace:^",
+        "date-fns": "^4.1.0",
+        "dpdm": "^3.14.0",
+        "lodash-es": "^4.17.21",
+        "next": "15.2.0",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "storybook": "^8.6.3",
+        "typescript": "^5.8.2"
+    },
+    "sideEffects": false,
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "check-circular": "dpdm -T --skip-dynamic-imports circular --no-warning --no-tree --exit-code circular:1 src/**/*",
+        "storybook": "storybook dev -p 6008",
+        "build:storybook": "storybook build --test --quiet",
+        "start:storybook": "npx --yes http-server storybook-static --port 6008 --silent",
+        "test:storybook": "npx --yes concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"yarn start:storybook\" \"npx --yes wait-on tcp:127.0.0.1:6008 && yarn test-storybook --url=http://127.0.0.1:6008 --maxWorkers=3 $@\""
+    }
+}

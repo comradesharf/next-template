@@ -1,5 +1,5 @@
 import type { PlopTypes } from "@turbo/gen";
-// @ts-ignore
+// @ts-expect-error
 import fuzzypath from "inquirer-fuzzy-path";
 import { camelCase, kebabCase, lowerCase, upperFirst } from "lodash";
 
@@ -65,9 +65,9 @@ export default function generator(plop: PlopTypes.NodePlopAPI) {
             },
             {
                 type: "append",
-                path: "src/app/_queries/{{ file }}.mock.ts",
+                path: "apps/portal/src/app/_queries/{{ file }}.mock.ts",
                 unique: true,
-                pattern: "// start:query",
+                pattern: /$(?![\r\n])/,
                 template: `
 export const {{name}}: Mock = fn()
     .mockName('{{name}}')
@@ -76,9 +76,9 @@ export const {{name}}: Mock = fn()
             },
             {
                 type: "append",
-                path: "src/app/_queries/{{ file }}.ts",
+                path: "apps/portal/src/app/_queries/{{ file }}.ts",
                 unique: true,
-                pattern: "// start:query",
+                pattern: /$(?![\r\n])/,
                 template: `
 export const {{ name }} = cache(() => {});
                 `,
@@ -113,7 +113,7 @@ export const {{ name }} = cache(() => {});
                 filter(value: string) {
                     return {
                         absolute: value.replace("apps/portal/src/", "#"),
-                        original: value.replace("apps/portal/", ""),
+                        original: value,
                         [Symbol.toPrimitive]() {
                             return this.original;
                         },
@@ -173,7 +173,7 @@ export const {{ name }} = cache(() => {});
                 filter(value: string) {
                     return {
                         absolute: value.replace("apps/portal/src/", "#"),
-                        original: value.replace("apps/portal/", ""),
+                        original: value,
                         [Symbol.toPrimitive]() {
                             return this.original;
                         },
@@ -350,13 +350,146 @@ export const {{ name }} = cache(() => {});
             ];
 
             if (data?.schema) {
-                _actions.push({
+                _actions.push(
+                    {
+                        type: "addMany",
+                        skipIfExists: true,
+                        templateFiles: "action-schema/**/*.hbs",
+                        base: "action-schema",
+                        destination: ".",
+                    },
+                    {
+                        type: "append",
+                        path: "./packages/schemas/package.json",
+                        unique: true,
+                        pattern: '"exports": {',
+                        template: `"./{{ pascalCase name }}Schema": {
+                            "types": "./src/{{ pascalCase name }}Schema.ts",
+                            "default": "./dist/{{ pascalCase name }}Schema.js"
+                        },`,
+                    },
+                );
+            }
+
+            return _actions;
+        },
+    });
+
+    plop.setGenerator("trpc", {
+        description: "Create a new trpc endpoint in the app",
+        prompts: [
+            {
+                type: "list",
+                name: "type",
+                message: "What is your trpc endpoint type?",
+                choices: ["admin", "client"],
+            },
+            {
+                type: "input",
+                name: "group",
+                message: "What is your trpc endpoint group?",
+                validate: (value?: string) => {
+                    if (!value?.trim().length) {
+                        return "A trpc endpoint group is required";
+                    }
+
+                    if (camelCase(value) !== value) {
+                        return "The trpc endpoint group must be in camelCase";
+                    }
+
+                    return true;
+                },
+            },
+            {
+                type: "input",
+                name: "name",
+                message: "What is your trpc endpoint name?",
+                validate: (value?: string) => {
+                    if (!value?.trim().length) {
+                        return "A trpc endpoint name is required";
+                    }
+
+                    if (camelCase(value) !== value) {
+                        return "The trpc endpoint name must be in camelCase";
+                    }
+
+                    return true;
+                },
+            },
+        ],
+        actions(data) {
+            const _actions = [
+                {
+                    type: "addMany",
+                    skipIfExists: true,
+                    templateFiles: "trpc/**/*.hbs",
+                    base: "trpc",
+                    destination: ".",
+                },
+
+                {
                     type: "addMany",
                     skipIfExists: true,
                     templateFiles: "action-schema/**/*.hbs",
                     base: "action-schema",
                     destination: ".",
-                });
+                },
+                {
+                    type: "append",
+                    path: "./packages/schemas/package.json",
+                    unique: true,
+                    pattern: '"exports": {',
+                    template: `"./{{ pascalCase name }}Schema": "./src/{{ pascalCase name }}Schema.ts",
+                `,
+                },
+                {
+                    type: "append",
+                    path: "packages/trpc/src/{{ type }}/{{ group }}.ts",
+                    unique: true,
+                    pattern: /$(?![\r\n])/,
+                    template: `
+export const {{ name }} = privateProcedure
+    .input({{ pascalCase name }}Schema)
+    .mutation(async ({ input }) => {});
+                `,
+                },
+                {
+                    type: "append",
+                    path: "packages/trpc/src/{{ type }}/{{ group }}.ts",
+                    unique: true,
+                    pattern: /import [.\s\S]+ from .+;/g,
+                    template: `
+import { {{ pascalCase name }}Schema } from "app-schemas/{{ pascalCase name }}Schema";`,
+                },
+            ];
+
+            if (data.type === "admin") {
+                _actions.push(
+                    {
+                        type: "append",
+                        path: "apps/cli/src/{{ group }}.ts",
+                        unique: true,
+                        pattern: "// start:import",
+                        template: `
+import { {{ pascalCase name }}Schema } from "app-schemas/{{ pascalCase name }}Schema";`,
+                    },
+                    {
+                        type: "append",
+                        path: "apps/cli/src/{{ group }}.ts",
+                        unique: true,
+                        pattern: "// start:command",
+                        template: `.addCommand(
+        new PrivateTRPCCommand("{{ name }}")
+            .argument("<input>", "Request body")
+            .action(async function (this: PrivateTRPCCommand, input) {
+                const params = {{ pascalCase name }}Schema.parse(JSON.parse(input));
+                const response =
+                    await this.trpc.{{ group }}.{{ name }}.mutate(params);
+                console.dir(response, { depth: null });
+            }),
+    )`,
+                    },
+                );
             }
 
             return _actions;
@@ -406,6 +539,39 @@ export const {{ name }} = cache(() => {});
                 templateFiles: "model/**/*.hbs",
                 base: "model",
                 destination: ".",
+            },
+            {
+                type: "append",
+                path: "./packages/models/src/models.ts",
+                unique: true,
+                pattern: /$(?![\r\n])/,
+                template: `export const {{ name }}Model = getModelForClass(Struct{{ name }}.{{ name }});
+
+export type { Struct{{ name }} };
+`,
+            },
+            {
+                type: "append",
+                path: "./packages/models/src/models.ts",
+                unique: true,
+                pattern: /import [.\s\S]+ from "#(\w+)\.ts";/g,
+                template: `import * as Struct{{ name }} from "#{{ name }}.ts";`,
+            },
+            {
+                type: "append",
+                path: "./packages/models-mocks/package.json",
+                unique: true,
+                pattern: '"exports": {',
+                template: `"./{{ name }}": "./src/{{ name }}.ts",
+                `,
+            },
+            {
+                type: "append",
+                path: "./packages/schemas/package.json",
+                unique: true,
+                pattern: '"exports": {',
+                template: `"./{{ name }}IdSchema": "./src/{{ name }}IdSchema.ts",
+                `,
             },
         ],
     });

@@ -1,0 +1,42 @@
+{
+    "name": "app-emails-stories",
+    "version": "0.1.0",
+    "private": true,
+    "imports": {
+        "#*": "./src/*"
+    },
+    "type": "module",
+    "peerDependencies": {
+        "@storybook/addon-essentials": "*",
+        "@storybook/addon-interactions": "*",
+        "@storybook/addon-links": "*",
+        "@storybook/blocks": "*",
+        "@storybook/nextjs": "*",
+        "@storybook/react": "*",
+        "@storybook/test": "*",
+        "@storybook/test-runner": "*",
+        "@types/node": "*",
+        "@types/nodemailer": "*",
+        "@types/react": "*",
+        "@types/react-dom": "*",
+        "dpdm": "*",
+        "next": "*",
+        "react": "*",
+        "react-dom": "*",
+        "storybook": "*",
+        "typescript": "*"
+    },
+    "dependencies": {
+        "app-i18n": "workspace:^",
+        "app-typescript-config": "workspace:^"
+    },
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "check-circular": "dpdm -T --skip-dynamic-imports circular --no-warning --no-tree --exit-code circular:1 src/**/*",
+        "storybook": "storybook dev -p 6007",
+        "build:storybook": "storybook build --test --quiet",
+        "start:storybook": "npx --yes http-server storybook-static --port 6007 --silent",
+        "test:storybook": "npx --yes concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"yarn start:storybook\" \"npx --yes wait-on tcp:127.0.0.1:6007 && yarn test-storybook --url=http://127.0.0.1:6007 --maxWorkers=3 $@\""
+    },
+    "sideEffects": false
+}

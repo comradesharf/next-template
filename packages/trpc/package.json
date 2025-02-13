@@ -7,9 +7,31 @@
     },
     "type": "module",
     "exports": {
-        "./*": "./src/*.ts"
+        "./admin": "./src/admin/router.ts"
     },
     "devDependencies": {
-        "app-typescript-config": "workspace:^"
-    }
+        "@faker-js/faker": "^9.5.1",
+        "@testcontainers/localstack": "^10.18.0",
+        "app-models-mocks": "workspace:^",
+        "app-typescript-config": "workspace:^",
+        "dpdm": "^3.14.0",
+        "mongodb-memory-server": "^10.1.4",
+        "typescript": "^5.8.2",
+        "vitest": "^2.1.9"
+    },
+    "dependencies": {
+        "@sentry/nextjs": "^9.3.0",
+        "@trpc/server": "^11.0.0-rc.819",
+        "app-models": "workspace:^",
+        "app-schemas": "workspace:^",
+        "superjson": "^2.2.2",
+        "zod": "^3.24.2"
+    },
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "test": "vitest run",
+        "test:watch": "vitest watch",
+        "check-circular": "dpdm -T --skip-dynamic-imports circular --no-warning --no-tree --exit-code circular:1 src/**/*"
+    },
+    "sideEffects": false
 }

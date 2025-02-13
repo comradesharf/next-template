@@ -1,0 +1,21 @@
+import { faker } from "@faker-js/faker";
+import { generateIdWithPrefix, FlattenMaps } from "app-models/model-utils";
+import type { Struct{{ name }} } from "app-models/models";
+import type { FlattenMaps } from "mongoose";
+import type { Overwrites } from "#utils.ts";
+
+export function generate{{ name }}({
+    _id = generateIdWithPrefix("{{ prefix }}")(),
+    createdAt = faker.date.past(),
+    updatedAt = faker.date.past(),
+    __v = faker.number.int(),
+}: Overwrites<Struct{{ name }}.{{ name }}> = {}): FlattenMaps<Struct{{ name }}.{{ name }}> {
+    return {
+        _id,
+        createdAt,
+        updatedAt,
+        __v,
+    }
+}
+
+export const Default{{ name }} = generate{{ name }}();

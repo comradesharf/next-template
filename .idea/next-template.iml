@@ -10,11 +10,19 @@
       <sourceFolder url="file://$MODULE_DIR$/packages/models/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/pdfs/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/schemas/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/tests/model-mocks/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/tests/model-tests/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/tests/schema-tests/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/trpc/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/services/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/configs/vitest-spec-config/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/configs/vitest-unit-config/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/core-tests/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/emails-stories/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/emails/public" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/i18n/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/models-mocks/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/models-tests/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/pdfs-stories/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/schemas-tests/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/services-tests/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/core/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/emails/.swc" />
@@ -25,12 +33,19 @@
       <excludeFolder url="file://$MODULE_DIR$/volume" />
       <excludeFolder url="file://$MODULE_DIR$/packages/models/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/services/.turbo" />
-      <excludeFolder url="file://$MODULE_DIR$/tests/model-mocks/.turbo" />
-      <excludeFolder url="file://$MODULE_DIR$/tests/model-tests/.turbo" />
-      <excludeFolder url="file://$MODULE_DIR$/tests/schema-tests/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/configs/vitest-spec-config/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/configs/vitest-unit-config/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core-tests/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/emails-stories/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/i18n/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/i18n/src/locales" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/models-mocks/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/models-tests/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/schemas-tests/.turbo" />
       <excludePattern pattern=".eslintcache" />
       <excludePattern pattern="junit.xml" />
       <excludePattern pattern="globalConfig_model-tests.json" />
+      <excludePattern pattern="tsconfig.tsbuildinfo" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

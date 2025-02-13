@@ -1,5 +1,5 @@
+import type { FormatVariant } from "app-core/numbers.config";
 import type { HTMLAttributes, ReactNode } from "react";
-import type { FormatVariant } from "#app/_libs/locales/numbers.config.ts";
 
 type StringNumericLiteral =
     | `${number}`

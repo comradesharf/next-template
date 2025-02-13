@@ -13,36 +13,47 @@ const assetRemotePattern = (() => {
 })();
 
 const nextConfig: NextConfig = {
+    basePath: "/portal",
     output: "standalone",
-    typescript: {
-        ignoreBuildErrors: true,
-    },
     eslint: {
         ignoreDuringBuilds: true,
     },
-    transpilePackages: [
-        "app-emails",
-        "app-pdfs",
-        "app-trpc",
-        "app-models",
-        "app-schemas",
-    ],
+    typescript: {
+        ignoreBuildErrors: true,
+    },
     experimental: {
-        swcPlugins: [["@lingui/swc-plugin", {}]],
+        swcPlugins: [
+            [
+                "@lingui/swc-plugin",
+                {
+                    runtimeModules: {
+                        useLingui: ["app-i18n/lingui", "useLingui"],
+                        i18n: ["app-i18n/lingui", "i18n"],
+                        trans: ["app-i18n/lingui", "Trans"],
+                    },
+                },
+            ],
+        ],
         serverMinification: false,
     },
+    transpilePackages: [
+        "app-core",
+        "app-emails",
+        "app-i18n",
+        "app-models",
+        "app-pdfs",
+        "app-schemas",
+        "app-services",
+        "app-trpc",
+    ],
+    serverExternalPackages: [
+        "@aws-sdk/client-s3",
+        "@aws-sdk/credential-providers",
+        "@aws-sdk/s3-presigned-post",
+    ],
     images: {
         remotePatterns: [assetRemotePattern],
         minimumCacheTTL: 31536000,
-    },
-    async redirects() {
-        return [
-            {
-                source: "/:locale/orders",
-                destination: "/:locale/orders/recent-orders",
-                permanent: false,
-            },
-        ];
     },
 };
 
@@ -52,12 +63,6 @@ export default withSentryConfig(nextConfig, {
 
     org: process.env.SENTRY_ORG,
     project: process.env.SENTRY_PROJECT,
-    // release: {
-    //     name: process.env.NEXT_PUBLIC_SENTRY_RELEASE,
-    //     deploy: {
-    //         env: process.env.NEXT_PUBLIC_SENTRY_ENVIRONMENT,
-    //     },
-    // },
 
     // Only print logs for uploading source maps in CI
     silent: !process.env.CI,
@@ -79,9 +84,6 @@ export default withSentryConfig(nextConfig, {
     // side errors will fail.
     tunnelRoute: "/monitoring",
 
-    // Hides source maps from generated client bundles
-    hideSourceMaps: true,
-
     // Automatically tree-shake Sentry logger statements to reduce bundle size
     disableLogger: true,
 
@@ -94,4 +96,7 @@ export default withSentryConfig(nextConfig, {
     autoInstrumentAppDirectory: true,
     autoInstrumentMiddleware: false,
     telemetry: false,
+    sourcemaps: {
+        deleteSourcemapsAfterUpload: true,
+    },
 });

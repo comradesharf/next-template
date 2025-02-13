@@ -3,7 +3,7 @@ import { NotFound } from "#app/_components/not-found.tsx";
 
 const meta: Meta<typeof NotFound> = {
     component: NotFound,
-    tags: ["autodocs"],
+    tags: ["autodocs", "not-found"],
     args: {},
     parameters: {
         layout: "centered",

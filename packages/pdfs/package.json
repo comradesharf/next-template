@@ -2,32 +2,38 @@
     "name": "app-pdfs",
     "version": "0.1.0",
     "private": true,
+    "type": "module",
     "imports": {
         "#*": "./src/*"
     },
-    "type": "module",
     "exports": {
-        "./PDFs": {
-            "types": "./src/PDFs.ts",
-            "default": "./dist/PDFs.js"
-        }
+        "./PDFs": "./src/PDFs.ts"
+    },
+    "peerDependencies": {
+        "date-fns": "*",
+        "dpdm": "*",
+        "lodash-es": "*",
+        "typescript": "*"
     },
     "devDependencies": {
-        "@swc/cli": "^0.5.2",
-        "@types/react": "^19.0.1",
-        "@types/react-dom": "^19",
+        "@types/lodash-es": "^4.17.12",
+        "@types/react": "^19.0.10",
+        "@types/react-dom": "^19.0.4",
         "app-typescript-config": "workspace:^",
-        "typescript": "^5.7.2"
+        "dpdm": "^3.14.0",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "typescript": "^5.8.2"
     },
     "dependencies": {
-        "@react-pdf/renderer": "^4.1.5",
-        "react": "^19.0.0",
-        "react-dom": "^19.0.0"
+        "@date-fns/tz": "^1.2.0",
+        "@react-pdf/renderer": "^4.2.4",
+        "app-core": "workspace:^",
+        "app-i18n": "workspace:^"
     },
     "sideEffects": false,
     "scripts": {
         "check-types": "tsc --noEmit",
-        "build": "yarn swc ./src/* -d dist --strip-leading-paths",
-        "watch": "yarn build -w"
+        "check-circular": "dpdm -T --skip-dynamic-imports circular --no-warning --no-tree --exit-code circular:1 src/**/*"
     }
 }

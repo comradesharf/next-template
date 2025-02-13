@@ -1,5 +1,5 @@
-import { Trans } from "@lingui/macro";
-import { Platforms } from "app-core/Platforms";
+import { Trans } from "@lingui/react/macro";
+import * as Platforms from "app-core/Platforms";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Button } from "#app/_components/button.tsx";
@@ -13,7 +13,7 @@ export function NotFound({ className }: NotFoundProps) {
     return (
         <div className={cn("w-full max-w-md px-4", className)}>
             <div className="mb-8 text-center">
-                <h1 className="mb-4 font-extrabold text-9xl text-gray-700 dark:text-gray-300">
+                <h1 className="mb-4 font-extrabold text-5xl text-gray-700 md:text-9xl dark:text-gray-300">
                     404
                 </h1>
                 <p className="mb-2 font-semibold text-2xl">

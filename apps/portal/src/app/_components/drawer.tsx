@@ -40,8 +40,8 @@ DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
 
 const DrawerContent = React.forwardRef<
     HTMLDivElement,
-    DialogPrimitive.DialogContentProps
->(({ className, children, ...props }, ref) => (
+    DialogPrimitive.DialogContentProps & { hideStub?: boolean }
+>(({ className, children, hideStub, ...props }, ref) => (
     <DrawerPortal>
         <DrawerOverlay />
         <DrawerPrimitive.Content
@@ -52,7 +52,9 @@ const DrawerContent = React.forwardRef<
             )}
             {...props}
         >
-            <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted" />
+            {!hideStub ? (
+                <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted" />
+            ) : null}
             {children}
         </DrawerPrimitive.Content>
     </DrawerPortal>

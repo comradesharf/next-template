@@ -121,7 +121,7 @@ const Carousel = React.forwardRef<
         }, [api, onSelect]);
 
         return (
-            <CarouselContext.Provider
+            <CarouselContext
                 value={{
                     carouselRef,
                     api: api,
@@ -144,7 +144,7 @@ const Carousel = React.forwardRef<
                 >
                     {children}
                 </section>
-            </CarouselContext.Provider>
+            </CarouselContext>
         );
     },
 );

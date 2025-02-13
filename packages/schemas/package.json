@@ -6,80 +6,20 @@
         "#*": "./src/*"
     },
     "type": "module",
-    "exports": {
-        "./SignInSchema": {
-            "test": "./src/SignInSchema.ts",
-            "types": "./src/SignInSchema.ts",
-            "default": "./dist/SignInSchema.js"
-        },
-        "./SignUpSchema": {
-            "test": "./src/SignUpSchema.ts",
-            "types": "./src/SignUpSchema.ts",
-            "default": "./dist/SignUpSchema.js"
-        },
-        "./VerifyEmailSchema": {
-            "test": "./src/VerifyEmailSchema.ts",
-            "types": "./src/VerifyEmailSchema.ts",
-            "default": "./dist/VerifyEmailSchema.js"
-        },
-        "./AdminIdSchema": {
-            "test": "./src/AdminIdSchema.ts",
-            "types": "./src/AdminIdSchema.ts",
-            "default": "./dist/AdminIdSchema.js"
-        },
-        "./MemberIdSchema": {
-            "test": "./src/MemberIdSchema.ts",
-            "types": "./src/MemberIdSchema.ts",
-            "default": "./dist/MemberIdSchema.js"
-        },
-        "./FileUploadIdSchema": {
-            "test": "./src/FileUploadIdSchema.ts",
-            "types": "./src/FileUploadIdSchema.ts",
-            "default": "./dist/FileUploadIdSchema.js"
-        },
-        "./GeneratePresignedPostUrlSchema": {
-            "test": "./src/GeneratePresignedPostUrlSchema.ts",
-            "types": "./src/GeneratePresignedPostUrlSchema.ts",
-            "default": "./dist/GeneratePresignedPostUrlSchema.js"
-        },
-        "./PhoneNumberSchema": {
-            "test": "./src/PhoneNumberSchema.ts",
-            "types": "./src/PhoneNumberSchema.ts",
-            "default": "./dist/PhoneNumberSchema.js"
-        },
-        "./PhoneNumberVerificationIdSchema": {
-            "test": "./src/PhoneNumberVerificationIdSchema.ts",
-            "types": "./src/PhoneNumberVerificationIdSchema.ts",
-            "default": "./dist/PhoneNumberVerificationIdSchema.js"
-        },
-        "./PlaceSchema": {
-            "test": "./src/PlaceSchema.ts",
-            "types": "./src/PlaceSchema.ts",
-            "default": "./dist/PlaceSchema.js"
-        },
-        "./PresignedPostUrlIdSchema": {
-            "test": "./src/PresignedPostUrlIdSchema.ts",
-            "types": "./src/PresignedPostUrlIdSchema.ts",
-            "default": "./dist/PresignedPostUrlIdSchema.js"
-        },
-        "./CompleteFileUploadSchema": {
-            "test": "./src/CompleteFileUploadSchema.ts",
-            "types": "./src/CompleteFileUploadSchema.ts",
-            "default": "./dist/CompleteFileUploadSchema.js"
-        }
-    },
     "devDependencies": {
-        "@swc/cli": "^0.5.2",
+        "@types/lodash-es": "^4.17.12",
         "app-typescript-config": "workspace:^",
-        "typescript": "^5.7.2"
+        "dpdm": "^3.14.0",
+        "typescript": "^5.8.2"
     },
     "dependencies": {
-        "zod": "^3.24.0"
+        "app-core": "workspace:^",
+        "lodash-es": "^4.17.21",
+        "zod": "^3.24.2"
     },
+    "sideEffects": false,
     "scripts": {
         "check-types": "tsc --noEmit",
-        "build": "yarn swc ./src/* -d dist --strip-leading-paths",
-        "watch": "yarn build -w"
-    },
-    "sideEffects": false
+        "check-circular": "dpdm -T --skip-dynamic-imports circular --no-warning --no-tree --exit-code circular:1 src/**/*"
+    }
 }

@@ -44,12 +44,12 @@ const FormField = <
     const controller = useController<TFieldValues, TName>(props);
 
     return (
-        <FormFieldContext.Provider
+        <FormFieldContext
             value={{ name: props.name, controller: controller as any }}
         >
             {"render" in props ? <Controller {...props} /> : null}
             {"children" in props ? props.children : null}
-        </FormFieldContext.Provider>
+        </FormFieldContext>
     );
 };
 
@@ -92,9 +92,9 @@ const FormItem = React.forwardRef<
     const id = React.useId();
 
     return (
-        <FormItemContext.Provider value={{ id }}>
+        <FormItemContext value={{ id }}>
             <div ref={ref} className={cn("space-y-2", className)} {...props} />
-        </FormItemContext.Provider>
+        </FormItemContext>
     );
 });
 FormItem.displayName = "FormItem";

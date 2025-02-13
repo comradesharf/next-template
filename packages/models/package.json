@@ -7,98 +7,67 @@
     },
     "type": "module",
     "exports": {
-        "./utils/db": {
-            "test": "./src/utils/db.ts",
-            "types": "./src/utils/db.ts",
-            "storybook": "./src/utils/db.mock.ts",
-            "default": "./dist/utils/db.js"
+        "./db": {
+            "types": "./src/db.ts",
+            "storybook": "./src/db.mock.ts",
+            "default": "./src/db.ts"
         },
-        "./utils/defineAbilityForUser": {
-            "test": "./src/utils/defineAbilityForUser.ts",
-            "types": "./src/utils/defineAbilityForUser.ts",
-            "default": "./dist/utils/defineAbilityForUser.js"
-        },
-        "./utils/errors": {
-            "test": "./src/utils/errors.ts",
-            "types": "./src/utils/errors.ts",
-            "default": "./dist/utils/errors.js"
-        },
-        "./utils/abilitiesContext": {
-            "test": "./src/utils/abilitiesContext.ts",
-            "types": "./src/utils/abilitiesContext.ts",
-            "default": "./dist/utils/abilitiesContext.js"
-        },
-        "./utils/generateId": {
-            "test": "./src/utils/generateId.ts",
-            "types": "./src/utils/generateId.ts",
-            "default": "./dist/utils/generateId.js"
-        },
-        "./models/PlaceModel": {
-            "test": "./src/models/PlaceModel.ts",
-            "types": "./src/models/PlaceModel.ts",
+        "./abilities": {
+            "types": "./src/abilities.ts",
             "storybook": null,
-            "default": "./dist/models/PlaceModel.js"
+            "default": "./src/abilities.ts"
         },
-        "./models/UserModel": {
-            "test": "./src/models/UserModel.ts",
-            "types": "./src/models/UserModel.ts",
+        "./abilities.node": {
+            "types": "./src/abilities.node.ts",
             "storybook": null,
-            "default": "./dist/models/UserModel.js"
+            "default": "./src/abilities.node.ts"
         },
-        "./models/PhoneNumberModel": {
-            "test": "./src/models/PhoneNumberModel.ts",
-            "types": "./src/models/PhoneNumberModel.ts",
-            "storybook": null,
-            "default": "./dist/models/PhoneNumberModel.js"
+        "./errors": "./src/errors.ts",
+        "./model-utils": {
+            "types": "./src/model-utils.ts",
+            "storybook": "./src/model-utils.ts",
+            "default": "./src/model-utils.ts"
         },
-        "./models/PhoneNumberVerificationModel": {
-            "test": "./src/models/PhoneNumberVerificationModel.ts",
-            "types": "./src/models/PhoneNumberVerificationModel.ts",
-            "storybook": null,
-            "default": "./dist/models/PhoneNumberVerificationModel.js"
+        "./model-utils.node": {
+            "types": "./src/model-utils.node.ts",
+            "storybook": "./src/model-utils.node.mock.ts",
+            "default": "./src/model-utils.node.ts"
         },
-        "./models/PresignedPostUrlModel": {
-            "test": "./src/models/PresignedPostUrlModel.ts",
-            "types": "./src/models/PresignedPostUrlModel.ts",
+        "./models": {
+            "types": "./src/models.ts",
             "storybook": null,
-            "default": "./dist/models/PresignedPostUrlModel.js"
+            "default": "./src/models.ts"
         },
-        "./models/FileUploadModel": {
-            "test": "./src/models/FileUploadModel.ts",
-            "types": "./src/models/FileUploadModel.ts",
+        "./SystemEventEmitter": {
+            "types": "./src/SystemEventEmitter.ts",
             "storybook": null,
-            "default": "./dist/models/FileUploadModel.js"
-        },
-        "./models/AdminModel": {
-            "test": "./src/models/AdminModel.ts",
-            "types": "./src/models/AdminModel.ts",
-            "storybook": null,
-            "default": "./dist/models/AdminModel.js"
+            "default": "./src/SystemEventEmitter.ts"
         }
     },
     "devDependencies": {
-        "@swc/cli": "^0.5.2",
-        "@types/google.maps": "^3.58.1",
-        "@types/lodash-es": "^4.17.12",
-        "app-typescript-config": "workspace:^",
-        "typescript": "^5.7.2",
-        "vitest": "^2.1.8"
+        "app-typescript-config": "workspace:^"
+    },
+    "peerDependencies": {
+        "@lingui/core": "*",
+        "date-fns": "*",
+        "dpdm": "*",
+        "lodash-es": "*",
+        "typescript": "*"
     },
     "dependencies": {
-        "@casl/ability": "^6.7.2",
-        "@casl/mongoose": "^8.0.2",
-        "@typegoose/typegoose": "^12.9.1",
+        "@casl/ability": "^6.7.3",
+        "@casl/mongoose": "^8.0.3",
+        "@typegoose/typegoose": "^12.12.0",
         "app-core": "workspace:^",
+        "app-emails": "workspace:^",
         "app-schemas": "workspace:^",
         "app-services": "workspace:^",
-        "lodash-es": "^4.17.21",
-        "mongoose": "^8.8.4",
-        "typeid-js": "^1.1.0"
+        "mongoose": "^8.11.0",
+        "typeid-js": "^1.2.0"
     },
     "scripts": {
         "check-types": "tsc --noEmit",
-        "build": "yarn swc ./src/* -d dist --strip-leading-paths",
-        "watch": "yarn build -w"
+        "check-circular": "dpdm -T --skip-dynamic-imports circular --no-warning --no-tree --exit-code circular:1 src/**/*"
     },
     "sideEffects": false
 }

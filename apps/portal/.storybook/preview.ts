@@ -1,24 +1,19 @@
 import "#app/globals.css";
 import type { Preview } from "@storybook/react";
-import { SupportedLocales } from "app-core/SupportedLocales";
+import locales from "app-core/locales.json";
 import { http, HttpResponse } from "msw";
-import {
-    getSession,
-    initialize,
-    mswLoader,
-    withRoot,
-} from "#app/_libs/decorators.tsx";
+import { getSession, withRoot } from "#app/_libs/decorators.tsx";
 
-initialize();
+// initialize();
 
 const preview: Preview = {
-    loaders: [mswLoader],
+    // loaders: [mswLoader],
     globalTypes: {
         locale: {
             description: "Internationalization locale",
             toolbar: {
                 icon: "globe",
-                items: SupportedLocales,
+                items: locales,
             },
         },
         user: {
@@ -26,14 +21,6 @@ const preview: Preview = {
             toolbar: {
                 icon: "user",
                 items: [
-                    {
-                        value: "MEMBER",
-                        title: "Member",
-                    },
-                    {
-                        value: "ADMIN",
-                        title: "Admin",
-                    },
                     {
                         value: "ANON",
                         title: "Anonymous",
@@ -44,9 +31,12 @@ const preview: Preview = {
     },
     initialGlobals: {
         locale: "en",
-        user: "MEMBER",
+        user: "ANON",
     },
     parameters: {
+        test: {
+            clearMocks: true,
+        },
         controls: {
             matchers: {
                 color: /(background|color)$/i,

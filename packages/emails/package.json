@@ -7,46 +7,35 @@
     },
     "type": "module",
     "exports": {
-        "./Emails": {
-            "types": "./src/Emails.ts",
-            "default": "./dist/Emails.js"
-        },
-        "./EmailVerification": {
-            "types": "./src/EmailVerification.tsx",
-            "default": "./dist/EmailVerification.js"
-        }
+        "./Emails": "./src/Emails.ts",
+        "./EmailVerification": "./src/EmailVerification.tsx"
     },
     "devDependencies": {
-        "@lingui/cli": "^5.1.0",
-        "@lingui/macro": "^5.1.0",
-        "@lingui/swc-plugin": "5.0.1",
-        "@swc/cli": "^0.5.2",
         "@types/nodemailer": "^6.4.17",
-        "@types/react": "^19.0.1",
-        "@types/react-dom": "^19",
-        "app-typescript-config": "workspace:^",
-        "react-email": "^3.0.4"
+        "app-typescript-config": "workspace:^"
+    },
+    "peerDependencies": {
+        "@lingui/core": "*",
+        "@lingui/react": "*",
+        "@sentry/nextjs": "*",
+        "@types/react": "*",
+        "@types/react-dom": "*",
+        "date-fns": "*",
+        "dpdm": "*",
+        "react": "*",
+        "react-dom": "*",
+        "typescript": "*"
     },
     "dependencies": {
-        "@lingui/react": "^5.1.0",
-        "@react-email/components": "^0.0.31",
-        "@react-email/render": "^1.0.3",
-        "@sentry/nextjs": "^8.43.0",
+        "@react-email/components": "^0.0.33",
+        "@react-email/render": "^1.0.5",
         "app-core": "workspace:^",
-        "date-fns": "^4.1.0",
-        "nodemailer": "^6.9.16",
-        "react": "^19.0.0",
-        "react-dom": "^19.0.0"
+        "app-i18n": "workspace:^",
+        "nodemailer": "^6.10.0"
     },
     "scripts": {
-        "dev": "email dev --dir dist -p 3001",
-        "extract-locale": "lingui extract",
-        "extract-locale:clean": "yarn extract-locale --clean",
-        "check-locale": "yarn extract-locale && git diff-index --quiet HEAD -- src/locales/messages",
-        "compile-locale": "lingui compile --typescript",
         "check-types": "tsc --noEmit",
-        "build": "yarn swc ./src/* -d dist --strip-leading-paths",
-        "watch": "yarn build -w"
+        "check-circular": "dpdm -T --skip-dynamic-imports circular --no-warning --no-tree --exit-code circular:1 src/**/*"
     },
     "sideEffects": false
 }

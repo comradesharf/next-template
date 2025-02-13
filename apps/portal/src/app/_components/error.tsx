@@ -1,6 +1,6 @@
 "use client";
 
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 import * as Sentry from "@sentry/nextjs";
 import { ArrowLeft, TriangleAlert } from "lucide-react";
 import Link from "next/link";
@@ -11,6 +11,7 @@ import { cn } from "#app/_libs/cn.ts";
 export interface ErrorProps {
     className?: string;
     error: Error & { digest?: string };
+    reset: () => void;
 }
 
 export function ErrorComp({ className, error }: ErrorProps) {
@@ -20,7 +21,7 @@ export function ErrorComp({ className, error }: ErrorProps) {
 
     return (
         <div className={cn("max-w-md text-center", className)}>
-            <TriangleAlert className="mx-auto mb-8 h-32 w-32 text-muted-foreground" />
+            <TriangleAlert className="mx-auto mb-8 size-20 text-muted-foreground md:size-32" />
             <h1 className="mb-4 font-bold text-4xl">
                 <Trans>Oops! Something went wrong</Trans>
             </h1>

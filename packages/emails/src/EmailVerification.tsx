@@ -20,10 +20,7 @@ export interface Props {
     otp: string;
 }
 
-export function EmailVerification({
-    username = "Tan Boon",
-    otp = "12345",
-}: Props) {
+export function EmailVerification({ username, otp }: Props) {
     const { t, i18n } = useLingui();
 
     return (
@@ -48,14 +45,19 @@ export function EmailVerification({
                             <Trans>Verify Your Email Address</Trans>
                         </Heading>
                         <Section className="mb-6 text-gray-600">
-                            <Trans>Hello {username},</Trans>
+                            <Text>
+                                <Trans>Hello {username},</Trans>
+                            </Text>
                         </Section>
                         <Section className="mb-6 text-gray-600">
-                            <Trans>
-                                Thank you for signing up with {Platforms.Name}.
-                                To complete your registration, please verify
-                                your email address by entering the OTP below:
-                            </Trans>
+                            <Text>
+                                <Trans>
+                                    Thank you for signing up with{" "}
+                                    {Platforms.Name}. To complete your
+                                    registration, please verify your email
+                                    address by entering the OTP below:
+                                </Trans>
+                            </Text>
                         </Section>
                         <Section className="mb-6 bg-gray-100">
                             <Text className="!mb-0 mx-auto inline-block w-full text-center font-bold text-3xl text-gray-800 leading-10 tracking-widest">
@@ -66,23 +68,29 @@ export function EmailVerification({
                             </Text>
                         </Section>
                         <Section className="mb-4 text-gray-600">
-                            <Trans>
-                                If you didn't create an account with us, please
-                                ignore this email or contact our support team if
-                                you have any questions.
-                            </Trans>
+                            <Text>
+                                <Trans>
+                                    If you didn't create an account with us,
+                                    please ignore this email or contact our
+                                    support team if you have any questions.
+                                </Trans>
+                            </Text>
                         </Section>
+
                         <Hr className="mb-4 border-gray-300" />
+
                         <Section className="text-gray-500 text-sm">
-                            <Trans>
-                                Need help? Contact us at{" "}
-                                <Link
-                                    href={Platforms.MailtoSupportEmail}
-                                    className="text-blue-500"
-                                >
-                                    {Platforms.SupportEmail}
-                                </Link>
-                            </Trans>
+                            <Text>
+                                <Trans>
+                                    Need help? Contact us at{" "}
+                                    <Link
+                                        href={Platforms.MailtoSupportEmail}
+                                        className="text-blue-500"
+                                    >
+                                        {Platforms.SupportEmail}
+                                    </Link>
+                                </Trans>
+                            </Text>
                         </Section>
                     </Container>
                 </Body>

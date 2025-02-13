@@ -1,19 +1,18 @@
-import { faker } from "@faker-js/faker";
+"use client";
+
 import { i18n } from "@lingui/core";
-import { I18nProvider } from "@lingui/react";
-import type { DecoratorFunction, LoaderFunction } from "@storybook/csf";
-import type { ReactRenderer, StoryContext } from "@storybook/react";
-import { DefaultAdmin } from "app-model-mocks/Admin";
-import { DefaultMember } from "app-model-mocks/Member";
+import type { Decorator, Loader, StoryContext } from "@storybook/react";
 import type { HttpHandler } from "msw";
 import { type SetupWorker, setupWorker } from "msw/browser";
 import { SessionProvider } from "next-auth/react";
-import { useEffect, useInsertionEffect } from "react";
+import { use, useInsertionEffect } from "react";
 import { DateTimeI18nContext } from "#app/_components/date-time.tsx";
+import { GoogleMapProvider } from "#app/_components/google-map-provider.tsx";
+import { MotionProvider } from "#app/_components/motion.tsx";
 import { NumberI18Context } from "#app/_components/number.tsx";
-import { SidebarProvider } from "#app/_components/sidebar.tsx";
+import { QueryClientProvider } from "#app/_components/query-client-provider.tsx";
 import { TooltipProvider } from "#app/_components/tooltip.tsx";
-import { inter } from "#app/_libs/fonts.ts";
+import { poppins } from "#app/_libs/fonts/fonts.ts";
 
 declare module "@storybook/react" {
     interface Parameters {
@@ -43,49 +42,48 @@ declare module "@storybook/react" {
     }
 }
 
-export async function dynamicActivate(locale: string) {
-    const { messages } = await import(
-        `#app/_libs/locales/messages/${locale}.ts`
-    );
-    i18n.loadAndActivate({ locale, messages });
-}
-
-export const withRoot: DecoratorFunction<any, any> = (Story, ctx) => {
-    ctx.args.params ??= {
+export const withRoot: Decorator<any> = (Story, ctx) => {
+    ctx.args.params = Promise.resolve({
+        ...ctx.args.params,
         lang: ctx.globals.locale,
-    };
-    ctx.args.params.lang = ctx.globals.locale;
+    });
 
-    const lang = ctx.args.params.lang;
-
-    useEffect(() => {
-        void dynamicActivate(lang);
-    }, [lang]);
+    const locale = ctx.globals.locale;
 
     useInsertionEffect(() => {
         document.documentElement.classList.add(
             "antialiased",
             "[font-synthesis-weight:none]",
-            inter.variable,
+            poppins.variable,
         );
     }, []);
 
     const session = getSession(ctx.globals.user);
 
+    const { getI18nInstance } = use(import("app-i18n/messages"));
+    const $i18n = getI18nInstance(locale);
+
+    i18n.loadAndActivate({
+        locale: $i18n.locale,
+        messages: $i18n.messages,
+    });
+
     return (
-        <SessionProvider refetchOnWindowFocus session={session}>
-            <I18nProvider i18n={i18n}>
+        <QueryClientProvider>
+            <SessionProvider refetchOnWindowFocus session={session}>
                 <DateTimeI18nContext>
                     <NumberI18Context>
                         <TooltipProvider>
-                            <SidebarProvider>
-                                <Story />
-                            </SidebarProvider>
+                            <GoogleMapProvider>
+                                <MotionProvider>
+                                    <Story />
+                                </MotionProvider>
+                            </GoogleMapProvider>
                         </TooltipProvider>
                     </NumberI18Context>
                 </DateTimeI18nContext>
-            </I18nProvider>
-        </SessionProvider>
+            </SessionProvider>
+        </QueryClientProvider>
     );
 };
 
@@ -103,6 +101,7 @@ const filteredURLSubstrings = [
     "/virtual:",
     ".stories.",
     ".mdx",
+    "googleapis.com",
 ];
 
 const shouldFilterUrl = (url: string) => {
@@ -186,9 +185,7 @@ export function getWorker(): SetupWorker {
     return api;
 }
 
-export const mswLoader: LoaderFunction<ReactRenderer, any> = async (
-    context: StoryContext,
-) => {
+export const mswLoader: Loader<any> = async (context: StoryContext) => {
     await waitForMswReady();
     applyRequestHandlers(context);
     return {};
@@ -196,26 +193,6 @@ export const mswLoader: LoaderFunction<ReactRenderer, any> = async (
 
 export function getSession(user: string) {
     switch (user) {
-        case "MEMBER":
-            return {
-                user: {
-                    email: DefaultMember.email,
-                    id: DefaultMember._id,
-                    name: DefaultMember.display_name,
-                    timezone: DefaultMember.timezone,
-                },
-                expires: faker.date.future().toISOString(),
-            };
-        case "ADMIN":
-            return {
-                user: {
-                    email: DefaultAdmin.email,
-                    id: DefaultAdmin._id,
-                    name: DefaultAdmin.display_name,
-                    timezone: DefaultAdmin.timezone,
-                },
-                expires: faker.date.future().toISOString(),
-            };
         default:
             return null;
     }

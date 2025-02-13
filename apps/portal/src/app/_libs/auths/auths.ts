@@ -1,5 +1,4 @@
 import { Log } from "app-core/Log";
-import { MemberModel } from "app-models/models/MemberModel";
 import NextAuth, {
     type DefaultSession,
     type NextAuthConfig,
@@ -51,27 +50,8 @@ const _auth = NextAuth({
                 password: {},
                 type: {},
             },
-            async authorize({ email, password, type }) {
-                try {
-                    const user = await MemberModel.authorize({
-                        email: email as string,
-                        password: password as string,
-                        type: type as "system" | "user",
-                    });
-
-                    if (!user) {
-                        return null;
-                    }
-
-                    return {
-                        id: user._id,
-                        name: user.display_name,
-                        email: user.email,
-                        timezone: user.timezone,
-                    };
-                } catch (e) {
-                    return null;
-                }
+            async authorize() {
+                return null;
             },
         }),
     ],
@@ -95,6 +75,7 @@ const _auth = NextAuth({
             return token;
         },
     },
+    basePath: "/portal",
 });
 
 /**

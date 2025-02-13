@@ -4,12 +4,12 @@ export async function register() {
     if (process.env.NEXT_RUNTIME === "nodejs") {
         await import("../sentry.server.config");
 
-        const { db } = await import("app-models/utils/db");
-        await db();
-
-        const { connection } = await import("mongoose");
-        await connection.createCollections();
-        await connection.syncIndexes();
+        const { connect, createCollections, syncIndexes } = await import(
+            "app-models/db"
+        );
+        await connect();
+        await createCollections();
+        await syncIndexes();
     }
 
     if (process.env.NEXT_RUNTIME === "edge") {

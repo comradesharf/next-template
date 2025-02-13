@@ -45,7 +45,7 @@ function Calendar({
                 months: "flex relative gap-x-2.5",
                 month: "space-y-4",
                 month_caption: "flex justify-start pt-1 relative items-center",
-                caption_label: "text-sm font-medium aria-[hidden=true]:hidden",
+                caption_label: "text-sm font-medium aria-hidden:hidden",
                 nav: "space-x-1 flex items-center absolute right-0 z-10",
                 button_previous: cn(
                     buttonVariants({ variant: "outline" }),
@@ -78,7 +78,7 @@ function Calendar({
                 outside:
                     "day-outside text-muted-foreground opacity-50  aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30",
                 disabled: "text-muted-foreground opacity-50",
-                day_range_middle:
+                range_middle:
                     "aria-selected:bg-accent aria-selected:text-accent-foreground",
                 hidden: "invisible",
                 dropdown: "dropdown",

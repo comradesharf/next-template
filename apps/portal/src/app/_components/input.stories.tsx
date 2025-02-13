@@ -5,14 +5,13 @@ import { z } from "zod";
 import { Button } from "#app/_components/button.tsx";
 import {
     Form,
-    FormControl,
     FormDescription,
     FormField,
     FormItem,
     FormLabel,
     FormMessage,
 } from "#app/_components/form.tsx";
-import { Input } from "#app/_components/input.tsx";
+import { ControlledInput, Input } from "#app/_components/input.tsx";
 import { Label } from "#app/_components/label.tsx";
 import { Toaster } from "#app/_components/toaster.tsx";
 import { toast } from "#app/_hooks/use-toast.ts";
@@ -124,22 +123,16 @@ export const InForm: Story = {
                     onSubmit={form.handleSubmit(onSubmit)}
                     className="w-2/3 space-y-6"
                 >
-                    <FormField
-                        control={form.control}
-                        name="username"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Username</FormLabel>
-                                <FormControl>
-                                    <Input placeholder="shadcn" {...field} />
-                                </FormControl>
-                                <FormDescription>
-                                    This is your public display name.
-                                </FormDescription>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
+                    <FormField name="username">
+                        <FormItem>
+                            <FormLabel>Username</FormLabel>
+                            <ControlledInput placeholder="shadcn" />
+                            <FormDescription>
+                                This is your public display name.
+                            </FormDescription>
+                            <FormMessage />
+                        </FormItem>
+                    </FormField>
                     <Button type="submit">Submit</Button>
                 </form>
             </Form>

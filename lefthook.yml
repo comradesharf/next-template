@@ -1,6 +1,6 @@
 pre-commit:
   commands:
     check:
-      run: npx turbo format-and-lint:fix extract-locale:clean --affected
+      run: npx turbo format-and-lint:fix extract-i18n:clean --affected
       stage_fixed: true
 

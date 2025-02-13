@@ -1,5 +1,5 @@
+import type { FormatVariant } from "app-core/date-times.config";
 import type { HTMLAttributes } from "react";
-import type { FormatVariant } from "#app/_libs/locales/date-times.config.ts";
 
 export interface DateTimeFormatterProps
     extends Omit<HTMLAttributes<HTMLTimeElement>, "datetime"> {

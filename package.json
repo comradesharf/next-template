@@ -4,19 +4,14 @@
     "private": true,
     "devDependencies": {
         "@biomejs/biome": "1.9.4",
-        "@turbo/gen": "^2.3.3",
+        "@turbo/gen": "^2.4.4",
         "@types/inquirer-fuzzy-path": "^2.3.9",
         "inquirer-fuzzy-path": "^2.3.0",
-        "lefthook": "^1.9.0",
-        "turbo": "^2.3.3"
+        "lefthook": "^1.11.2",
+        "turbo": "^2.4.4"
     },
-    "workspaces": [
-        "apps/*",
-        "packages/*",
-        "configs/*",
-        "tests/*"
-    ],
-    "packageManager": "yarn@4.5.3",
+    "workspaces": ["apps/*", "packages/*", "configs/*"],
+    "packageManager": "yarn@4.7.0",
     "scripts": {
         "format-and-lint": "biome check --unsafe --no-errors-on-unmatched --files-ignore-unknown=true",
         "format-and-lint:fix": "biome check --write --unsafe --no-errors-on-unmatched --files-ignore-unknown=true"

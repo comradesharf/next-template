@@ -1,0 +1,46 @@
+{
+    "name": "app-i18n",
+    "version": "0.1.0",
+    "private": true,
+    "imports": {
+        "#*": "./src/*"
+    },
+    "type": "module",
+    "exports": {
+        "./lingui": {
+            "types": "./src/lingui.tsx",
+            "storybook": "./src/lingui.storybook.tsx",
+            "test": "./src/lingui.test.tsx",
+            "react-server": {
+                "node": "./src/lingui.rsc.tsx",
+                "browser": "./src/lingui.tsx"
+            },
+            "node": "./src/lingui.node.tsx",
+            "browser": "./src/lingui.tsx"
+        },
+        "./messages": "./src/messages.ts"
+    },
+    "devDependencies": {
+        "app-typescript-config": "workspace:^"
+    },
+    "peerDependencies": {
+        "dpdm": "*",
+        "typescript": "*"
+    },
+    "dependencies": {
+        "@lingui/cli": "^5.2.0",
+        "@lingui/macro": "^5.2.0",
+        "@lingui/react": "^5.2.0",
+        "app-core": "workspace:^",
+        "client-only": "^0.0.1",
+        "server-only": "^0.0.1"
+    },
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "check-circular": "dpdm -T --skip-dynamic-imports circular --no-warning --no-tree --exit-code circular:1 src/**/*",
+        "extract-i18n": "lingui extract",
+        "extract-i18n:clean": "yarn extract-i18n --clean",
+        "compile-i18n": "lingui compile"
+    },
+    "sideEffects": false
+}
