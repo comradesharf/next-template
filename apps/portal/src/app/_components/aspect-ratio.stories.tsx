@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Image from 'next/image';
-import { AspectRatio } from '#app/_components/aspect-ratio.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import Image from "next/image";
+import { AspectRatio } from "#app/_components/aspect-ratio.tsx";
 
 const meta: Meta<typeof AspectRatio> = {
     component: AspectRatio,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {
         ratio: 16 / 9,
     },
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

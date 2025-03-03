@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 import {
     ContextMenu,
     ContextMenuCheckboxItem,
@@ -13,14 +13,14 @@ import {
     ContextMenuSubContent,
     ContextMenuSubTrigger,
     ContextMenuTrigger,
-} from '#app/_components/context-menu.tsx';
+} from "#app/_components/context-menu.tsx";
 
 const meta: Meta<typeof ContextMenu> = {
     component: ContextMenu,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Loading } from '#app/_components/loading.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Loading } from "#app/_components/loading.tsx";
 
 const meta: Meta<typeof Loading> = {
     component: Loading,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

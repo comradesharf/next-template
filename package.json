@@ -4,36 +4,16 @@
     "private": true,
     "devDependencies": {
         "@biomejs/biome": "1.9.4",
-        "@turbo/gen": "^2.2.3",
+        "@turbo/gen": "^2.4.4",
         "@types/inquirer-fuzzy-path": "^2.3.9",
-        "@types/node": "^22.8.4",
-        "@types/react": "^18.3.12",
-        "@types/react-dom": "^18.3.1",
-        "husky": "^9.1.6",
         "inquirer-fuzzy-path": "^2.3.0",
-        "lint-staged": "^15.2.10",
-        "turbo": "^2.2.4-canary.3"
+        "lefthook": "^1.11.2",
+        "turbo": "^2.4.4"
     },
-    "workspaces": [
-        "apps/*",
-        "packages/*",
-        "configs/*"
-    ],
-    "packageManager": "yarn@4.5.0",
+    "workspaces": ["apps/*", "packages/*", "configs/*"],
+    "packageManager": "yarn@4.7.0",
     "scripts": {
-        "lint": "biome check --unsafe --no-errors-on-unmatched",
-        "prepare": "husky",
-        "test": "vitest run"
-    },
-    "lint-staged": {
-        "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
-            "biome check --write --unsafe --no-errors-on-unmatched"
-        ]
-    },
-    "dependencies": {
-        "vitest": "^2.1.4"
-    },
-    "resolutions": {
-        "react-is": "19.0.0-rc-65a56d0e-20241020"
+        "format-and-lint": "biome check --unsafe --no-errors-on-unmatched --files-ignore-unknown=true",
+        "format-and-lint:fix": "biome check --write --unsafe --no-errors-on-unmatched --files-ignore-unknown=true"
     }
 }

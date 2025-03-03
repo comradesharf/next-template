@@ -1,0 +1,27 @@
+{
+    "name": "app-vitest-unit-config",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "dependencies": {
+        "@faker-js/faker": "^9.5.1",
+        "vitest": "^2.1.9"
+    },
+    "devDependencies": {
+        "app-typescript-config": "workspace:^"
+    },
+    "peerDependencies": {
+        "dpdm": "*",
+        "typescript": "*"
+    },
+    "exports": {
+        ".": "./src/unit.ts"
+    },
+    "imports": {
+        "#*": "./src/*"
+    },
+    "sideEffects": false,
+    "scripts": {
+        "check-types": "tsc --noEmit"
+    }
+}

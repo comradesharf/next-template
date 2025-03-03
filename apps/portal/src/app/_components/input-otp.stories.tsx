@@ -1,20 +1,20 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { REGEXP_ONLY_DIGITS_AND_CHARS } from 'input-otp';
+import type { Meta, StoryObj } from "@storybook/react";
+import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 import {
     InputOTP,
     InputOTPGroup,
     InputOTPSeparator,
     InputOTPSlot,
-} from '#app/_components/input-otp.tsx';
+} from "#app/_components/input-otp.tsx";
 
 const meta: Meta<typeof InputOTP> = {
     component: InputOTP,
     // @ts-ignore
     subcomponents: { InputOTPGroup, InputOTPSeparator, InputOTPSlot },
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

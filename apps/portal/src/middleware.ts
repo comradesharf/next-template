@@ -1,11 +1,8 @@
-import NextAuth from 'next-auth';
-import { NextResponse } from 'next/server';
-import AuthConfigs from '#app/_libs/auths/auth.config.ts';
-import {
-    CookieName,
-    getRequestLocale,
-} from '#app/_libs/locales/getRequestLocale.ts';
-import linguiConfig from '#app/_libs/locales/lingui.config.ts';
+import * as Locales from "app-core/Locales";
+import locales from "app-core/locales.json";
+import NextAuth from "next-auth";
+import { NextResponse } from "next/server";
+import AuthConfigs from "#app/_libs/auths/auth.config.ts";
 
 export const _auth = NextAuth(AuthConfigs);
 
@@ -17,26 +14,34 @@ export const _auth = NextAuth(AuthConfigs);
 export const middleware: unknown = _auth.auth((request) => {
     const { pathname } = request.nextUrl;
 
-    let locale = linguiConfig.locales.find(
-        (locale) =>
+    let locale = locales.find(
+        ({ value: locale }) =>
             pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
-    );
+    )?.value;
+
+    const response = NextResponse.next();
 
     if (locale) {
-        const response = NextResponse.next();
-        response.cookies.set(CookieName, locale);
+        response.cookies.set(Locales.CookieName, locale, {
+            path: "/",
+            httpOnly: true,
+        });
         return response;
     }
 
     // Redirect if there is no locale
-    locale = getRequestLocale(request.headers);
+    locale = Locales.getRequestLocale(request.headers);
+
+    response.cookies.set(Locales.CookieName, locale, {
+        path: "/",
+        httpOnly: true,
+    });
+
     request.nextUrl.pathname = `/${locale}${pathname}`;
     // e.g. incoming request is /products
     // The new URL is now /en/products
     return NextResponse.redirect(request.nextUrl, {
-        headers: {
-            'Set-Cookie': `${CookieName}=${locale}`,
-        },
+        headers: response.headers,
     });
 });
 
@@ -50,6 +55,6 @@ export const config = {
          * - images - .svg, .png, .jpg, .jpeg, .gif, .webp
          * Feel free to modify this pattern to include more paths.
          */
-        '/((?!_next/static|_next/image|favicon.ico|monitoring|api|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+        "/((?!_next/static|_next/image|favicon.ico|schema|monitoring|api|_widgets|_emails|_pdfs|ping|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
     ],
 };

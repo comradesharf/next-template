@@ -1,14 +1,13 @@
-import { Log } from '@comradesharf/core/Log';
-import { MemberModel } from '@comradesharf/models/models/MemberModel';
+import { Log } from "app-core/Log";
 import NextAuth, {
     type DefaultSession,
     type NextAuthConfig,
     type NextAuthResult,
-} from 'next-auth';
-import Credentials from 'next-auth/providers/credentials';
-import AuthConfigs from '#app/_libs/auths/auth.config.ts';
+} from "next-auth";
+import Credentials from "next-auth/providers/credentials";
+import AuthConfigs from "#app/_libs/auths/auth.config.ts";
 
-const logger: NextAuthConfig['logger'] = {
+const logger: NextAuthConfig["logger"] = {
     error(err) {
         Log.error({
             err,
@@ -27,12 +26,12 @@ const logger: NextAuthConfig['logger'] = {
     },
 };
 
-declare module 'next-auth' {
+declare module "next-auth" {
     interface Session {
         user: {
             id: string;
             timezone: string;
-        } & DefaultSession['user'];
+        } & DefaultSession["user"];
     }
 
     interface User {
@@ -42,7 +41,7 @@ declare module 'next-auth' {
 
 const _auth = NextAuth({
     ...AuthConfigs,
-    session: { strategy: 'jwt' },
+    session: { strategy: "jwt" },
     providers: [
         ...AuthConfigs.providers,
         Credentials({
@@ -51,27 +50,8 @@ const _auth = NextAuth({
                 password: {},
                 type: {},
             },
-            async authorize({ email, password, type }) {
-                try {
-                    const user = await MemberModel.authorize({
-                        email: email as string,
-                        password: password as string,
-                        type: type as 'system' | 'user',
-                    });
-
-                    if (!user) {
-                        return null;
-                    }
-
-                    return {
-                        id: user._id,
-                        name: user.display_name,
-                        email: user.email,
-                        timezone: user.timezone,
-                    };
-                } catch (e) {
-                    return null;
-                }
+            async authorize() {
+                return null;
             },
         }),
     ],
@@ -95,6 +75,7 @@ const _auth = NextAuth({
             return token;
         },
     },
+    basePath: "/portal",
 });
 
 /**
@@ -102,10 +83,10 @@ const _auth = NextAuth({
  * @link https://github.com/nextauthjs/next-auth/issues/10568
  */
 
-export const auth: NextAuthResult['auth'] = _auth.auth;
+export const auth: NextAuthResult["auth"] = _auth.auth;
 
-export const signIn: NextAuthResult['signIn'] = _auth.signIn;
+export const signIn: NextAuthResult["signIn"] = _auth.signIn;
 
-export const signOut: NextAuthResult['signOut'] = _auth.signOut;
+export const signOut: NextAuthResult["signOut"] = _auth.signOut;
 
-export const handlers: NextAuthResult['handlers'] = _auth.handlers;
+export const handlers: NextAuthResult["handlers"] = _auth.handlers;

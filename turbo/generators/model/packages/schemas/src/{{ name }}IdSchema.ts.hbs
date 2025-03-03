@@ -1,0 +1,7 @@
+import { z } from 'zod';
+
+export const {{ name }}IdSchema = z.custom<`{{ prefix }}_${string}`>(
+    (value) => typeof value === "string" && /^{{ prefix }}_/.test(value),
+);
+
+export type {{ name }}Id = z.infer<typeof {{ name }}IdSchema>;

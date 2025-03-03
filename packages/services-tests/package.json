@@ -1,0 +1,27 @@
+{
+    "name": "app-services-tests",
+    "version": "0.0.0",
+    "private": true,
+    "devDependencies": {
+        "@faker-js/faker": "^9.5.1",
+        "app-typescript-config": "workspace:^",
+        "dpdm": "^3.14.0",
+        "typescript": "^5.8.2",
+        "vitest": "^2.1.9"
+    },
+    "dependencies": {
+        "app-models-mocks": "workspace:^",
+        "app-services": "workspace:^"
+    },
+    "imports": {
+        "#*": "./src/*"
+    },
+    "type": "module",
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "test": "vitest run",
+        "test:watch": "vitest watch",
+        "check-circular": "dpdm -T --skip-dynamic-imports circular --no-warning --no-tree --exit-code circular:1 src/**/*"
+    },
+    "sideEffects": false
+}

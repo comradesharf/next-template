@@ -1,15 +1,5 @@
 {
-    "extends": "@comradesharf/typescript-config/library.json",
-    "compilerOptions": {
-        "outDir": "./types",
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
-    },
+    "extends": "app-typescript-config/library.json",
     "exclude": ["node_modules"],
-    "include": ["src/**/*.tsx", "src/**/*.ts", "src/**/*.mts"],
-    "references": [
-        {
-            "path": "../core"
-        }
-    ]
+    "include": ["src/**/*.tsx", "src/**/*.ts", "src/**/*.mts"]
 }

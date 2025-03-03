@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
     Toast,
@@ -7,8 +7,8 @@ import {
     ToastProvider,
     ToastTitle,
     ToastViewport,
-} from '#app/_components/toast.tsx';
-import { useToast } from '#app/_hooks/use-toast.ts';
+} from "#app/_components/toast.tsx";
+import { useToast } from "#app/_hooks/use-toast.ts";
 
 export function Toaster() {
     const { toasts } = useToast();

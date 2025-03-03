@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { ArrowUpIcon, ChevronRightIcon, MailIcon } from 'lucide-react';
-import Link from 'next/link';
-import { Button } from '#app/_components/button.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { ArrowUpIcon, ChevronRightIcon, MailIcon } from "lucide-react";
+import Link from "next/link";
+import { Button } from "#app/_components/button.tsx";
 
 const meta: Meta<typeof Button> = {
     component: Button,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -29,6 +29,24 @@ export const Primary: Story = {};
 export const Destructive: Story = {
     render: function Component() {
         return <Button variant="destructive">Destructive</Button>;
+    },
+};
+
+export const Neutral: Story = {
+    render: function Component() {
+        return <Button variant="neutral">Neutral</Button>;
+    },
+};
+
+export const Secondary: Story = {
+    render: function Component() {
+        return <Button variant="secondary">Secondary</Button>;
+    },
+};
+
+export const Tertiary: Story = {
+    render: function Component() {
+        return <Button variant="tertiary">Tertiary</Button>;
     },
 };
 

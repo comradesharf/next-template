@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { NotFound } from '#app/_components/not-found.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { NotFound } from "#app/_components/not-found.tsx";
 
 const meta: Meta<typeof NotFound> = {
     component: NotFound,
-    tags: ['autodocs'],
+    tags: ["autodocs", "not-found"],
     args: {},
     parameters: {
-        layout: 'centered',
+        layout: "centered",
         docs: {
             story: {
                 inline: true,

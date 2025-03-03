@@ -1,0 +1,28 @@
+{
+    "name": "app-core-tests",
+    "version": "0.1.0",
+    "private": true,
+    "imports": {
+        "#*": "./src/*"
+    },
+    "type": "module",
+    "peerDependencies": {
+        "dpdm": "*",
+        "typescript": "*",
+        "vitest": "*"
+    },
+    "devDependencies": {
+        "app-typescript-config": "workspace:^"
+    },
+    "dependencies": {
+        "app-core": "workspace:^",
+        "app-vitest-unit-config": "workspace:^"
+    },
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "test": "vitest run",
+        "test:watch": "vitest watch",
+        "check-circular": "dpdm -T --skip-dynamic-imports circular --no-warning --no-tree --exit-code circular:1 src/**/*"
+    },
+    "sideEffects": false
+}

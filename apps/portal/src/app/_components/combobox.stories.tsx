@@ -1,5 +1,5 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import type { Meta, StoryObj } from '@storybook/react';
+import { zodResolver } from "@hookform/resolvers/zod";
+import type { Meta, StoryObj } from "@storybook/react";
 import {
     ArrowUpIcon,
     BookmarkIcon,
@@ -13,11 +13,11 @@ import {
     TrashIcon,
     UserIcon,
     XCircleIcon,
-} from 'lucide-react';
-import { type ComponentType, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { Button } from '#app/_components/button.tsx';
+} from "lucide-react";
+import { type ComponentType, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Button } from "#app/_components/button.tsx";
 import {
     Command,
     CommandEmpty,
@@ -25,12 +25,12 @@ import {
     CommandInput,
     CommandItem,
     CommandList,
-} from '#app/_components/command.tsx';
+} from "#app/_components/command.tsx";
 import {
     Drawer,
     DrawerContent,
     DrawerTrigger,
-} from '#app/_components/drawer.tsx';
+} from "#app/_components/drawer.tsx";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -43,7 +43,7 @@ import {
     DropdownMenuSubContent,
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
-} from '#app/_components/dropdown-menu.tsx';
+} from "#app/_components/dropdown-menu.tsx";
 import {
     Form,
     FormControl,
@@ -52,45 +52,45 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from '#app/_components/form.tsx';
+} from "#app/_components/form.tsx";
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-} from '#app/_components/popover.tsx';
-import { Toaster } from '#app/_components/toaster.tsx';
-import { useMediaQuery } from '#app/_hooks/use-media-query.ts';
-import { toast } from '#app/_hooks/use-toast.ts';
-import { cn } from '#app/_libs/cn.ts';
+} from "#app/_components/popover.tsx";
+import { Toaster } from "#app/_components/toaster.tsx";
+import { useMediaQuery } from "#app/_hooks/use-media-query.ts";
+import { toast } from "#app/_hooks/use-toast.ts";
+import { cn } from "#app/_libs/cn.ts";
 
 const frameworks = [
     {
-        value: 'next.js',
-        label: 'Next.js',
+        value: "next.js",
+        label: "Next.js",
     },
     {
-        value: 'sveltekit',
-        label: 'SvelteKit',
+        value: "sveltekit",
+        label: "SvelteKit",
     },
     {
-        value: 'nuxt.js',
-        label: 'Nuxt.js',
+        value: "nuxt.js",
+        label: "Nuxt.js",
     },
     {
-        value: 'remix',
-        label: 'Remix',
+        value: "remix",
+        label: "Remix",
     },
     {
-        value: 'astro',
-        label: 'Astro',
+        value: "astro",
+        label: "Astro",
     },
 ];
 
 const meta: Meta = {
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -99,7 +99,7 @@ const meta: Meta = {
     },
     render: function Component() {
         const [open, setOpen] = useState(false);
-        const [value, setValue] = useState('');
+        const [value, setValue] = useState("");
 
         return (
             <Popover open={open} onOpenChange={setOpen}>
@@ -113,7 +113,7 @@ const meta: Meta = {
                             ? frameworks.find(
                                   (framework) => framework.value === value,
                               )?.label
-                            : 'Select framework...'}
+                            : "Select framework..."}
                         <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
                 </PopoverTrigger>
@@ -130,7 +130,7 @@ const meta: Meta = {
                                         onSelect={(currentValue) => {
                                             setValue(
                                                 currentValue === value
-                                                    ? ''
+                                                    ? ""
                                                     : currentValue,
                                             );
                                             setOpen(false);
@@ -138,10 +138,10 @@ const meta: Meta = {
                                     >
                                         <CheckIcon
                                             className={cn(
-                                                'mr-2 h-4 w-4',
+                                                "mr-2 h-4 w-4",
                                                 value === framework.value
-                                                    ? 'opacity-100'
-                                                    : 'opacity-0',
+                                                    ? "opacity-100"
+                                                    : "opacity-0",
                                             )}
                                         />
                                         {framework.label}
@@ -164,20 +164,20 @@ export const Primary: Story = {};
 
 const FormSchema = z.object({
     language: z.string({
-        required_error: 'Please select a language.',
+        required_error: "Please select a language.",
     }),
 });
 
 const languages = [
-    { label: 'English', value: 'en' },
-    { label: 'French', value: 'fr' },
-    { label: 'German', value: 'de' },
-    { label: 'Spanish', value: 'es' },
-    { label: 'Portuguese', value: 'pt' },
-    { label: 'Russian', value: 'ru' },
-    { label: 'Japanese', value: 'ja' },
-    { label: 'Korean', value: 'ko' },
-    { label: 'Chinese', value: 'zh' },
+    { label: "English", value: "en" },
+    { label: "French", value: "fr" },
+    { label: "German", value: "de" },
+    { label: "Spanish", value: "es" },
+    { label: "Portuguese", value: "pt" },
+    { label: "Russian", value: "ru" },
+    { label: "Japanese", value: "ja" },
+    { label: "Korean", value: "ko" },
+    { label: "Chinese", value: "zh" },
 ] as const;
 
 export const AsForm: Story = {
@@ -188,7 +188,7 @@ export const AsForm: Story = {
 
         function onSubmit(data: z.infer<typeof FormSchema>) {
             toast({
-                title: 'You submitted the following values:',
+                title: "You submitted the following values:",
                 description: (
                     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
                         <code className="text-white">
@@ -218,9 +218,9 @@ export const AsForm: Story = {
                                             <Button
                                                 variant="outline"
                                                 className={cn(
-                                                    'w-[200px] justify-between',
+                                                    "w-[200px] justify-between",
                                                     !field.value &&
-                                                        'text-muted-foreground',
+                                                        "text-muted-foreground",
                                                 )}
                                             >
                                                 {field.value
@@ -229,7 +229,7 @@ export const AsForm: Story = {
                                                               language.value ===
                                                               field.value,
                                                       )?.label
-                                                    : 'Select language'}
+                                                    : "Select language"}
                                                 <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                                             </Button>
                                         </FormControl>
@@ -253,18 +253,18 @@ export const AsForm: Story = {
                                                                 }
                                                                 onSelect={() => {
                                                                     form.setValue(
-                                                                        'language',
+                                                                        "language",
                                                                         language.value,
                                                                     );
                                                                 }}
                                                             >
                                                                 <CheckIcon
                                                                     className={cn(
-                                                                        'mr-2 h-4 w-4',
+                                                                        "mr-2 h-4 w-4",
                                                                         language.value ===
                                                                             field.value
-                                                                            ? 'opacity-100'
-                                                                            : 'opacity-0',
+                                                                            ? "opacity-100"
+                                                                            : "opacity-0",
                                                                     )}
                                                                 />
                                                                 {language.label}
@@ -294,7 +294,7 @@ export const AsForm: Story = {
 export const Responsive: Story = {
     render: function Component() {
         const [open, setOpen] = useState(false);
-        const isDesktop = useMediaQuery('(min-width: 768px)');
+        const isDesktop = useMediaQuery("(min-width: 768px)");
         const [selectedStatus, setSelectedStatus] = useState<Status | null>(
             null,
         );
@@ -387,24 +387,24 @@ function StatusList({
 }
 
 const labels = [
-    'feature',
-    'bug',
-    'enhancement',
-    'documentation',
-    'design',
-    'question',
-    'maintenance',
+    "feature",
+    "bug",
+    "enhancement",
+    "documentation",
+    "design",
+    "question",
+    "maintenance",
 ];
 
 export const AsDropdown: Story = {
     render: function Component() {
-        const [label, setLabel] = useState('feature');
+        const [label, setLabel] = useState("feature");
         const [open, setOpen] = useState(false);
 
         return (
             <div className="flex w-full flex-col items-start justify-between rounded-md border px-4 py-3 sm:flex-row sm:items-center">
-                <p className="text-sm font-medium leading-none">
-                    <span className="bg-primary text-primary-foreground mr-2 rounded-lg px-2 py-1 text-xs">
+                <p className="font-medium text-sm leading-none">
+                    <span className="mr-2 rounded-lg bg-primary px-2 py-1 text-primary-foreground text-xs">
                         {label}
                     </span>
                     <span className="text-muted-foreground">
@@ -486,28 +486,28 @@ type Status = {
 
 const statuses: Status[] = [
     {
-        value: 'backlog',
-        label: 'Backlog',
+        value: "backlog",
+        label: "Backlog",
         icon: BookmarkIcon,
     },
     {
-        value: 'todo',
-        label: 'Todo',
+        value: "todo",
+        label: "Todo",
         icon: CircleIcon,
     },
     {
-        value: 'in progress',
-        label: 'In Progress',
+        value: "in progress",
+        label: "In Progress",
         icon: ArrowUpIcon,
     },
     {
-        value: 'done',
-        label: 'Done',
+        value: "done",
+        label: "Done",
         icon: CheckCircleIcon,
     },
     {
-        value: 'canceled',
-        label: 'Canceled',
+        value: "canceled",
+        label: "Canceled",
         icon: XCircleIcon,
     },
 ];
@@ -562,11 +562,11 @@ export const AsPopover: Story = {
                                         >
                                             <status.icon
                                                 className={cn(
-                                                    'mr-2 h-4 w-4',
+                                                    "mr-2 h-4 w-4",
                                                     status.value ===
                                                         selectedStatus?.value
-                                                        ? 'opacity-100'
-                                                        : 'opacity-40',
+                                                        ? "opacity-100"
+                                                        : "opacity-40",
                                                 )}
                                             />
                                             <span>{status.label}</span>

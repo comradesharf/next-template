@@ -1,0 +1,19 @@
+{{#if lingui}}
+import { withLocale } from "#app/_components/locales.tsx";
+
+export interface PageProps {
+    params: Promise<{ lang: string }>;
+}
+
+export default withLocale(function Page(_props: PageProps) {
+    return null;
+});
+{{else}}
+export interface PageProps {
+    params: Promise<{ lang: string }>;
+}
+
+export default function Page(_props: PageProps) {
+    return null;
+};
+{{/if}}

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 import {
     CalculatorIcon,
     CalendarIcon,
@@ -6,8 +6,8 @@ import {
     CreditCardIcon,
     SmileIcon,
     UserIcon,
-} from 'lucide-react';
-import { useEffect, useState } from 'react';
+} from "lucide-react";
+import { useEffect, useState } from "react";
 import {
     Command,
     CommandDialog,
@@ -18,7 +18,7 @@ import {
     CommandList,
     CommandSeparator,
     CommandShortcut,
-} from '#app/_components/command.tsx';
+} from "#app/_components/command.tsx";
 
 const meta: Meta<typeof Command> = {
     component: Command,
@@ -32,11 +32,11 @@ const meta: Meta<typeof Command> = {
         CommandList,
         CommandSeparator,
         CommandShortcut,
-    } as Meta['subcomponents'],
-    tags: ['autodocs'],
+    } as Meta["subcomponents"],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -99,21 +99,21 @@ export const Keyboard: Story = {
 
         useEffect(() => {
             const down = (e: KeyboardEvent) => {
-                if (e.key === 'j' && (e.metaKey || e.ctrlKey)) {
+                if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
                     e.preventDefault();
                     setOpen((open) => !open);
                 }
             };
 
-            document.addEventListener('keydown', down);
-            return () => document.removeEventListener('keydown', down);
+            document.addEventListener("keydown", down);
+            return () => document.removeEventListener("keydown", down);
         }, []);
 
         return (
             <>
                 <p className="text-muted-foreground text-sm">
-                    Press{' '}
-                    <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100">
+                    Press{" "}
+                    <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-medium font-mono text-[10px] text-muted-foreground opacity-100">
                         <span className="text-xs">⌘</span>J
                     </kbd>
                 </p>

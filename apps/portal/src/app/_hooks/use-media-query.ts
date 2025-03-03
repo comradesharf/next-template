@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useSyncExternalStore } from 'react';
+import { useSyncExternalStore } from "react";
 
 export function useMediaQuery(query: string) {
     return useSyncExternalStore(
         (listener) => {
             const mediaQueryList = window.matchMedia(query);
             const controller = new AbortController();
-            mediaQueryList.addEventListener('change', listener, {
+            mediaQueryList.addEventListener("change", listener, {
                 signal: controller.signal,
             });
             return () => {

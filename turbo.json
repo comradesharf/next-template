@@ -1,64 +1,69 @@
 {
     "$schema": "https://turbo.build/schema.json",
+    "globalEnv": ["CI"],
+    "globalPassThroughEnv": ["FAKER_SEED"],
     "tasks": {
-        "@comradesharf/portal#dev": {
+        "dev": {
             "cache": false,
             "persistent": true,
-            "dependsOn": ["@comradesharf/emails#build"]
+            "dependsOn": ["^compile-i18n", "copy-public"]
         },
-        "@comradesharf/emails#dev": {
+        "storybook": {
             "cache": false,
             "persistent": true,
-            "dependsOn": ["build"]
+            "dependsOn": ["^compile-i18n"]
         },
-        "@comradesharf/emails#build": {
-            "outputs": ["dist"],
-            "inputs": ["src/**/*"],
-            "dependsOn": ["compile-locale"]
-        },
-        "@comradesharf/portal#storybook": {
-            "cache": false,
-            "persistent": true
-        },
-        "compile-locale": {
-            "outputs": ["src/**/locales/messages/*.ts"],
-            "inputs": ["src/**/locales/messages/*.po"]
-        },
-        "extract-locale": {
-            "outputs": ["src/**/locales/messages/*.po"]
-        },
-        "check-locale": {
-            "outputs": ["src/**/locales/messages/*.po"]
-        },
-        "@comradesharf/emails#check-locale": {
-            "outputs": ["src/**/locales/messages/*.po"]
-        },
-        "@comradesharf/portal#build": {
+        "build": {
+            "dependsOn": ["^compile-i18n", "copy-public"],
             "inputs": ["$TURBO_DEFAULT$", "!**/*.stories.{tsx,jsx,mdx}"],
-            "outputs": [".next/**", "!.next/cache/**"],
-            "dependsOn": ["@comradesharf/portal#compile-locale"]
+            "outputs": [".next/**", "!.next/cache/**", "dist/**"]
         },
-        "@comradesharf/portal#storybook:build": {
-            "outputs": ["storybook-static/**"],
-            "dependsOn": ["@comradesharf/portal#compile-locale"]
+        "compile-i18n": {
+            "outputs": ["src/locales/*.ts"],
+            "inputs": ["../../*/*/locales/*.po"]
         },
-        "@comradesharf/portal#storybook:test": {
-            "dependsOn": ["@comradesharf/portal#storybook:build"]
+        "extract-i18n": {
+            "inputs": ["../../*/*/src/*.ts"],
+            "outputs": ["../../*/*/locales/*.po"],
+            "dependsOn": ["//#format-and-lint:fix"]
         },
+        "extract-i18n:clean": {
+            "inputs": ["../../*/*/src/*.ts"],
+            "outputs": ["../../*/*/locales/*.po"],
+            "dependsOn": ["//#format-and-lint:fix"]
+        },
+        "check-circular": {},
         "check-types": {
-            "outputs": ["*/*/types/**"],
             "dependsOn": ["^check-types"]
         },
-        "@comradesharf/portal#check-types": {
-            "dependsOn": ["@comradesharf/portal#build"]
+        "copy-public": {
+            "dependsOn": ["^build"],
+            "outputs": ["public/_*/**"],
+            "inputs": ["../../packages/*/{public,dist}/_*/**"]
         },
-        "//#test": {
+        "test:storybook": {
+            "dependsOn": ["build:storybook"]
+        },
+        "start:storybook": {
+            "dependsOn": ["build:storybook"],
             "cache": false,
             "persistent": true
         },
-        "//#lint": {
+        "build:storybook": {
+            "dependsOn": ["^compile-i18n", "compile-i18n"],
+            "outputs": ["storybook-static/**"]
+        },
+        "test": {
+            "dependsOn": ["^compile-i18n"]
+        },
+        "test:watch": {
+            "dependsOn": ["^compile-i18n"],
             "cache": false,
             "persistent": true
+        },
+        "//#format-and-lint": {},
+        "//#format-and-lint:fix": {
+            "cache": false
         }
     }
 }

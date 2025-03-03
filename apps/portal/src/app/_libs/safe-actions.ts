@@ -1,24 +1,25 @@
-import 'server-only';
-import {
-    type ErrorPayload,
-    ServerActionError,
-} from '@comradesharf/models/utils/errors';
-import * as Sentry from '@sentry/nextjs';
-import { createSafeActionClient } from 'next-safe-action';
-import { cookies, headers } from 'next/headers';
-import { redirect } from 'next/navigation';
-import { z } from 'zod';
-import { I18nServerActionError } from '#app/_libs/errors.ts';
-import {
-    CookieName,
-    getRequestLocale,
-} from '#app/_libs/locales/getRequestLocale.ts';
-import { getHydratedCurrentUser } from '#app/_queries/auths.ts';
-import { getI18nInstance } from '#app/_queries/i18n.ts';
+import "server-only";
+import { t } from "@lingui/core/macro";
+import * as Sentry from "@sentry/nextjs";
+import * as Locales from "app-core/Locales";
+import { Log } from "app-core/Log";
+import { withI18n } from "app-i18n/lingui";
+import { withUserAbilities } from "app-models/abilities.node";
+import { ServerError, StatusCode } from "app-models/errors";
+import type { HydratedDocument } from "app-models/model-utils";
+import type { StructUser } from "app-models/models";
+import { createSafeActionClient } from "next-safe-action";
+import { cookies, headers } from "next/headers";
+import { notFound } from "next/navigation";
+import { z } from "zod";
+import { getHydratedCurrentUser } from "#app/_queries/auths.ts";
 
 const ActionMetadataSchema = z.object({
     actionName: z.string(),
-    public: z.boolean().default(false).optional(),
+    access: z
+        .enum(["all", "trusted-only", "anonymous-only"])
+        .default("trusted-only")
+        .optional(),
 });
 
 export const actionClient = createSafeActionClient({
@@ -26,72 +27,74 @@ export const actionClient = createSafeActionClient({
     handleServerError: (
         error,
         { metadata, bindArgsClientInputs, clientInput, ctx },
-    ): ErrorPayload => {
-        console.error(error);
+    ) => {
+        const $ctx = ctx as {
+            user: HydratedDocument<StructUser.User>;
+            lang: string;
+        };
 
-        const $ctx = ctx as { user: any; lang: string };
+        Log.error({
+            err: error,
+            user: $ctx.user
+                ? {
+                      id: $ctx.user?.id,
+                      email: $ctx.user?.email,
+                      username: $ctx.user?.displayName,
+                      role: $ctx.user?.role,
+                  }
+                : null,
+            action: {
+                bindArgsClientInputs,
+                clientInput,
+                actionName: metadata.actionName,
+                lang: $ctx.lang,
+            },
+        });
 
         Sentry.captureException(error, (scope) => {
             if ($ctx.user) {
                 scope.setUser({
                     id: $ctx.user?.id,
                     email: $ctx.user?.email,
-                    username: $ctx.user?.display_name,
+                    username: $ctx.user?.displayName,
                     role: $ctx.user?.role,
                 });
             } else {
                 scope.setUser(null);
             }
 
-            scope.setContext('server-action', {
+            scope.setContext("server-action", {
                 bindArgsClientInputs,
                 clientInput,
                 actionName: metadata.actionName,
                 lang: $ctx.lang,
             });
 
-            scope.setTag('server-action', metadata.actionName);
-            scope.setTag('lang', $ctx.lang);
+            scope.setTag("server-action", metadata.actionName);
+            scope.setTag("lang", $ctx.lang);
             return scope;
         });
 
-        let instance: I18nServerActionError;
-
-        if (error instanceof I18nServerActionError) {
-            instance = error;
-        } else if (error instanceof ServerActionError) {
-            instance = new I18nServerActionError(error.payload, error.cause);
-        } else {
-            instance = new I18nServerActionError(
-                {
-                    code: 'UNKNOWN',
-                },
-                error,
-            );
+        if (error instanceof ServerError) {
+            return { message: error.message, code: error.code };
         }
 
-        return instance.toJSON();
+        return {
+            message: t`Unexpected server error occurred`,
+            code: StatusCode.INTERNAL_SERVER_ERROR,
+        };
     },
 })
-    .use(async ({ next }) => {
-        const lang =
-            (await cookies()).get(CookieName)?.value ||
-            getRequestLocale(await headers());
-
-        const i18n = await getI18nInstance(lang);
-
-        return next({
-            ctx: {
-                lang,
-                i18n,
-            },
-        });
-    })
-    .use(async ({ next, metadata: { public: $public } }) => {
+    /**
+     * This middleware is responsible for checking if the user is authenticated or not.
+     */
+    .use(async ({ next, metadata: { access = "trusted-only" } }) => {
         const user = await getHydratedCurrentUser();
 
-        if (!$public && !user) {
-            redirect('/sign-in');
+        if (access === "trusted-only" && !user) {
+            notFound();
+        } else if (access === "anonymous-only" && user) {
+            notFound();
         }
 
         return next({
@@ -99,4 +102,35 @@ export const actionClient = createSafeActionClient({
                 user,
             },
         });
-    });
+    })
+    /**
+     * This middleware is responsible for setting the language of the user.
+     */
+    .use(async ({ next, ctx: { user } }) => {
+        const _cookies = await cookies();
+        let lang = _cookies.get(Locales.CookieName)?.value;
+        lang ??= user?.locale;
+        lang ??= Locales.getRequestLocale(await headers());
+
+        return withI18n(lang, () =>
+            next({
+                ctx: {
+                    lang,
+                },
+            }),
+        );
+    })
+    /**
+     * This middleware is responsible for setting the user abilities.
+     */
+    .use(async ({ next, ctx: { user } }) =>
+        withUserAbilities(
+            () =>
+                next({
+                    ctx: {
+                        user,
+                    },
+                }),
+            user?.toJSON(),
+        ),
+    );

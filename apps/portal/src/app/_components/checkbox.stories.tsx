@@ -1,10 +1,10 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import type { Meta, StoryObj } from '@storybook/react';
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { Button } from '#app/_components/button.tsx';
-import { Checkbox } from '#app/_components/checkbox.tsx';
+import { zodResolver } from "@hookform/resolvers/zod";
+import type { Meta, StoryObj } from "@storybook/react";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Button } from "#app/_components/button.tsx";
+import { Checkbox, ControlledCheckbox } from "#app/_components/checkbox.tsx";
 import {
     Form,
     FormControl,
@@ -13,16 +13,16 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from '#app/_components/form.tsx';
-import { Toaster } from '#app/_components/toaster.tsx';
-import { toast } from '#app/_hooks/use-toast.ts';
+} from "#app/_components/form.tsx";
+import { Toaster } from "#app/_components/toaster.tsx";
+import { toast } from "#app/_hooks/use-toast.ts";
 
 const meta: Meta<typeof Checkbox> = {
     component: Checkbox,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -35,7 +35,7 @@ const meta: Meta<typeof Checkbox> = {
                 <Checkbox id="terms" />
                 <label
                     htmlFor="terms"
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    className="font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
                     Accept terms and conditions
                 </label>
@@ -52,34 +52,34 @@ export const Primary: Story = {};
 
 const items = [
     {
-        id: 'recents',
-        label: 'Recents',
+        id: "recents",
+        label: "Recents",
     },
     {
-        id: 'home',
-        label: 'Home',
+        id: "home",
+        label: "Home",
     },
     {
-        id: 'applications',
-        label: 'Applications',
+        id: "applications",
+        label: "Applications",
     },
     {
-        id: 'desktop',
-        label: 'Desktop',
+        id: "desktop",
+        label: "Desktop",
     },
     {
-        id: 'downloads',
-        label: 'Downloads',
+        id: "downloads",
+        label: "Downloads",
     },
     {
-        id: 'documents',
-        label: 'Documents',
+        id: "documents",
+        label: "Documents",
     },
 ] as const;
 
 const FormSchema2 = z.object({
     items: z.array(z.string()).refine((value) => value.some((item) => item), {
-        message: 'You have to select at least one item.',
+        message: "You have to select at least one item.",
     }),
 });
 
@@ -88,13 +88,13 @@ export const AsForm2: Story = {
         const form = useForm<z.infer<typeof FormSchema2>>({
             resolver: zodResolver(FormSchema2),
             defaultValues: {
-                items: ['recents', 'home'],
+                items: ["recents", "home"],
             },
         });
 
         function onSubmit(data: z.infer<typeof FormSchema2>) {
             toast({
-                title: 'You submitted the following values:',
+                title: "You submitted the following values:",
                 description: (
                     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
                         <code className="text-white">
@@ -131,46 +131,16 @@ export const AsForm2: Story = {
                                         key={item.id}
                                         control={form.control}
                                         name="items"
-                                        render={({ field }) => {
-                                            return (
-                                                <FormItem
-                                                    key={item.id}
-                                                    className="flex flex-row items-start space-x-3 space-y-0"
-                                                >
-                                                    <FormControl>
-                                                        <Checkbox
-                                                            checked={field.value?.includes(
-                                                                item.id,
-                                                            )}
-                                                            onCheckedChange={(
-                                                                checked,
-                                                            ) => {
-                                                                return checked
-                                                                    ? field.onChange(
-                                                                          [
-                                                                              ...field.value,
-                                                                              item.id,
-                                                                          ],
-                                                                      )
-                                                                    : field.onChange(
-                                                                          field.value?.filter(
-                                                                              (
-                                                                                  value,
-                                                                              ) =>
-                                                                                  value !==
-                                                                                  item.id,
-                                                                          ),
-                                                                      );
-                                                            }}
-                                                        />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal">
-                                                        {item.label}
-                                                    </FormLabel>
-                                                </FormItem>
-                                            );
-                                        }}
-                                    />
+                                    >
+                                        <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                                            <ControlledCheckbox
+                                                value={item.id}
+                                            />
+                                            <FormLabel className="font-normal">
+                                                {item.label}
+                                            </FormLabel>
+                                        </FormItem>
+                                    </FormField>
                                 ))}
                                 <FormMessage />
                             </FormItem>
@@ -198,7 +168,7 @@ export const AsForm1: Story = {
 
         function onSubmit(data: z.infer<typeof FormSchema1>) {
             toast({
-                title: 'You submitted the following values:',
+                title: "You submitted the following values:",
                 description: (
                     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
                         <code className="text-white">
@@ -234,10 +204,10 @@ export const AsForm1: Story = {
                                     </FormLabel>
                                     <FormDescription>
                                         You can manage your mobile notifications
-                                        in the{' '}
+                                        in the{" "}
                                         <Link href="/examples/forms">
                                             mobile settings
-                                        </Link>{' '}
+                                        </Link>{" "}
                                         page.
                                     </FormDescription>
                                 </div>
@@ -258,7 +228,7 @@ export const Disabled: Story = {
                 <Checkbox id="terms2" disabled />
                 <label
                     htmlFor="terms2"
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    className="font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
                     Accept terms and conditions
                 </label>
@@ -275,7 +245,7 @@ export const WithText: Story = {
                 <div className="grid gap-1.5 leading-none">
                     <label
                         htmlFor="terms1"
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        className="font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
                         Accept terms and conditions
                     </label>

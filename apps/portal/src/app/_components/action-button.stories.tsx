@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { ActionButton } from '#app/_components/action-button.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { ActionButton } from "#app/_components/action-button.tsx";
 
 const meta: Meta<typeof ActionButton> = {
     component: ActionButton,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {
-        children: 'Submit',
+        children: "Submit",
     },
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

@@ -1,18 +1,17 @@
-import 'server-only';
-import { getI18n } from '@lingui/react/server';
-import type {
-    DateTimeFormatterProps,
-    DateTimeRangeFormatterProps,
-} from '#app/_components/date-time.shared.tsx';
+import "server-only";
+import { getI18n } from "@lingui/react/server";
 import {
     DateTimeFormatVariant,
     type DateTimeI18nConfig,
     DefaultDateTimeFormatVariant,
     type FormatVariant,
     initDateFormatter,
-} from '#app/_libs/locales/date-times.config.ts';
-
-import type { PropsWithChildren } from 'react';
+} from "app-core/date-times.config";
+import type { PropsWithChildren } from "react";
+import type {
+    DateTimeFormatterProps,
+    DateTimeRangeFormatterProps,
+} from "#app/_components/date-time.shared.tsx";
 
 export function DateTimeI18nContext({
     children,

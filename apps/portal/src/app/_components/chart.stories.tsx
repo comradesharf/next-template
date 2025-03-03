@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 import {
     type ChartConfig,
     ChartContainer,
@@ -8,7 +8,7 @@ import {
     ChartStyle,
     ChartTooltip,
     ChartTooltipContent,
-} from '#app/_components/chart.tsx';
+} from "#app/_components/chart.tsx";
 
 const meta: Meta<typeof ChartContainer> = {
     component: ChartContainer,
@@ -18,11 +18,11 @@ const meta: Meta<typeof ChartContainer> = {
         ChartTooltip,
         ChartTooltipContent,
         ChartStyle,
-    } as Meta['subcomponents'],
-    tags: ['autodocs'],
+    } as Meta["subcomponents"],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -69,21 +69,21 @@ type Story = StoryObj<typeof ChartContainer>;
 export const Primary: Story = {};
 
 const chartData = [
-    { month: 'January', desktop: 186, mobile: 80 },
-    { month: 'February', desktop: 305, mobile: 200 },
-    { month: 'March', desktop: 237, mobile: 120 },
-    { month: 'April', desktop: 73, mobile: 190 },
-    { month: 'May', desktop: 209, mobile: 130 },
-    { month: 'June', desktop: 214, mobile: 140 },
+    { month: "January", desktop: 186, mobile: 80 },
+    { month: "February", desktop: 305, mobile: 200 },
+    { month: "March", desktop: 237, mobile: 120 },
+    { month: "April", desktop: 73, mobile: 190 },
+    { month: "May", desktop: 209, mobile: 130 },
+    { month: "June", desktop: 214, mobile: 140 },
 ];
 
 const chartConfig = {
     desktop: {
-        label: 'Desktop',
-        color: '#2563eb',
+        label: "Desktop",
+        color: "#2563eb",
     },
     mobile: {
-        label: 'Mobile',
-        color: '#60a5fa',
+        label: "Mobile",
+        color: "#60a5fa",
     },
 } satisfies ChartConfig;

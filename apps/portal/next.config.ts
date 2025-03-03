@@ -1,10 +1,10 @@
-import { withSentryConfig } from '@sentry/nextjs';
-import type { NextConfig } from 'next';
+import { withSentryConfig } from "@sentry/nextjs";
+import type { NextConfig } from "next";
 
 const assetRemotePattern = (() => {
     const url = new URL(process.env.NEXT_PUBLIC_ASSET_URL);
 
-    const protocol = url.protocol.slice(0, -1) as 'http' | 'https';
+    const protocol = url.protocol.slice(0, -1) as "http" | "https";
 
     return {
         protocol,
@@ -13,36 +13,47 @@ const assetRemotePattern = (() => {
 })();
 
 const nextConfig: NextConfig = {
-    output: 'standalone',
-    typescript: {
-        ignoreBuildErrors: true,
-    },
+    basePath: "/portal",
+    output: "standalone",
     eslint: {
         ignoreDuringBuilds: true,
     },
-    transpilePackages: [
-        '@comradesharf/emails',
-        '@comradesharf/pdfs',
-        '@comradesharf/trpc',
-        '@comradesharf/models',
-        '@comradesharf/schemas',
-    ],
+    typescript: {
+        ignoreBuildErrors: true,
+    },
     experimental: {
-        swcPlugins: [['@lingui/swc-plugin', {}]],
+        swcPlugins: [
+            [
+                "@lingui/swc-plugin",
+                {
+                    runtimeModules: {
+                        useLingui: ["app-i18n/lingui", "useLingui"],
+                        i18n: ["app-i18n/lingui", "i18n"],
+                        trans: ["app-i18n/lingui", "Trans"],
+                    },
+                },
+            ],
+        ],
         serverMinification: false,
     },
+    transpilePackages: [
+        "app-core",
+        "app-emails",
+        "app-i18n",
+        "app-models",
+        "app-pdfs",
+        "app-schemas",
+        "app-services",
+        "app-trpc",
+    ],
+    serverExternalPackages: [
+        "@aws-sdk/client-s3",
+        "@aws-sdk/credential-providers",
+        "@aws-sdk/s3-presigned-post",
+    ],
     images: {
         remotePatterns: [assetRemotePattern],
         minimumCacheTTL: 31536000,
-    },
-    async redirects() {
-        return [
-            {
-                source: '/:locale/orders',
-                destination: '/:locale/orders/recent-orders',
-                permanent: false,
-            },
-        ];
     },
 };
 
@@ -52,12 +63,6 @@ export default withSentryConfig(nextConfig, {
 
     org: process.env.SENTRY_ORG,
     project: process.env.SENTRY_PROJECT,
-    // release: {
-    //     name: process.env.NEXT_PUBLIC_SENTRY_RELEASE,
-    //     deploy: {
-    //         env: process.env.NEXT_PUBLIC_SENTRY_ENVIRONMENT,
-    //     },
-    // },
 
     // Only print logs for uploading source maps in CI
     silent: !process.env.CI,
@@ -77,10 +82,7 @@ export default withSentryConfig(nextConfig, {
     // This can increase your server load as well as your hosting bill.
     // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
     // side errors will fail.
-    tunnelRoute: '/monitoring',
-
-    // Hides source maps from generated client bundles
-    hideSourceMaps: true,
+    tunnelRoute: "/monitoring",
 
     // Automatically tree-shake Sentry logger statements to reduce bundle size
     disableLogger: true,
@@ -94,4 +96,7 @@ export default withSentryConfig(nextConfig, {
     autoInstrumentAppDirectory: true,
     autoInstrumentMiddleware: false,
     telemetry: false,
+    sourcemaps: {
+        deleteSourcemapsAfterUpload: true,
+    },
 });

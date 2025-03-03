@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { ErrorComp } from '#app/_components/error.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { ErrorComp } from "#app/_components/error.tsx";
 
 const meta: Meta<typeof ErrorComp> = {
     component: ErrorComp,
-    tags: ['autodocs'],
+    tags: ["autodocs", "error"],
     args: {},
     parameters: {
-        layout: 'centered',
+        layout: "centered",
         docs: {
             story: {
                 inline: true,

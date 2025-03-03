@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { ChevronsUpDownIcon } from 'lucide-react';
-import { useState } from 'react';
-import { Button } from '#app/_components/button.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { ChevronsUpDownIcon } from "lucide-react";
+import { useState } from "react";
+import { Button } from "#app/_components/button.tsx";
 import {
     Collapsible,
     CollapsibleContent,
     CollapsibleTrigger,
-} from '#app/_components/collapsible.tsx';
+} from "#app/_components/collapsible.tsx";
 
 const meta: Meta<typeof Collapsible> = {
     component: Collapsible,
@@ -14,11 +14,11 @@ const meta: Meta<typeof Collapsible> = {
         Collapsible,
         CollapsibleContent,
         CollapsibleTrigger,
-    } as Meta['subcomponents'],
-    tags: ['autodocs'],
+    } as Meta["subcomponents"],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -35,7 +35,7 @@ const meta: Meta<typeof Collapsible> = {
                 className="w-[350px] space-y-2"
             >
                 <div className="flex items-center justify-between space-x-4 px-4">
-                    <h4 className="text-sm font-semibold">
+                    <h4 className="font-semibold text-sm">
                         @peduarte starred 3 repositories
                     </h4>
                     <CollapsibleTrigger asChild>

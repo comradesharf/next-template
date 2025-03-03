@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '#app/_components/button.tsx';
-import { Input } from '#app/_components/input.tsx';
-import { Label } from '#app/_components/label.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Button } from "#app/_components/button.tsx";
+import { Input } from "#app/_components/input.tsx";
+import { Label } from "#app/_components/label.tsx";
 import {
     Sheet,
     SheetClose,
@@ -11,14 +11,14 @@ import {
     SheetHeader,
     SheetTitle,
     SheetTrigger,
-} from '#app/_components/sheet.tsx';
+} from "#app/_components/sheet.tsx";
 
 const meta: Meta<typeof Sheet> = {
     component: Sheet,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -78,9 +78,7 @@ type Story = StoryObj<typeof Sheet>;
 
 export const Primary: Story = {};
 
-const SHEET_SIDES = ['top', 'right', 'bottom', 'left'] as const;
-
-type SheetSide = (typeof SHEET_SIDES)[number];
+const SHEET_SIDES = ["top", "right", "bottom", "left"] as const;
 
 export const Side: Story = {
     render: function Component() {

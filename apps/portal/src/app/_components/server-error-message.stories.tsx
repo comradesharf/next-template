@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { ServerErrorMessage } from '#app/_components/server-error-message.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { ServerErrorMessage } from "#app/_components/server-error-message.tsx";
 
 const meta: Meta<typeof ServerErrorMessage> = {
     component: ServerErrorMessage,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

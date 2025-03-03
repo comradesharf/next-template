@@ -1,0 +1,7 @@
+// start:import
+import { Command } from "commander";
+import { PrivateTRPCCommand } from "#commands.ts";
+
+export default new Command("{{ group }}")
+    // start:command
+    .description("Manage {{ group }}");

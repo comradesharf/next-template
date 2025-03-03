@@ -3,4 +3,4 @@
 
 # Sentry Config File
 .env.sentry-build-plugin
-storybook-static
+public/_*

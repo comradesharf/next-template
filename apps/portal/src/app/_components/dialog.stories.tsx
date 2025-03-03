@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '#app/_components/button.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Button } from "#app/_components/button.tsx";
 import {
     Dialog,
     DialogContent,
@@ -8,16 +8,16 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from '#app/_components/dialog.tsx';
-import { Input } from '#app/_components/input.tsx';
-import { Label } from '#app/_components/label.tsx';
+} from "#app/_components/dialog.tsx";
+import { Input } from "#app/_components/input.tsx";
+import { Label } from "#app/_components/label.tsx";
 
 const meta: Meta<typeof Dialog> = {
     component: Dialog,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

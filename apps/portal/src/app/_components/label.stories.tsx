@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from '#app/_components/checkbox.tsx';
-import { Label } from '#app/_components/label.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Checkbox } from "#app/_components/checkbox.tsx";
+import { Label } from "#app/_components/label.tsx";
 
 const meta: Meta<typeof Label> = {
     component: Label,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

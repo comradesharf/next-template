@@ -1,0 +1,8 @@
+import { {{ name }}IdSchema } from 'app-schemas/{{ name }}IdSchema';
+import { expect, test } from 'vitest';
+import { faker } from '@faker-js/faker';
+
+test('should validate {{ name }}IdSchema', () => {
+    const id = faker.string.alphanumeric({ casing: 'lower', length: 24 });
+    expect({{ name }}IdSchema.parse(`{{prefix}}_${id}`)).toEqual(`{{prefix}}_${id}`);
+});

@@ -1,7 +1,7 @@
-import type { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu';
-import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
-import { Button } from '#app/_components/button.tsx';
+import type { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
+import type { Meta, StoryObj } from "@storybook/react";
+import { useState } from "react";
+import { Button } from "#app/_components/button.tsx";
 import {
     DropdownMenu,
     DropdownMenuCheckboxItem,
@@ -18,14 +18,14 @@ import {
     DropdownMenuSubContent,
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
-} from '#app/_components/dropdown-menu.tsx';
+} from "#app/_components/dropdown-menu.tsx";
 
 const meta: Meta<typeof DropdownMenu> = {
     component: DropdownMenu,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -103,7 +103,7 @@ export const Primary: Story = {};
 
 export const RadioGroup: Story = {
     render: function Component() {
-        const [position, setPosition] = useState('bottom');
+        const [position, setPosition] = useState("bottom");
 
         return (
             <DropdownMenu>
@@ -133,7 +133,7 @@ export const RadioGroup: Story = {
     },
 };
 
-type Checked = DropdownMenuCheckboxItemProps['checked'];
+type Checked = DropdownMenuCheckboxItemProps["checked"];
 
 export const Checkboxes: Story = {
     render: function Component() {

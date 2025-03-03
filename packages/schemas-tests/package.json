@@ -1,0 +1,27 @@
+{
+    "name": "app-schemas-tests",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "devDependencies": {
+        "@types/lodash-es": "^4.17.12",
+        "app-typescript-config": "workspace:^",
+        "app-vitest-unit-config": "workspace:^",
+        "dpdm": "^3.14.0",
+        "typescript": "^5.8.2"
+    },
+    "dependencies": {
+        "@faker-js/faker": "^9.5.1",
+        "app-models-mocks": "workspace:^",
+        "app-schemas": "workspace:^",
+        "lodash-es": "^4.17.21",
+        "vitest": "^2.1.9"
+    },
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "test": "vitest run",
+        "test:watch": "vitest watch",
+        "check-circular": "dpdm -T --skip-dynamic-imports circular --no-warning --no-tree --exit-code circular:1 src/**/*"
+    },
+    "sideEffects": false
+}

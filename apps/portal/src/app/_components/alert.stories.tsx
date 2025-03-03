@@ -1,19 +1,19 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { BellRingIcon } from 'lucide-react';
+import type { Meta, StoryObj } from "@storybook/react";
+import { BellRingIcon } from "lucide-react";
 import {
     Alert,
     AlertDescription,
     AlertTitle,
-} from '#app/_components/alert.tsx';
+} from "#app/_components/alert.tsx";
 
 const meta: Meta<typeof Alert> = {
     component: Alert,
     // @ts-ignore
     subcomponents: { AlertTitle, AlertDescription },
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

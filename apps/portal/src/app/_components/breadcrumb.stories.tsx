@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { ChevronDownIcon, SlashIcon } from 'lucide-react';
-import Link from 'next/link';
-import { useState } from 'react';
+import type { Meta, StoryObj } from "@storybook/react";
+import { ChevronDownIcon, SlashIcon } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 import {
     Breadcrumb,
     BreadcrumbEllipsis,
@@ -10,8 +10,8 @@ import {
     BreadcrumbList,
     BreadcrumbPage,
     BreadcrumbSeparator,
-} from '#app/_components/breadcrumb.tsx';
-import { Button } from '#app/_components/button.tsx';
+} from "#app/_components/breadcrumb.tsx";
+import { Button } from "#app/_components/button.tsx";
 import {
     Drawer,
     DrawerClose,
@@ -21,14 +21,14 @@ import {
     DrawerHeader,
     DrawerTitle,
     DrawerTrigger,
-} from '#app/_components/drawer.tsx';
+} from "#app/_components/drawer.tsx";
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from '#app/_components/dropdown-menu.tsx';
-import { useMediaQuery } from '#app/_hooks/use-media-query.ts';
+} from "#app/_components/dropdown-menu.tsx";
+import { useMediaQuery } from "#app/_hooks/use-media-query.ts";
 
 const meta: Meta<typeof Breadcrumb> = {
     component: Breadcrumb,
@@ -39,11 +39,11 @@ const meta: Meta<typeof Breadcrumb> = {
         BreadcrumbList,
         BreadcrumbPage,
         BreadcrumbSeparator,
-    } as Meta['subcomponents'],
-    tags: ['autodocs'],
+    } as Meta["subcomponents"],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -96,11 +96,11 @@ type Story = StoryObj<typeof Breadcrumb>;
 export const Primary: Story = {};
 
 const items = [
-    { href: '#', label: 'Home' },
-    { href: '#', label: 'Documentation' },
-    { href: '#', label: 'Building Your Application' },
-    { href: '#', label: 'Data Fetching' },
-    { label: 'Caching and Revalidating' },
+    { href: "#", label: "Home" },
+    { href: "#", label: "Documentation" },
+    { href: "#", label: "Building Your Application" },
+    { href: "#", label: "Data Fetching" },
+    { label: "Caching and Revalidating" },
 ];
 
 const ITEMS_TO_DISPLAY = 3;
@@ -109,7 +109,7 @@ export const Responsive: Story = {
     render: function Component() {
         const [open, setOpen] = useState(false);
 
-        const isDesktop = useMediaQuery('(min-width: 768px)');
+        const isDesktop = useMediaQuery("(min-width: 768px)");
 
         return (
             <Breadcrumb>
@@ -146,7 +146,7 @@ export const Responsive: Story = {
                                                             href={
                                                                 item.href
                                                                     ? item.href
-                                                                    : '#'
+                                                                    : "#"
                                                             }
                                                         >
                                                             {item.label}
@@ -180,7 +180,7 @@ export const Responsive: Story = {
                                                             href={
                                                                 item.href
                                                                     ? item.href
-                                                                    : '#'
+                                                                    : "#"
                                                             }
                                                             className="py-1 text-sm"
                                                         >

@@ -1,43 +1,56 @@
-'use client';
+"use client";
 
-import { toggleVariants } from '#app/_components/toggle.tsx';
+import { composeEventHandlers } from "@radix-ui/primitive";
+import { useFormField } from "#app/_components/form.tsx";
+import { toggleVariants } from "#app/_components/toggle.tsx";
+import { cn } from "#app/_libs/cn.ts";
 
-import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
-import type { VariantProps } from 'class-variance-authority';
-import * as React from 'react';
-import { cn } from '#app/_libs/cn.ts';
+import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
+import type { VariantProps } from "class-variance-authority";
+import * as React from "react";
+import { type ComponentProps, use } from "react";
 
 const ToggleGroupContext = React.createContext<
     VariantProps<typeof toggleVariants>
 >({
-    size: 'default',
-    variant: 'default',
+    size: "default",
+    variant: "default",
 });
 
-const ToggleGroup = React.forwardRef<
-    React.ElementRef<typeof ToggleGroupPrimitive.Root>,
-    React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Root> &
-        VariantProps<typeof toggleVariants>
->(({ className, variant, size, children, ...props }, ref) => (
-    <ToggleGroupPrimitive.Root
-        ref={ref}
-        className={cn('flex items-center justify-center gap-1', className)}
-        {...props}
-    >
-        <ToggleGroupContext.Provider value={{ variant, size }}>
-            {children}
-        </ToggleGroupContext.Provider>
-    </ToggleGroupPrimitive.Root>
-));
+function ToggleGroup({
+    className,
+    variant,
+    size,
+    children,
+    ref,
+    ...props
+}: ComponentProps<typeof ToggleGroupPrimitive.Root> &
+    VariantProps<typeof toggleVariants>) {
+    return (
+        <ToggleGroupPrimitive.Root
+            ref={ref}
+            className={cn("flex items-center justify-center gap-1", className)}
+            {...props}
+        >
+            <ToggleGroupContext value={{ variant, size }}>
+                {children}
+            </ToggleGroupContext>
+        </ToggleGroupPrimitive.Root>
+    );
+}
 
 ToggleGroup.displayName = ToggleGroupPrimitive.Root.displayName;
 
-const ToggleGroupItem = React.forwardRef<
-    React.ElementRef<typeof ToggleGroupPrimitive.Item>,
-    React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Item> &
-        VariantProps<typeof toggleVariants>
->(({ className, children, variant, size, ...props }, ref) => {
-    const context = React.useContext(ToggleGroupContext);
+function ToggleGroupItem({
+    className,
+    children,
+    variant,
+    size,
+    ref,
+    ...props
+}: ComponentProps<typeof ToggleGroupPrimitive.Item> &
+    VariantProps<typeof toggleVariants>) {
+    const context = use(ToggleGroupContext);
 
     return (
         <ToggleGroupPrimitive.Item
@@ -54,8 +67,31 @@ const ToggleGroupItem = React.forwardRef<
             {children}
         </ToggleGroupPrimitive.Item>
     );
-});
+}
 
 ToggleGroupItem.displayName = ToggleGroupPrimitive.Item.displayName;
 
-export { ToggleGroup, ToggleGroupItem };
+export type ControlledToggleGroupProps = React.ComponentPropsWithoutRef<
+    typeof ToggleGroupPrimitive.Root
+> &
+    VariantProps<typeof toggleVariants>;
+
+function ControlledToggleGroup(props: ControlledToggleGroupProps) {
+    const { controller } = useFormField();
+
+    return (
+        // @ts-expect-error
+        <ToggleGroup
+            {...props}
+            disabled={controller.field.disabled || props.disabled}
+            value={controller.field.value}
+            onValueChange={composeEventHandlers(
+                controller.field.onChange,
+                // @ts-expect-error
+                props.onValueChange,
+            )}
+        />
+    );
+}
+
+export { ToggleGroup, ToggleGroupItem, ControlledToggleGroup };

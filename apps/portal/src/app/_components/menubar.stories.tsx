@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 import {
     Menubar,
     MenubarCheckboxItem,
@@ -13,14 +13,14 @@ import {
     MenubarSubContent,
     MenubarSubTrigger,
     MenubarTrigger,
-} from '#app/_components/menubar.tsx';
+} from "#app/_components/menubar.tsx";
 
 const meta: Meta<typeof Menubar> = {
     component: Menubar,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

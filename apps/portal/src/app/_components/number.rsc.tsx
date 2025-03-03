@@ -1,14 +1,15 @@
-import { getI18n } from '@lingui/react/server';
-import type { PropsWithChildren, ReactNode } from 'react';
-import type {
-    NumberFormatterProps,
-    NumberRangeFormatterProps,
-} from '#app/_components/number.shared.tsx';
+import "server-only";
+import { getI18n } from "@lingui/react/server";
 import {
     NumberFormatVariant,
     type NumberI18nConfig,
     initNumberFormatter,
-} from '#app/_libs/locales/numbers.config.ts';
+} from "app-core/numbers.config";
+import type { PropsWithChildren, ReactNode } from "react";
+import type {
+    NumberFormatterProps,
+    NumberRangeFormatterProps,
+} from "#app/_components/number.shared.tsx";
 
 export function NumberI18Context({
     children,

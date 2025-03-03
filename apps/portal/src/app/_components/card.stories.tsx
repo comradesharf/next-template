@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { BellIcon, CheckIcon } from 'lucide-react';
-import { Button } from '#app/_components/button.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { BellIcon, CheckIcon } from "lucide-react";
+import { Button } from "#app/_components/button.tsx";
 import {
     Card,
     CardContent,
@@ -8,17 +8,17 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from '#app/_components/card.tsx';
-import { Input } from '#app/_components/input.tsx';
-import { Label } from '#app/_components/label.tsx';
+} from "#app/_components/card.tsx";
+import { Input } from "#app/_components/input.tsx";
+import { Label } from "#app/_components/label.tsx";
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from '#app/_components/select.tsx';
-import { Switch } from '#app/_components/switch.tsx';
+} from "#app/_components/select.tsx";
+import { Switch } from "#app/_components/switch.tsx";
 
 const meta: Meta<typeof Card> = {
     component: Card,
@@ -28,11 +28,11 @@ const meta: Meta<typeof Card> = {
         CardDescription,
         CardContent,
         CardFooter,
-    } as Meta['subcomponents'],
-    tags: ['autodocs'],
+    } as Meta["subcomponents"],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,
@@ -112,7 +112,7 @@ export const Example: Story = {
                     <div className="flex items-center space-x-4 rounded-md border p-4">
                         <BellIcon />
                         <div className="flex-1 space-y-1">
-                            <p className="text-sm font-medium leading-none">
+                            <p className="font-medium text-sm leading-none">
                                 Push Notifications
                             </p>
                             <p className="text-muted-foreground text-sm">
@@ -130,7 +130,7 @@ export const Example: Story = {
                             >
                                 <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
                                 <div className="space-y-1">
-                                    <p className="text-sm font-medium leading-none">
+                                    <p className="font-medium text-sm leading-none">
                                         {notification.title}
                                     </p>
                                     <p className="text-muted-foreground text-sm">
@@ -153,15 +153,15 @@ export const Example: Story = {
 
 const notifications = [
     {
-        title: 'Your call has been confirmed.',
-        description: '1 hour ago',
+        title: "Your call has been confirmed.",
+        description: "1 hour ago",
     },
     {
-        title: 'You have a new message!',
-        description: '1 hour ago',
+        title: "You have a new message!",
+        description: "1 hour ago",
     },
     {
-        title: 'Your subscription is expiring soon!',
-        description: '2 hours ago',
+        title: "Your subscription is expiring soon!",
+        description: "2 hours ago",
     },
 ];

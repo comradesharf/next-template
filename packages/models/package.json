@@ -1,5 +1,5 @@
 {
-    "name": "@comradesharf/models",
+    "name": "app-models",
     "version": "0.1.0",
     "private": true,
     "imports": {
@@ -7,29 +7,67 @@
     },
     "type": "module",
     "exports": {
-        "./utils/db": {
-            "node": "./src/utils/db.ts",
-            "storybook": "./src/utils/db.mock.ts",
-            "default": "./src/utils/db.ts"
+        "./db": {
+            "types": "./src/db.ts",
+            "storybook": "./src/db.mock.ts",
+            "default": "./src/db.ts"
         },
-        "./*": {
-            "node": "./src/*.ts",
+        "./abilities": {
+            "types": "./src/abilities.ts",
             "storybook": null,
-            "default": "./src/*.ts"
+            "default": "./src/abilities.ts"
+        },
+        "./abilities.node": {
+            "types": "./src/abilities.node.ts",
+            "storybook": null,
+            "default": "./src/abilities.node.ts"
+        },
+        "./errors": "./src/errors.ts",
+        "./model-utils": {
+            "types": "./src/model-utils.ts",
+            "storybook": "./src/model-utils.ts",
+            "default": "./src/model-utils.ts"
+        },
+        "./model-utils.node": {
+            "types": "./src/model-utils.node.ts",
+            "storybook": "./src/model-utils.node.mock.ts",
+            "default": "./src/model-utils.node.ts"
+        },
+        "./models": {
+            "types": "./src/models.ts",
+            "storybook": null,
+            "default": "./src/models.ts"
+        },
+        "./SystemEventEmitter": {
+            "types": "./src/SystemEventEmitter.ts",
+            "storybook": null,
+            "default": "./src/SystemEventEmitter.ts"
         }
     },
     "devDependencies": {
-        "@comradesharf/typescript-config": "workspace:^",
-        "@types/lodash-es": "^4.17.12"
+        "app-typescript-config": "workspace:^"
+    },
+    "peerDependencies": {
+        "@lingui/core": "*",
+        "date-fns": "*",
+        "dpdm": "*",
+        "lodash-es": "*",
+        "typescript": "*"
     },
     "dependencies": {
-        "@casl/ability": "^6.7.1",
-        "@casl/mongoose": "^8.0.2",
-        "@comradesharf/core": "workspace:^",
-        "@comradesharf/schemas": "workspace:^",
-        "@typegoose/typegoose": "^12.8.0",
-        "lodash-es": "^4.17.21",
-        "mongoose": "^8.7.3",
-        "typeid-js": "^1.1.0"
-    }
+        "@casl/ability": "^6.7.3",
+        "@casl/mongoose": "^8.0.3",
+        "@typegoose/typegoose": "^12.12.0",
+        "app-core": "workspace:^",
+        "app-emails": "workspace:^",
+        "app-schemas": "workspace:^",
+        "app-services": "workspace:^",
+        "mongoose": "^8.11.0",
+        "typeid-js": "^1.2.0"
+    },
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "check-circular": "dpdm -T --skip-dynamic-imports circular --no-warning --no-tree --exit-code circular:1 src/**/*"
+    },
+    "sideEffects": false
 }

@@ -1,16 +1,17 @@
-'use client';
+"use client";
 
-import { Trans } from '@lingui/macro';
-import * as Sentry from '@sentry/nextjs';
-import { ArrowLeft, TriangleAlert } from 'lucide-react';
-import Link from 'next/link';
-import { useEffect } from 'react';
-import { Button } from '#app/_components/button.tsx';
-import { cn } from '#app/_libs/cn.ts';
+import { Trans } from "@lingui/react/macro";
+import * as Sentry from "@sentry/nextjs";
+import { ArrowLeft, TriangleAlert } from "lucide-react";
+import Link from "next/link";
+import { useEffect } from "react";
+import { Button } from "#app/_components/button.tsx";
+import { cn } from "#app/_libs/cn.ts";
 
 export interface ErrorProps {
     className?: string;
     error: Error & { digest?: string };
+    reset: () => void;
 }
 
 export function ErrorComp({ className, error }: ErrorProps) {
@@ -19,12 +20,12 @@ export function ErrorComp({ className, error }: ErrorProps) {
     }, [error]);
 
     return (
-        <div className={cn('max-w-md text-center', className)}>
-            <TriangleAlert className="mx-auto mb-8 w-32 h-32 text-muted-foreground" />
-            <h1 className="text-4xl font-bold mb-4">
+        <div className={cn("max-w-md text-center", className)}>
+            <TriangleAlert className="mx-auto mb-8 size-20 text-muted-foreground md:size-32" />
+            <h1 className="mb-4 font-bold text-4xl">
                 <Trans>Oops! Something went wrong</Trans>
             </h1>
-            <p className="text-xl mb-8">
+            <p className="mb-8 text-xl">
                 <Trans>
                     We're sorry, but it seems like we've encountered an
                     unexpected error. Our team has been notified and is working

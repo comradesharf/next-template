@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Skeleton } from '#app/_components/skeleton.tsx';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Skeleton } from "#app/_components/skeleton.tsx";
 
 const meta: Meta<typeof Skeleton> = {
     component: Skeleton,
-    tags: ['autodocs'],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

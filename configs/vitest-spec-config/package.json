@@ -1,0 +1,31 @@
+{
+    "name": "app-vitest-spec-config",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "dependencies": {
+        "@faker-js/faker": "^9.5.1",
+        "@testcontainers/localstack": "^10.18.0",
+        "app-models": "workspace:^",
+        "mongodb-memory-server": "^10.1.4",
+        "testcontainers": "^10.18.0",
+        "vitest": "^2.1.9"
+    },
+    "devDependencies": {
+        "app-typescript-config": "workspace:^"
+    },
+    "peerDependencies": {
+        "dpdm": "*",
+        "typescript": "*"
+    },
+    "exports": {
+        ".": "./src/spec.ts"
+    },
+    "imports": {
+        "#*": "./src/*"
+    },
+    "sideEffects": false,
+    "scripts": {
+        "check-types": "tsc --noEmit"
+    }
+}

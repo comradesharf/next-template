@@ -1,0 +1,60 @@
+import { accessibleBy } from "@casl/mongoose";
+import { type ReturnModelType, modelOptions, prop } from '@typegoose/typegoose';
+import { Log } from "app-core/Log";
+import type { {{ name }}Id } from "app-schemas/{{ name }}IdSchema";
+import { Base } from '#Base.ts';
+import { getUserAbilities } from "#abilities.node.ts"
+import { generateIdWithPrefix } from "#model-utils.ts";
+import type { Actions, Subjects } from "#abilities.ts";
+
+declare module '@casl/ability' {
+    interface RecordTypes {
+        {{ name }}: {{ name }};
+    }
+}
+
+const log = Log.child({
+    Model: "{{ name }}",
+});
+
+@modelOptions({
+    options: {
+        customName: '{{ name }}',
+    },
+})
+class {{ name }} extends Base {
+
+    @prop({
+        required: true,
+        type: String,
+        default: generateIdWithPrefix('{{ prefix }}'),
+    })
+    _id!: {{ name }}Id;
+
+    static accessibleBy(
+        this: ReturnModelType<typeof {{ name }}>,
+        action: Actions,
+        abilities = getUserAbilities(),
+    ) {
+        return this.find(
+            accessibleBy(abilities, action).ofType(
+                this.modelName as Extract<Subjects, string>,
+            ),
+        );
+    }
+
+    static oneAccessibleBy(
+        this: ReturnModelType<typeof {{ name }}>,
+        action: Actions,
+        abilities = getUserAbilities(),
+    ) {
+        return this.findOne(
+            accessibleBy(abilities, action).ofType(
+                this.modelName as Extract<Subjects, string>,
+            ),
+        );
+    }
+
+}
+
+export { {{ name }} };

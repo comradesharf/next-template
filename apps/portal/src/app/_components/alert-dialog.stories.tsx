@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 import {
     AlertDialog,
     AlertDialogAction,
@@ -9,8 +9,8 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger,
-} from '#app/_components/alert-dialog.tsx';
-import { Button } from '#app/_components/button.tsx';
+} from "#app/_components/alert-dialog.tsx";
+import { Button } from "#app/_components/button.tsx";
 
 const meta: Meta<typeof AlertDialog> = {
     component: AlertDialog,
@@ -23,11 +23,11 @@ const meta: Meta<typeof AlertDialog> = {
         AlertDialogHeader,
         AlertDialogTitle,
         AlertDialogTrigger,
-    } as Meta['subcomponents'],
-    tags: ['autodocs'],
+    } as Meta["subcomponents"],
+    tags: ["autodocs"],
     args: {},
     parameters: {
-        layout: 'padded',
+        layout: "padded",
         docs: {
             story: {
                 inline: true,

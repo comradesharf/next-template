@@ -1,8 +1,8 @@
-import type { HTMLAttributes } from 'react';
-import type { FormatVariant } from '#app/_libs/locales/date-times.config.ts';
+import type { FormatVariant } from "app-core/date-times.config";
+import type { HTMLAttributes } from "react";
 
 export interface DateTimeFormatterProps
-    extends Omit<HTMLAttributes<HTMLTimeElement>, 'datetime'> {
+    extends Omit<HTMLAttributes<HTMLTimeElement>, "datetime"> {
     className?: string;
     date: Date | number;
     variant?: keyof FormatVariant;
@@ -11,7 +11,7 @@ export interface DateTimeFormatterProps
 }
 
 export interface DateTimeRangeFormatterProps
-    extends Omit<HTMLAttributes<HTMLTimeElement>, 'datetime'> {
+    extends Omit<HTMLAttributes<HTMLTimeElement>, "datetime"> {
     className?: string;
     range: readonly [startDate: Date | number, endDate: Date | number];
     variant?: keyof FormatVariant;

@@ -1,18 +1,39 @@
 {
-    "name": "@comradesharf/core",
+    "name": "app-core",
     "version": "0.1.0",
     "private": true,
     "imports": {
+        "#locales.json": "./locales.json",
         "#*": "./src/*"
     },
     "type": "module",
     "exports": {
-        "./*": "./src/*.ts"
+        "./Log": "./src/Log.ts",
+        "./Platforms": "./src/Platforms.ts",
+        "./Locales": "./src/Locales.ts",
+        "./Urls": "./src/Urls.ts",
+        "./locales.json": "./locales.json",
+        "./date-times.config": "./src/date-times.config.ts",
+        "./numbers.config": "./src/numbers.config.ts"
     },
     "devDependencies": {
-        "@comradesharf/typescript-config": "workspace:^"
+        "@types/negotiator": "^0.6.3",
+        "@types/node": "^22.13.8",
+        "app-typescript-config": "workspace:^"
+    },
+    "peerDependencies": {
+        "dpdm": "*",
+        "typescript": "*"
     },
     "dependencies": {
-        "pino": "^9.5.0"
-    }
+        "date-fns": "^4.1.0",
+        "lodash-es": "^4.17.21",
+        "negotiator": "^1.0.0",
+        "pino": "^9.6.0"
+    },
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "check-circular": "dpdm -T --skip-dynamic-imports circular --no-warning --no-tree --exit-code circular:1 src/**/*"
+    },
+    "sideEffects": false
 }
