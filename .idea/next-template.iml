@@ -23,6 +23,8 @@
       <sourceFolder url="file://$MODULE_DIR$/packages/pdfs-stories/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/schemas-tests/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/services-tests/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/cli/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/worker/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/core/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/emails/.swc" />
@@ -42,6 +44,9 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/models-mocks/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/models-tests/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/schemas-tests/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/shelf" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/services-tests/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/trpc/.turbo" />
       <excludePattern pattern=".eslintcache" />
       <excludePattern pattern="junit.xml" />
       <excludePattern pattern="globalConfig_model-tests.json" />

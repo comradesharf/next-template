@@ -7,11 +7,7 @@
     },
     "type": "module",
     "exports": {
-        "./db": {
-            "types": "./src/db.ts",
-            "storybook": "./src/db.mock.ts",
-            "default": "./src/db.ts"
-        },
+        "./db": "./src/db.ts",
         "./abilities": {
             "types": "./src/abilities.ts",
             "storybook": null,
@@ -45,24 +41,22 @@
         }
     },
     "devDependencies": {
-        "app-typescript-config": "workspace:^"
-    },
-    "peerDependencies": {
-        "@lingui/core": "*",
-        "date-fns": "*",
-        "dpdm": "*",
-        "lodash-es": "*",
-        "typescript": "*"
+        "app-typescript-config": "workspace:^",
+        "dpdm": "^3.14.0",
+        "typescript": "^5.8.2"
     },
     "dependencies": {
         "@casl/ability": "^6.7.3",
         "@casl/mongoose": "^8.0.3",
-        "@typegoose/typegoose": "^12.12.0",
+        "@lingui/core": "^5.2.0",
+        "@typegoose/typegoose": "^12.13.0",
         "app-core": "workspace:^",
         "app-emails": "workspace:^",
         "app-schemas": "workspace:^",
         "app-services": "workspace:^",
-        "mongoose": "^8.11.0",
+        "date-fns": "^4.1.0",
+        "lodash-es": "^4.17.21",
+        "mongoose": "^8.12.1",
         "typeid-js": "^1.2.0"
     },
     "scripts": {

@@ -20,8 +20,8 @@
         "vitest": "^2.1.9"
     },
     "dependencies": {
-        "@sentry/nextjs": "^9.3.0",
-        "@trpc/server": "^11.0.0-rc.819",
+        "@sentry/nextjs": "^9.5.0",
+        "@trpc/server": "^11.0.0-rc.824",
         "app-models": "workspace:^",
         "app-schemas": "workspace:^",
         "superjson": "^2.2.2",

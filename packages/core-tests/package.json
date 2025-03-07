@@ -6,17 +6,15 @@
         "#*": "./src/*"
     },
     "type": "module",
-    "peerDependencies": {
-        "dpdm": "*",
-        "typescript": "*",
-        "vitest": "*"
-    },
     "devDependencies": {
-        "app-typescript-config": "workspace:^"
+        "app-typescript-config": "workspace:^",
+        "dpdm": "^3.14.0",
+        "typescript": "^5.8.2"
     },
     "dependencies": {
         "app-core": "workspace:^",
-        "app-vitest-unit-config": "workspace:^"
+        "app-vitest-unit-config": "workspace:^",
+        "vitest": "^2.1.9"
     },
     "scripts": {
         "check-types": "tsc --noEmit",

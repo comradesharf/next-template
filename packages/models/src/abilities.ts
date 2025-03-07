@@ -5,6 +5,7 @@ import {
     createMongoAbility,
 } from "@casl/ability";
 import type { FlattenMaps } from "mongoose";
+import type { Admin } from "#Admin.ts";
 import type { User } from "#User.ts";
 
 export type Actions =
@@ -25,6 +26,9 @@ export const defineAbilitiesForUser = <U extends User>(
     const builder = new AbilityBuilder<Abilities>(createMongoAbility);
 
     switch (user?.role) {
+        case "ADMIN":
+            buildAdmin(user as FlattenMaps<Admin>, builder);
+            break;
         default:
             buildAnonymous(builder);
     }
@@ -33,3 +37,15 @@ export const defineAbilitiesForUser = <U extends User>(
 };
 
 function buildAnonymous(_: AbilityBuilder<MongoAbility<[Actions, Subjects]>>) {}
+
+function buildAdmin(
+    _user: FlattenMaps<Admin>,
+    { can }: AbilityBuilder<MongoAbility<[Actions, Subjects]>>,
+) {
+    can(["create", "read", "update"], "FileUpload", {
+        user: _user._id,
+    });
+    can(["create", "read", "update"], "FileUpload", {
+        "user._id": _user._id,
+    });
+}

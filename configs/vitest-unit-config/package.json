@@ -8,11 +8,9 @@
         "vitest": "^2.1.9"
     },
     "devDependencies": {
-        "app-typescript-config": "workspace:^"
-    },
-    "peerDependencies": {
-        "dpdm": "*",
-        "typescript": "*"
+        "app-typescript-config": "workspace:^",
+        "dpdm": "^3.14.0",
+        "typescript": "^5.8.2"
     },
     "exports": {
         ".": "./src/unit.ts"

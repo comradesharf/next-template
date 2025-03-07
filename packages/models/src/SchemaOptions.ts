@@ -11,6 +11,9 @@ export const MongooseSchemaOptions: mongoose.SchemaOptions = {
     transactionAsyncLocalStorage: true,
 };
 
+/**
+ * We create a separate options since mongoose {@link mongoose.set} doesn't allow to set _id to false
+ */
 export const TypegooseSchemaOptions: mongoose.SchemaOptions = {
     ...MongooseSchemaOptions,
     // NOTE (xuwam - 15/10/2024): Don't add _id: we'll generate the id manually instead. This is to avoid the

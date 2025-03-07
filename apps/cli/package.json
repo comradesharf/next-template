@@ -1,0 +1,33 @@
+{
+    "name": "app-cli",
+    "version": "0.0.0",
+    "private": true,
+    "dependencies": {
+        "@inquirer/prompts": "^7.3.2",
+        "@trpc/client": "^11.0.0-rc.824",
+        "app-schemas": "workspace:^",
+        "commander": "^13.1.0"
+    },
+    "devDependencies": {
+        "@rspack/cli": "~1.2.7",
+        "@rspack/core": "~1.2.7",
+        "app-models": "workspace:^",
+        "app-trpc": "workspace:^",
+        "app-typescript-config": "workspace:^",
+        "dpdm": "^3.14.0",
+        "typescript": "^5.8.2"
+    },
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "build": "rspack build",
+        "nexushome": "nexushome"
+    },
+    "sideEffects": false,
+    "bin": {
+        "nexushome": "./dist/nexushome"
+    },
+    "type": "commonjs",
+    "imports": {
+        "#*": "./src/*"
+    }
+}

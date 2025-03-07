@@ -5,6 +5,14 @@
     "imports": {
         "#*": "./src/*"
     },
+    "exports": {
+        "./AdminIdSchema": "./src/AdminIdSchema.ts",
+        "./FileUploadIdSchema": "./src/FileUploadIdSchema.ts",
+        "./DelayedMessageIdSchema": "./src/DelayedMessageIdSchema.ts",
+        "./GeneratePresignedPostUrlSchema": "./src/GeneratePresignedPostUrlSchema.ts",
+        "./InitAdminSchema": "./src/InitAdminSchema.ts",
+        "./CompleteFileUploadSchema": "./src/CompleteFileUploadSchema.ts"
+    },
     "type": "module",
     "devDependencies": {
         "@types/lodash-es": "^4.17.12",

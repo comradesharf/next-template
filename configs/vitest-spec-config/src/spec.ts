@@ -1,7 +1,7 @@
 import { loadEnv } from "vite";
 import { defineConfig } from "vitest/config";
 
-export default function setupConfig(configs: string[] = ["db", "localstack"]) {
+export default function setupConfig(configs: string[] = ["localstack", "db"]) {
     const globalSetup = configs.map(
         (config) => new URL(`${config}.global.ts`, import.meta.url).pathname,
     );

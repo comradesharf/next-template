@@ -21,11 +21,9 @@
         "./messages": "./src/messages.ts"
     },
     "devDependencies": {
-        "app-typescript-config": "workspace:^"
-    },
-    "peerDependencies": {
-        "dpdm": "*",
-        "typescript": "*"
+        "app-typescript-config": "workspace:^",
+        "dpdm": "^3.14.0",
+        "typescript": "^5.8.2"
     },
     "dependencies": {
         "@lingui/cli": "^5.2.0",

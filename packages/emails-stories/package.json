@@ -6,29 +6,29 @@
         "#*": "./src/*"
     },
     "type": "module",
-    "peerDependencies": {
-        "@storybook/addon-essentials": "*",
-        "@storybook/addon-interactions": "*",
-        "@storybook/addon-links": "*",
-        "@storybook/blocks": "*",
-        "@storybook/nextjs": "*",
-        "@storybook/react": "*",
-        "@storybook/test": "*",
-        "@storybook/test-runner": "*",
-        "@types/node": "*",
-        "@types/nodemailer": "*",
-        "@types/react": "*",
-        "@types/react-dom": "*",
-        "dpdm": "*",
-        "next": "*",
-        "react": "*",
-        "react-dom": "*",
-        "storybook": "*",
-        "typescript": "*"
+    "devDependencies": {
+        "dpdm": "^3.14.0",
+        "typescript": "^5.8.2"
     },
     "dependencies": {
+        "@storybook/addon-essentials": "^8.6.4",
+        "@storybook/addon-interactions": "^8.6.4",
+        "@storybook/addon-links": "^8.6.4",
+        "@storybook/blocks": "^8.6.4",
+        "@storybook/nextjs": "^8.6.4",
+        "@storybook/react": "^8.6.4",
+        "@storybook/test": "^8.6.4",
+        "@storybook/test-runner": "^0.22.0",
+        "@types/node": "^22.13.9",
+        "@types/nodemailer": "^6.4.17",
+        "@types/react": "^19.0.10",
+        "@types/react-dom": "^19.0.4",
         "app-i18n": "workspace:^",
-        "app-typescript-config": "workspace:^"
+        "app-typescript-config": "workspace:^",
+        "next": "^15.2.1",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "storybook": "^8.6.4"
     },
     "scripts": {
         "check-types": "tsc --noEmit",
