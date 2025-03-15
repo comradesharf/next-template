@@ -13,6 +13,27 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: packages/models/src/Admin.ts:86
+msgid "Admin has been initialized"
+msgstr ""
+
+#: packages/models/src/Admin.ts:76
+msgid "Admin not found"
+msgstr ""
+
+#: packages/models/src/FileUpload.ts:207
+#: packages/models/src/FileUpload.ts:225
+msgid "File upload not found"
+msgstr ""
+
 #: packages/models/src/abilities.node.ts:16
 msgid "User abilities not found"
+msgstr ""
+
+#: packages/models/src/FileUpload.ts:211
+msgid "You are not allowed to complete file uploads"
+msgstr ""
+
+#: packages/models/src/FileUpload.ts:127
+msgid "You are not allowed to upload files"
 msgstr ""

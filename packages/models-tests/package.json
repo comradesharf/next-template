@@ -1,29 +1,26 @@
 {
-    "name": "app-model-tests",
+    "name": "app-models-tests",
     "version": "0.1.0",
     "private": true,
     "type": "module",
     "devDependencies": {
         "app-typescript-config": "workspace:^",
         "app-vitest-spec-config": "workspace:^",
-        "app-vitest-unit-config": "workspace:^"
-    },
-    "peerDependencies": {
-        "@faker-js/faker": "*",
-        "@testcontainers/localstack": "*",
-        "date-fns": "*",
-        "dpdm": "*",
-        "lodash-es": "*",
-        "mongodb-memory-server": "*",
-        "typescript": "*",
-        "vitest": "*"
+        "app-vitest-unit-config": "workspace:^",
+        "dpdm": "^3.14.0",
+        "typescript": "^5.8.2"
     },
     "dependencies": {
+        "@faker-js/faker": "^9.5.1",
+        "@testcontainers/localstack": "^10.18.0",
         "app-core": "workspace:^",
         "app-models": "workspace:^",
         "app-models-mocks": "workspace:^",
         "app-schemas": "workspace:^",
-        "app-services": "workspace:^"
+        "app-services": "workspace:^",
+        "date-fns": "^4.1.0",
+        "lodash-es": "^4.17.21",
+        "vitest": "^2.1.9"
     },
     "scripts": {
         "check-types": "tsc --noEmit",

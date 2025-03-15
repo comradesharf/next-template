@@ -5,21 +5,26 @@
     "imports": {
         "#*": "./src/*"
     },
+    "exports": {
+        "./FileUpload": "./src/FileUpload.ts",
+        "./Place": "./src/Place.ts",
+        "./User": "./src/User.ts",
+        "./Admin": "./src/Admin.ts",
+        "./DelayedMessage": "./src/DelayedMessage.ts"
+    },
     "type": "module",
     "devDependencies": {
         "app-models": "workspace:^",
-        "app-typescript-config": "workspace:^"
-    },
-    "peerDependencies": {
-        "@faker-js/faker": "*",
-        "date-fns": "*",
-        "dpdm": "*",
-        "lodash-es": "*",
-        "typescript": "*"
+        "app-typescript-config": "workspace:^",
+        "dpdm": "^3.14.0",
+        "typescript": "^5.8.2"
     },
     "dependencies": {
+        "@faker-js/faker": "^9.5.1",
         "app-core": "workspace:^",
-        "app-schemas": "workspace:^"
+        "app-schemas": "workspace:^",
+        "date-fns": "^4.1.0",
+        "lodash-es": "^4.17.21"
     },
     "sideEffects": false,
     "scripts": {

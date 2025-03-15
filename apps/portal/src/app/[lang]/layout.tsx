@@ -1,4 +1,5 @@
 import "#app/globals.css";
+import * as Platforms from "app-core/Platforms";
 import locales from "app-core/locales.json";
 import { getI18nInstance } from "app-i18n/messages";
 import type { Metadata } from "next";
@@ -9,8 +10,8 @@ import { cn } from "#app/_libs/cn.ts";
 import { poppins } from "#app/_libs/fonts/fonts.ts";
 
 export const metadata: Metadata = {
-    title: "NexusHomes",
-    description: "Get a free property valuation in seconds!",
+    title: Platforms.Name,
+    description: Platforms.TagLine,
 };
 
 export interface LayoutProps extends PropsWithChildren {

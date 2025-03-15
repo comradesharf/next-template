@@ -10,26 +10,28 @@
     "exports": {
         "./Log": "./src/Log.ts",
         "./Platforms": "./src/Platforms.ts",
+        "./DelayedMessages": "./src/DelayedMessages.ts",
         "./Locales": "./src/Locales.ts",
         "./Urls": "./src/Urls.ts",
+        "./FileUploads": "./src/FileUploads.ts",
         "./locales.json": "./locales.json",
         "./date-times.config": "./src/date-times.config.ts",
         "./numbers.config": "./src/numbers.config.ts"
     },
     "devDependencies": {
+        "@types/lodash-es": "^4.17.12",
         "@types/negotiator": "^0.6.3",
-        "@types/node": "^22.13.8",
-        "app-typescript-config": "workspace:^"
-    },
-    "peerDependencies": {
-        "dpdm": "*",
-        "typescript": "*"
+        "@types/node": "^22.13.9",
+        "app-typescript-config": "workspace:^",
+        "dpdm": "^3.14.0",
+        "typescript": "^5.8.2"
     },
     "dependencies": {
         "date-fns": "^4.1.0",
         "lodash-es": "^4.17.21",
         "negotiator": "^1.0.0",
-        "pino": "^9.6.0"
+        "pino": "^9.6.0",
+        "stable-hash": "^0.0.4"
     },
     "scripts": {
         "check-types": "tsc --noEmit",

@@ -9,12 +9,6 @@
     "exports": {
         "./PDFs": "./src/PDFs.ts"
     },
-    "peerDependencies": {
-        "date-fns": "*",
-        "dpdm": "*",
-        "lodash-es": "*",
-        "typescript": "*"
-    },
     "devDependencies": {
         "@types/lodash-es": "^4.17.12",
         "@types/react": "^19.0.10",
@@ -27,9 +21,11 @@
     },
     "dependencies": {
         "@date-fns/tz": "^1.2.0",
-        "@react-pdf/renderer": "^4.2.4",
+        "@react-pdf/renderer": "^4.3.0",
         "app-core": "workspace:^",
-        "app-i18n": "workspace:^"
+        "app-i18n": "workspace:^",
+        "date-fns": "^4.1.0",
+        "lodash-es": "^4.17.21"
     },
     "sideEffects": false,
     "scripts": {

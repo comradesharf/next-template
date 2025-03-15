@@ -1,5 +1,7 @@
 export const Name = "Comradesharf";
 
+export const TagLine = "Comradesharf";
+
 export const SupportEmail = "comradesharf@mail.com";
 
 export const MailtoSupportEmail = "mailto:comradesharf@mail.com";

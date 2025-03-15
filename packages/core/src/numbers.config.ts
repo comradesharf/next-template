@@ -1,16 +1,12 @@
 import memoize from "lodash-es/memoize";
+import stableHash from "stable-hash";
 
 export const initNumberFormatter: (
     locale: string,
     options?: Intl.NumberFormatOptions,
 ) => Intl.NumberFormat = memoize(
     (locale, options?) => new Intl.NumberFormat(locale, options),
-    (locale, options = {}) => {
-        return [locale, ...Object.keys(options)]
-            .toSorted()
-            .flatMap((key) => [key, (options as any)[key]])
-            .join("/");
-    },
+    (locale, options = {}) => stableHash([locale, options]),
 );
 
 export type FormatVariant = {

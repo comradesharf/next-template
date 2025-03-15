@@ -1,17 +1,13 @@
 import type { Locale } from "date-fns";
 import memoize from "lodash-es/memoize";
+import stableHash from "stable-hash";
 
 export const initDateFormatter: (
     locale: string,
     options?: Intl.DateTimeFormatOptions,
 ) => Intl.DateTimeFormat = memoize(
     (locale, options?) => new Intl.DateTimeFormat(locale, options),
-    (locale, options = {}) => {
-        return [locale, ...Object.keys(options)]
-            .toSorted()
-            .flatMap((key) => [key, (options as any)[key]])
-            .join("/");
-    },
+    (locale, options = {}) => stableHash([locale, options]),
 );
 
 export interface FormatVariant {

@@ -7,13 +7,10 @@ import {
     connection,
     set,
 } from "mongoose";
-import {
-    MongooseSchemaOptions,
-    TypegooseSchemaOptions,
-} from "#SchemaOptions.ts";
+import { MongooseSchemaOptions } from "#SchemaOptions.ts";
 
 setGlobalOptions({
-    schemaOptions: TypegooseSchemaOptions,
+    schemaOptions: MongooseSchemaOptions,
 });
 
 set(MongooseSchemaOptions);

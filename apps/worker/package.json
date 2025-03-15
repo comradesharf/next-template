@@ -1,0 +1,31 @@
+{
+    "name": "app-worker",
+    "version": "0.0.0",
+    "private": true,
+    "dependencies": {
+        "@sentry/node": "^9.5.0",
+        "@vercel/ncc": "^0.38.3",
+        "app-i18n": "workspace:^",
+        "app-models": "workspace:^"
+    },
+    "devDependencies": {
+        "@rspack/cli": "~1.2.7",
+        "@rspack/core": "~1.2.7",
+        "@sentry/webpack-plugin": "^3.2.2",
+        "app-typescript-config": "workspace:^",
+        "dpdm": "^3.14.0",
+        "typescript": "^5.8.2"
+    },
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "build": "rspack build",
+        "workerd": "node --env-file=.env.local $(yarn bin workerd)"
+    },
+    "sideEffects": true,
+    "bin": {
+        "workerd": "./dist/workerd.js"
+    },
+    "imports": {
+        "#*": "./src/*"
+    }
+}

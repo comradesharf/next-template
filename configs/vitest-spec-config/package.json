@@ -7,16 +7,13 @@
         "@faker-js/faker": "^9.5.1",
         "@testcontainers/localstack": "^10.18.0",
         "app-models": "workspace:^",
-        "mongodb-memory-server": "^10.1.4",
         "testcontainers": "^10.18.0",
         "vitest": "^2.1.9"
     },
     "devDependencies": {
-        "app-typescript-config": "workspace:^"
-    },
-    "peerDependencies": {
-        "dpdm": "*",
-        "typescript": "*"
+        "app-typescript-config": "workspace:^",
+        "dpdm": "^3.14.0",
+        "typescript": "^5.8.2"
     },
     "exports": {
         ".": "./src/spec.ts"

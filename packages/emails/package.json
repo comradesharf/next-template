@@ -12,26 +12,23 @@
     },
     "devDependencies": {
         "@types/nodemailer": "^6.4.17",
-        "app-typescript-config": "workspace:^"
-    },
-    "peerDependencies": {
-        "@lingui/core": "*",
-        "@lingui/react": "*",
-        "@sentry/nextjs": "*",
-        "@types/react": "*",
-        "@types/react-dom": "*",
-        "date-fns": "*",
-        "dpdm": "*",
-        "react": "*",
-        "react-dom": "*",
-        "typescript": "*"
+        "app-typescript-config": "workspace:^",
+        "dpdm": "^3.14.0",
+        "typescript": "^5.8.2"
     },
     "dependencies": {
+        "@lingui/react": "^5.2.0",
         "@react-email/components": "^0.0.33",
         "@react-email/render": "^1.0.5",
+        "@sentry/nextjs": "^9.5.0",
+        "@types/react": "^19.0.10",
+        "@types/react-dom": "^19.0.4",
         "app-core": "workspace:^",
         "app-i18n": "workspace:^",
-        "nodemailer": "^6.10.0"
+        "date-fns": "^4.1.0",
+        "nodemailer": "^6.10.0",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0"
     },
     "scripts": {
         "check-types": "tsc --noEmit",
