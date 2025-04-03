@@ -2,26 +2,25 @@ name: check
 run-name: Run continuous integration code
 on:
   workflow_dispatch:
-  pull_request:
-    types:
-      - opened
-      - synchronize
-    branches:
-      - develop
+  push:
+    branches-ignore:
+      - stage
       - main
 
 env:
   FAKER_SEED: ${{ github.run_number }}
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - run: corepack enable
 
@@ -31,6 +30,7 @@ jobs:
           node-version-file: '.nvmrc'
 
       - name: Cache turbo build setup
+        id: cache-turbo-restore
         uses: actions/cache@v4
         with:
           path: .turbo
@@ -38,23 +38,27 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-turbo-
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@v4
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
       - name: Install Dependencies
         run: yarn install --immutable
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+
+      - name: Reset changed package.json due to install
+        run: git checkout -- package.json apps/**/package.json packages/**/package.json configs/**/package.json
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install --with-deps chromium
 
-      - run: yarn turbo check-locale lint test build check-types storybook:test --affected
+      - run: npx turbo test test:storybook format-and-lint check-types check-circular
+
+      - name: Always turbo cache
+        if: always() && steps.cache-turbo-restore.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          path: .turbo
+
+      - uses: actions/upload-artifact@v4
+        if: '!cancelled() && failure()'
+        with:
+          name: test-results
+          path: apps/portal/storybook-static/
+          retention-days: 2

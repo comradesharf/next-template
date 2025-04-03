@@ -1,4 +1,9 @@
 import "#app/globals.css";
+import * as Platforms from "app-core/Platforms";
+import locales from "app-core/locales.json";
+import { getI18nInstance } from "app-i18n/messages";
+import type { Metadata } from "next";
+import type { PropsWithChildren } from "react";
 import { DateTimeI18nContext } from "#app/_components/date-time.tsx";
 import { GoogleMapProvider } from "#app/_components/google-map-provider.tsx";
 import { LocaleProvider } from "#app/_components/locale-provider.tsx";
@@ -6,11 +11,6 @@ import { withLocale } from "#app/_components/locales.tsx";
 import { NumberI18Context } from "#app/_components/number.tsx";
 import { cn } from "#app/_libs/cn.ts";
 import { poppins } from "#app/_libs/fonts/fonts.ts";
-import locales from "app-core/locales.json";
-import * as Platforms from "app-core/Platforms";
-import { getI18nInstance } from "app-i18n/messages";
-import type { Metadata } from "next";
-import type { PropsWithChildren } from "react";
 
 export const metadata: Metadata = {
     title: Platforms.Name,
