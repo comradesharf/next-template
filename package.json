@@ -7,7 +7,7 @@
         "@turbo/gen": "^2.4.4",
         "@types/inquirer-fuzzy-path": "^2.3.9",
         "inquirer-fuzzy-path": "^2.3.0",
-        "lefthook": "^1.11.2",
+        "lefthook": "^1.11.6",
         "turbo": "^2.4.4"
     },
     "workspaces": ["apps/*", "packages/*", "configs/*"],
@@ -15,5 +15,8 @@
     "scripts": {
         "format-and-lint": "biome check --unsafe --no-errors-on-unmatched --files-ignore-unknown=true",
         "format-and-lint:fix": "biome check --write --unsafe --no-errors-on-unmatched --files-ignore-unknown=true"
+    },
+    "resolutions": {
+        "import-in-the-middle": "1.13.1"
     }
 }

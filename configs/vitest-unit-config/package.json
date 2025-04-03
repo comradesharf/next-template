@@ -4,8 +4,8 @@
     "private": true,
     "type": "module",
     "dependencies": {
-        "@faker-js/faker": "^9.5.1",
-        "vitest": "^2.1.9"
+        "@faker-js/faker": "^9.6.0",
+        "vitest": "^3.1.1"
     },
     "devDependencies": {
         "app-typescript-config": "workspace:^",

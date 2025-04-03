@@ -4,7 +4,6 @@ import { i18n } from "@lingui/core";
 import type { Decorator, Loader, StoryContext } from "@storybook/react";
 import type { HttpHandler } from "msw";
 import { type SetupWorker, setupWorker } from "msw/browser";
-import { SessionProvider } from "next-auth/react";
 import { use, useInsertionEffect } from "react";
 import { DateTimeI18nContext } from "#app/_components/date-time.tsx";
 import { GoogleMapProvider } from "#app/_components/google-map-provider.tsx";
@@ -58,8 +57,6 @@ export const withRoot: Decorator<any> = (Story, ctx) => {
         );
     }, []);
 
-    const session = getSession(ctx.globals.user);
-
     const { getI18nInstance } = use(import("app-i18n/messages"));
     const $i18n = getI18nInstance(locale);
 
@@ -70,19 +67,17 @@ export const withRoot: Decorator<any> = (Story, ctx) => {
 
     return (
         <QueryClientProvider>
-            <SessionProvider refetchOnWindowFocus session={session}>
-                <DateTimeI18nContext>
-                    <NumberI18Context>
-                        <TooltipProvider>
-                            <GoogleMapProvider>
-                                <MotionProvider>
-                                    <Story />
-                                </MotionProvider>
-                            </GoogleMapProvider>
-                        </TooltipProvider>
-                    </NumberI18Context>
-                </DateTimeI18nContext>
-            </SessionProvider>
+            <DateTimeI18nContext>
+                <NumberI18Context>
+                    <TooltipProvider>
+                        <GoogleMapProvider>
+                            <MotionProvider>
+                                <Story />
+                            </MotionProvider>
+                        </GoogleMapProvider>
+                    </TooltipProvider>
+                </NumberI18Context>
+            </DateTimeI18nContext>
         </QueryClientProvider>
     );
 };

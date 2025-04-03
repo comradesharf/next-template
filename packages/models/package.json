@@ -48,15 +48,15 @@
     "dependencies": {
         "@casl/ability": "^6.7.3",
         "@casl/mongoose": "^8.0.3",
-        "@lingui/core": "^5.2.0",
-        "@typegoose/typegoose": "^12.13.0",
+        "@lingui/core": "^5.3.0",
+        "@typegoose/typegoose": "^12.14.0",
         "app-core": "workspace:^",
         "app-emails": "workspace:^",
         "app-schemas": "workspace:^",
         "app-services": "workspace:^",
         "date-fns": "^4.1.0",
         "lodash-es": "^4.17.21",
-        "mongoose": "^8.12.1",
+        "mongoose": "^8.13.1",
         "typeid-js": "^1.2.0"
     },
     "scripts": {

@@ -21,7 +21,7 @@
     "devDependencies": {
         "@types/lodash-es": "^4.17.12",
         "@types/negotiator": "^0.6.3",
-        "@types/node": "^22.13.9",
+        "@types/node": "^22.14.0",
         "app-typescript-config": "workspace:^",
         "dpdm": "^3.14.0",
         "typescript": "^5.8.2"
@@ -31,7 +31,7 @@
         "lodash-es": "^4.17.21",
         "negotiator": "^1.0.0",
         "pino": "^9.6.0",
-        "stable-hash": "^0.0.4"
+        "stable-hash": "^0.0.5"
     },
     "scripts": {
         "check-types": "tsc --noEmit",

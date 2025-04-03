@@ -12,7 +12,6 @@ import { createSafeActionClient } from "next-safe-action";
 import { cookies, headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { z } from "zod";
-import { getHydratedCurrentUser } from "#app/_queries/auths.ts";
 
 const ActionMetadataSchema = z.object({
     actionName: z.string(),
@@ -89,8 +88,9 @@ export const actionClient = createSafeActionClient({
      * This middleware is responsible for checking if the user is authenticated or not.
      */
     .use(async ({ next, metadata: { access = "trusted-only" } }) => {
-        const user = await getHydratedCurrentUser();
-
+        // todo: implement user authentication
+        const user: any = null;
+        // noinspection PointlessBooleanExpressionJS
         if (access === "trusted-only" && !user) {
             notFound();
         } else if (access === "anonymous-only" && user) {

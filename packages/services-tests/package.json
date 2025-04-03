@@ -3,11 +3,11 @@
     "version": "0.0.0",
     "private": true,
     "devDependencies": {
-        "@faker-js/faker": "^9.5.1",
+        "@faker-js/faker": "^9.6.0",
         "app-typescript-config": "workspace:^",
         "dpdm": "^3.14.0",
         "typescript": "^5.8.2",
-        "vitest": "^2.1.9"
+        "vitest": "^3.1.1"
     },
     "dependencies": {
         "app-models-mocks": "workspace:^",

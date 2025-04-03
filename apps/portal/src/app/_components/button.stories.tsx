@@ -32,21 +32,9 @@ export const Destructive: Story = {
     },
 };
 
-export const Neutral: Story = {
-    render: function Component() {
-        return <Button variant="neutral">Neutral</Button>;
-    },
-};
-
 export const Secondary: Story = {
     render: function Component() {
         return <Button variant="secondary">Secondary</Button>;
-    },
-};
-
-export const Tertiary: Story = {
-    render: function Component() {
-        return <Button variant="tertiary">Tertiary</Button>;
     },
 };
 

@@ -2,14 +2,16 @@
 
 import type { MotionProps, Variants } from "framer-motion";
 import * as m from "framer-motion/m";
-import type { PropsWithChildren } from "react";
-import type { ButtonProps } from "#app/_components/button.tsx";
+import type { ComponentProps, PropsWithChildren } from "react";
+import type { Button } from "#app/_components/button.tsx";
 import { Lordicon } from "#app/_components/lordicon.tsx";
 import { MotionButton } from "#app/_components/motion-button.tsx";
 import { cn } from "#app/_libs/cn.ts";
 
 export interface ActionButtonProps
-    extends PropsWithChildren<Omit<ButtonProps, keyof MotionProps>> {
+    extends PropsWithChildren<
+        Omit<ComponentProps<typeof Button>, keyof MotionProps>
+    > {
     loading?: boolean;
 }
 

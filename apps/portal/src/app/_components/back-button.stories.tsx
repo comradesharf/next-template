@@ -4,7 +4,9 @@ import { BackButton } from "#app/_components/back-button.tsx";
 const meta: Meta<typeof BackButton> = {
     component: BackButton,
     tags: ["autodocs"],
-    args: {},
+    args: {
+        children: "Back",
+    },
     parameters: {
         layout: "padded",
         docs: {

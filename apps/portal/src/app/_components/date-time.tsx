@@ -10,7 +10,6 @@ import {
     initDateFormatter,
 } from "app-core/date-times.config";
 import type { Locale } from "date-fns";
-import { useSession } from "next-auth/react";
 import {
     type PropsWithChildren,
     createContext,
@@ -31,10 +30,8 @@ export function DateTimeI18nContext({
     defaultFormatVariant = DefaultDateTimeFormatVariant,
     formatVariant = DateTimeFormatVariant,
 }: PropsWithChildren<DateTimeI18nConfig>) {
-    const $timezone = useSession().data?.user.timezone;
-
     const $formatVariant = useMemo(() => {
-        const timeZone = $timezone ?? process.env.NEXT_PUBLIC_DEFAULT_USER_TZ;
+        const timeZone = process.env.NEXT_PUBLIC_DEFAULT_USER_TZ;
 
         return Object.fromEntries(
             Object.entries(formatVariant).map(([key, value]) => [
@@ -45,7 +42,7 @@ export function DateTimeI18nContext({
                 },
             ]),
         );
-    }, [formatVariant, $timezone]);
+    }, [formatVariant]);
 
     const [dfLocaleMapping, setDfLocaleMapping] = useState<
         Record<string, Locale>
