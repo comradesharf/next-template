@@ -36,6 +36,7 @@ export function useLingui() {
     return {
         i18n,
         _: i18n._.bind(i18n),
+        t: i18n._.bind(i18n),
     };
 }
 

@@ -4,7 +4,9 @@ import { MotionButton } from "#app/_components/motion-button.tsx";
 const meta: Meta<typeof MotionButton> = {
     component: MotionButton,
     tags: ["autodocs"],
-    args: {},
+    args: {
+        children: "Click me",
+    },
     parameters: {
         layout: "padded",
         docs: {

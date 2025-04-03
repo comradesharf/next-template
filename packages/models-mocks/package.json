@@ -20,7 +20,7 @@
         "typescript": "^5.8.2"
     },
     "dependencies": {
-        "@faker-js/faker": "^9.5.1",
+        "@faker-js/faker": "^9.6.0",
         "app-core": "workspace:^",
         "app-schemas": "workspace:^",
         "date-fns": "^4.1.0",

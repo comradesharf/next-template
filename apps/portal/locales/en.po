@@ -17,6 +17,10 @@ msgstr ""
 msgid "Back to Homepage"
 msgstr "Back to Homepage"
 
+#: apps/portal/src/app/[lang]/page.tsx:11
+msgid "Hello World"
+msgstr "Hello World"
+
 #: apps/portal/src/app/_components/not-found.tsx:45
 msgid "If you think this is a mistake, please <0>contact our support team</0>."
 msgstr "If you think this is a mistake, please <0>contact our support team</0>."
@@ -57,7 +61,7 @@ msgstr "step up"
 msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
 msgstr "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
 
-#: apps/portal/src/app/_libs/safe-actions.ts:83
+#: apps/portal/src/app/_libs/safe-actions.ts:82
 msgid "Unexpected server error occurred"
 msgstr "Unexpected server error occurred"
 

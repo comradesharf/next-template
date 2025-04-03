@@ -2,7 +2,6 @@
 
 import { composeEventHandlers } from "@radix-ui/primitive";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { useSession } from "next-auth/react";
 import type * as React from "react";
 import { DayPicker } from "react-day-picker";
 import { buttonVariants } from "#app/_components/button.tsx";
@@ -24,21 +23,16 @@ function Calendar({
     className,
     classNames,
     showOutsideDays = true,
-    timeZone,
+    timeZone = process.env.NEXT_PUBLIC_DEFAULT_USER_TZ,
     ...props
 }: CalendarProps) {
-    const { data } = useSession();
-
-    const timezone =
-        data?.user.timezone ?? process.env.NEXT_PUBLIC_DEFAULT_USER_TZ;
-
     const locale = useDateFnsLocale();
 
     return (
         <DayPicker
             {...props}
             locale={locale}
-            timeZone={timezone ?? timezone}
+            timeZone={timeZone}
             showOutsideDays={showOutsideDays}
             className={cn("p-3", className)}
             classNames={{
@@ -96,6 +90,7 @@ function Calendar({
         />
     );
 }
+
 Calendar.displayName = "Calendar";
 
 function ControlledCalendar(props: CalendarProps) {

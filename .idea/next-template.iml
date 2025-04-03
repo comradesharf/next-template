@@ -47,6 +47,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.idea/shelf" />
       <excludeFolder url="file://$MODULE_DIR$/packages/services-tests/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/trpc/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/cli/.turbo" />
       <excludePattern pattern=".eslintcache" />
       <excludePattern pattern="junit.xml" />
       <excludePattern pattern="globalConfig_model-tests.json" />

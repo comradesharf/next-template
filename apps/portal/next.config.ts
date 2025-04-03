@@ -13,7 +13,6 @@ const assetRemotePattern = (() => {
 })();
 
 const nextConfig: NextConfig = {
-    basePath: "/portal",
     output: "standalone",
     eslint: {
         ignoreDuringBuilds: true,

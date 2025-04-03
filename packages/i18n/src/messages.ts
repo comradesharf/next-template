@@ -22,9 +22,11 @@ const allI18nInstances = Object.fromEntries(
     }),
 );
 
-export function getI18nInstance(locale = "en"): I18n {
+export function getI18nInstance(
+    locale = process.env.NEXT_PUBLIC_DEFAULT_USER_LOCALE!,
+): I18n {
     if (!allI18nInstances[locale]) {
         console.warn(`No i18n instance found for locale "${locale}"`);
     }
-    return allI18nInstances[locale] || allI18nInstances.en;
+    return allI18nInstances[locale] || allI18nInstances.de;
 }

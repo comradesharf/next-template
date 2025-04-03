@@ -1,37 +1,37 @@
 "use client";
 
 import { composeEventHandlers } from "@radix-ui/primitive";
+import type { CheckedState } from "@radix-ui/react-checkbox";
+import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
+import { CheckIcon } from "lucide-react";
 import { useFormField } from "#app/_components/form.tsx";
 import { cn } from "#app/_libs/cn.ts";
 
-import type { CheckedState } from "@radix-ui/react-checkbox";
-import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
-import { SquareIcon } from "lucide-react";
+import type * as React from "react";
 import { type ComponentProps, useCallback } from "react";
 
 function Checkbox({
     className,
-    ref,
     ...props
-}: ComponentProps<typeof CheckboxPrimitive.Root>) {
+}: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
     return (
         <CheckboxPrimitive.Root
-            ref={ref}
+            data-slot="checkbox"
             className={cn(
-                "peer aspect-square h-4 w-4 shrink-0 rounded-sm border border-neutral-light-1 bg-neutral-light-0 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
+                "peer size-4 shrink-0 rounded-[4px] border border-input shadow-xs outline-none transition-shadow focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:bg-input/30 dark:data-[state=checked]:bg-primary dark:aria-invalid:ring-destructive/40",
                 className,
             )}
             {...props}
         >
             <CheckboxPrimitive.Indicator
-                className={cn("flex items-center justify-center text-current")}
+                data-slot="checkbox-indicator"
+                className="flex items-center justify-center text-current transition-none"
             >
-                <SquareIcon className="size-2/5" fill="white" stroke="white" />
+                <CheckIcon className="size-3.5" />
             </CheckboxPrimitive.Indicator>
         </CheckboxPrimitive.Root>
     );
 }
-Checkbox.displayName = CheckboxPrimitive.Root.displayName;
 
 function ControlledCheckbox({
     value,

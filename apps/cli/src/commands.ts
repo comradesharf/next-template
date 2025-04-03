@@ -1,9 +1,9 @@
 import {
     createTRPCClient as $createTRPCClient,
-    type CreateTRPCClient,
+    type TRPCClient,
     httpLink,
+    httpSubscriptionLink,
     splitLink,
-    unstable_httpSubscriptionLink,
 } from "@trpc/client";
 import type { AdminRouter } from "app-trpc/admin";
 import { Command, Option } from "commander";
@@ -17,12 +17,12 @@ function createPrivateTRPCClient({
     accessSecret: string;
     accessId: string;
     trpcUrl: string;
-}): CreateTRPCClient<AdminRouter> {
+}): TRPCClient<AdminRouter> {
     return $createTRPCClient<AdminRouter>({
         links: [
             splitLink({
                 condition: (op) => op.type === "subscription",
-                true: unstable_httpSubscriptionLink({
+                true: httpSubscriptionLink({
                     url: `${trpcUrl}/api/admin`,
                     transformer: superjson,
                 }),
@@ -48,12 +48,12 @@ function createPublicTRPCClient({
     trpcUrl,
 }: {
     trpcUrl: string;
-}): CreateTRPCClient<AdminRouter> {
+}): TRPCClient<AdminRouter> {
     return $createTRPCClient<AdminRouter>({
         links: [
             splitLink({
                 condition: (op) => op.type === "subscription",
-                true: unstable_httpSubscriptionLink({
+                true: httpSubscriptionLink({
                     url: `${trpcUrl}/api/admin`,
                     transformer: superjson,
                 }),
@@ -92,9 +92,9 @@ export class PrivateTRPCCommand extends Command {
             );
     }
 
-    #trpc?: CreateTRPCClient<AdminRouter>;
+    #trpc?: TRPCClient<AdminRouter>;
 
-    get trpc(): CreateTRPCClient<AdminRouter> {
+    get trpc(): TRPCClient<AdminRouter> {
         if (!this.#trpc) {
             const { accessId, accessSecret, trpcUrl } = this.opts();
             this.#trpc = createPrivateTRPCClient({
@@ -117,9 +117,9 @@ export class PublicTRPCCommand extends Command {
         );
     }
 
-    #trpc?: CreateTRPCClient<AdminRouter>;
+    #trpc?: TRPCClient<AdminRouter>;
 
-    get trpc(): CreateTRPCClient<AdminRouter> {
+    get trpc(): TRPCClient<AdminRouter> {
         if (!this.#trpc) {
             const { trpcUrl } = this.opts();
             this.#trpc = createPublicTRPCClient({

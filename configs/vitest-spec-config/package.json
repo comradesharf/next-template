@@ -4,11 +4,11 @@
     "private": true,
     "type": "module",
     "dependencies": {
-        "@faker-js/faker": "^9.5.1",
-        "@testcontainers/localstack": "^10.18.0",
+        "@faker-js/faker": "^9.6.0",
+        "@testcontainers/localstack": "^10.23.0",
         "app-models": "workspace:^",
-        "testcontainers": "^10.18.0",
-        "vitest": "^2.1.9"
+        "testcontainers": "^10.23.0",
+        "vitest": "^3.1.1"
     },
     "devDependencies": {
         "app-typescript-config": "workspace:^",
