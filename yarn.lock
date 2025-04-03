@@ -3776,47 +3776,47 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lingui/babel-plugin-extract-messages@npm:5.3.0":
-  version: 5.3.0
-  resolution: "@lingui/babel-plugin-extract-messages@npm:5.3.0"
-  checksum: 10c0/fd5f44cc65b452787a0111883deedd5cf1ff8382bed4b8d9ac04abdb282637fd784ec251a8634a88c8caa948b6e975c78cf007359d615ab77ff0fe5b010d2b1c
+"@lingui/babel-plugin-extract-messages@npm:5.2.0":
+  version: 5.2.0
+  resolution: "@lingui/babel-plugin-extract-messages@npm:5.2.0"
+  checksum: 10c0/82d95f9c3a8da9fadfe6980975c8586487ab37c048ee5da37dd5a8e16fb54beda3a76c0f81d11d69e63572f762ed736484c31109f166c3500b525f2cf79002fc
   languageName: node
   linkType: hard
 
-"@lingui/babel-plugin-lingui-macro@npm:5.3.0":
-  version: 5.3.0
-  resolution: "@lingui/babel-plugin-lingui-macro@npm:5.3.0"
+"@lingui/babel-plugin-lingui-macro@npm:5.2.0":
+  version: 5.2.0
+  resolution: "@lingui/babel-plugin-lingui-macro@npm:5.2.0"
   dependencies:
     "@babel/core": "npm:^7.20.12"
     "@babel/runtime": "npm:^7.20.13"
     "@babel/types": "npm:^7.20.7"
-    "@lingui/conf": "npm:5.3.0"
-    "@lingui/core": "npm:5.3.0"
-    "@lingui/message-utils": "npm:5.3.0"
+    "@lingui/conf": "npm:5.2.0"
+    "@lingui/core": "npm:5.2.0"
+    "@lingui/message-utils": "npm:5.2.0"
   peerDependencies:
     babel-plugin-macros: 2 || 3
   peerDependenciesMeta:
     babel-plugin-macros:
       optional: true
-  checksum: 10c0/c54ebe9afc952a1ac8b1e99759668ec8594f9f08e068884187598d6a9ca35cbb580be1f51ded3ba30c7c1d7fd1324c0e839a64aa999cfb474f5593064db8966b
+  checksum: 10c0/88509ce9a4cdd366a4b341eb9e345a7d20caccfce92475c5de082c61bd06af4ce55495edc2dad037a6416049a1d53c1dc67858398121865b026950d6add807be
   languageName: node
   linkType: hard
 
-"@lingui/cli@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@lingui/cli@npm:5.3.0"
+"@lingui/cli@npm:~5.2.0":
+  version: 5.2.0
+  resolution: "@lingui/cli@npm:5.2.0"
   dependencies:
     "@babel/core": "npm:^7.21.0"
     "@babel/generator": "npm:^7.21.1"
     "@babel/parser": "npm:^7.22.0"
     "@babel/runtime": "npm:^7.21.0"
     "@babel/types": "npm:^7.21.2"
-    "@lingui/babel-plugin-extract-messages": "npm:5.3.0"
-    "@lingui/babel-plugin-lingui-macro": "npm:5.3.0"
-    "@lingui/conf": "npm:5.3.0"
-    "@lingui/core": "npm:5.3.0"
-    "@lingui/format-po": "npm:5.3.0"
-    "@lingui/message-utils": "npm:5.3.0"
+    "@lingui/babel-plugin-extract-messages": "npm:5.2.0"
+    "@lingui/babel-plugin-lingui-macro": "npm:5.2.0"
+    "@lingui/conf": "npm:5.2.0"
+    "@lingui/core": "npm:5.2.0"
+    "@lingui/format-po": "npm:5.2.0"
+    "@lingui/message-utils": "npm:5.2.0"
     babel-plugin-macros: "npm:^3.0.1"
     chalk: "npm:^4.1.0"
     chokidar: "npm:3.5.1"
@@ -3837,13 +3837,13 @@ __metadata:
     source-map: "npm:^0.8.0-beta.0"
   bin:
     lingui: ./dist/lingui.js
-  checksum: 10c0/98f8bec66c685e47cfc1bfdaf0912a937d7a66c44f2a816496556b0fd11b9eb9ad05d1460b6396b2c3cfb56f430f67022dedb21edbb786293b0417bb9bf5a78d
+  checksum: 10c0/4fe6ee7421521b4e0248248015f70476d848dbf93f949bff8e44e6d6c53249276a9c78f4abb3d57e5ab64256f79e28e8b067047aa4ee7a0db918a1b2a5c7853d
   languageName: node
   linkType: hard
 
-"@lingui/conf@npm:5.3.0":
-  version: 5.3.0
-  resolution: "@lingui/conf@npm:5.3.0"
+"@lingui/conf@npm:5.2.0":
+  version: 5.2.0
+  resolution: "@lingui/conf@npm:5.2.0"
   dependencies:
     "@babel/runtime": "npm:^7.20.13"
     chalk: "npm:^4.1.0"
@@ -3851,7 +3851,26 @@ __metadata:
     jest-validate: "npm:^29.4.3"
     jiti: "npm:^1.17.1"
     lodash.get: "npm:^4.4.2"
-  checksum: 10c0/ee75e7f85e69dc5850dcb7023b0f50cd660f75b4cf1e0389a69ba575f333a8f53390242ea246bb30ff957bcc25c34be9db222f98a29c083357bb7593b05a3430
+  checksum: 10c0/2dda782a10bccfe43a98469e729c4a0a7bc8e29145fa19cd9926f36d1e064e12781b922593c8d08cbb55923b8219d0b0aefecf0ed7007df78a5804881b5a18f2
+  languageName: node
+  linkType: hard
+
+"@lingui/core@npm:5.2.0":
+  version: 5.2.0
+  resolution: "@lingui/core@npm:5.2.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.20.13"
+    "@lingui/message-utils": "npm:5.2.0"
+    unraw: "npm:^3.0.0"
+  peerDependencies:
+    "@lingui/babel-plugin-lingui-macro": 5.2.0
+    babel-plugin-macros: 2 || 3
+  peerDependenciesMeta:
+    "@lingui/babel-plugin-lingui-macro":
+      optional: true
+    babel-plugin-macros:
+      optional: true
+  checksum: 10c0/ca2d95c758b352eab44c2080485515cca7329d95ecbf700fe8bdc325b220eefe53ec8356e4f90ab638a31e2a466afa92e24c5644c04fb093e02048d2bf49ea38
   languageName: node
   linkType: hard
 
@@ -3874,15 +3893,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lingui/format-po@npm:5.3.0":
-  version: 5.3.0
-  resolution: "@lingui/format-po@npm:5.3.0"
+"@lingui/format-po@npm:5.2.0":
+  version: 5.2.0
+  resolution: "@lingui/format-po@npm:5.2.0"
   dependencies:
-    "@lingui/conf": "npm:5.3.0"
-    "@lingui/message-utils": "npm:5.3.0"
+    "@lingui/conf": "npm:5.2.0"
+    "@lingui/message-utils": "npm:5.2.0"
     date-fns: "npm:^3.6.0"
     pofile: "npm:^1.1.4"
-  checksum: 10c0/55932391efaa1df4a6d0c33cc387c85ead21ee564d5b7243e95111ec24b89a44c277da363eb6727c585106558ba045f55dfd764da055a677f0beef021df00391
+  checksum: 10c0/0b66e028bdbf9668fe6da6df25c6c5109730e3524ee1a31f7c3118c2fbfeea35635541aa126befecb7d53e61018a0864f2e73397bf6f67a07ba4c8b5e96a0756
   languageName: node
   linkType: hard
 
@@ -3901,6 +3920,16 @@ __metadata:
     babel-plugin-macros:
       optional: true
   checksum: 10c0/23df7a216f145d6189c45dc32220a01d06f420f0066471ab7ae42575ebb1f07d05c579798c7e8b21f09d39f3f5a4a4d2df770abf58ae2b239665182266ac8cd7
+  languageName: node
+  linkType: hard
+
+"@lingui/message-utils@npm:5.2.0":
+  version: 5.2.0
+  resolution: "@lingui/message-utils@npm:5.2.0"
+  dependencies:
+    "@messageformat/parser": "npm:^5.0.0"
+    js-sha256: "npm:^0.10.1"
+  checksum: 10c0/eab1e817d1e8ff201ae1b17820c4d066ca8bf5e4fbf6b8626ba890b9309374410a2a598d067b68e3a7fbad728b86763b96fa5fb43495a273d1704a80ad8a88c8
   languageName: node
   linkType: hard
 
@@ -10255,7 +10284,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "app-i18n@workspace:packages/i18n"
   dependencies:
-    "@lingui/cli": "npm:^5.3.0"
+    "@lingui/cli": "npm:~5.2.0"
     "@lingui/core": "npm:^5.3.0"
     "@lingui/react": "npm:^5.3.0"
     app-core: "workspace:^"

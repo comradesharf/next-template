@@ -30,6 +30,8 @@ yarn-error.log*
 # vercel
 .vercel
 
+.swc
+
 # typescript
 *.tsbuildinfo
 .eslintcache
@@ -46,3 +48,5 @@ yarn-error.log*
 globalConfig_*.json
 
 junit.xml
+
+storybook-static

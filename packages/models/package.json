@@ -7,7 +7,11 @@
     },
     "type": "module",
     "exports": {
-        "./db": "./src/db.ts",
+        "./db": {
+            "types": "./src/db.ts",
+            "storybook": "./src/db.mock.ts",
+            "default": "./src/db.ts"
+        },
         "./abilities": {
             "types": "./src/abilities.ts",
             "storybook": null,
