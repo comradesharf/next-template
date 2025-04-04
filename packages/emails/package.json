@@ -20,7 +20,7 @@
         "@lingui/react": "^5.3.0",
         "@react-email/components": "^0.0.35",
         "@react-email/render": "^1.0.5",
-        "@sentry/nextjs": "^9.10.1",
+        "@sentry/nextjs": "^9.11.0",
         "@types/react": "^19.1.0",
         "@types/react-dom": "^19.1.1",
         "app-core": "workspace:^",

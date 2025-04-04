@@ -3,14 +3,14 @@
     "version": "0.0.0",
     "private": true,
     "dependencies": {
-        "@sentry/node": "^9.10.1",
+        "@sentry/node": "^9.11.0",
         "@vercel/ncc": "^0.38.3",
         "app-i18n": "workspace:^",
         "app-models": "workspace:^"
     },
     "devDependencies": {
-        "@rspack/cli": "~1.3.1",
-        "@rspack/core": "~1.3.1",
+        "@rspack/cli": "~1.3.2",
+        "@rspack/core": "~1.3.2",
         "@sentry/webpack-plugin": "^3.2.4",
         "app-typescript-config": "workspace:^",
         "dpdm": "^3.14.0",

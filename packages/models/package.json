@@ -60,7 +60,7 @@
         "app-services": "workspace:^",
         "date-fns": "^4.1.0",
         "lodash-es": "^4.17.21",
-        "mongoose": "^8.13.1",
+        "mongoose": "^8.13.2",
         "typeid-js": "^1.2.0"
     },
     "scripts": {
