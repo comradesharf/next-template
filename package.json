@@ -4,11 +4,11 @@
     "private": true,
     "devDependencies": {
         "@biomejs/biome": "1.9.4",
-        "@turbo/gen": "^2.4.4",
+        "@turbo/gen": "^2.5.0",
         "@types/inquirer-fuzzy-path": "^2.3.9",
         "inquirer-fuzzy-path": "^2.3.0",
         "lefthook": "^1.11.6",
-        "turbo": "^2.4.4"
+        "turbo": "^2.5.0"
     },
     "workspaces": ["apps/*", "packages/*", "configs/*"],
     "packageManager": "yarn@4.7.0",
